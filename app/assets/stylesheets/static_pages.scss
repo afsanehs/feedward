@@ -43,7 +43,7 @@
 }
 
 //--------------------------------------//
-//Readmore section
+//Read more section
 #readmore-section {
   margin-top: 100px;
   position: relative;
@@ -52,6 +52,27 @@
   }
   .readmore-text-rh {
     margin-top: 20px;
+  }
+}
+
+//--------------------------------------//
+//How it work section
+#work-section {
+  margin-top: 100px;
+  margin-bottom: 100px;
+  position: relative;
+  .col-6 {
+    margin-top: 40px;
+    text-align: right;
+  }
+  .col-6.offset-md-6 {
+    text-align: left;
+  }
+  .vertical {
+    height: 100%;
+    position: absolute;
+    border-left: 2px solid #999;
+    left: 50%;
   }
 }
 //--------------------------------------//
