@@ -2,14 +2,14 @@
 // home section
 #home-section {
   background: {
-    image: asset_url('offices/home');
+    image: asset_url("offices/home");
   }
   margin-bottom: 200px;
   position: relative;
   background-size: cover;
   background-repeat: no-repeat;
   width: 100%;
-  height: 100vh;
+  height: 95vh;
 }
 .home-text {
   margin-top: 12vh;
