@@ -16,4 +16,6 @@ class StaticPagesController < ApplicationController
 
   def news
   end
+  def report_problem
+  end
 end

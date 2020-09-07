@@ -1,4 +1,4 @@
-<section id="main-footer" class="py-3 px-3">
+<section id="main-footer" class="py-4 px-3">
   <div class="container-fluid">
       <div class="row">
           <div class="col-md-2">
@@ -8,25 +8,37 @@
           </div>
           <div class="col-md-3">
               <div class="d-flex flex-column">
-                  <div>Contact</div>
-                  <div>A propos</div>
+                  <div>
+                  <a href="<%= contact_path %>">Contact</a>
+                  </div>
+                  <div>
+                  <a href="<%= about_path %>">A Propos</a>
+                  </div>
               </div>
           </div>
           <div class="col-md-3">
               <div class="d-flex flex-column">
-                  <div>FAQ</div>
-                  <div>Carrières</div>
+                  <div>
+                  <a href="<%= faq_path %>">FAQ</a>
+                  </div>
+                  <div>
+                  <a href="<%= careers_path %>">Carrières</a>
+                  </div>
               </div>
           </div>
           <div class="col-md-3">
               <div class="d-flex flex-column">
-                  <div>News</div>
-                  <div>Rapporter un problème</div>
+                  <div>
+                  <a href="<%= news_path %>">News</a>
+                  </div>
+                  <div>
+                  <a href="<%= report_problem_path %>">Rapporter un problème</a>
+                  </div>
               </div>
           </div>
           <div class="col-md-1">
-            <a class="btn btn-primary" href="#">
-                <i class="">
+            <a class="btn btn-violet" href="#">
+               <i class="fas fa-arrow-circle-up text-white"></i>
             </a>
           </div>
       </div>
