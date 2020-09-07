@@ -109,4 +109,10 @@ Rails.application.configure do
   # config.active_record.database_selector = { delay: 2.seconds }
   # config.active_record.database_resolver = ActiveRecord::Middleware::DatabaseSelector::Resolver
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
+
+    # Do not dump schema after migrations.
+    config.active_record.dump_schema_after_migration = false
+    config.action_mailer.default_url_options = { :host => 'dev-feedward.herokuapp.com' }
+    config.action_controller.asset_host = 'https://dev-feedwerd.herokuapp.com'
+    config.action_mailer.asset_host = config.action_controller.asset_host
 end

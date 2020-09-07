@@ -4,6 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  after_create :welcome_send
+
   belongs_to :company, optional: true #an employee works for only one company
   has_many :feedbacks #an employee has many feedbacks (one per day)
 
@@ -16,4 +18,8 @@ class User < ApplicationRecord
   validates :password_confirmation, length: {minimum: 8}, presence: true, on: :create
   validates :password, length: {minimum: 8}, presence: true, on: :update, if: :encrypted_password_changed?
   validates :password_confirmation, length: {minimum: 8}, presence: true, on: :update, if: :encrypted_password_changed?
+
+  def welcome_send
+    UserMailer.welcome_email(self).deliver_now
+  end
 end
