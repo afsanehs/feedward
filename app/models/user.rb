@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  belongs_to :company #an employee works for only one company
+  belongs_to :company, optional: true #an employee works for only one company
   has_many :feedbacks #an employee has many feedbacks (one per day)
 
   validates :email,
