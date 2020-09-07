@@ -1,0 +1,23 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  score_global: 1
+  answer_global: MyText
+  score_workspace: 1
+  answer_workspace: MyText
+  score_missions: 1
+  answer_missions: MyText
+  answer_final: MyText
+  receiver_id: 1
+  sender_id: 1
+
+two:
+  score_global: 1
+  answer_global: MyText
+  score_workspace: 1
+  answer_workspace: MyText
+  score_missions: 1
+  answer_missions: MyText
+  answer_final: MyText
+  receiver_id: 1
+  sender_id: 1
