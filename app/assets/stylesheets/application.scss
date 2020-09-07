@@ -18,3 +18,8 @@
 @import 'navigation';
 @import 'footer';
 @import 'static_pages';
+
+html,
+body {
+  scroll-behavior: smooth;
+}

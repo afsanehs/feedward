@@ -1,14 +1,24 @@
-.text-violet-bold {
-  color: #6558f5;
-  font-weight: 700;
+//------------------------------------------//
+// home section
+#home-section {
+  background: {
+    image: asset_url('offices/home');
+  }
+  position: relative;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100vh;
 }
-.text-violet {
-  color: #6558f5;
-}
-.btn.btn-violet {
-  background: #6558f5;
+.home-btn-next {
+  margin-top: 55vh;
 }
 
+//------------------------------------------//
+// Readmore section
+#readmore-section {
+  position: relative;
+}
 .readmore-img-office {
   position: relative;
   .readmore-img-pc1 {
@@ -26,8 +36,21 @@
   }
 }
 .readmore-section-1 {
-  margin-top: 40px;
+  margin-top: 100px;
 }
 .readmore-section-2 {
   margin-top: 100px;
+}
+
+//--------------------------------------//
+//Various
+.text-violet-bold {
+  color: #6558f5;
+  font-weight: 700;
+}
+.text-violet {
+  color: #6558f5;
+}
+.btn.btn-violet {
+  background: #6558f5;
 }
