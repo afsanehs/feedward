@@ -1,15 +1,12 @@
 #main-footer {
   background: #b2acfa;
+  z-index: 10;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
   color: #333;
   a {
     color: #333;
   }
-}
-
-.text-bold {
-  color: #6558f5;
-  font-weight: 700;
-}
-.btn.btn-violet {
-  background: #6558f5;
 }

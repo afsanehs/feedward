@@ -1,3 +1,33 @@
-// Place all the styles related to the StaticPages controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
+.text-violet-bold {
+  color: #6558f5;
+  font-weight: 700;
+}
+.text-violet {
+  color: #6558f5;
+}
+.btn.btn-violet {
+  background: #6558f5;
+}
+
+.readmore-img-office {
+  position: relative;
+  .readmore-img-pc1 {
+    position: absolute;
+    top: -20px;
+    max-width: 120px;
+    max-height: 120px;
+  }
+  .readmore-img-pc2 {
+    position: absolute;
+    top: 35%;
+    left: 150px;
+    max-width: 120px;
+    max-height: 120px;
+  }
+}
+.readmore-section-1 {
+  margin-top: 40px;
+}
+.readmore-section-2 {
+  margin-top: 100px;
+}
