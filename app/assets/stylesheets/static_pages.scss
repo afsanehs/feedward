@@ -4,7 +4,7 @@
   background: {
     image: asset_url("offices/home");
   }
-  margin-bottom: 200px;
+  margin-bottom: 3rem;
   position: relative;
   background-size: cover;
   background-repeat: no-repeat;
@@ -22,27 +22,31 @@
 // Home section 2
 #home-2 {
   position: relative;
-  margin-top: 200px;
+  padding-top: 1rem;
+  padding-bottom: 4rem;
+  height: 2rem;
 }
 
 //--------------------------------------//
 //Read more section
 #readmore {
-  margin-top: 200px;
+  padding-top: 10rem;
   position: relative;
+  height: 90vh;
   .readmore-text-salary {
-    margin-top: 10px;
+    margin-top: 1rem;
   }
   .readmore-text-rh {
-    margin-top: 10px;
+    margin-top: 1rem;
   }
 }
 
 //--------------------------------------//
 //How it work section
 #howitwork {
-  margin-top: 200px;
-  margin-bottom: 200px;
+  margin-top: 2rem;
+  margin-bottom: 4rem;
+  height: 55vh;
   position: relative;
   .col-6 {
     margin-top: 40px;
@@ -65,12 +69,13 @@
 
 #demo {
   position: relative;
-  margin-bottom: 150px;
+  padding-top: 2rem;
+  margin-bottom: 10rem;
   .row {
-    margin: 60px;
+    margin: 5rem;
   }
   .demo-action {
-    margin-top: 60px;
+    margin-top: 5rem;
   }
 }
 
