@@ -1,0 +1,33 @@
+.navbar-section {
+  background-color: #b2acfa;
+  position: relative;
+  .nav-text-bold {
+    color: #6558f5;
+    font-weight: 700;
+  }
+
+  .nav-account {
+    position: relative;
+    .nav-item--separate::after {
+      content: '';
+      position: absolute;
+      display: block;
+      border-left: 1px solid #fff;
+      top: 50%;
+      transform: translateY(-50%);
+      height: 20px;
+      right: 82px;
+    }
+  }
+
+  a {
+    color: #fff;
+    font-weight: 400;
+  }
+  a:hover {
+    color: #333;
+  }
+  .active {
+    color: #333;
+  }
+}
