@@ -15,8 +15,8 @@
 }
 
 //------------------------------------------//
-// Readmore section
-#readmore-section {
+// Home section 2
+#home-2 {
   position: relative;
 }
 .readmore-img-office {
@@ -42,6 +42,18 @@
   margin-top: 100px;
 }
 
+//--------------------------------------//
+//Readmore section
+#readmore-section {
+  margin-top: 100px;
+  position: relative;
+  .readmore-text-salary {
+    margin-top: 20px;
+  }
+  .readmore-text-rh {
+    margin-top: 20px;
+  }
+}
 //--------------------------------------//
 //Various
 .text-violet-bold {
