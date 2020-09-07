@@ -20,45 +20,23 @@
   position: relative;
   margin-top: 200px;
 }
-.readmore-img-office {
-  position: relative;
-  .readmore-img-pc1 {
-    position: absolute;
-    top: -20px;
-    max-width: 120px;
-    max-height: 120px;
-  }
-  .readmore-img-pc2 {
-    position: absolute;
-    top: 35%;
-    left: 150px;
-    max-width: 120px;
-    max-height: 120px;
-  }
-}
-.readmore-section-1 {
-  margin-top: 100px;
-}
-.readmore-section-2 {
-  margin-top: 100px;
-}
 
 //--------------------------------------//
 //Read more section
-#readmore-section {
+#readmore {
   margin-top: 200px;
   position: relative;
   .readmore-text-salary {
-    margin-top: 20px;
+    margin-top: 10px;
   }
   .readmore-text-rh {
-    margin-top: 20px;
+    margin-top: 10px;
   }
 }
 
 //--------------------------------------//
 //How it work section
-#work-section {
+#howitwork {
   margin-top: 200px;
   margin-bottom: 200px;
   position: relative;
@@ -70,12 +48,28 @@
     text-align: left;
   }
   .vertical {
-    height: 100%;
+    height: 90%;
     position: absolute;
     border-left: 2px solid #999;
+    top: 12%;
     left: 50%;
   }
 }
+
+//--------------------------------------//
+// Demo section
+
+#demo {
+  position: relative;
+  margin-bottom: 150px;
+  .row {
+    margin: 60px;
+  }
+  .demo-action {
+    margin-top: 60px;
+  }
+}
+
 //--------------------------------------//
 //Various
 .text-violet-bold {
@@ -87,4 +81,8 @@
 }
 .btn.btn-violet {
   background: #6558f5;
+}
+.btn.btn-violet-outline {
+  border: 1px solid #6558f5;
+  color: #6558f5;
 }
