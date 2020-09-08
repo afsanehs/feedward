@@ -55,7 +55,7 @@
 
                   <div class="form-group">
                     <%= f.label :company_id, "Entreprise" %><br />
-                    <%= f.select :company_id, options_for_select(@companies.collect{ |u| [u.name, u.id] }), class: 'form-control'%>
+                    <%= f.select :company_id, options_for_select(@companies.collect{ |u| [u.name, u.id] }), {}, class: 'form-control'%>
                   </div>
 
                 </div>
