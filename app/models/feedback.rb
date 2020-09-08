@@ -16,7 +16,9 @@ class Feedback < ApplicationRecord
   validates :answer_final, length: { minimum: 20 }
 
   def new_feedback_mail
-    FeedbackMailer.new_feedback_user(self).deliver_now
+    if !self.sender.nil?
+      FeedbackMailer.new_feedback_user(self.sender).deliver_now
+    end
     FeedbackMailer.new_feedback_admin.deliver_now
   end
 end
