@@ -2,8 +2,8 @@
   <div class="row">
     <div class="col-md-6 offset-md-3">
       <br><br>
-      <%= form_for resource, as: resource_name, url: registration_path(resource_name), html: { class: "form-signin mt-3" } do |f| %>
-        <h1 class="h3 mb-3 font-weight-normal text-center">Connectez-vous à votre compte :</h1>
+      <%= form_for resource, as: resource_name, url: session_path(resource_name), html: { class: "form-signin mt-3" } do |f| %>
+        <h1 class="h3 mb-3 font-weight-normal text-center">Je me connecte à mon compte</h1>
         <%= devise_error_messages! %>
 
         <div class="form-group">
@@ -13,9 +13,6 @@
 
         <div class="form-group">
           <%= f.label :password, "Votre mot de passe" %>
-          <% if @minimum_password_length %>
-          <em>(<%= @minimum_password_length %> characters minimum)</em>
-          <% end %><br />
           <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
         </div>
 
