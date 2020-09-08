@@ -112,9 +112,17 @@
 .team-page,
 .careers-page {
   min-height: calc(100vh - 134px - 55px);
-  .row {
-    padding-top: 4rem;
+  .container {
+    padding: 5rem 0rem;
   }
+  .row {
+    padding-top: 2rem;
+  }
+}
+.contact-page #text {
+  padding-top: 6rem;
+  display: flex;
+  flex-direction: column;
 }
 
 .careers-photo {
