@@ -2,7 +2,7 @@
 // home section
 #home-section {
   background: {
-    image: asset_url('offices/home');
+    image: asset_url("offices/home");
   }
   margin-bottom: 3rem;
   position: relative;
@@ -106,19 +106,33 @@
 .about-page,
 .legal-notice-page,
 .privacy-policy-page {
-  margin-top: 60px;
   .container {
-    min-height: calc(100vh - 250px);
+    padding: 5rem 0rem;
+    min-height: calc(100vh - 15rem);
   }
 }
+.contact-page #text {
+  padding-top: 10rem;
+  display: flex;
+  flex-direction: column;
+}
+
 .careers-page {
   .container {
     min-height: calc(50vh - 190px);
   }
 }
+.careers-page .text-center {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+}
+
 .careers-photo {
   background: {
-    image: asset_url('offices/careers');
+    image: asset_url("offices/careers");
   }
   height: 50vh;
   background-position: center center;
