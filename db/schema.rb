@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2020_09_07_091217) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "companies", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
@@ -26,8 +29,8 @@ ActiveRecord::Schema.define(version: 2020_09_07_091217) do
     t.integer "score_missions"
     t.text "answer_missions"
     t.text "answer_final"
-    t.integer "sender_id"
-    t.integer "receiver_id"
+    t.bigint "sender_id"
+    t.bigint "receiver_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["receiver_id"], name: "index_feedbacks_on_receiver_id"
@@ -39,7 +42,7 @@ ActiveRecord::Schema.define(version: 2020_09_07_091217) do
     t.string "last_name"
     t.boolean "is_site_admin"
     t.boolean "is_company_admin"
-    t.integer "company_id"
+    t.bigint "company_id"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
