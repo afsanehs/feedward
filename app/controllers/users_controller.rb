@@ -7,6 +7,9 @@ class UsersController < ApplicationController
     @feedbacks_user = Feedback.where(sender_id: @user.id)
   end
 
+  def dashboard
+  end
+
   private
   def correct_user
     @user = current_user
