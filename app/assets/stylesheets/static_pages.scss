@@ -2,7 +2,7 @@
 // home section
 #home-section {
   background: {
-    image: asset_url("offices/home");
+    image: asset_url('offices/home');
   }
   margin-bottom: 3rem;
   position: relative;
@@ -94,4 +94,34 @@
 .btn.btn-violet-outline {
   border: 1px solid #6558f5;
   color: #6558f5;
+}
+.btn.btn-violet-outline:hover {
+  color: #fff;
+  background-color: #6558f5;
+}
+
+//--------------------------------------//
+//Static pages
+.contact-page,
+.about-page,
+.legal-notice-page,
+.privacy-policy-page {
+  margin-top: 60px;
+  .container {
+    min-height: calc(100vh - 250px);
+  }
+}
+.careers-page {
+  .container {
+    min-height: calc(50vh - 190px);
+  }
+}
+.careers-photo {
+  background: {
+    image: asset_url('offices/careers');
+  }
+  height: 50vh;
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
