@@ -1,0 +1,17 @@
+<%= form_with(model: @feedback, local: true) do |form| %>
+
+    <div class="d-flex">
+        <% 6.times.each do |num|%>
+            <%= f.radio_button :request_type_id, rt.id %>
+            <%= f.label :request_type_id, rt.title %>
+
+        <% end %>
+    </div>
+
+    <div class="form-group mt-3">
+        <p>Souhaites-tu ajouter un commentaire ? </p>
+        <%= f.input class: 'btn btn-primary form-control'%>
+    </div>
+
+
+<% end %>

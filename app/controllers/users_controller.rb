@@ -13,8 +13,6 @@ class UsersController < ApplicationController
   end
 
   def update_profile
-    puts "---------------------------------------------"
-    puts params
     if @user.update(user_params)
       flash[:success] = "Update user profile succesfully!"
       redirect_back(fallback_location: root_path)
@@ -24,6 +22,8 @@ class UsersController < ApplicationController
       end
       render :profile
     end
+
+  def dashboard
   end
 
   private
