@@ -1,0 +1,45 @@
+<div class="container devise-page">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <br><br>
+      <%= form_for resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: "form-signin mt-3" } do |f| %>
+        <h1 class="h3 mb-3 font-weight-normal text-center text-primary">Je modifie mon compte</h1>
+        <%= devise_error_messages! %>
+
+        <div class="form-group">
+          <%= f.label :email, "Votre email" %><br />
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+        </div>
+
+        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+          <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+        <% end %>
+
+        <div class="form-group">
+          <%= f.label :password, "Votre nouveau mot de passe" %>
+          <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :password_confirmation, "Confirmation de votre nouveau mot de passe" %><br />
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :current_password, "Mot de passe actuel" %> <i><small> - Votre mot de passe est nécessaire pour confirmer les changements </small></i><br />
+          <%= f.password_field :current_password, autocomplete: "current-password", class: "form-control" %>
+        </div>
+
+        <div class="actions mt-3">
+          <%= f.submit "Enregistrer mes modifications", class: "btn btn-lg btn-primary btn-block" %>
+        </div>
+      <% end %>
+      <br>
+      <div class="mt-3">
+        <p><%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Etes-vous sûr?" }, method: :delete, class: "btn btn-sm btn-secondary btn-block justify-content" %></p>
+        <br />
+      </div>
+    </div>
+  </div>
+
+</div>
