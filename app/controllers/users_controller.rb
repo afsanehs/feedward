@@ -22,6 +22,7 @@ class UsersController < ApplicationController
       end
       render :profile
     end
+  end
 
   def dashboard
   end
