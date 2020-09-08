@@ -8,14 +8,15 @@ class StaticPagesController < ApplicationController
   def about
   end
 
-  def faq
+  def team
   end
 
-  def carreers
+  def careers
   end
 
-  def news
+  def legal_notice
   end
-  def report_problem
+  
+  def privacy_policy
   end
 end
