@@ -16,33 +16,38 @@
 
 @import 'bootstrap.min';
 @import 'navigation';
-@import 'footer';
 @import 'static_pages';
+@import 'users';
 
 html,
 body {
   scroll-behavior: smooth;
-  min-height: 100%;
-  box-sizing: border-box;
+  height: 100%;
   margin: 0;
+  box-sizing: border-box;
 }
-
-/* Trick */
 body {
   display: flex;
   flex-direction: column;
 }
 
 footer {
-  margin-top: auto;
-}
-
-#main-footer {
   background: #b2acfa;
   z-index: 10;
-  position: relative;
   color: #333;
   a {
     color: #333;
   }
+  height: 134px;
+  margin-top: auto;
+}
+
+#alert-section {
+  position: absolute;
+  display: block;
+  width: 100%;
+  top: 4rem;
+  left: 0;
+  right: 0;
+  z-index: 100;
 }

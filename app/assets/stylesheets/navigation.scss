@@ -8,18 +8,6 @@
 
   .nav-account {
     position: relative;
-    @media (min-width: 992px) {
-      .nav-item--separate::after {
-        content: "";
-        position: absolute;
-        display: block;
-        border-left: 1px solid #fff;
-        top: 50%;
-        transform: translateY(-50%);
-        height: 20px;
-        right: 82px;
-      }
-    }
   }
 
   a {

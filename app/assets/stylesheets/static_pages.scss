@@ -109,18 +109,14 @@
 .about-page,
 .legal-notice-page,
 .privacy-policy-page,
-.team-page {
-  margin-top: 60px;
-  min-height: 100%;
-  .container {
-    min-height: calc(100vh - 15.6rem);
-  }
-}
+.team-page,
 .careers-page {
-  .container {
-    min-height: calc(50vh - 12rem);
+  min-height: calc(100vh - 134px - 55px);
+  .row {
+    padding-top: 4rem;
   }
 }
+
 .careers-photo {
   background: {
     image: asset_url('offices/careers');

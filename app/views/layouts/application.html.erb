@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>NewApp</title>
+   <title><%= yield(:title) %> | Feedward</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -35,6 +35,10 @@
   </script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
     integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous">
+  </script>
+  <script>
+    $('#year').text(new Date().getFullYear());
+    $(".alert").fadeOut(3000);
   </script>
   </body>
 </html>
