@@ -5,6 +5,6 @@ class UserMailer < ApplicationMailer
   def welcome_email(user)
     @user = user 
     @url  = 'http://monsite.fr/login' 
-    mail(to: @user.email, subject: 'Welcome to our website !') 
+    mail(to: @user.email, subject: 'Bienvenue sur Feedward !') 
   end
 end

@@ -5,10 +5,10 @@ class FeedbackMailer < ApplicationMailer
   def new_feedback_user(user)
     @user = user 
     @url  = 'http://monsite.fr/login' 
-    mail(to: @user.email, subject: 'Thanks for your feedabck !') 
+    mail(to: @user.email, subject: 'Merci pour ton feedabck') 
   end
 
   def new_feedback_admin
-    mail(to: "yanis@feedward.com", subject: 'A new feedward had been created') 
+    mail(to: "yanis@feedward.com", subject: 'Un nouveau feedback a été crée') 
   end
 end
