@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
   root to:'static_pages#index'
-  get 'static_pages/contact', as: 'contact'
-  get 'static_pages/about', as: 'about'
-  get 'static_pages/team', as: 'team'
-  get 'static_pages/careers', as: 'careers'
-  get 'static_pages/legal', as: 'legal'
-  get 'static_pages/privacy', as: 'privacy'
+  
+  get '/contact', to: 'static_pages#contact',as: 'contact'
+  get '/about', to: 'static_pages#about',as: 'about'
+  get '/team', to: 'static_pages#team',as: 'team'
+  get '/carreers', to: 'static_pages#careers',as: 'careers'
+  get '/legalnotice', to: 'static_pages#legal_notice',as: 'legal_notice'
+  get '/privacypolicy', to: 'static_pages#privacy_policy',as: 'privacy_policy'
+
   devise_for :users
   devise_scope :user do
     get '/users/sign_out' => 'devise/sessions#destroy'

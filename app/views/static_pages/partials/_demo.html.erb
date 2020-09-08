@@ -36,7 +36,9 @@
         Faites le pas dès maintenant
       </h5>
       <div class="text-center">
-      <a class="btn btn-violet-outline mt-4" href="#">Demandez une démo</a>
+      <button class="btn btn-violet-outline mt-4" href="#"
+      data-toggle="modal" data-target="#demo-modal"
+      >Demandez une démo</button>
       </div>
       <div class="text-center">
       <a class="btn btn-violet-outline mt-4" href="#">Créez son compte</a>
@@ -58,3 +60,5 @@
       </div>
   </div>
 </section>
+
+<%= render :partial => 'static_pages/partials/demo_form'%>
