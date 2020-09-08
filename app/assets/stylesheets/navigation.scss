@@ -10,7 +10,7 @@
     position: relative;
     @media (min-width: 992px) {
       .nav-item--separate::after {
-        content: '';
+        content: "";
         position: absolute;
         display: block;
         border-left: 1px solid #fff;
