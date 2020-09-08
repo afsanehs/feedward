@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root to:'static_pages#index'
-  
+
   get '/contact', to: 'static_pages#contact',as: 'contact'
   get '/about', to: 'static_pages#about',as: 'about'
   get '/team', to: 'static_pages#team',as: 'team'
@@ -15,5 +15,6 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   resources :feedbacks
+  resources :users, only: [:show]
 
 end
