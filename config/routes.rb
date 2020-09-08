@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get '/contact', to: 'static_pages#contact',as: 'contact'
   get '/about', to: 'static_pages#about',as: 'about'
   get '/team', to: 'static_pages#team',as: 'team'
-  get '/carreers', to: 'static_pages#careers',as: 'careers'
+  get '/careers', to: 'static_pages#careers',as: 'careers'
   get '/legalnotice', to: 'static_pages#legal_notice',as: 'legal_notice'
   get '/privacypolicy', to: 'static_pages#privacy_policy',as: 'privacy_policy'
 

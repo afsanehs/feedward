@@ -10,12 +10,16 @@
   background-repeat: no-repeat;
   width: 100%;
   height: 95vh;
+  position: relative;
 }
 .home-text {
-  margin-top: 12vh;
+  margin-top: 5rem;
 }
 .home-btn-next {
-  margin-top: 55vh;
+  position: absolute;
+  top: 80vh;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 //------------------------------------------//
@@ -30,9 +34,7 @@
 //--------------------------------------//
 //Read more section
 #readmore {
-  padding-top: 10rem;
-  position: relative;
-  height: 90vh;
+  padding-top: 12rem;
   .readmore-text-salary {
     margin-top: 1rem;
   }
@@ -44,12 +46,11 @@
 //--------------------------------------//
 //How it work section
 #howitwork {
-  margin-top: 2rem;
+  margin-top: 4rem;
   margin-bottom: 4rem;
-  height: 55vh;
   position: relative;
   .col-6 {
-    margin-top: 40px;
+    margin-top: 2rem;
     text-align: right;
   }
   .col-6.offset-md-6 {
@@ -99,21 +100,25 @@
   color: #fff;
   background-color: #6558f5;
 }
-
+.text-gray {
+  color: #666;
+}
 //--------------------------------------//
 //Static pages
 .contact-page,
 .about-page,
 .legal-notice-page,
-.privacy-policy-page {
+.privacy-policy-page,
+.team-page {
   margin-top: 60px;
+  min-height: 100%;
   .container {
-    min-height: calc(100vh - 250px);
+    min-height: calc(100vh - 15.6rem);
   }
 }
 .careers-page {
   .container {
-    min-height: calc(50vh - 190px);
+    min-height: calc(50vh - 12rem);
   }
 }
 .careers-photo {
