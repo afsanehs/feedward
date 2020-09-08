@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-md-6 offset-md-3">
       <br><br>
-      <%= form_for resource, as: resource_name, url: registration_path(resource_name), html: { class: "form-signin mt-3" } do |f| %>
+      <%= form_for resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: "form-signin mt-3" } do |f| %>
         <h1 class="h3 mb-3 font-weight-normal text-center">Je modifie mon compte</h1>
         <%= devise_error_messages! %>
 
@@ -16,20 +16,17 @@
         <% end %>
 
         <div class="form-group">
-          <%= f.label :password, "Votre mot de passe" %> <i><small> - ne rien saisir s'il n'est pas modifié - </small></i>
-          <% if @minimum_password_length %>
-            <em><small><%= @minimum_password_length %> charactères minimum </small></em>
-          <% end %><br />
+          <%= f.label :password, "Votre nouveau mot de passe" %>
           <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
         </div>
 
         <div class="form-group">
-          <%= f.label :password_confirmation, "Confirmation de votre mot de passe" %><br />
+          <%= f.label :password_confirmation, "Confirmation de votre nouveau mot de passe" %><br />
           <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
         </div>
 
         <div class="form-group">
-          <%= f.label :current_password, "Mot de passe actuel" %> <i><small> - votre mot de passe est nécessaire pour confirmer les changements </small></i><br />
+          <%= f.label :current_password, "Mot de passe actuel" %> <i><small> - Votre mot de passe est nécessaire pour confirmer les changements </small></i><br />
           <%= f.password_field :current_password, autocomplete: "current-password", class: "form-control" %>
         </div>
 
