@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root to:'static_pages#index'
+  resources :feedbacks
   get 'static_pages/contact', as: 'contact'
   get 'static_pages/about', as: 'about'
   get 'static_pages/faq', as: 'faq'
