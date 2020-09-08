@@ -23,7 +23,7 @@
 
         <div class="form-group">
           <%= f.label :company, "Entreprise" %><br />
-          <%= f.select :company, options_for_select(Company.all.map{ |c| [c.name, c.id] }), autofocus: true, class: "form-control" %>
+          <%= f.select :company, options_for_select(Company.all.map{ |c| [c.name, c] }), autofocus: true, class: "form-control" %>
         </div>
         
         <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
