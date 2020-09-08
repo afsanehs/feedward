@@ -1,1 +1,22 @@
-<%= @feedback %>
+<div class="container">
+  <br><br>
+  <h3>Récap</h3>
+  <br><br>
+  <h5>Entreprise</h5>
+  <p> Note : <%= @feedback.score_global %></p>
+  <p> Commentaire : <%= @feedback.answer_global %></p>
+
+  <h5>Environnement de travail</h5>
+  <p> Note : <%= @feedback.score_workspace %></p>
+  <p> Commentaire : <%= @feedback.answer_workspace %></p>
+
+  <h5>Missions</h5>
+  <p> Note : <%= @feedback.score_missions %> </p>
+  <p> Commentaire : <%= @feedback.answer_missions %> </p>
+
+  <h5>Autres</h5>
+  <%= @feedback.answer_final %><br />
+
+  <h5>A partager avec ...</h5>
+  <%= @feedback.receiver_id %><br />
+</div>
