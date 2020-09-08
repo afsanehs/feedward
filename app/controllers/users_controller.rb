@@ -9,9 +9,12 @@ class UsersController < ApplicationController
 
   def profile
     @user = current_user
+    @companies = Company.all
   end
 
   def update_profile
+    puts "---------------------------------------------"
+    puts params
     if @user.update(user_params)
       flash[:success] = "Update user profile succesfully!"
       redirect_back(fallback_location: root_path)
@@ -32,7 +35,7 @@ class UsersController < ApplicationController
       :first_name,
       :last_name,
       :email,
-      :company,
+      :company_id
     )
   end
 end
