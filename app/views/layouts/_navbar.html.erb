@@ -53,7 +53,6 @@
   function setActiveClass(){
     
     navItems = document.querySelectorAll(".nav-link")
-    console.log(navItems)
     navItems.forEach(item =>{
       toggleClass(item)
      item.addEventListener('click', ()=>{
@@ -65,7 +64,6 @@
   function toggleClass(item){
     let anchor_value = window.location.hash
     hrefText = item.getAttribute('href');
-    console.log(item)
      if(anchor_value === hrefText){
        item.classList.add("active")
       } else{

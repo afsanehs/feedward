@@ -2,7 +2,7 @@
 // home section
 #home-section {
   background: {
-    image: asset_url('offices/home');
+    image: url('~home');
   }
   margin-bottom: 3rem;
   position: relative;
@@ -125,11 +125,21 @@
   flex-direction: column;
 }
 
+.careers-page {
+  min-height: calc(100vh - 134px - 55px);
+  .container {
+    padding: 3rem 0rem;
+  }
+  .row {
+    padding-top: 2rem;
+  }
+}
+
 .careers-photo {
   background: {
-    image: asset_url('offices/careers');
+    image: url('~careers');
   }
-  height: 50vh;
+  height: 60vh;
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
