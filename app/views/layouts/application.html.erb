@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html>
-   <head>
-     <title><%= yield(:title) %>Feedward</title>
-     <%= csrf_meta_tags %>
-     <%= csp_meta_tag %>
-     
-     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-     <script src="http://maps.google.com/maps/api/js?key=AIzaSyDznYe1hCQrqGlx4uh84nQ_kxLwamrDBfQ"></script>
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/gmaps.js/0.4.25/gmaps.js"></script>
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
-     crossorigin="anonymous">
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.0/animate.min.css" integrity="sha512-kb1CHTNhoLzinkElTgWn246D6pX22xj8jFNKsDmVwIQo+px7n1yjJUZraVuR/ou6Kmgea4vZXZeUDbqKtXkEMg==" crossorigin="anonymous" />
-     <link rel="icon" type="image/png" href="<%= asset_path('icons/favicon.png')%>"/>
-     <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans:wght@400;700&family=Overpass:wght@300;400;600;700&display=swap" rel="stylesheet">
-   </head>
+  <head>
+    <title><%= yield(:title) %>Feedward</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="http://maps.google.com/maps/api/js?key=AIzaSyDznYe1hCQrqGlx4uh84nQ_kxLwamrDBfQ"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gmaps.js/0.4.25/gmaps.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+    crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.0/animate.min.css" integrity="sha512-kb1CHTNhoLzinkElTgWn246D6pX22xj8jFNKsDmVwIQo+px7n1yjJUZraVuR/ou6Kmgea4vZXZeUDbqKtXkEMg==" crossorigin="anonymous" />
+    <link rel="icon" type="image/png" href="<%= asset_path('icons/favicon.png')%>"/>
+    <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans:wght@400;700&family=Overpass:wght@300;400;600;700&display=swap" rel="stylesheet">
+  </head>
 
   <body>
     <%= render 'layouts/navbar' %>

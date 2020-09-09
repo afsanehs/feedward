@@ -19,3 +19,5 @@ require('admin2/chart-bar-demo');
 require('admin2/chart-pie-demo');
 require('admin2/datatables-demo');
 require('admin2/sb-admin-2');
+
+import '../../assets/stylesheets/application.scss';
