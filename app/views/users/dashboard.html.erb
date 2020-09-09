@@ -3,22 +3,22 @@
   <%= render :partial => 'users/partials/navbar'%>
   <div class="container-fluid">
     <%= render :partial => 'users/partials/heading'%>
+
     <div class="row">
       <%= render :partial => 'users/partials/note_user'%>
       <%= render :partial => 'users/partials/note_company'%>
       <%= render :partial => 'users/partials/nb_feedback_received'%>
       <%= render :partial => 'users/partials/nb_feedback_sent'%>
-      <div class="row">
-        <%= render :partial => 'users/partials/pie_chart'%>
-        <%= render :partial => 'users/partials/histo'%>
-        <div class="row">
-          <%= render :partial => 'users/partials/text_area_received'%>
-          <%= render :partial => 'users/partials/text_area_sent'%>
-        </div>
-      </div>
+    </div>
+
+    <div class="row">
+      <%= render :partial => 'users/partials/pie_chart'%>
+      <%= render :partial => 'users/partials/histo'%>
+    </div>
+
+    <div class="row">
+      <%= render :partial => 'users/partials/text_area_received'%>
+      <%= render :partial => 'users/partials/text_area_sent'%>
     </div>
   </div>
 </div>
-
-
-
