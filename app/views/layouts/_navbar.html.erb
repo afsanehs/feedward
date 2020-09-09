@@ -10,13 +10,19 @@
       <div class="navbar-collapse collapse" id="navbarColor01">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item mr-4">
+            <% unless user_signed_in? %>
             <a class="nav-link" href="/#readmore" onClick="setActiveClass()">En savoir plus</a>
+            <% end %>
           </li>
           <li class="nav-item mr-4">
+            <% unless user_signed_in? %>
             <a class="nav-link " href="/#howitwork" onClick="setActiveClass()">Comment ça marche?</a>
+            <% end %>
           </li>
           <li class="nav-item mr-4">
+            <% unless user_signed_in? %>
             <a class="nav-link" href="/#demo" onClick="setActiveClass()">Demandez une démo</a>
+            <% end %>
           </li>
         </ul>
 
