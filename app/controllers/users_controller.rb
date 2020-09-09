@@ -29,7 +29,7 @@ class UsersController < ApplicationController
     @feedbacks = Feedback.all
     @feedbacks_received = Feedback.where(receiver_id: @user.id)
     @feedbacks_user = Feedback.where(sender_id: @user.id)
-    
+
     @score_global_average = Feedback.average(:score_global)
     @score_workspace_average = Feedback.average(:score_workspace)
     @score_missions_average = Feedback.average(:score_missions)
@@ -46,6 +46,15 @@ class UsersController < ApplicationController
     else
       @average_company_score_by_user = (@arr_by_user.inject(0.0) { |sum, el| sum + el }.to_f / @arr_by_user.size).round(2)
     end
+
+    #calculations for the pie Chart
+    @grade_5_percentage_by_user = 100*(@feedbacks_user.where(score_global: 5).count + @feedbacks_user.where(score_workspace: 5).count + @feedbacks_user.where(score_missions: 5).count)/(3*@feedbacks_user.count)
+    @grade_4_percentage_by_user = 100*(@feedbacks_user.where(score_global: 4).count + @feedbacks_user.where(score_workspace: 4).count + @feedbacks_user.where(score_missions: 4).count)/(3*@feedbacks_user.count)
+    @grade_3_percentage_by_user = 100*(@feedbacks_user.where(score_global: 3).count + @feedbacks_user.where(score_workspace: 3).count + @feedbacks_user.where(score_missions: 3).count)/(3*@feedbacks_user.count)
+    @grade_2_percentage_by_user = 100*(@feedbacks_user.where(score_global: 2).count + @feedbacks_user.where(score_workspace: 2).count + @feedbacks_user.where(score_missions: 2).count)/(3*@feedbacks_user.count)
+    @grade_1_percentage_by_user = 100*(@feedbacks_user.where(score_global: 1).count + @feedbacks_user.where(score_workspace: 1).count + @feedbacks_user.where(score_missions: 1).count)/(3*@feedbacks_user.count)
+    @grade_0_percentage_by_user = 100*(@feedbacks_user.where(score_global: 0).count + @feedbacks_user.where(score_workspace: 0).count + @feedbacks_user.where(score_missions: 0).count)/(3*@feedbacks_user.count)
+
   end
 
   private
