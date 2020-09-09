@@ -2,87 +2,87 @@
 <html>
 
 <head>
-  <% content_for :title, "Account Settings" %>
+    <% content_for :title, "Account Settings" %>
 </head>
 
 <body>
 
-<% if !current_user.nil? %>
+    <% if !current_user.nil? %>
 
-  <!-- MAIN BODY -->
-  <section class="account-settings-section">
-  <div class="container-fluid">
-    <!-- Content -->
-    <div class="contact-info">
-      <div class="row wrapper">
-        <div class="col-lg-8 col-md-10  offset-lg-2 col-12 ">
-          <div class="col">
-            <div class="account_created_at ml-auto" style="float:right;">
+    <!-- MAIN BODY -->
+    <section class="account-settings-section">
+        <div class="container-fluid">
+            <!-- Content -->
+            <div class="contact-info">
+                <div class="row wrapper">
+                    <div class="col-lg-8 col-md-10  offset-lg-2 col-12 ">
+                        <div class="col">
+                            <div class="account_created_at ml-auto" style="float:right;">
 
-          </div>
-          <div class="col">
-              <h1>Account Information</h1>
-          </div>
-          <hr>
+                            </div>
+                            <div class="col">
+                                <h1>Account Information</h1>
+                            </div>
+                            <hr>
 
-          <div class="account-email mb-5">
-            <h3 class="mb-3">Account email address</h3>
-            <span class="text-success"><%= current_user.email %></span>
-            <div>
-              <a href="<%= account_secret_path %>"
-              class="btn btn-light border-info mt-2">Change</a>
-            </div>
-          </div>
+                            <div class="account-email mb-5">
+                                <h3 class="mb-3">Account email address</h3>
+                                <span class="text-success"><%= current_user.email %></span>
+                                <div>
+                                    <a href="<%= account_secret_path %>" class="btn btn-light border-info mt-2">Change</a>
+                                </div>
+                            </div>
 
-          <!-- Start form -->
-          <%= form_for @user, :as => :user,  :url => account_profile_path do |f| %>
-            <!-- Start account info -->
-            <div class="contact-info mb-5">
-              <div class="row">
-                <div class="col-lg-10">
-                  <h3>Profile Information</h3>
+                            <!-- Start form -->
+                            <!-- Start account info -->
+                            <%= form_for @user, :as => :user,  :url => account_profile_path do |f| %>
+                            <div class="contact-info mb-5">
+                                <div class="row">
+                                    <div class="col-lg-10">
+                                        <h3>Profile Information</h3>
 
-                  <div class="form-row mb-3 ml-0">
-                    <div class="col">
-                      <%= f.label :first_name %>
-                      <%= f.text_field :first_name, class: "form-control text-success" %>
+                                        <div class="form-row mb-3 ml-0">
+                                            <div class="col">
+                                                <%= f.label :first_name %>
+                                                <%= f.text_field :first_name, class: "form-control text-success" %>
+                                            </div>
+                                            <div class="col">
+                                                <%= f.label :last_name %>
+                                                <%= f.text_field :last_name, class: "form-control text-success" %>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <%= f.label :company_id, "Entreprise" %><br />
+                                            <%= f.select :company_id, options_for_select(@companies.collect{ |u| [u.name, u.id] }), {}, class: 'form-control'%>
+                                        </div>
+
+                                    </div>
+                                </div>
+                              <%= f.submit "Save", class: 'btn btn-danger' %>
+
+                            </div>
+                            <% end %>
+
+
+                        </div>
+                        <!-- End address -->
+                        <!-- End form -->
                     </div>
-                    <div class="col">
-                      <%= f.label :last_name %>
-                      <%= f.text_field :last_name, class: "form-control text-success" %>
-                    </div>
-                  </div>
-
-                  <div class="form-group">
-                    <%= f.label :company_id, "Entreprise" %><br />
-                    <%= f.select :company_id, options_for_select(@companies.collect{ |u| [u.name, u.id] }), {}, class: 'form-control'%>
-                  </div>
-
                 </div>
-              </div>
             </div>
-
-
-            </div>
-            <!-- End address -->
-             <%= f.submit "Save", class: 'btn btn-danger' %>
-          <% end %>
-          <!-- End form -->
         </div>
-      </div>
-    </div>
-    </div>
-    <!-- end content -->
-  </section>
+        <!-- end content -->
+    </section>
 
-<!-- If user not logged -->
+    <!-- If user not logged -->
 
-  <% else %>
-  <div class="container text-center">
-      <h3>You need to loggin to see your account settings.</h2>
-      Back to <a href="<%= new_user_session_path %>">Login</a>
-  </div>
-  <% end %>
+    <% else %>
+    <div class="container text-center">
+        <h3>You need to loggin to see your account settings.</h2>
+            Back to <a href="<%= new_user_session_path %>">Login</a>
+    </div>
+    <% end %>
 </body>
 
 </html>
