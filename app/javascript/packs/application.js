@@ -12,12 +12,18 @@ require('channels');
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
 // or the `imagePath` JavaScript helper below.
 //
-// const images = require.context('../images', true)
-// const imagePath = (name) => images(name, true)
+
+require('jquery');
+require('chart.js');
+
 require('admin2/chart-area-demo');
 require('admin2/chart-bar-demo');
 require('admin2/chart-pie-demo');
 require('admin2/datatables-demo');
 require('admin2/sb-admin-2');
 
-import '../../assets/stylesheets/application.scss';
+// require.context('../../assets/stylesheets', true);
+import '../../assets/stylesheets/application';
+
+const imagePath = (name) => images(name, true);
+const images = require.context('../../assets/images', true);
