@@ -29,6 +29,7 @@ class UsersController < ApplicationController
     @feedbacks = Feedback.all
     @feedbacks_received = Feedback.where(receiver_id: @user.id)
     @feedbacks_user = Feedback.where(sender_id: @user.id)
+    
     @score_global_average = Feedback.average(:score_global)
     @score_workspace_average = Feedback.average(:score_workspace)
     @score_missions_average = Feedback.average(:score_missions)
