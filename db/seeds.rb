@@ -16,9 +16,10 @@ Feedback.destroy_all
 end 
 
 10.times do
-  fake_password = Faker::Internet.password(min_length: 8)
-  user = User.new(email: Faker::Internet.email, password: fake_password, password_confirmation: fake_password, company: Company.all.sample)
-  user.save!
+  fake_password = "0123456789"
+  user = User.create(email: Faker::Internet.email, 
+  password: fake_password, password_confirmation: fake_password, 
+  company: Company.all.sample)
 end
 
 20.times do 
