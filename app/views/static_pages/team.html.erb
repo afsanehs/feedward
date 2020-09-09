@@ -1,60 +1,57 @@
-
-
-
 <!DOCTYPE html>
 <html>
 
 <head>
-  <% content_for :title, "Equipe"%>
+    <% content_for :title, "Equipe"%>
 </head>
 
 <body>
-<div class="team-page">
-  <div class="container">
-    <div class="row">
-      <h3 class="text-violet-bold">Notre Equipe</h3>
-      <img class="img-fluid" src="<%= asset_path('icons/favicon-visages')%>">
-    </div>
-            <div class="mt-4">
-              <div class="row justify-content-around">
-                <div class= "col-4">
-                  <h6 class="text-black-bold">Duy</h6> 
-                  <hr style="width:10%;text-align:left;margin-left:0">
-                  <p>duy@getfeedward.com</p>
-                </div>
-
-                <div class="col-4">
-                  <h6 class="text-black-bold">Afsaneh</h6>
-                  <hr style="width:10%;text-align:left;margin-left:0">
-                  <p>afsaneh@getfeedward.com</p>
-                </div>
-
-                <div class="col-4">
-                  <h6 class="text-black-bold">Maxime</h6>
-                  <hr style="width:10%;text-align:left;margin-left:0">
-                  <p>maxime@getfeedward.com</p>
-                </div>
-                </div>
-                <div class="row justify-content-around">
-                  <div class="col-4">
-                  <h6 class="text-black-bold">Donatella</h6>
-                  <hr style="width:10%;text-align:left;margin-left:0">
-                  <p>donatella@getfeedward.com</p>
-                </div>
-
-                <div class="col-4">
-                  <h6 class="text-black-bold">Yanis</h6>
-                  <hr style="width:10%;text-align:left;margin-left:0">
-                  <p>yanis@getfeedward.com</p>
-                </div>
-
-                <div class="col-4">
-                </div>
-              </div>
+    <div class="team-page">
+        <div class="container">
+            <div class="row">
+                <h3 class="text-violet-bold">Notre Equipe</h3>
+                <img class="img-fluid" src="<%= asset_path('icons/favicon-visages')%>">
             </div>
+            <div style="padding:1px !important; margin:1px !important;" class="row mt-4">
+                <div style="padding:1px !important; margin:1px !important;" class="row justify-content-around">
+
+                    <div class="col-4">
+                        <h6 class="text-black-bold">Afsaneh</h6>
+                        <hr style="width:10%;text-align:left;margin-left:0">
+                        <a href="mailto:afsaneh@getfeedward.com">afsaneh@getfeedward.com</a>
+                    </div>
+
+                    <div class="col-4">
+                        <h6 class="text-black-bold">Donatella</h6>
+                        <hr style="width:10%;text-align:left;margin-left:0">
+                        <a href="mailto:donatella@getfeedward.com">donatella@getfeedward.com</a>
+                    </div>
+
+                    <div class="col-4">
+                        <h6 class="text-black-bold">Yanis</h6>
+                        <hr style="width:10%;text-align:left;margin-left:0">
+                        <a href="mailto:yanis@getfeedward.com">yanis@getfeedward.com</a>
+                    </div>
+
+                </div>
+                <div style="padding:1px !important; margin:1px !important;" class="row justify-content-around">
+                    <div class="col-4">
+                        <h6 class="text-black-bold">Duy</h6>
+                        <hr style="width:10%;text-align:left;margin-left:0">
+                        <a href="mailto:duy@getfeedward.com">duy@getfeedward.com</a>
+                    </div>
+
+                    <div class="col-4">
+                        <h6 class="text-black-bold">Maxime</h6>
+                        <hr style="width:10%;text-align:left;margin-left:0">
+                        <a href="mailto:maxime@getfeedward.com">maxime@getfeedward.com</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-</div>
+    </div>
 
 </body>
+
 </html>
