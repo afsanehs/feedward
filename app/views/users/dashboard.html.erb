@@ -1,12 +1,11 @@
 <div class="container">
   <div id="wrapper">
-    <%= render :partial => 'users/partials/sidebar'%>
-    <%= render :partial => 'users/partials/navbar'%>
-    <div class="container-fluid">
-      <div class= "row">
+   <%= render :partial => 'users/partials/sidebar'%> 
+    <div class="container-flex">
+      <div class= "row" style="padding: 45px">
         <div class="col-10"></div>
-        <a class="justify-content btn btn-primary mt-5 mb-5 mr-auto" href="<%=new_feedback_path%>">Soumettre un feedback</a>
       </div>
+      <h2>Bonjour <%= current_user.first_name %> </h2>
       <%= render :partial => 'users/partials/heading'%>
 
       <div class="row">
