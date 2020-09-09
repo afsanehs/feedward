@@ -25,6 +25,7 @@ class UsersController < ApplicationController
   end
 
   def dashboard
+    @feedbacks = Feedback.all
   end
 
   private
