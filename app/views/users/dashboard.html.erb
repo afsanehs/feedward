@@ -1,24 +1,30 @@
-<div id="wrapper">
-  <%= render :partial => 'users/partials/sidebar'%>
-  <%= render :partial => 'users/partials/navbar'%>
-  <div class="container-fluid">
-    <%= render :partial => 'users/partials/heading'%>
+<div class="container">
+  <div id="wrapper">
+    <%= render :partial => 'users/partials/sidebar'%>
+    <%= render :partial => 'users/partials/navbar'%>
+    <div class="container-fluid">
+      <div class= "row">
+        <div class="col-10"></div>
+        <a class="justify-content btn btn-primary mt-5 mb-5 mr-auto" href="<%=new_feedback_path%>">Soumettre un feedback</a>
+      </div>
+      <%= render :partial => 'users/partials/heading'%>
 
-    <div class="row">
-      <%= render :partial => 'users/partials/note_user'%>
-      <%= render :partial => 'users/partials/note_company'%>
-      <%= render :partial => 'users/partials/nb_feedback_received'%>
-      <%= render :partial => 'users/partials/nb_feedback_sent'%>
-    </div>
+      <div class="row">
+        <%= render :partial => 'users/partials/note_user'%>
+        <%= render :partial => 'users/partials/note_company'%>
+        <%= render :partial => 'users/partials/nb_feedback_received'%>
+        <%= render :partial => 'users/partials/nb_feedback_sent'%>
+      </div>
 
-    <div class="row">
-      <%= render :partial => 'users/partials/pie_chart'%>
-      <%= render :partial => 'users/partials/histo'%>
-    </div>
+      <div class="row">
+        <%= render :partial => 'users/partials/pie_chart'%>
+        <%= render :partial => 'users/partials/histo'%>
+      </div>
 
-    <div class="row">
-      <%= render :partial => 'users/partials/text_area_received'%>
-      <%= render :partial => 'users/partials/text_area_sent'%>
+      <div class="row">
+        <%= render :partial => 'users/partials/text_area_received'%>
+        <%= render :partial => 'users/partials/text_area_sent'%>
+      </div>
     </div>
   </div>
 </div>

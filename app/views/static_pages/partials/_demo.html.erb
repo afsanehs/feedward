@@ -37,11 +37,11 @@
       </h5>
       <div class="text-center">
       <button class="btn btn-outline-primary mt-4" href="#"
-      data-toggle="modal" data-target="#demo-modal"
+      data-target="#demo-modal" onclick="$crisp.push(['do', 'chat:open'])"
       >Demandez une démo</button>
       </div>
       <div class="text-center">
-      <a class="btn btn-outline-primary mt-4" href="#">Créez son compte</a>
+      <a class="btn btn-outline-primary mt-4" href="<%= new_user_registration_path %>">Créez son compte</a>
       </div>
       <h6 class="text-center font-weight-bold mt-5">car un salarié heureux est ...</h6>
       <div class="row mt-4 text-center">
