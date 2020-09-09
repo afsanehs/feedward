@@ -48,12 +48,20 @@ class UsersController < ApplicationController
     end
 
     #calculations for the pie Chart
-    @grade_5_percentage_by_user = 100*(@feedbacks_user.where(score_global: 5).count + @feedbacks_user.where(score_workspace: 5).count + @feedbacks_user.where(score_missions: 5).count)/(3*@feedbacks_user.count)
-    @grade_4_percentage_by_user = 100*(@feedbacks_user.where(score_global: 4).count + @feedbacks_user.where(score_workspace: 4).count + @feedbacks_user.where(score_missions: 4).count)/(3*@feedbacks_user.count)
-    @grade_3_percentage_by_user = 100*(@feedbacks_user.where(score_global: 3).count + @feedbacks_user.where(score_workspace: 3).count + @feedbacks_user.where(score_missions: 3).count)/(3*@feedbacks_user.count)
-    @grade_2_percentage_by_user = 100*(@feedbacks_user.where(score_global: 2).count + @feedbacks_user.where(score_workspace: 2).count + @feedbacks_user.where(score_missions: 2).count)/(3*@feedbacks_user.count)
-    @grade_1_percentage_by_user = 100*(@feedbacks_user.where(score_global: 1).count + @feedbacks_user.where(score_workspace: 1).count + @feedbacks_user.where(score_missions: 1).count)/(3*@feedbacks_user.count)
-    @grade_0_percentage_by_user = 100*(@feedbacks_user.where(score_global: 0).count + @feedbacks_user.where(score_workspace: 0).count + @feedbacks_user.where(score_missions: 0).count)/(3*@feedbacks_user.count)
+    # @grade_5_percentage_by_user = 100*((@feedbacks_user.where(score_global: 5).count + @feedbacks_user.where(score_workspace: 5).count + @feedbacks_user.where(score_missions: 5).count)/(3*@feedbacks_user.count))
+    # @grade_4_percentage_by_user = 100*((@feedbacks_user.where(score_global: 4).count + @feedbacks_user.where(score_workspace: 4).count + @feedbacks_user.where(score_missions: 4).count)/(3*@feedbacks_user.count))
+    # @grade_3_percentage_by_user = 100*((@feedbacks_user.where(score_global: 3).count + @feedbacks_user.where(score_workspace: 3).count + @feedbacks_user.where(score_missions: 3).count)/(3*@feedbacks_user.count))
+    # @grade_2_percentage_by_user = 100*((@feedbacks_user.where(score_global: 2).count + @feedbacks_user.where(score_workspace: 2).count + @feedbacks_user.where(score_missions: 2).count)/(3*@feedbacks_user.count))
+    # @grade_1_percentage_by_user = 100*((@feedbacks_user.where(score_global: 1).count + @feedbacks_user.where(score_workspace: 1).count + @feedbacks_user.where(score_missions: 1).count)/(3*@feedbacks_user.count))
+    # @grade_0_percentage_by_user = 100*((@feedbacks_user.where(score_global: 0).count + @feedbacks_user.where(score_workspace: 0).count + @feedbacks_user.where(score_missions: 0).count)/(3*@feedbacks_user.count))
+
+    @grade_5_percentage = 100*((@feedbacks.where(score_global: 5).count + @feedbacks.where(score_workspace: 5).count + @feedbacks.where(score_missions: 5).count)/(3*@feedbacks.count))
+    @grade_4_percentage = 100*((@feedbacks.where(score_global: 4).count + @feedbacks.where(score_workspace: 4).count + @feedbacks.where(score_missions: 4).count)/(3*@feedbacks.count))
+    @grade_3_percentage = 100*((@feedbacks.where(score_global: 3).count + @feedbacks.where(score_workspace: 3).count + @feedbacks.where(score_missions: 3).count)/(3*@feedbacks.count))
+    @grade_2_percentage = 100*((@feedbacks.where(score_global: 2).count + @feedbacks.where(score_workspace: 2).count + @feedbacks.where(score_missions: 2).count)/(3*@feedbacks.count))
+    @grade_1_percentage = 100*((@feedbacks.where(score_global: 1).count + @feedbacks.where(score_workspace: 1).count + @feedbacks.where(score_missions: 1).count)/(3*@feedbacks.count))
+    @grade_0_percentage = 100*((@feedbacks.where(score_global: 0).count + @feedbacks.where(score_workspace: 0).count + @feedbacks.where(score_missions: 0).count)/(3*@feedbacks.count))
+
 
   end
 
