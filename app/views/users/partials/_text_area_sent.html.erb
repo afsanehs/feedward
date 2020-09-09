@@ -1,17 +1,18 @@
 <!-- Approach -->
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Feedbacks reçus</h6>
+        <h6 class="m-0 font-weight-bold text-primary">Feedbacks envoyés</h6>
     </div>
     <div class="card-body">
 
-        <% @feedbacks.each do |feedback| %>
+        <% @feedbacks_user.each do |feedback| %>
 
         <div class="col-sm-12">
             <div class="card">
                 <div class="card-body">
                     <a href="/feedbacks/<%= feedback.id %>" class="card-title">
-                      <%= feedback.sender.first_name %>
+                      <!-- sauf pour le current -->
+                      <%= feedback.first_name %>
                     </a>
                 </div>
             </div>

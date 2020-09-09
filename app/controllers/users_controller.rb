@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!, only: [:show]
-  before_action :correct_user, only: [:show,:update_profile]
+  before_action :authenticate_user!, only: [:show, :dashboard]
+  before_action :correct_user, only: [:show,:update_profile,:dashboard]
 
   def show
     @user = current_user
@@ -25,7 +25,10 @@ class UsersController < ApplicationController
   end
 
   def dashboard
+    @user = current_user
     @feedbacks = Feedback.all
+    @feedbacks_received = Feedback.where(receiver_id: @user.id)
+    @feedbacks_user = Feedback.where(sender_id: @user.id)
   end
 
   private
