@@ -7,12 +7,12 @@ Rails.application.routes.draw do
   get '/careers', to: 'static_pages#careers',as: 'careers'
   get '/legalnotice', to: 'static_pages#legal_notice',as: 'legal_notice'
   get '/privacypolicy', to: 'static_pages#privacy_policy',as: 'privacy_policy'
-  
+
   
   get '/dashboard', to: 'users#dashboard'
 
 
-  get 'account/profile', to: "users#profile"
+  get 'account/profile', to: "users#profile", as: 'profile'
   patch 'account/profile', to: "users#update_profile"
   get 'account/secret', to: "users#secret"
 
