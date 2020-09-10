@@ -29,6 +29,7 @@ class UsersController < ApplicationController
     @feedbacks = Feedback.all
     @feedbacks_received = Feedback.where(receiver_id: @user.id)
     @feedbacks_user = Feedback.where(sender_id: @user.id)
+    
 
     @score_global_average = Feedback.average(:score_global).round(2)
     @score_workspace_average = Feedback.average(:score_workspace).round(2)
@@ -37,9 +38,10 @@ class UsersController < ApplicationController
     @average_company_score = (@arr.inject(0.0) { |sum, el| sum + el }.to_f / @arr.size).round(2)
 
 
-    @score_global_average_by_user = @feedbacks_user.average(:score_global).round(2)
-    @score_workspace_average_by_user = @feedbacks_user.average(:score_workspace).round(2)
-    @score_missions_average_by_user = @feedbacks_user.average(:score_missions).round(2)
+    @score_global_average_by_user = @feedback_user.nil? ? 0 :  @feedbacks_user.average(:score_global).round(2)
+    @score_workspace_average_by_user = @feedback_user.nil? ? 0 : @feedbacks_user.average(:score_workspace).round(2)
+    @score_missions_average_by_user = @feedback_user.nil? ? 0 : @feedbacks_user.average(:score_missions).round(2)
+
     @arr_by_user = [@score_global_average_by_user, @score_workspace_average_by_user, @score_missions_average_by_user]
     if @score_global_average_by_user == nil && @score_workspace_average_by_user == nil && @score_missions_average_by_user == nil
       @average_company_score_by_user = 0.0
