@@ -71,9 +71,9 @@ class UsersController < ApplicationController
     @arr = [@score_global_average, @score_workspace_average, @score_missions_average]
     @average_company_score = (@arr.inject(0.0) { |sum, el| sum + el }.to_f / @arr.size).round(2)
 
-    @score_global_average_yesterday = Feedback.where("created_at < 'today'").average(:score_global)
-    @score_workspace_average_yesterday = Feedback.where("created_at < 'today'").average(:score_workspace)
-    @score_missions_average_yesterday = Feedback.where("created_at < 'today'").average(:score_missions)
+    @score_global_average_yesterday = Feedback.where("created_at <= 'tomorrow'").average(:score_global)
+    @score_workspace_average_yesterday = Feedback.where("created_at <= 'tomorrow'").average(:score_workspace)
+    @score_missions_average_yesterday = Feedback.where("created_at <= 'tomorrow'").average(:score_missions)
     @arr_yesterday = [@score_global_average_yesterday, @score_workspace_average_yesterday, @score_missions_average_yesterday]
     @average_company_score_yesterday = (@arr_yesterday.inject(0.0) { |sum, el| sum + el }.to_f / @arr_yesterday.size).round(2)
 
@@ -90,9 +90,9 @@ class UsersController < ApplicationController
     @grade_1 = (@feedbacks.where(score_global: 1).count + @feedbacks.where(score_workspace: 1).count + @feedbacks.where(score_missions: 1).count)
     @grade_0 = (@feedbacks.where(score_global: 0).count + @feedbacks.where(score_workspace: 0).count + @feedbacks.where(score_missions: 0).count)
     @score_colors = {"Note 5" => "#22347A", "Note 4" => "#6558F1", "Note 3" => "#B2ACFA", "Note 2" => "#CE885D", "Note 1" => "#DFB090", "Note 0" => "#F6E8DF"}
-    @grades_by_user = {"Note 5" => @grade_5, "Note 4" => @grade_4, "Note 3" => @grade_3, "Note 2" => @grade_2, "Note 1" => @grade_1, "Note 0" => @grade_0}
+    @all_grades = {"Note 5" => @grade_5, "Note 4" => @grade_4, "Note 3" => @grade_3, "Note 2" => @grade_2, "Note 1" => @grade_1, "Note 0" => @grade_0}
     @colors = []
-    @grades_by_user.each do |score, _|
+    @all_grades.each do |score, _|
       @colors << @score_colors[score]
     end
   end
