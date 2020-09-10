@@ -1,58 +1,62 @@
 <div class="container mb-5">
   <br /><br />
+
   <div class= "row">
-    <div class="col-10"></div>
-    <a class="justify-content btn btn-primary mt-5 mb-5 mr-auto" href="<%=dashboard_path%>">Revenir à mon espace</a>
+    <a class="btn btn-primary mt-5 mb-5 mr-auto offset-md-9 offset-lg-9" href="<%=dashboard_path%>">Revenir à mon espace</a>
   </div>
 
-  <div class="card border-secondary mb-5">
-    <h2 class="card-header text-primary mb-3">Questionnaire du <%= get_time_verbose(@feedback.created_at) %></h2>
+  <div class= "row">
+    <div class= "col-md-10 col-lg-10 mx-auto">
+      <div class="card border-secondary mb-5">
+        <h2 class="card-header text-indigo mb-3">Questionnaire du <%= get_time_verbose(@feedback.created_at) %></h2>
 
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item mb-2">
-        <h5 class="card-text text-primary">Ressenti général</h5>
-        <p>Entre 0 et 5, quel est ton ressenti par rapport à l’entreprise en général ?<br />
-        <small>Ambiance générale, stratégie globale de l’entreprise...</small></p>
-        <div class="progress">
-          <div class="progress-bar bg-secondary text-primary" role="progressbar" style="width:<%=@feedback.score_global*100/5%>%;" aria-valuenow="<%= @feedback.score_global %>" aria-valuemin="0" aria-valuemax="5"><strong><%= @feedback.score_global %> / 5</strong></div>
-        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item mb-2">
+            <h5 class="card-text text-primary">Ressenti général</h5>
+            <p class="text-indigo">Entre 0 et 5, quel est ton ressenti par rapport à l’entreprise en général ?<br />
+            <small class="text-indigo">Ambiance générale, stratégie globale de l’entreprise...</small></p>
+            <div class="progress">
+              <div class="progress-bar bg-bad text-white" role="progressbar" style="width:<%=@feedback.score_global*100/5%>%;" aria-valuenow="<%= @feedback.score_global %>" aria-valuemin="0" aria-valuemax="5"><strong><%= @feedback.score_global %> / 5</strong></div>
+            </div>
 
-        <p class="pt-3 mt-2"><strong>Commentaire : </strong><%= @feedback.answer_global %></p>
-      </li>
+            <p class="pt-3 mt-2 text-indigo"><strong>Commentaire : </strong><%= @feedback.answer_global %></p>
+          </li>
 
-      <li class="list-group-item mb-2">
-        <h5 class="card-text text-primary">Ressenti sur ton environnement de travail</h5>
-        <p>Entre 0 et 5, à quel point es-tu satisfait de ton environnement de travail actuel?<br />
-        <small>Ton équipe, ton lieu de travail…</small></p>
-        <div class="progress">
-          <div class="progress-bar bg-secondary text-primary" role="progressbar" style="width: <%=@feedback.score_workspace*100/5%>%" aria-valuenow="<%=@feedback.score_workspace%>" aria-valuemin="0" aria-valuemax="5"><strong><%= @feedback.score_workspace %> / 5</strong></div>
-        </div>
+          <li class="list-group-item mb-2">
+            <h5 class="card-text text-primary">Ressenti sur ton environnement de travail</h5>
+            <p class="text-indigo">Entre 0 et 5, à quel point es-tu satisfait de ton environnement de travail actuel?<br />
+            <small class="text-indigo">Ton équipe, ton lieu de travail…</small></p>
+            <div class="progress">
+              <div class="progress-bar bg-bad text-white" role="progressbar" style="width: <%=@feedback.score_workspace*100/5%>%" aria-valuenow="<%=@feedback.score_workspace%>" aria-valuemin="0" aria-valuemax="5"><strong><%= @feedback.score_workspace %> / 5</strong></div>
+            </div>
 
-        <p class="pt-3 mt-2"><strong>Commentaire : </strong><%= @feedback.answer_workspace %></p>
-      </li>
+            <p class="pt-3 mt-2 text-indigo"><strong>Commentaire : </strong><%= @feedback.answer_workspace %></p>
+          </li>
 
-      <li class="list-group-item mb-2">
-        <h5 class="text-primary">Ressenti sur tes missions</h5>
-        <p>Entre 0 et 5, dans quelle mesure tes missions actuelles répondent-elles à tes attentes ?<br />
-        <small>Missions variées, intéressantes…</small></p>
-        <div class="progress">
-          <div class="progress-bar bg-secondary text-primary" role="progressbar" style="width:<%=@feedback.score_missions*100/5%>%;" aria-valuenow="<%= @feedback.score_missions %>" aria-valuemin="0" aria-valuemax="5"><strong><%= @feedback.score_missions %> / 5</strong></div>
-        </div>
+          <li class="list-group-item mb-2">
+            <h5 class="text-primary">Ressenti sur tes missions</h5>
+            <p class="text-indigo">Entre 0 et 5, dans quelle mesure tes missions actuelles répondent-elles à tes attentes ?<br />
+            <small class="text-indigo">Missions variées, intéressantes…</small></p>
+            <div class="progress">
+              <div class="progress-bar bg-bad text-white" role="progressbar" style="width:<%=@feedback.score_missions*100/5%>%;" aria-valuenow="<%= @feedback.score_missions %>" aria-valuemin="0" aria-valuemax="5"><strong><%= @feedback.score_missions %> / 5</strong></div>
+            </div>
 
-        <p class="pt-3 mt-2"><strong>Commentaire : </strong><%= @feedback.answer_missions %></p>
-      </li>
+            <p class="pt-3 mt-2 text-indigo"><strong>Commentaire : </strong><%= @feedback.answer_missions %></p>
+          </li>
 
-      <li class="list-group-item mb-2">
-        <h5 class="card-text text-primary">Ressenti sur un élément en particulier</h5>
-        <p class="pt-3 mt-2"><strong>Commentaire : </strong><%= @feedback.answer_final %></p>
-      </li>
+          <li class="list-group-item mb-2">
+            <h5 class="card-text text-primary">Ressenti sur un élément en particulier</h5>
+            <p class="pt-3 mt-2 text-indigo"><strong>Commentaire : </strong><%= @feedback.answer_final %></p>
+          </li>
 
-        <% if !@feedback.receiver.nil? %>
-      <li class="list-group-item mb-2">
-        <h5 class="card-text text-primary">Personne avec qui partager ce questionnaire</h5>
-        <p class="pt-3 mt-2"><strong><%= @feedback.receiver.first_name %> <%= User.find(@feedback.receiver_id).last_name %> </strong>- <%= @feedback.receiver.email %></p>
-      </li>
-        <% end %>
-    </ul>
+            <% if !@feedback.receiver.nil? %>
+          <li class="list-group-item mb-2">
+            <h5 class="card-text text-primary">Personne avec qui partager ce questionnaire</h5>
+            <p class="pt-3 mt-2 text-indigo"><strong><%= @feedback.receiver.first_name %> <%= User.find(@feedback.receiver_id).last_name %> </strong>- <%= @feedback.receiver.email %></p>
+          </li>
+            <% end %>
+        </ul>
+      </div>
+    </div>
   </div>
 </div>
