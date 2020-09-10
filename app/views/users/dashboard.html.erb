@@ -1,15 +1,6 @@
 <div class="container">
   <div id="wrapper">
-   <%
-=begin%>
- <%= render :partial => 'users/partials/sidebar'%>  
-<%
-=end%>
-    <div class="container-flex">
-      <div class= "row" style="padding: 45px">
-        <div class="col-10"></div>
-      </div>
-      <h2>Bonjour <%= current_user.first_name %> </h2>
+    <div class="container-fluid">
       <%= render :partial => 'users/partials/heading'%>
 
       <div class="row">

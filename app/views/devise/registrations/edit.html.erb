@@ -3,14 +3,15 @@
     <div class="col-md-6 offset-md-3">
       <br><br>
       <%= form_for resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: "form-signin mt-3" } do |f| %>
-        <h1 class="h3 mb-3 font-weight-normal text-center text-primary">Je modifie mon compte</h1>
-        <%= devise_error_messages! %>
+      <%= render "devise/shared/error_messages", resource: resource %>
+
+        <h3 class="mb-3 font-weight-normal text-center text-indigo">Je modifie mon compte</h3>
 
         <div class="form-group">
           <%= f.label :email, "Votre email" %><br />
           <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
         </div>
-        
+
         <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
           <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
         <% end %>

@@ -14,8 +14,8 @@ require('channels');
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
-require('admin2/chart-area-demo');
-require('admin2/chart-bar-demo');
-require('admin2/chart-pie-demo');
-require('admin2/datatables-demo');
+require('chartkick');
+require('chart.js');
+require('jquery');
+require('popper.js');
 require('admin2/sb-admin-2');
