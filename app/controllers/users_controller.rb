@@ -77,7 +77,10 @@ class UsersController < ApplicationController
     @arr_yesterday = [@score_global_average_yesterday, @score_workspace_average_yesterday, @score_missions_average_yesterday]
     @average_company_score_yesterday = (@arr_yesterday.inject(0.0) { |sum, el| sum + el }.to_f / @arr_yesterday.size).round(2)
 
-    @average_company_score_evolution = (100*(@average_company_score_yesterday - @average_company_score) / @average_company_score_yesterday).round(2)
+    @average_company_score_evolution = (100*(@average_company_score - @average_company_score_yesterday) / @average_company_score_yesterday).round(2)
+    @score_global_average_evolution = (100*(@score_global_average - @score_global_average_yesterday) / @score_global_average_yesterday).round(2)
+    @score_workspace_average_evolution = (100*(@score_workspace_average - @score_workspace_average_yesterday) / @score_workspace_average_yesterday).round(2)
+    @score_missions_average_evolution = (100*(@score_missions_average - @score_missions_average_yesterday) / @score_missions_average_yesterday).round(2)
 
     #calculations for the pie Chart
     @grade_5 = (@feedbacks.where(score_global: 5).count + @feedbacks.where(score_workspace: 5).count + @feedbacks.where(score_missions: 5).count)
