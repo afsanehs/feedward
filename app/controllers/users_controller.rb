@@ -62,6 +62,12 @@ class UsersController < ApplicationController
     end
   end
 
+
+  def secret 
+    
+  end
+
+
   private
   def correct_user
     @user = current_user
