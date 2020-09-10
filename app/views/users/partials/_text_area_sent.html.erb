@@ -2,23 +2,23 @@
 <div class="col-6">
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Feedbacks envoyés</h6>
+            <h6 class="m-0 font-weight-bold text-indigo text-uppercase">Feedbacks envoyés</h6>
         </div>
         <div class="card-body">
 
             <% @feedbacks_user.each do |feedback| %>
 
+                        <% if !feedback.receiver.nil? %>
             <div class="col-sm-12">
                 <div class="card">
                     <div class="card-body">
-                        <a href="/feedbacks/<%= feedback.id %>" class="card-title">
-                        <!-- sauf pour le current -->
-                        <p><%= feedback.created_at %></p>
-                        <small><%= User.find(feedback.receiver_id)[:first_name] %></small>
+                        <a href="<%= feedback_path(feedback.id) %>" class="card-title">
+                        <p>Envoyé le <%= get_time_verbose(feedback.created_at) %> - <%= feedback.receiver.first_name %></p>
                         </a>
                     </div>
                 </div>
             </div>
+                        <% end %>
 
             <% end %>
 
