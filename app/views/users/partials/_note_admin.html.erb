@@ -4,7 +4,10 @@
       <div class="row no-gutters align-items-center">
         <div class="col mr-2">
           <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Moyenne de toutes les notes</div>
-          <div class="h5 mb-0 font-weight-bold text-indigo"><%= @average_company_score %></div>
+          <div class="h5 mb-2 font-weight-bold text-indigo"><%= @average_company_score %></div>
+          <div class="text-xs font-weight-bold text-secondary text-uppercase mb-1">Vs hier</div>
+          <div class="h5 mb-2 font-weight-bold text-indigo"><%= @average_company_score_yesterday %></div>
+          <div class="h5 mb-2 font-weight-bold text-beige"><%= @average_company_score_evolution %> %</div>
         </div>
         <div class="col-auto">
           <i class="fa fa-user fa-2x text-beige"></i>
