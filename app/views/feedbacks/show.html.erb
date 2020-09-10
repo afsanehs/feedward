@@ -47,10 +47,12 @@
         <p class="pt-3 mt-2"><strong>Commentaire : </strong><%= @feedback.answer_final %></p>
       </li>
 
+        <% if !@feedback.receiver.nil? %>
       <li class="list-group-item mb-2">
         <h5 class="card-text text-primary">Personne avec qui partager ce questionnaire</h5>
-        <p class="pt-3 mt-2"><strong><%= User.find(@feedback.receiver_id).first_name %> <%= User.find(@feedback.receiver_id).last_name %> </strong>- <%= User.find(@feedback.receiver_id).email %></p>
+        <p class="pt-3 mt-2"><strong><%= @feedback.receiver.first_name %> <%= User.find(@feedback.receiver_id).last_name %> </strong>- <%= @feedback.receiver.email %></p>
       </li>
+        <% end %>
     </ul>
   </div>
 </div>

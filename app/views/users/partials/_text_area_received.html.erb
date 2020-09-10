@@ -11,10 +11,10 @@
             <div class="col-sm-12">
                 <div class="card">
                     <div class="card-body">
-                        <a href="/feedbacks/<%= feedback.id %>" class="card-title">
+                        <a href="<%= feedback_path(feedback.id) %> %>" class="card-title">
                         <!-- sauf pour le current -->
                         <p><%= feedback.created_at %></p>
-                        <small><%= User.find(feedback.sender_id).first_name %></small>
+                        <small><%= feedback.sender.first_name %></small>
                         </a>
                     </div>
                 </div>

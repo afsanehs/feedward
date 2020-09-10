@@ -60,14 +60,6 @@ class UsersController < ApplicationController
     @grades_by_user.each do |score, _|
       @colors << @score_colors[score]
     end
-    # @grade_5_percentage = 100*((@feedbacks.where(score_global: 5).count + @feedbacks.where(score_workspace: 5).count + @feedbacks.where(score_missions: 5).count)/(3*@feedbacks.count))
-    # @grade_4_percentage = 100*((@feedbacks.where(score_global: 4).count + @feedbacks.where(score_workspace: 4).count + @feedbacks.where(score_missions: 4).count)/(3*@feedbacks.count))
-    # @grade_3_percentage = 100*((@feedbacks.where(score_global: 3).count + @feedbacks.where(score_workspace: 3).count + @feedbacks.where(score_missions: 3).count)/(3*@feedbacks.count))
-    # @grade_2_percentage = 100*((@feedbacks.where(score_global: 2).count + @feedbacks.where(score_workspace: 2).count + @feedbacks.where(score_missions: 2).count)/(3*@feedbacks.count))
-    # @grade_1_percentage = 100*((@feedbacks.where(score_global: 1).count + @feedbacks.where(score_workspace: 1).count + @feedbacks.where(score_missions: 1).count)/(3*@feedbacks.count))
-    # @grade_0_percentage = 100*((@feedbacks.where(score_global: 0).count + @feedbacks.where(score_workspace: 0).count + @feedbacks.where(score_missions: 0).count)/(3*@feedbacks.count))
-
-
   end
 
   private
