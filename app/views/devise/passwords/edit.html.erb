@@ -3,9 +3,8 @@
     <div class="col-md-8 col-lg-6 mx-auto">
       <br><br>
       <%= form_for resource, as: resource_name, url: password_path(resource_name), html: { method: :put, class: "form-signin mt-3" } do |f| %>
-        <h1 class="h3 mb-3 font-weight-normal text-center text-primary">Je réinitialise mon mot de passe</h1>
-
-        <%= render "devise/shared/error_messages", resource: resource %>
+      <%= render "devise/shared/error_messages", resource: resource %>
+        <h3 class="mb-3 font-weight-normal text-center text-indigo">Je réinitialise mon mot de passe</h3>
         <%= f.hidden_field :reset_password_token %>
 
         <div class="form-group">

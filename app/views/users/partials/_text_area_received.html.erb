@@ -2,7 +2,7 @@
 <div class="col-6">
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Feedbacks reçus</h6>
+            <h6 class="m-0 font-weight-bold text-indigo text-uppercase">Feedbacks reçus</h6>
         </div>
         <div class="card-body">
 
@@ -11,10 +11,9 @@
             <div class="col-sm-12">
                 <div class="card">
                     <div class="card-body">
-                        <a href="/feedbacks/<%= feedback.id %>" class="card-title">
+                        <a href="<%= feedback_path(feedback.id) %> %>" class="card-title">
                         <!-- sauf pour le current -->
-                        <p><%= feedback.created_at %></p>
-                        <small><%= User.find(feedback.sender_id).first_name %></small>
+                        <p> Reçu le <%= get_time_verbose(feedback.created_at)%> - <%= feedback.sender.first_name %></p>
                         </a>
                     </div>
                 </div>

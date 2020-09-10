@@ -8,13 +8,20 @@ module ApplicationHelper
           return "alert alert-info"
         when "success"
           return "alert alert-success"
-        when "error" 
+        when "error"
           return "alert alert-danger"
-        when "warning" 
+        when "warning"
           return "alert alert-warning"
         when "alert"
           return "alert alert-danger"
     end
   end
 
+  def get_time(time_utc)
+    return time_utc.strftime("%Y-%m-%d %k:%M:%S")
+  end
+
+  def get_time_verbose(time_utc)
+    return l(time_utc, format: '%d/%m/%Y - à %k:%M')
+  end
 end
