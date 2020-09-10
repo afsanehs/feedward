@@ -4,7 +4,7 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1>Salut <%= @user.last_name %> et bienvenue chez nous !</h1>
+    <h1>Salut et bienvenue chez nous !</h1>
     <p>
       Tu t'es inscrit sur Feedward en utilisant l'e-mail suivant : <%= @user.email %>.
     </p>
@@ -12,7 +12,7 @@
       Pour accéder à ton espace client, connecte-toi via : <%= @url %>.
     </p>
     <p>
-      Nous t'invitons dès maintenant à <%= link_to "remplir ton premier questionnaire.", new_feedback_url %>.
+      Renseigne ton profil et nous t'invitons dès maintenant à <%= link_to "remplir ton premier questionnaire.", dashboard_url %>.
       Seule la responsable des ressources humaines de votre entreprise y a accès et toutes les informations sont bien évidément anonymes.
     </p>
     <p> À très vite sur Feedward !
