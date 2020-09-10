@@ -14,7 +14,7 @@ class UsersController < ApplicationController
 
   def update_profile
     if @user.update(user_params)
-      flash[:success] = "Update user profile succesfully!"
+      flash[:success] = "Votre profil a bien été modifié!"
       redirect_back(fallback_location: root_path)
     else
       @user.errors.full_messages.each do |message|
