@@ -8,8 +8,9 @@ Rails.application.routes.draw do
   get '/legalnotice', to: 'static_pages#legal_notice',as: 'legal_notice'
   get '/privacypolicy', to: 'static_pages#privacy_policy',as: 'privacy_policy'
 
-  
+
   get '/dashboard', to: 'users#dashboard'
+  get '/dashboard/admin', to: 'users#dashboard_admin'
 
 
   get 'account/profile', to: "users#profile", as: 'profile'
