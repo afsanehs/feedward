@@ -23,6 +23,10 @@ class Feedback < ApplicationRecord
     FeedbackMailer.new_feedback_admin.deliver_now
   end
 
+  def score_average
+    ([score_missions, score_workspace, score_global].sum/3.0).round(2)
+  end
+
   private
   def convert_to_integer
     self.score_global = self.score_global.to_i
