@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root to:'static_pages#index'
 
+  # Static page
   get '/contact', to: 'static_pages#contact',as: 'contact'
   get '/about', to: 'static_pages#about',as: 'about'
   get '/team', to: 'static_pages#team',as: 'team'
@@ -8,14 +9,12 @@ Rails.application.routes.draw do
   get '/legalnotice', to: 'static_pages#legal_notice',as: 'legal_notice'
   get '/privacypolicy', to: 'static_pages#privacy_policy',as: 'privacy_policy'
 
-
-  get '/dashboard', to: 'users#dashboard'
-  get '/dashboard/admin', to: 'users#dashboard_admin'
-
-
+  # Custome urls user
   get 'account/profile', to: "users#profile", as: 'profile'
   patch 'account/profile', to: "users#update_profile"
   get 'account/secret', to: "users#secret"
+  get '/dashboard', to: 'users#dashboard'
+  get '/dashboard/admin', to: 'users#dashboard_admin'
 
   devise_for :users
   devise_scope :user do

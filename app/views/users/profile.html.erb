@@ -11,17 +11,17 @@
 
     <!-- MAIN BODY -->
     <section class="account-settings-section">
-        <div class="container-fluid">
+        <div class="container">
             <!-- Content -->
             <div class="contact-info">
                 <div class="row wrapper">
-                    <div class="col-lg-8 col-md-10  offset-lg-2 col-12 ">
+                    <div class="col-lg-10 col-md-12 mx-auto">
                         <div class="col">
                             <div class="account_created_at ml-auto" style="float:right;">
 
                             </div>
-                            <div class="col">
-                                <h1>Account Information</h1>
+                            <div class="col ml-0 pl-0">
+                                <h1 class="">Account Information</h1>
                             </div>
                             <hr>
 
@@ -29,13 +29,13 @@
                                 <h3 class="mb-3">Account email address</h3>
                                 <span class="text-primary"><%= current_user.email %></span>
                                 <div>
-                                    <a href="<%= account_secret_path %>" class="btn btn-light border-dark mt-2">Change</a>
+                                    <a href="<%= account_secret_path %>" class="btn btn-light border-primary text-primary mt-2">Change</a>
                                 </div>
                             </div>
 
                             <!-- Start form -->
                             <!-- Start account info -->
-                            <%= form_for @user, :as => :user,  :url => account_profile_path do |f| %>
+                            <%= form_with(scope: :user, url: account_profile_path, method: :patch, local:true) do |f| %>
                             <div class="contact-info mb-5">
                                 <div class="row">
                                     <div class="col-lg-10">
@@ -44,22 +44,24 @@
                                         <div class="form-row mb-3 ml-0">
                                             <div class="col">
                                                 <%= f.label :first_name %>
-                                                <%= f.text_field :first_name, class: "form-control text-success" %>
+                                                <%= f.text_field :first_name, class: "form-control text-primary" %>
                                             </div>
                                             <div class="col">
                                                 <%= f.label :last_name %>
-                                                <%= f.text_field :last_name, class: "form-control text-success" %>
+                                                <%= f.text_field :last_name, class: "form-control text-primary" %>
                                             </div>
                                         </div>
 
                                         <div class="form-group">
                                             <%= f.label :company_id, "Entreprise" %><br />
-                                            <%= f.select :company_id, options_for_select(@companies.collect{ |u| [u.name, u.id] }), {}, class: 'form-control'%>
+                                             <%= f.select :company_id , 
+                                                          options_for_select(@companies.collect{ |u| [u.name, u.id] }, current_user.company_id),
+                                                           { include_blank: '<Sélectionner votre entreprise>', require: true}, class: 'form-control text-primary' %>
                                         </div>
 
                                     </div>
                                 </div>
-                              <%= f.submit "Save", class: 'btn btn-danger' %>
+                              <%= f.submit "Save", class: 'btn btn-primary' %>
 
                             </div>
                             <% end %>
