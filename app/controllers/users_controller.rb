@@ -54,7 +54,7 @@ class UsersController < ApplicationController
     @grade_2_by_user = (@feedbacks_user.where(score_global: 2).count + @feedbacks_user.where(score_workspace: 2).count + @feedbacks_user.where(score_missions: 2).count)
     @grade_1_by_user = (@feedbacks_user.where(score_global: 1).count + @feedbacks_user.where(score_workspace: 1).count + @feedbacks_user.where(score_missions: 1).count)
     @grade_0_by_user = (@feedbacks_user.where(score_global: 0).count + @feedbacks_user.where(score_workspace: 0).count + @feedbacks_user.where(score_missions: 0).count)
-    @score_colors = {"Note 5" => "#5142F0", "Note 4" => "#6558F1", "Note 3" => "#968EF6", "Note 2" => "#B2ACFA", "Note 1" => "#DBD8FD", "Note 0" => "#EDECFE"}
+    @score_colors = {"Note 5" => "#22347A", "Note 4" => "#6558F1", "Note 3" => "#B2ACFA", "Note 2" => "#CE885D", "Note 1" => "#DFB090", "Note 0" => "#F6E8DF"}
     @grades_by_user = {"Note 5" => @grade_5_by_user, "Note 4" => @grade_4_by_user, "Note 3" => @grade_3_by_user, "Note 2" => @grade_2_by_user, "Note 1" => @grade_1_by_user, "Note 0" => @grade_0_by_user}
     @colors = []
     @grades_by_user.each do |score, _|

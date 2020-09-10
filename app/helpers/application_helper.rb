@@ -22,6 +22,6 @@ module ApplicationHelper
   end
 
   def get_time_verbose(time_utc)
-    return time_utc.strftime("%B %d,%Y at %k:%M:%p")
+    return l(time_utc, format: '%d/%m/%Y - à %k:%M')
   end
 end
