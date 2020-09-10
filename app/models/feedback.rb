@@ -23,8 +23,6 @@ class Feedback < ApplicationRecord
     FeedbackMailer.new_feedback_admin.deliver_now
   end
 
-
-
   private
   def convert_to_integer
     self.score_global = self.score_global.to_i

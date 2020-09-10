@@ -5,7 +5,12 @@ class FeedbacksController < ApplicationController
   end
 
   def new
-    @feedback = Feedback.new
+    if current_user.company == nil 
+      redirect_to profile_path
+      flash[:error] = "Il faut que tu renseignes une entreprise avant de commencer !"
+    else
+      @feedback = Feedback.new
+    end 
   end
 
   def create
@@ -22,7 +27,7 @@ class FeedbacksController < ApplicationController
         render :new
         
       end
-    end
+  end
 
   private
   def post_params
