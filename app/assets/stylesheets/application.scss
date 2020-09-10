@@ -14,10 +14,11 @@
  *= require_self
  */
 
-@import 'bootstrap.min';
-@import 'navigation';
-@import 'static_pages';
-@import 'users';
+@import '../stylesheets/bootstrap.min.scss';
+@import '../stylesheets/navigation.scss';
+@import '../stylesheets/static_pages.scss';
+@import '../stylesheets/users.scss';
+@import '../stylesheets/feedback.scss';
 
 html,
 body {
