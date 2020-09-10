@@ -9,7 +9,7 @@
     <!-- Card Body -->
     <div class="card-body">
       <div class="chart-pie pt-4 pb-2">
-        <%= pie_chart @grades_by_user, colors: @colors %>
+        <%= pie_chart @grades_by_user, colors: @colors, library: {legend: {position: "right"}} %>
       </div>
     </div>
   </div>
