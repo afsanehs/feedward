@@ -29,6 +29,7 @@ class UsersController < ApplicationController
     @feedbacks = Feedback.all
     @feedbacks_received = Feedback.where(receiver_id: @user.id)
     @feedbacks_user = Feedback.where(sender_id: @user.id)
+    
 
     @score_global_average = Feedback.average(:score_global).round(2)
     @score_workspace_average = Feedback.average(:score_workspace).round(2)
@@ -37,9 +38,10 @@ class UsersController < ApplicationController
     @average_company_score = (@arr.inject(0.0) { |sum, el| sum + el }.to_f / @arr.size).round(2)
 
 
-    @score_global_average_by_user = @feedbacks_user.average(:score_global).round(2)
-    @score_workspace_average_by_user = @feedbacks_user.average(:score_workspace).round(2)
-    @score_missions_average_by_user = @feedbacks_user.average(:score_missions).round(2)
+    @score_global_average_by_user = @feedback_user.nil? ? 0 :  @feedbacks_user.average(:score_global).round(2)
+    @score_workspace_average_by_user = @feedback_user.nil? ? 0 : @feedbacks_user.average(:score_workspace).round(2)
+    @score_missions_average_by_user = @feedback_user.nil? ? 0 : @feedbacks_user.average(:score_missions).round(2)
+
     @arr_by_user = [@score_global_average_by_user, @score_workspace_average_by_user, @score_missions_average_by_user]
     if @score_global_average_by_user == nil && @score_workspace_average_by_user == nil && @score_missions_average_by_user == nil
       @average_company_score_by_user = 0.0
@@ -61,6 +63,36 @@ class UsersController < ApplicationController
       @colors << @score_colors[score]
     end
   end
+
+  def dashboard_admin
+    @feedbacks = Feedback.all
+
+    @score_global_average = Feedback.average(:score_global).round(2)
+    @score_workspace_average = Feedback.average(:score_workspace).round(2)
+    @score_missions_average = Feedback.average(:score_missions).round(2)
+    @arr = [@score_global_average, @score_workspace_average, @score_missions_average]
+    @average_company_score = (@arr.inject(0.0) { |sum, el| sum + el }.to_f / @arr.size).round(2)
+
+    #calculations for the pie Chart
+    @grade_5_ = (@feedbacks.where(score_global: 5).count + @feedbacks.where(score_workspace: 5).count + @feedbacks.where(score_missions: 5).count)
+    @grade_4 = (@feedbacks.where(score_global: 4).count + @feedbacks.where(score_workspace: 4).count + @feedbacks.where(score_missions: 4).count)
+    @grade_3 = (@feedbacks.where(score_global: 3).count + @feedbacks.where(score_workspace: 3).count + @feedbacks.where(score_missions: 3).count)
+    @grade_2 = (@feedbacks.where(score_global: 2).count + @feedbacks.where(score_workspace: 2).count + @feedbacks.where(score_missions: 2).count)
+    @grade_1 = (@feedbacks.where(score_global: 1).count + @feedbacks.where(score_workspace: 1).count + @feedbacks.where(score_missions: 1).count)
+    @grade_0 = (@feedbacks.where(score_global: 0).count + @feedbacks.where(score_workspace: 0).count + @feedbacks.where(score_missions: 0).count)
+    @score_colors = {"Note 5" => "#22347A", "Note 4" => "#6558F1", "Note 3" => "#B2ACFA", "Note 2" => "#CE885D", "Note 1" => "#DFB090", "Note 0" => "#F6E8DF"}
+    @grades_by_user = {"Note 5" => @grade_5, "Note 4" => @grade_4, "Note 3" => @grade_3, "Note 2" => @grade_2, "Note 1" => @grade_1, "Note 0" => @grade_0}
+    @colors = []
+    @grades_by_user.each do |score, _|
+      @colors << @score_colors[score]
+    end
+  end
+
+
+  def secret
+
+  end
+
 
   private
   def correct_user
