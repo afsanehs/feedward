@@ -115,4 +115,7 @@ Rails.application.configure do
     config.action_mailer.default_url_options = { :host => 'dev-feedward.herokuapp.com' }
     config.action_controller.asset_host = 'https://dev-feedward.herokuapp.com'
     config.action_mailer.asset_host = config.action_controller.asset_host
+
+  config.serve_static_assets = true
+  config.assets.digest = true
 end
