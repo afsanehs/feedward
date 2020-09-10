@@ -71,9 +71,9 @@ class UsersController < ApplicationController
     @arr = [@score_global_average, @score_workspace_average, @score_missions_average]
     @average_company_score = (@arr.inject(0.0) { |sum, el| sum + el }.to_f / @arr.size).round(2)
 
-    @score_global_average_yesterday = Feedback.where("created_at <= 'yesterday'").average(:score_global).round(2)
-    @score_workspace_average_yesterday = Feedback.average(:score_workspace).round(2)
-    @score_missions_average_yesterday = Feedback.average(:score_missions).round(2)
+    @score_global_average_yesterday = Feedback.where("created_at <= 'today'").average(:score_global)
+    @score_workspace_average_yesterday = Feedback.where("created_at <= 'today'").average(:score_workspace)
+    @score_missions_average_yesterday = Feedback.where("created_at <= 'today'").average(:score_missions)
     @arr_yesterday = [@score_global_average_yesterday, @score_workspace_average_yesterday, @score_missions_average_yesterday]
     @average_company_score_yesterday = (@arr_yesterday.inject(0.0) { |sum, el| sum + el }.to_f / @arr_yesterday.size).round(2)
 
