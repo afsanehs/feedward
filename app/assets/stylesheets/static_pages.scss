@@ -2,7 +2,7 @@
 // home section
 #home-section {
   background: {
-    image: asset_url('offices/home');
+    image: asset_url("offices/home");
   }
   margin-bottom: 3rem;
   position: relative;
@@ -127,7 +127,7 @@
 
 .careers-photo {
   background: {
-    image: asset_url('offices/careers');
+    image: asset_url("offices/careers");
   }
   height: 50vh;
   background-position: center center;
