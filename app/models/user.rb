@@ -7,7 +7,8 @@ class User < ApplicationRecord
   after_create :welcome_send
 
   belongs_to :company, optional: true #an employee works for only one company
-  has_many :feedbacks #an employee has many feedbacks (one per day)
+  has_many :received_feedbacks, class_name: "Feedback", foreign_key: :receiver_id #an employee has many feedbacks (one per day)
+  has_many :sent_feedbacks, class_name: "Feedback", foreign_key: :sender_id 
 
   validates :email,
     presence:true,

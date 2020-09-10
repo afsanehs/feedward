@@ -1,0 +1,28 @@
+<!-- Approach -->
+<div class="col-6">
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Feedbacks envoyés</h6>
+        </div>
+        <div class="card-body">
+
+            <% @feedbacks_user.each do |feedback| %>
+
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-body">
+                        <a href="/feedbacks/<%= feedback.id %>" class="card-title">
+                        <!-- sauf pour le current -->
+                        <p><%= feedback.created_at %></p>
+                        <small><%= User.find(feedback.receiver_id)[:first_name] %></small>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <% end %>
+
+            <p class="mb-0"></p>
+        </div>
+    </div>
+</div>

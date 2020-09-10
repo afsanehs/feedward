@@ -10,21 +10,32 @@
       <div class="navbar-collapse collapse" id="navbarColor01">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item mr-4">
-            <a class="nav-link" href="#readmore" onClick="setActiveClass()">En savoir plus</a>
+            <% unless user_signed_in? %>
+            <a class="nav-link" href="/#readmore" onClick="setActiveClass()">En savoir plus</a>
+            <% end %>
           </li>
           <li class="nav-item mr-4">
-            <a class="nav-link " href="#howitwork" onClick="setActiveClass()">Comment ça marche?</a>
+            <% unless user_signed_in? %>
+            <a class="nav-link " href="/#howitwork" onClick="setActiveClass()">Comment ça marche?</a>
+            <% end %>
           </li>
           <li class="nav-item mr-4">
-            <a class="nav-link" href="#demo" onClick="setActiveClass()">Démarer une démo</a>
+            <% unless user_signed_in? %>
+            <a class="nav-link" href="/#demo" onClick="setActiveClass()">Demandez une démo</a>
+            <% end %>
           </li>
         </ul>
 
         <% if user_signed_in? %>
-        <ul class="navbar-nav mr-auto">
+        <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link nav-text-bold" href="#">Mon compte</a>
+            <a class="nav-link nav-text-bold" href="<%= dashboard_path %>">Mon compte</a>
           </li>
+
+          <li class="nav-item">
+            <a class="nav-link nav-text-bold" href="<%= profile_path %>">Mes infos</a>
+          </li>
+
           <li class="nav-item">
             <a class="nav-link nav-text-bold" href="<%=destroy_user_session_path%>">Se déconnecter</a>
           </li>
@@ -51,7 +62,7 @@
     setActiveClass()
   });
   function setActiveClass(){
-    
+
     navItems = document.querySelectorAll(".nav-link")
     console.log(navItems)
     navItems.forEach(item =>{
@@ -59,7 +70,7 @@
      item.addEventListener('click', ()=>{
        toggleClass(item)
      })
-     
+
     })
   }
   function toggleClass(item){

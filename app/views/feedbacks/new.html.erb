@@ -1,128 +1,131 @@
 <!DOCTYPE html>
 <html>
+  <head>
+  </head>
 
-<head>
-</head>
+  <div class="container">
+    <br><br>
+    <h2 class="text-primary mt-5 mb-2">Questionnaire</h2>
 
-<div class="container">
+    <form accept-charset="UTF-8" action="/feedbacks" method="post">
+      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+      <div class="mb-4">
+        <h5 class="text-primary mt-5 mb-2">Ressenti général</h5>
+        <p>Entre 0 et 5, quel est ton ressenti par rapport à l’entreprise en général ?<br />
+        <small>Ambiance générale, stratégie globale de l’entreprise...</small></p>
 
-    <div class="mb-5">
-        <br></br>
-        <h5 class="text-primary">Ressenti général</h5>
-        <p>Entre 0 et 5, quel est ton ressenti par rapport à l’entreprise en général ?</p>
-        <p>(ambiance générale, stratégie globale de l’entreprise...)</p>
         <div class="d-flex">
-            <div class="custom-control custom-radio mr-3">
-                <input type="radio" id="customRadio0" name="customRadio" class="custom-control-input">
-                <label class="custom-control-label" for="customRadio0">0</label>
-            </div>
-            <div class="custom-control custom-radio mr-3">
-                <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input" checked="">
-                <label class="custom-control-label" for="customRadio1">1</label>
-            </div>
-            <div class="custom-control custom-radio mr-3">
-                <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input" checked="">
-                <label class="custom-control-label" for="customRadio2">2</label>
-            </div>
-            <div class="custom-control custom-radio mr-3">
-                <input type="radio" id="customRadio3" name="customRadio" class="custom-control-input" checked="">
-                <label class="custom-control-label" for="customRadio3">3</label>
-            </div>
-            <div class="custom-control custom-radio mr-3">
-                <input type="radio" id="customRadio4" name="customRadio" class="custom-control-input" checked="">
-                <label class="custom-control-label" for="customRadio4">4</label>
-            </div>
-            <div class="custom-control custom-radio mr-3">
-                <input type="radio" id="customRadio5" name="customRadio" class="custom-control-input" checked="">
-                <label class="custom-control-label" for="customRadio5">5</label>
-            </div>
+          <div class="custom-control custom-radio mr-3">
+            <input type="radio" id="score_global0" name="feedback[score_global]"  value ="0" class="custom-control-input">
+            <label class="custom-control-label" for="score_global0">0</label>
+          </div>
+          <div class="custom-control custom-radio mr-3">
+            <input type="radio" id="score_global1" name="feedback[score_global]"  value ="1" class="custom-control-input">
+            <label class="custom-control-label" for="score_global1">1</label>
+          </div>
+          <div class="custom-control custom-radio mr-3">
+            <input type="radio" id="score_global2" name="feedback[score_global]"  value ="2" class="custom-control-input">
+            <label class="custom-control-label" for="score_global2">2</label>
+          </div>
+          <div class="custom-control custom-radio mr-3">
+            <input type="radio" id="score_global3" name="feedback[score_global]"  value ="3" class="custom-control-input">
+            <label class="custom-control-label" for="score_global3">3</label>
+          </div>
+          <div class="custom-control custom-radio mr-3">
+            <input type="radio" id="score_global4" name="feedback[score_global]"  value ="4" class="custom-control-input">
+            <label class="custom-control-label" for="score_global4">4</label>
+          </div>
+          <div class="custom-control custom-radio mr-3">
+            <input type="radio" id="score_global5" name="feedback[score_global]"  value ="5" class="custom-control-input">
+            <label class="custom-control-label" for="score_global5">5</label>
+          </div>
         </div>
-        <p class="pt-3">Souhaites-tu ajouter un commentaire ? </p>
-        <input class="form-control" type="text">
-    </div>
+        <p class="pt-3 mt-2">Souhaites-tu ajouter un commentaire ? </p>
+        <input type="text" name="feedback[answer_global]" class="form-control mb-3" />
+      </div>
 
-    <div>
+      <div class="mb-4">
         <h5 class="text-primary">Ressenti sur ton environnement de travail</h5>
-        <p>Entre 0 et 5, à quel point es-tu satisfait de ton environnement de travail actuel?</p>
-        <p>(ton équipe, ton lieu de travail…)</p>
+        <p>Entre 0 et 5, à quel point es-tu satisfait de ton environnement de travail actuel?<br />
+        <small>Ton équipe, ton lieu de travail…</small></p>
         <div class="d-flex">
-            <div class="custom-control custom-radio mr-3">
-                <input type="radio" id="customRadio0" name="customRadio" class="custom-control-input">
-                <label class="custom-control-label" for="customRadio0">0</label>
-            </div>
-            <div class="custom-control custom-radio mr-3">
-                <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input" checked="">
-                <label class="custom-control-label" for="customRadio1">1</label>
-            </div>
-            <div class="custom-control custom-radio mr-3">
-                <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input" checked="">
-                <label class="custom-control-label" for="customRadio2">2</label>
-            </div>
-            <div class="custom-control custom-radio mr-3">
-                <input type="radio" id="customRadio3" name="customRadio" class="custom-control-input" checked="">
-                <label class="custom-control-label" for="customRadio3">3</label>
-            </div>
-            <div class="custom-control custom-radio mr-3">
-                <input type="radio" id="customRadio4" name="customRadio" class="custom-control-input" checked="">
-                <label class="custom-control-label" for="customRadio4">4</label>
-            </div>
-            <div class="custom-control custom-radio mr-3">
-                <input type="radio" id="customRadio5" name="customRadio" class="custom-control-input" checked="">
-                <label class="custom-control-label" for="customRadio5">5</label>
-            </div>
+          <div class="custom-control custom-radio mr-3">
+            <input type="radio" id="score_workspace0" name=feedback[score_workspace]"  value ="0" class="custom-control-input">
+            <label class="custom-control-label" for="score_workspace0">0</label>
+          </div>
+          <div class="custom-control custom-radio mr-3">
+            <input type="radio" id="score_workspace1" name="feedback[score_workspace]"  value ="1" class="custom-control-input">
+            <label class="custom-control-label" for="score_workspace1">1</label>
+          </div>
+          <div class="custom-control custom-radio mr-3">
+            <input type="radio" id="score_workspace2" name="feedback[score_workspace]"  value ="2" class="custom-control-input">
+            <label class="custom-control-label" for="score_workspace2">2</label>
+          </div>
+          <div class="custom-control custom-radio mr-3">
+            <input type="radio" id="score_workspace3" name="feedback[score_workspace]"  value ="3" class="custom-control-input">
+            <label class="custom-control-label" for="score_workspace3">3</label>
+          </div>
+          <div class="custom-control custom-radio mr-3">
+            <input type="radio" id="score_workspace4" name="feedback[score_workspace]"  value ="4" class="custom-control-input">
+            <label class="custom-control-label" for="score_workspace4">4</label>
+          </div>
+          <div class="custom-control custom-radio mr-3">
+            <input type="radio" id="score_workspace5" name="feedback[score_workspace]"  value ="5" class="custom-control-input">
+            <label class="custom-control-label" for="score_workspace5">5</label>
+          </div>
         </div>
-        <p class="pt-3">Souhaites-tu ajouter un commentaire ? </p>
-        <input class="form-control" type="text">
-        <br></br>
-    </div>
+        <p class="pt-3 mt-2">Souhaites-tu ajouter un commentaire ? </p>
+        <input type="text" name="feedback[answer_workspace]" class="form-control mb-3" />
+      </div>
 
-    <div class="mb-5">
+      <div class="mb-4">
         <h5 class="text-primary">Ressenti sur tes missions</h5>
-        <p>Entre 0 et 5, dans quelle mesure tes missions actuelles répondent-elles à tes attentes ?</p>
-        <p>(missions variées, intéressantes…)</p>
+        <p>Entre 0 et 5, dans quelle mesure tes missions actuelles répondent-elles à tes attentes ?<br />
+        <small>Missions variées, intéressantes…</small></p>
         <div class="d-flex">
-            <div class="custom-control custom-radio mr-3">
-                <input type="radio" id="customRadio0" name="customRadio" class="custom-control-input">
-                <label class="custom-control-label" for="customRadio0">0</label>
-            </div>
-            <div class="custom-control custom-radio mr-3">
-                <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input" checked="">
-                <label class="custom-control-label" for="customRadio1">1</label>
-            </div>
-            <div class="custom-control custom-radio mr-3">
-                <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input" checked="">
-                <label class="custom-control-label" for="customRadio2">2</label>
-            </div>
-            <div class="custom-control custom-radio mr-3">
-                <input type="radio" id="customRadio3" name="customRadio" class="custom-control-input" checked="">
-                <label class="custom-control-label" for="customRadio3">3</label>
-            </div>
-            <div class="custom-control custom-radio mr-3">
-                <input type="radio" id="customRadio4" name="customRadio" class="custom-control-input" checked="">
-                <label class="custom-control-label" for="customRadio4">4</label>
-            </div>
-            <div class="custom-control custom-radio mr-3">
-                <input type="radio" id="customRadio5" name="customRadio" class="custom-control-input" checked="">
-                <label class="custom-control-label" for="customRadio5">5</label>
-            </div>
+          <div class="custom-control custom-radio mr-3">
+            <input type="radio" id="score_missions0" name="feedback[score_missions]" value ="0" class="custom-control-input">
+            <label class="custom-control-label" for=score_missions0">0</label>
+          </div>
+          <div class="custom-control custom-radio mr-3">
+            <input type="radio" id="score_missions1" name="feedback[score_missions]" value="1" class="custom-control-input">
+            <label class="custom-control-label" for="score_missions1">1</label>
+          </div>
+          <div class="custom-control custom-radio mr-3">
+            <input type="radio" id="score_missions2" name="feedback[score_missions]" value = "2" class="custom-control-input">
+            <label class="custom-control-label" for="score_missions2">2</label>
+          </div>
+          <div class="custom-control custom-radio mr-3">
+            <input type="radio" id="score_missions3" name="feedback[score_missions]" value = "3" class="custom-control-input">
+            <label class="custom-control-label" for="score_missions3">3</label>
+          </div>
+          <div class="custom-control custom-radio mr-3">
+            <input type="radio" id="score_missions4" name="feedback[score_missions]" value = "4" class="custom-control-input">
+            <label class="custom-control-label" for="score_missions4">4</label>
+          </div>
+          <div class="custom-control custom-radio mr-3">
+            <input type="radio" id="score_missions5" name="feedback[score_missions]" value = "5" class="custom-control-input">
+            <label class="custom-control-label" for="score_missions5">5</label>
+          </div>
         </div>
-        <p class="pt-3">Souhaites-tu ajouter un commentaire ? </p>
-        <input class="form-control" type="text">
-    </div>
+        <p class="pt-3 mt-2">Souhaites-tu ajouter un commentaire ? </p>
+        <input type="text" name="feedback[answer_missions]" class="form-control mb-3" />
+      </div>
 
-    <div>
-        <h5 class="text-primary">Ressenti sur un élément en particulier</h5>
-        <p>Est-ce qu’il y a quelque chose en particulier, dont tu souhaiterais parler ?</p>
-        <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
-    </div>
+      <div class="mb-4">
+          <h5 class="text-primary">Ressenti sur un élément en particulier</h5>
+          <p>Est-ce qu’il y a quelque chose en particulier, dont tu souhaiterais parler ?</p>
+          <input type="text" name="feedback[answer_final]" class="form-control mb-3" />
+      </div>
 
-    <div>
-        <h5 class="text-primary pt-5 pb-2">Souhaites-tu partager ton feedback avec quelqu’un ?</h5>
-        <input class="form-control" type="text">
-        <br></br>
-    </div>
+      <div class="mb-4">
+          <h5 class="text-primary pt-5">Souhaites-tu partager ton feedback avec quelqu’un ?</h5>
+          <p><em>Merci de renseigner l'adresse email de la personne.</em></p>
+          <input type="text" name="feedback[receiver_id]" class="form-control mb-3" />
+      </div>
 
-    <button type="button" class="btn btn-primary mb-5">Envoyer →</button>
-</div>
-
+      <button type="submit" class="btn btn-primary mb-5 mr-5">Envoyer →</button>
+      <a class="btn btn-outline-primary ml-5 mb-5 mr-auto" href="<%=dashboard_path%>">Revenir à mon espace</a>
+    </form>
+  </div>
 </html>

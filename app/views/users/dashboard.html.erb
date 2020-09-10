@@ -1,0 +1,33 @@
+<div class="container">
+  <div id="wrapper">
+   <%
+=begin%>
+ <%= render :partial => 'users/partials/sidebar'%>  
+<%
+=end%>
+    <div class="container-flex">
+      <div class= "row" style="padding: 45px">
+        <div class="col-10"></div>
+      </div>
+      <h2>Bonjour <%= current_user.first_name %> </h2>
+      <%= render :partial => 'users/partials/heading'%>
+
+      <div class="row">
+        <%= render :partial => 'users/partials/note_user'%>
+        <%= render :partial => 'users/partials/note_company'%>
+        <%= render :partial => 'users/partials/nb_feedback_received'%>
+        <%= render :partial => 'users/partials/nb_feedback_sent'%>
+      </div>
+
+      <div class="row">
+        <%= render :partial => 'users/partials/pie_chart'%>
+        <%= render :partial => 'users/partials/histo'%>
+      </div>
+
+      <div class="row">
+        <%= render :partial => 'users/partials/text_area_received'%>
+        <%= render :partial => 'users/partials/text_area_sent'%>
+      </div>
+    </div>
+  </div>
+</div>
