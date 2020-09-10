@@ -5,9 +5,9 @@ class FeedbacksController < ApplicationController
   end
 
   def new
-    if current_user.company == nil 
+    if current_user.company == nil
       redirect_to profile_path
-      flash[:error] = "Il faut que tu renseignes une entreprise avant de commencer !"
+      flash[:error] = "Il faut que tu complètes ton profil et que tu renseignes une entreprise avant de commencer !"
     else
       @feedback = Feedback.new
     end 
