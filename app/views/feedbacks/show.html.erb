@@ -6,7 +6,7 @@
   </div>
 
   <div class="card border-secondary mb-5">
-    <h2 class="card-header text-primary mb-3">Questionnaire du <%= @feedback.created_at %></h2>
+    <h2 class="card-header text-primary mb-3">Questionnaire du <%= get_time_verbose(@feedback.created_at) %></h2>
 
     <ul class="list-group list-group-flush">
       <li class="list-group-item mb-2">
