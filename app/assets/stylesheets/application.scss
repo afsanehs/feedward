@@ -28,8 +28,8 @@ body {
   margin: 0;
   box-sizing: border-box;
   font-family: 'Lato', sans-serif;
-}
-body {
+  font-size: 1.08rem;
+  color: #22347A;
   display: flex;
   flex-direction: column;
 }
@@ -70,11 +70,6 @@ footer {
 }
 
 .text-indigo {
-  color: #22347A;
-}
-
-body {
-  font-family: 'Lato', sans-serif;
   color: #22347A;
 }
 
@@ -2042,4 +2037,3 @@ a.text-danger:focus {
 .text-body {
   color: #22347A !important;
 }
-
