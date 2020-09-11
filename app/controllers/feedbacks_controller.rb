@@ -2,7 +2,7 @@ class FeedbacksController < ApplicationController
   before_action :authenticate_user!
 
   def index
-
+    @feedbacks = Feedback.where(sender: current_user)
   end
   def show
     @feedback = Feedback.find(params[:id])
