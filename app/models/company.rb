@@ -1,3 +1,3 @@
 class Company < ApplicationRecord
-  has_many :users #a company is composed by many employees
+  has_many :users , dependent: :destroy
 end
