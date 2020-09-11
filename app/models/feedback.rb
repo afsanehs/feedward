@@ -5,6 +5,7 @@ class Feedback < ApplicationRecord
   after_create :new_feedback_mail
   before_validation :convert_to_integer
 
+
   validates :score_global,
     presence:true,
     inclusion: { in:(0..5), message: "%{value} is not valid" }
@@ -33,8 +34,9 @@ class Feedback < ApplicationRecord
   # Helper method
   # If version v1 for MVP
   def self.is_separated_by_company?
-    return false
+    return true
   end
+ 
 
   #-------------------------
   # Get score by company
@@ -100,55 +102,36 @@ class Feedback < ApplicationRecord
 
 
 
-  # Score in a period back
-  def self.global_score_by_period_back(company_id, date)
+  # Score before date
+  def self.global_score_by_date(company_id, date)
     feedbacks = self.all_company_fbs(company_id)
-    average =  feedbacks.where("DATE(created_at) <= ?", date).average(:score_global)
+    average =  feedbacks.where("feedbacks.created_at <= ?", date).average(:score_global)
     return average.nil? ? 0 : average.round(2)
   end 
 
-  def self.workspace_score_by_period_back(company_id,date)
+  def self.workspace_score_by_date(company_id,date)
     feedbacks = self.all_company_fbs(company_id)
-    average =  feedbacks.where("DATE(created_at) <= ?", date).average(:score_workspace)
+    average =  feedbacks.where("feedbacks.created_at <= ?", date).average(:score_workspace)
     return average.nil? ? 0 : average.round(2)
   end 
 
-  def self.missions_score_by_period_back(company_id,date)
+  def self.missions_score_by_date(company_id,date)
     feedbacks = self.all_company_fbs(company_id)
-    average =  feedbacks.where("DATE(created_at) <= ?", date).average(:score_missions)
-    return average.nil? ? 0 : average.round(2)
-  end 
-
-  # Score in a period next
-  def self.global_score_by_period_next(company_id, date)
-    feedbacks = self.all_company_fbs(company_id)
-    average =  feedbacks.where("DATE(created_at) >= ?", date).average(:score_global)
-    return average.nil? ? 0 : average.round(2)
-  end 
-
-  def self.workspace_score_by_period_next(company_id,date)
-    feedbacks = self.all_company_fbs(company_id)
-    average =  feedbacks.where("DATE(created_at) >= ?", date).average(:score_workspace)
-    return average.nil? ? 0 : average.round(2)
-  end 
-
-  def self.missions_score_by_period_next(company_id,date)
-    feedbacks = self.all_company_fbs(company_id)
-    average =  feedbacks.where("DATE(created_at) >= ?", date).average(:score_missions)
+    average =  feedbacks.where("feedbacks.created_at <= ?", date).average(:score_missions)
     return average.nil? ? 0 : average.round(2)
   end 
 
   # Yesterday score
   def self.global_score_yesterday(company_id)
-    return self.global_score_by_period_back(company_id, Date.today-1)
+    return self.global_score_by_date(company_id, Date.today-1)
   end 
 
   def self.workspace_score_yesterday(company_id)
-    return self.workspace_score_by_period_back(company_id, Date.today-1)
+    return self.workspace_score_by_date(company_id, Date.today-1)
   end 
 
   def self.missions_score_yesterday(company_id)
-    return self.missions_score_by_period_back(company_id, Date.today-1)
+    return self.missions_score_by_date(company_id, Date.today-1)
   end 
 
   def self.company_score_yesterday(company_id)
@@ -161,15 +144,15 @@ class Feedback < ApplicationRecord
 
   # Lastweek score
   def self.global_score_lastweek(company_id)
-    return self.global_score_by_period_next(company_id, 1.week.ago.utc)
+    return self.global_score_by_date(company_id, Date.today - 1.week)
   end 
 
   def self.workspace_score_lastweek(company_id)
-    return self.workspace_score_by_period_next(company_id, 1.week.ago.utc)
+    return self.workspace_score_by_date(company_id, Date.today - 1.week)
   end 
 
   def self.missions_score_lastweek(company_id)
-    return self.missions_score_by_period_next(company_id, 1.week.ago.utc)
+    return self.missions_score_by_date(company_id, Date.today - 1.week)
   end 
 
   def self.company_score_lastweek(company_id)

@@ -34,7 +34,7 @@ class UsersController < ApplicationController
     end 
 
 
-    @feedbacks = Feedback.all
+    @feedbacks = Feedback.all_company_fbs(current_user.company_id)
     @feedbacks_received = Feedback.where(receiver_id: @user.id)
     @feedbacks_user = Feedback.where(sender_id: @user.id)
     @company = @user.company
@@ -71,7 +71,7 @@ class UsersController < ApplicationController
         flash[:error] = "Vous n'avez pas de droit pour accéder cette page."
         return redirect_to dashboard_path
     end
-    @feedbacks = Feedback.all
+    @feedbacks = Feedback.all_company_fbs(current_user.company_id)
     @company = current_user.company
 
 
