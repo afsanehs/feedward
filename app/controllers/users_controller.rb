@@ -65,17 +65,18 @@ class UsersController < ApplicationController
   end
 
   def dashboard_admin
-    @feedbacks = Feedback.joins(:sender).where(users:{company_id: current_user.company_id})
-
-    @score_global_average = Feedback.average(:score_global).round(2)
-    @score_workspace_average = Feedback.average(:score_workspace).round(2)
-    @score_missions_average = Feedback.average(:score_missions).round(2)
+     
+    company_feedbacks=Feedback.joins(:sender).where(users:{company_id: current_user.company_id})
+    @feedbacks = company_feedbacks
+    @score_global_average = company_feedbacks.average(:score_global).round(2)
+    @score_workspace_average = company_feedbacks.average(:score_workspace).round(2)
+    @score_missions_average = company_feedbacks.average(:score_missions).round(2)
     @arr = [@score_global_average, @score_workspace_average, @score_missions_average]
     @average_company_score = (@arr.inject(0.0) { |sum, el| sum + el }.to_f / @arr.size).round(2)
 
-    @score_global_average_yesterday = Feedback.where("created_at <= 'tomorrow'").average(:score_global)
-    @score_workspace_average_yesterday = Feedback.where("created_at <= 'tomorrow'").average(:score_workspace)
-    @score_missions_average_yesterday = Feedback.where("created_at <= 'tomorrow'").average(:score_missions)
+    @score_global_average_yesterday = company_feedbacks.where("feedbacks.created_at <= 'tomorrow'").average(:score_global)
+    @score_workspace_average_yesterday = company_feedbacks.where("feedbacks.created_at <= 'tomorrow'").average(:score_workspace)
+    @score_missions_average_yesterday = company_feedbacks.where("feedbacks.created_at <= 'tomorrow'").average(:score_missions)
     @arr_yesterday = [@score_global_average_yesterday, @score_workspace_average_yesterday, @score_missions_average_yesterday]
     @average_company_score_yesterday = (@arr_yesterday.inject(0.0) { |sum, el| sum + el }.to_f / @arr_yesterday.size).round(2)
 
