@@ -1,4 +1,8 @@
-# Project Feedward
+# Project Feedward - The Hacking Project
+
+## Production
+
+Vous pouvez consulter notre site sur [http://getfeedward.com/](http://getfeedward.com/)
 
 ## Description
 ### 1. Présentation
@@ -63,7 +67,7 @@ Avancer sur les statistiques et approfondir le dashboard Admin
 
 Comme mentor, nous avons John Bachir, qui est actuellement le directeur technique de Healthie. Nous sommes assez chanceux puisqu'il a été cofondateur et CTO de trois 3 startups qu’il a développé sous Rails.
 
-### Equipe
+## Notre Equipe
 
 [Afsaneh SAMET TEHRANI](https://github.com/afsanehs)
 
