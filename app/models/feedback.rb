@@ -26,7 +26,7 @@ class Feedback < ApplicationRecord
 
   # Instance method
   def score_average
-    score = (self.score_global + self.score_workspace + self.score_missions)
+    score = (self.score_global + self.score_workspace + self.score_missions)/3
     return score.nil? ? 0 : score.round(2)
   end
 
@@ -75,19 +75,19 @@ class Feedback < ApplicationRecord
   # Get score by user
   def self.global_score_user(user_id)
     user = User.find(user_id)
-    feedbacks = self.all_company_fbs(user.company.id)
+    feedbacks = Feedback.where(sender_id: user_id)
     average =  feedbacks.average(:score_global)
     return average.nil? ? 0 : average.round(2)
   end
   def self.workspace_score_user(user_id)
     user = User.find(user_id)
-    feedbacks = self.all_company_fbs(user.company.id)
+    feedbacks = Feedback.where(sender_id: user_id)
     average = feedbacks.average(:score_workspace)
     return average.nil? ? 0 : average.round(2)
   end
   def self.missions_score_user(user_id)
     user = User.find(user_id)
-    feedbacks = self.all_company_fbs(user.company.id)
+    feedbacks = Feedback.where(sender_id: user_id)
     average = feedbacks.average(:score_missions)
     return average.nil? ? 0 : average.round(2)
   end

@@ -67,7 +67,7 @@ class UsersController < ApplicationController
   end
 
   def dashboard_admin
-    if !current_user.is_site_admin || !current_user.is_company_admin
+    if !current_user.is_site_admin && !current_user.is_company_admin
         flash[:error] = "Vous n'avez pas de droit pour accéder cette page."
         return redirect_to dashboard_path
     end
