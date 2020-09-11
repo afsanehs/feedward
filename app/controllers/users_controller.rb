@@ -65,19 +65,22 @@ class UsersController < ApplicationController
   end
 
   def dashboard_admin
+    if !current_user.is_side_admin || !current_user.is_manager_admin
+        flash[:error] = "Vous n'avez pas de droit pour accéder cette page."
+        return redirect_to dashboard_path
+    end
     @feedbacks = Feedback.all
 
-    @score_global_average = Feedback.average(:score_global).round(2)
-    @score_workspace_average = Feedback.average(:score_workspace).round(2)
-    @score_missions_average = Feedback.average(:score_missions).round(2)
-    @arr = [@score_global_average, @score_workspace_average, @score_missions_average]
-    @average_company_score = (@arr.inject(0.0) { |sum, el| sum + el }.to_f / @arr.size).round(2)
 
-    @score_global_average_yesterday = Feedback.where("created_at <= 'tomorrow'").average(:score_global)
-    @score_workspace_average_yesterday = Feedback.where("created_at <= 'tomorrow'").average(:score_workspace)
-    @score_missions_average_yesterday = Feedback.where("created_at <= 'tomorrow'").average(:score_missions)
-    @arr_yesterday = [@score_global_average_yesterday, @score_workspace_average_yesterday, @score_missions_average_yesterday]
-    @average_company_score_yesterday = (@arr_yesterday.inject(0.0) { |sum, el| sum + el }.to_f / @arr_yesterday.size).round(2)
+    @score_global_average = Feedback.global_score
+    @score_workspace_average = Feedback.workspace_score
+    @score_missions_average = Feedback.missions_score
+    @average_company_score = Feedback.company_score
+
+    @score_global_average_yesterday = Feedback.global_score_yesterday
+    @score_workspace_average_yesterday = Feedback.workspace_score_yesterday
+    @score_missions_average_yesterday = Feedback.missions_score_yesterday
+    @average_company_score_yesterday = Feedback.company_score_yesterday
 
     @average_company_score_evolution = (100*(@average_company_score - @average_company_score_yesterday) / @average_company_score_yesterday).round(2)
     @score_global_average_evolution = (100*(@score_global_average - @score_global_average_yesterday) / @score_global_average_yesterday).round(2)
