@@ -34,7 +34,7 @@ class Feedback < ApplicationRecord
   # Helper method
   # If version v1 for MVP
   def self.is_separated_by_company?
-    return true
+    return false
   end
  
 
