@@ -34,7 +34,7 @@ class Feedback < ApplicationRecord
   # Helper method
   # If version v1 for MVP
   def self.is_separated_by_company?
-    return false
+    return true
   end
  
 
@@ -105,19 +105,19 @@ class Feedback < ApplicationRecord
   # Score before date
   def self.global_score_by_date(company_id, date)
     feedbacks = self.all_company_fbs(company_id)
-    average =  feedbacks.where("feedbacks.created_at <= ?", date).average(:score_global)
+    average =  feedbacks.where("DATE(feedbacks.created_at) <= ?", date).average(:score_global)
     return average.nil? ? 0 : average.round(2)
   end 
 
   def self.workspace_score_by_date(company_id,date)
     feedbacks = self.all_company_fbs(company_id)
-    average =  feedbacks.where("feedbacks.created_at <= ?", date).average(:score_workspace)
+    average =  feedbacks.where("DATE(feedbacks.created_at) <= ?", date).average(:score_workspace)
     return average.nil? ? 0 : average.round(2)
   end 
 
   def self.missions_score_by_date(company_id,date)
     feedbacks = self.all_company_fbs(company_id)
-    average =  feedbacks.where("feedbacks.created_at <= ?", date).average(:score_missions)
+    average =  feedbacks.where("DATE(feedbacks.created_at) <= ?", date).average(:score_missions)
     return average.nil? ? 0 : average.round(2)
   end 
 
