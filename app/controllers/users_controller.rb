@@ -26,7 +26,7 @@ class UsersController < ApplicationController
 
   def dashboard
     @user = current_user
-    @feedbacks = Feedback.joins(:sender).where(users:{company_id: current_user.company_id})
+    @feedbacks = Feedback.all
     @feedbacks_received = Feedback.where(receiver_id: @user.id)
     @feedbacks_user = Feedback.where(sender_id: @user.id)
     
@@ -65,7 +65,7 @@ class UsersController < ApplicationController
   end
 
   def dashboard_admin
-    @feedbacks = Feedback.all
+    @feedbacks = Feedback.joins(:sender).where(users:{company_id: current_user.company_id})
 
     @score_global_average = Feedback.average(:score_global).round(2)
     @score_workspace_average = Feedback.average(:score_workspace).round(2)
