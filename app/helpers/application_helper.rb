@@ -24,4 +24,20 @@ module ApplicationHelper
   def get_time_verbose(time_utc)
     return l(time_utc, format: '%d/%m/%Y - à %k:%M')
   end
+
+  #----------------------------------#
+  # Using devise form in another page
+  def resource_name
+    :user
+  end
+
+  def resource
+    @resource ||= current_user
+  end
+
+  def devise_mapping
+    @devise_mapping ||= Devise.mappings[:user]
+  end
+
+
 end
