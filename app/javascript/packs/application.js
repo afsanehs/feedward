@@ -1,3 +1,4 @@
+// [...]
 import '../src/style.scss';
 
 require('jquery');
