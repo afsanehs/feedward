@@ -26,7 +26,7 @@ class Feedback < ApplicationRecord
 
   # Instance method
   def score_average
-    score = (self.score_global + self.score_workspace + self.score_missions)/3
+    score = (self.score_global + self.score_workspace + self.score_missions)/3.0
     return score.nil? ? 0 : score.round(2)
   end
 
