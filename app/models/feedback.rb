@@ -30,7 +30,6 @@ class Feedback < ApplicationRecord
     return true
   end
 
-
   #-------------------------
   # Get score by company
   def self.all_company_fbs(company_id)
