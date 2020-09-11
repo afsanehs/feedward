@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   get '/legalnotice', to: 'static_pages#legal_notice',as: 'legal_notice'
   get '/privacypolicy', to: 'static_pages#privacy_policy',as: 'privacy_policy'
 
-  # Custome urls user
+  # Custom urls user
   get 'account/profile', to: "users#profile", as: 'profile'
   patch 'account/profile', to: "users#update_profile"
   get 'account/secret', to: "users#secret"
@@ -20,9 +20,9 @@ Rails.application.routes.draw do
   devise_scope :user do
     get '/users/sign_out' => 'devise/sessions#destroy'
   end
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-
+  
   resources :feedbacks
   resources :users, only: [:show]
+
 
 end
