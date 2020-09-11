@@ -23,6 +23,12 @@ class Feedback < ApplicationRecord
     FeedbackMailer.new_feedback_admin.deliver_now
   end
 
+  # Instance method
+  def score_average
+    score = (self.global_score + self.workspace_score + self.missions_score)
+    return score.nil? ? 0 : score.round(2)
+  end
+
   #-----------------------------------------------------------
   # Helper method
   # If version v1 for MVP
@@ -36,7 +42,7 @@ class Feedback < ApplicationRecord
     if self.is_separated_by_company? == true
       return Feedback.all
     end
-    return Feedback.where(self.sender.company_id == company_id)
+    return Feedback.where(sender.company.id: company_id)
   end
   
   def self.global_score(company_id)
@@ -94,24 +100,57 @@ class Feedback < ApplicationRecord
 
 
 
+  # Score in a period back
+  def self.global_score_by_period_back(company_id, date)
+    feedbacks = self.all_company_fbs(company_id)
+    average =  feedbacks.where("DATE(created_at) <= ?", date).average(:score_global)
+    return average.nil? ? 0 : average.round(2)
+  end 
+
+  def self.workspace_score_by_period_back(company_id,date)
+    feedbacks = self.all_company_fbs(company_id)
+    average =  feedbacks.where("DATE(created_at) <= ?", date).average(:score_workspace)
+    return average.nil? ? 0 : average.round(2)
+  end 
+
+  def self.missions_score_by_period_back(company_id,date)
+    feedbacks = self.all_company_fbs(company_id)
+    average =  feedbacks.where("DATE(created_at) <= ?", date).average(:score_missions)
+    return average.nil? ? 0 : average.round(2)
+  end 
+
+  # Score in a period next
+  def self.global_score_by_period_next(company_id, date)
+    feedbacks = self.all_company_fbs(company_id)
+    average =  feedbacks.where("DATE(created_at) >= ?", date).average(:score_global)
+    return average.nil? ? 0 : average.round(2)
+  end 
+
+  def self.workspace_score_by_period_next(company_id,date)
+    feedbacks = self.all_company_fbs(company_id)
+    average =  feedbacks.where("DATE(created_at) >= ?", date).average(:score_workspace)
+    return average.nil? ? 0 : average.round(2)
+  end 
+
+  def self.missions_score_by_period_next(company_id,date)
+    feedbacks = self.all_company_fbs(company_id)
+    average =  feedbacks.where("DATE(created_at) >= ?", date).average(:score_missions)
+    return average.nil? ? 0 : average.round(2)
+  end 
+
   # Yesterday score
   def self.global_score_yesterday(company_id)
-    feedbacks = self.all_company_fbs(company_id)
-    average =  feedbacks.where("DATE(created_at) = ?", Date.today-1).average(:score_global)
-    return average.nil? ? 0 : average.round(2)
+    return self.global_score_by_period_back(company_id, Date.today-1)
   end 
 
   def self.workspace_score_yesterday(company_id)
-    feedbacks = self.all_company_fbs(company_id)
-    average =  feedbacks.where("DATE(created_at) = ?", Date.today-1).average(:score_workspace)
-    return average.nil? ? 0 : average.round(2)
+    return self.workspace_score_by_period_back(company_id, Date.today-1)
   end 
 
   def self.missions_score_yesterday(company_id)
-    feedbacks = self.all_company_fbs(company_id)
-    average =  feedbacks.where("DATE(created_at) = ?", Date.today-1).average(:score_missions)
-    return average.nil? ? 0 : average.round(2)
+    return self.missions_score_by_period_back(company_id, Date.today-1)
   end 
+
   def self.company_score_yesterday(company_id)
     global_score = self.global_score_yesterday(company_id)
     workspace_score = self.workspace_score_yesterday(company_id)
@@ -119,6 +158,28 @@ class Feedback < ApplicationRecord
     arr = [global_score, workspace_score, missions_score]
     return (arr.inject(0.0) { |sum, el| sum + el }.to_f / arr.size).round(2)
   end
+
+  # Lastweek score
+  def self.global_score_lastweek(company_id)
+    return self.global_score_by_period_next(company_id, 1.week.ago.utc)
+  end 
+
+  def self.workspace_score_lastweek(company_id)
+    return self.workspace_score_by_period_next(company_id, 1.week.ago.utc)
+  end 
+
+  def self.missions_score_lastweek(company_id)
+    return self.missions_score_by_period_next(company_id, 1.week.ago.utc)
+  end 
+
+  def self.company_score_lastweek(company_id)
+    global_score = self.global_score_lastweek(company_id)
+    workspace_score = self.workspace_score_lastweek(company_id)
+    missions_score = self.missions_score_lastweek(company_id)
+    arr = [global_score, workspace_score, missions_score]
+    return (arr.inject(0.0) { |sum, el| sum + el }.to_f / arr.size).round(2)
+  end
+
 
 
   private
