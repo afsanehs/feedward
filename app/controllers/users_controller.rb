@@ -26,7 +26,7 @@ class UsersController < ApplicationController
 
   def dashboard
     @user = current_user
-    @feedbacks = Feedback.all
+    @feedbacks = Feedback.joins(:sender).where(users:{company_id: current_user.company_id})
     @feedbacks_received = Feedback.where(receiver_id: @user.id)
     @feedbacks_user = Feedback.where(sender_id: @user.id)
     
