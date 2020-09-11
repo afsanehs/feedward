@@ -1,6 +1,6 @@
 class Feedback < ApplicationRecord
-  has_and_belongs_to_many :senders, class_name: "User" #the sender is the one who has fulfilled the feedback
-  has_and_belongs_to_many :receivers, class_name: "User", optional: true #a feedback can be sent by the sender to a specific receiver
+  belongs_to :sender, class_name: "User" #the sender is the one who has fulfilled the feedback
+  belongs_to :receiver, class_name: "User", optional: true #a feedback can be sent by the sender to a specific receiver
 
   after_create :new_feedback_mail
   before_validation :convert_to_integer
@@ -25,7 +25,7 @@ class Feedback < ApplicationRecord
 
   # Instance method
   def score_average
-    score = (self.global_score + self.workspace_score + self.missions_score)
+    score = (self.score_global + self.score_workspace + self.score_missions)
     return score.nil? ? 0 : score.round(2)
   end
 
@@ -33,16 +33,16 @@ class Feedback < ApplicationRecord
   # Helper method
   # If version v1 for MVP
   def self.is_separated_by_company?
-    return true
+    return false
   end
 
   #-------------------------
   # Get score by company
   def self.all_company_fbs(company_id)
-    if self.is_separated_by_company? == true
+    if self.is_separated_by_company? != true
       return Feedback.all
     end
-    return Feedback.where(sender.company.id: company_id)
+    return Feedback.joins(:sender).where(users:{company_id: company_id})
   end
   
   def self.global_score(company_id)

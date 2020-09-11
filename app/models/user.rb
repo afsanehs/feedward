@@ -7,8 +7,8 @@ class User < ApplicationRecord
   after_create :welcome_send
 
   belongs_to :company, optional: true #an employee works for only one company
-  has_and_belongs_to_many :received_feedbacks, class_name: "Feedback", foreign_key: :receiver_id, dependent: :destroy
-  has_and_belongs_to_many :sent_feedbacks, class_name: "Feedback", foreign_key: :sender_id , dependent: :destroy
+  has_many :received_feedbacks, class_name: "Feedback", foreign_key: :receiver_id, dependent: :destroy
+  has_many :sent_feedbacks, class_name: "Feedback", foreign_key: :sender_id , dependent: :destroy
 
   validates :email,
     presence:true,

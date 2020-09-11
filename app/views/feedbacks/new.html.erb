@@ -113,15 +113,20 @@
       </div>
 
       <div class="mb-4">
-          <h5 class="text-primary">Ressenti sur un élément en particulier</h5>
-          <p>Est-ce qu’il y a quelque chose en particulier, dont tu souhaiterais parler ?</p>
-          <input type="text" name="feedback[answer_final]" class="form-control mb-3" />
+        <h5 class="text-primary">Ressenti sur un élément en particulier</h5>
+        <p>Est-ce qu’il y a quelque chose en particulier, dont tu souhaiterais parler ?</p>
+        <input type="text" name="feedback[answer_final]" class="form-control mb-3" />
       </div>
 
       <div class="mb-4">
-          <h5 class="text-primary pt-5">Souhaites-tu partager ton feedback avec quelqu’un ?</h5>
-          <p><em>Merci de renseigner l'adresse email de la personne.</em></p>
-          <input type="text" name="feedback[receiver_id]" class="form-control mb-3" placeholder="email@example.com" />
+        <h5 class="text-primary pt-5">Souhaites-tu partager ton feedback avec quelqu’un ?</h5>
+        <select class="custom-select" id="receiver_id" name="feedback[receiver_id]">
+          <option selected="">Sélectionner la personne que vous voulez contacter</option>
+          <% @colleagues.each do |colleague| %>
+            <option value="<%= colleague.id %>"><%=colleague.email%></option>
+          <% end %>
+          
+        </select>                              
       </div>
 
       <button type="submit" class="btn btn-primary mb-5 mr-5">Envoyer →</button>
