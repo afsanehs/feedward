@@ -10,6 +10,7 @@ class FeedbacksController < ApplicationController
       flash[:error] = "Il faut que tu complètes ton profil et que tu renseignes une entreprise avant de commencer !"
     else
       @feedback = Feedback.new
+      @colleagues = User.where(company_id: current_user.company_id)
     end 
   end
 
