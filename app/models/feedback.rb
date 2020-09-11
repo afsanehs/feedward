@@ -36,37 +36,24 @@ class Feedback < ApplicationRecord
     if self.is_separated_by_company? == true
       return Feedback.all
     end
-      return Feedback.where(self.sender?.company_id == company_id)
+    return Feedback.where(self.sender.company_id == company_id)
   end
+  
   def self.global_score(company_id)
     feedbacks = self.all_company_fbs(company_id)
-    return feedbacks.average(:score_global)?.round(2)
+    average = feedbacks.average(:score_global)
+    return average.nil? ? 0 : average.round(2)
   end
   def self.workspace_score(company_id)
     feedbacks = self.all_company_fbs(company_id)
-    feedbacks.average(:score_workspace)?.round(2)
+    average = feedbacks.average(:score_workspace)
+    return average.nil? ? 0 : average.round(2)
   end
   def self.missions_score(company_id)
     feedbacks = self.all_company_fbs(company_id)
-    feedbacks.average(:score_missions)?.round(2)
+    average = feedbacks.average(:score_missions)
+    return average.nil? ? 0 : average.round(2)
   end
-
-  #-------------------------
-  # Get score by user
-  def global_score(user_id)
-    feedbacks = self.all_company_fbs(user.company.id)
-    return feedbacks.average(:score_global)?.round(2)
-  end
-  def workspace_score(user_id)
-    feedbacks = self.all_company_fbs(user.company.id)
-    feedbacks.average(:score_workspace)?.round(2)
-  end
-  def missions_score(user_id)
-    feedbacks = self.all_company_fbs(user.company.id)
-    feedbacks.average(:score_missions)?.round(2)
-  end
-
-
   def self.company_score(company_id)
     global_score = self.global_score(company_id)
     workspace_score = self.workspace_score(company_id)
@@ -75,20 +62,55 @@ class Feedback < ApplicationRecord
     return (arr.inject(0.0) { |sum, el| sum + el }.to_f / arr.size).round(2)
   end
 
+
+  #-------------------------
+  # Get score by user
+  def self.global_score_user(user_id)
+    user = User.find(user_id)
+    feedbacks = self.all_company_fbs(user.company.id)
+    average =  feedbacks.average(:score_global)
+    return average.nil? ? 0 : average.round(2)
+  end
+  def self.workspace_score_user(user_id)
+    user = User.find(user_id)
+    feedbacks = self.all_company_fbs(user.company.id)
+    average = feedbacks.average(:score_workspace)
+    return average.nil? ? 0 : average.round(2)
+  end
+  def self.missions_score_user(user_id)
+    user = User.find(user_id)
+    feedbacks = self.all_company_fbs(user.company.id)
+    average = feedbacks.average(:score_missions)
+    return average.nil? ? 0 : average.round(2)
+  end
+
+  def self.user_score(user_id)
+    global_score = self.global_score_user(user_id)
+    workspace_score = self.workspace_score_user(user_id)
+    missions_score = self.missions_score_user(user_id)
+    arr = [global_score, workspace_score, missions_score]
+    return (arr.inject(0.0) { |sum, el| sum + el }.to_f / arr.size).round(2)
+  end
+
+
+
   # Yesterday score
   def self.global_score_yesterday(company_id)
     feedbacks = self.all_company_fbs(company_id)
-    return feedbacks.where("DATE(created_at) = ?", Date.today-1).average(:score_global)?.round(2)
+    average =  feedbacks.where("DATE(created_at) = ?", Date.today-1).average(:score_global)
+    return average.nil? ? 0 : average.round(2)
   end 
 
   def self.workspace_score_yesterday(company_id)
     feedbacks = self.all_company_fbs(company_id)
-    return feedbacks.where("DATE(created_at) = ?", Date.today-1).average(:score_workspace)?.round(2)
+    average =  feedbacks.where("DATE(created_at) = ?", Date.today-1).average(:score_workspace)
+    return average.nil? ? 0 : average.round(2)
   end 
 
   def self.missions_score_yesterday(company_id)
     feedbacks = self.all_company_fbs(company_id)
-    return feedbacks.where("DATE(created_at) = ?", Date.today-1).average(:score_missions)?.round(2)
+    average =  feedbacks.where("DATE(created_at) = ?", Date.today-1).average(:score_missions)
+    return average.nil? ? 0 : average.round(2)
   end 
   def self.company_score_yesterday(company_id)
     global_score = self.global_score_yesterday(company_id)
