@@ -2,7 +2,7 @@
 // home section
 #home-section {
   background: {
-    image: asset_url("offices/home");
+    image: asset_url('offices/home');
   }
   margin-bottom: 3rem;
   position: relative;
@@ -105,11 +105,7 @@
 }
 //--------------------------------------//
 //Static pages
-.contact-page,
 .about-page,
-.legal-notice-page,
-.privacy-policy-page,
-.team-page,
 .careers-page {
   min-height: calc(100vh - 134px - 55px);
   .container {
@@ -119,6 +115,20 @@
     padding-top: 2rem;
   }
 }
+.contact-page,
+.privacy-policy-page,
+.team-page,
+.legal-notice-page {
+  .container {
+    padding: 5rem 0rem;
+  }
+  .row {
+    padding-top: 2rem;
+  }
+}
+.team-page {
+  font-size: 92%;
+}
 .contact-page #text {
   padding-top: 6rem;
   display: flex;
@@ -127,7 +137,7 @@
 
 .careers-photo {
   background: {
-    image: asset_url("offices/careers");
+    image: asset_url('offices/careers');
   }
   height: 50vh;
   background-position: center center;
