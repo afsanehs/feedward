@@ -1,6 +1,6 @@
 class Feedback < ApplicationRecord
-  belongs_to :sender, class_name: "User" #the sender is the one who has fulfilled the feedback
-  belongs_to :receiver, class_name: "User", optional: true #a feedback can be sent by the sender to a specific receiver
+  has_and_belongs_to_many :senders, class_name: "User" #the sender is the one who has fulfilled the feedback
+  has_and_belongs_to_many :receivers, class_name: "User", optional: true #a feedback can be sent by the sender to a specific receiver
 
   after_create :new_feedback_mail
   before_validation :convert_to_integer
