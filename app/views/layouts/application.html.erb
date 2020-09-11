@@ -11,8 +11,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
     crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.0/animate.min.css" integrity="sha512-kb1CHTNhoLzinkElTgWn246D6pX22xj8jFNKsDmVwIQo+px7n1yjJUZraVuR/ou6Kmgea4vZXZeUDbqKtXkEMg==" crossorigin="anonymous" />
-    <link rel="icon" type="image/png" href="<%= asset_path('icons/favicon.png')%>"/>
-    <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans:wght@400;700&family=Overpass:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="http://cdn.datatables.net/1.10.2/css/jquery.dataTables.min.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Abel&family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="<%= asset_path('icons/Logo1_purple_full.png')%>"/>
 
     <script type="text/javascript">window.$crisp=[];window.CRISP_WEBSITE_ID="8507984d-9f35-4bd2-8694-777f431a3cff";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();</script>
 
@@ -22,12 +24,9 @@
     <%= render 'layouts/navbar' %>
 
     <!-- Main content of body -->
-  <div class="">
-
   <%= render 'layouts/alert'%>
 
     <%= yield %>
-  </div>
   <%= render 'layouts/footer' %>
 <!-- Script -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"
@@ -39,9 +38,15 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
     integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous">
   </script>
+  <script type="text/javascript" src="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
   <script>
     $('#year').text(new Date().getFullYear());
-    $(".alert").fadeOut(8000);
+    $(".alert").fadeOut(6000);
+  </script>
+  <script>
+    $(document).ready(function () {
+      $('#myTable').dataTable();
+    });
   </script>
   </body>
 </html>

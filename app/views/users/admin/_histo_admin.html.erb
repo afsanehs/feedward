@@ -1,0 +1,48 @@
+<div class="col-6">
+  <div class="card shadow mb-4">
+    <div class="card-header py-3">
+      <h6 class="m-0 font-weight-bold text-indigo text-uppercase">Détail des notes de l'entreprise par catégorie</h6>
+    </div>
+    <div class="card-body">
+      <h4 class="small font-weight-bold text-indigo">Note globale de l'entreprise <span class="float-right"><%=@score_global_average%></span></h4>
+      <div class="progress mb-4">
+        <% if @score_global_average == nil %>
+          <div class="progress-bar bg-bad" role="progressbar" style="width: 0%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+        <% elsif @score_global_average <= 1.5 %>
+          <div class="progress-bar bg-bad" role="progressbar" style="width: <%=@score_global_average/5*100%>%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+        <% elsif @score_global_average > 1.5 && @score_global_average <= 3.5 %>
+          <div class="progress-bar bg-moderate" role="progressbar" style="width: <%=@score_global_average/5*100%>%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+        <% else %>
+          <div class="progress-bar bg-good" role="progressbar" style="width: <%=@score_global_average/5*100%>%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+        <% end %>
+      </div>
+
+      <h4 class="small font-weight-bold text-indigo">Note de l'environnement de travail de l'entreprise <span class="float-right"><%=@score_workspace_average%></span></h4>
+      <div class="progress mb-4">
+        <% if @score_workspace_average == nil %>
+          <div class="progress-bar bg-bad" role="progressbar" style="width: 0%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+        <% elsif @score_workspace_average <= 1.5 %>
+          <div class="progress-bar bg-bad" role="progressbar" style="width: <%=@score_workspace_average/5*100%>%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+        <% elsif @score_workspace_average > 1.5 && @score_workspace_average <= 3.5 %>
+          <div class="progress-bar bg-moderate" role="progressbar" style="width: <%=@score_workspace_average/5*100%>%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+        <% else %>
+          <div class="progress-bar bg-good" role="progressbar" style="width: <%=@score_workspace_average/5*100%>%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+        <% end %>
+      </div>
+
+      <h4 class="small font-weight-bold  text-indigo">Note des missions de l'entreprise<span class="float-right"><%=@score_missions_average%></span></h4>
+      <div class="progress mb-4">
+        <% if @score_missions_average == nil %>
+          <div class="progress-bar bg-bad" role="progressbar" style="width: 0%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+        <% elsif @score_missions_average <= 1.5 %>
+          <div class="progress-bar bg-bad" role="progressbar" style="width: <%=@score_missions_average/5*100%>%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+        <% elsif @score_missions_average > 1.5 && @score_missions_average <= 3.5 %>
+          <div class="progress-bar bg-moderate" role="progressbar" style="width: <%=@score_missions_average/5*100%>%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+        <% else %>
+          <div class="progress-bar bg-good" role="progressbar" style="width: <%=@score_missions_average/5*100%>%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+        <% end %>
+      </div>
+
+    </div>
+  </div>
+</div>

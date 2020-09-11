@@ -1,15 +1,15 @@
 class FeedbackMailer < ApplicationMailer
   #Don't forget to change the mail
-  default from: 'chaton-maton@outlook.fr'
+  default from: 'getfeedward@outlook.fr'
   
   def new_feedback_user(user)
     @user = user 
-    @url  = 'http://monsite.fr/login' 
+    @url  = 'http://getfeedward.com' 
     mail(to: @user.email, subject: 'Merci pour ton feedback') 
   end
 
   def new_feedback_admin
-    @admin_email = "yanis@feedward.com"
+    @admin_email = "getfeedward@outlook.fr"
     mail(to:  @admin_email, subject: 'Un nouveau feedback a été crée') 
   end
 end

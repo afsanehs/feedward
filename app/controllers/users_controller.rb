@@ -26,30 +26,32 @@ class UsersController < ApplicationController
 
   def dashboard
     @user = current_user
-    @feedbacks = Feedback.all
+
+    #Force user has their company
+    if current_user.company.nil?
+      flash[:error] = "Il faut que tu complètes ton profil et que tu renseignes une entreprise avant de commencer !"
+      return redirect_to profile_path
+    end 
+
+
+    @feedbacks = Feedback.all_company_fbs(current_user.company_id)
     @feedbacks_received = Feedback.where(receiver_id: @user.id)
     @feedbacks_user = Feedback.where(sender_id: @user.id)
+    @company = @user.company
     
 
-    @score_global_average = Feedback.average(:score_global).round(2)
-    @score_workspace_average = Feedback.average(:score_workspace).round(2)
-    @score_missions_average = Feedback.average(:score_missions).round(2)
-    @arr = [@score_global_average, @score_workspace_average, @score_missions_average]
-    @average_company_score = (@arr.inject(0.0) { |sum, el| sum + el }.to_f / @arr.size).round(2)
+    @score_global_average = Feedback.global_score(@company.id)
+    @score_workspace_average = Feedback.workspace_score(@company.id)
+    @score_missions_average = Feedback.missions_score(@company.id)
+    @average_company_score = Feedback.company_score(@company.id)
 
 
-    @score_global_average_by_user = @feedback_user.nil? ? 0 :  @feedbacks_user.average(:score_global).round(2)
-    @score_workspace_average_by_user = @feedback_user.nil? ? 0 : @feedbacks_user.average(:score_workspace).round(2)
-    @score_missions_average_by_user = @feedback_user.nil? ? 0 : @feedbacks_user.average(:score_missions).round(2)
+    @score_global_average_by_user = Feedback.global_score_user(@user.id)
+    @score_workspace_average_by_user = Feedback.workspace_score_user(@user.id)
+    @score_missions_average_by_user = Feedback.missions_score_user(@user.id)
+    @average_company_score_by_user = Feedback.user_score(@user.id)
 
-    @arr_by_user = [@score_global_average_by_user, @score_workspace_average_by_user, @score_missions_average_by_user]
-    if @score_global_average_by_user == nil && @score_workspace_average_by_user == nil && @score_missions_average_by_user == nil
-      @average_company_score_by_user = 0.0
-    else
-      @average_company_score_by_user = (@arr_by_user.inject(0.0) { |sum, el| sum + el }.to_f / @arr_by_user.size).round(2)
-    end
-
-    #calculations for the pie Chart
+    #Calculations for the pie Chart
     @grade_5_by_user = (@feedbacks_user.where(score_global: 5).count + @feedbacks_user.where(score_workspace: 5).count + @feedbacks_user.where(score_missions: 5).count)
     @grade_4_by_user = (@feedbacks_user.where(score_global: 4).count + @feedbacks_user.where(score_workspace: 4).count + @feedbacks_user.where(score_missions: 4).count)
     @grade_3_by_user = (@feedbacks_user.where(score_global: 3).count + @feedbacks_user.where(score_workspace: 3).count + @feedbacks_user.where(score_missions: 3).count)
@@ -65,25 +67,45 @@ class UsersController < ApplicationController
   end
 
   def dashboard_admin
-    @feedbacks = Feedback.all
+    if !current_user.is_site_admin && !current_user.is_company_admin
+        flash[:error] = "Vous n'avez pas de droit pour accéder cette page."
+        return redirect_to dashboard_path
+    end
+    @feedbacks = Feedback.all_company_fbs(current_user.company_id)
+    @company = current_user.company
 
-    @score_global_average = Feedback.average(:score_global).round(2)
-    @score_workspace_average = Feedback.average(:score_workspace).round(2)
-    @score_missions_average = Feedback.average(:score_missions).round(2)
-    @arr = [@score_global_average, @score_workspace_average, @score_missions_average]
-    @average_company_score = (@arr.inject(0.0) { |sum, el| sum + el }.to_f / @arr.size).round(2)
+
+    @score_global_average = Feedback.global_score(@company.id)
+    @score_workspace_average = Feedback.workspace_score(@company.id)
+    @score_missions_average = Feedback.missions_score(@company.id)
+    @average_company_score = Feedback.company_score(@company.id)
+
+    @score_global_average_yesterday = Feedback.global_score_yesterday(@company.id)
+    @score_workspace_average_yesterday = Feedback.workspace_score_yesterday(@company.id)
+    @score_missions_average_yesterday = Feedback.missions_score_yesterday(@company.id)
+    @average_company_score_yesterday = Feedback.company_score_yesterday(@company.id)
+
+    @score_global_average_lastweek = Feedback.global_score_lastweek(@company.id)
+    @score_workspace_average_lastweek = Feedback.workspace_score_lastweek(@company.id)
+    @score_missions_average_lastweek = Feedback.missions_score_lastweek(@company.id)
+    @average_company_score_lastweek = Feedback.company_score_lastweek(@company.id)
+
+    @average_company_score_evolution = (100*(@average_company_score - @average_company_score_yesterday) / @average_company_score_yesterday).round(2)
+    @score_global_average_evolution = (100*(@score_global_average - @score_global_average_yesterday) / @score_global_average_yesterday).round(2)
+    @score_workspace_average_evolution = (100*(@score_workspace_average - @score_workspace_average_yesterday) / @score_workspace_average_yesterday).round(2)
+    @score_missions_average_evolution = (100*(@score_missions_average - @score_missions_average_yesterday) / @score_missions_average_yesterday).round(2)
 
     #calculations for the pie Chart
-    @grade_5_ = (@feedbacks.where(score_global: 5).count + @feedbacks.where(score_workspace: 5).count + @feedbacks.where(score_missions: 5).count)
+    @grade_5 = (@feedbacks.where(score_global: 5).count + @feedbacks.where(score_workspace: 5).count + @feedbacks.where(score_missions: 5).count)
     @grade_4 = (@feedbacks.where(score_global: 4).count + @feedbacks.where(score_workspace: 4).count + @feedbacks.where(score_missions: 4).count)
     @grade_3 = (@feedbacks.where(score_global: 3).count + @feedbacks.where(score_workspace: 3).count + @feedbacks.where(score_missions: 3).count)
     @grade_2 = (@feedbacks.where(score_global: 2).count + @feedbacks.where(score_workspace: 2).count + @feedbacks.where(score_missions: 2).count)
     @grade_1 = (@feedbacks.where(score_global: 1).count + @feedbacks.where(score_workspace: 1).count + @feedbacks.where(score_missions: 1).count)
     @grade_0 = (@feedbacks.where(score_global: 0).count + @feedbacks.where(score_workspace: 0).count + @feedbacks.where(score_missions: 0).count)
     @score_colors = {"Note 5" => "#22347A", "Note 4" => "#6558F1", "Note 3" => "#B2ACFA", "Note 2" => "#CE885D", "Note 1" => "#DFB090", "Note 0" => "#F6E8DF"}
-    @grades_by_user = {"Note 5" => @grade_5, "Note 4" => @grade_4, "Note 3" => @grade_3, "Note 2" => @grade_2, "Note 1" => @grade_1, "Note 0" => @grade_0}
+    @all_grades = {"Note 5" => @grade_5, "Note 4" => @grade_4, "Note 3" => @grade_3, "Note 2" => @grade_2, "Note 1" => @grade_1, "Note 0" => @grade_0}
     @colors = []
-    @grades_by_user.each do |score, _|
+    @all_grades.each do |score, _|
       @colors << @score_colors[score]
     end
   end

@@ -19,37 +19,5 @@
 @import '../stylesheets/static_pages.scss';
 @import '../stylesheets/users.scss';
 @import '../stylesheets/feedback.scss';
+@import '../stylesheets/custom_color.scss';
 @import '../stylesheets/dashboard.scss';
-
-html,
-body {
-  scroll-behavior: smooth;
-  height: 100%;
-  margin: 0;
-  box-sizing: border-box;
-}
-body {
-  display: flex;
-  flex-direction: column;
-}
-
-footer {
-  background: #b2acfa;
-  z-index: 10;
-  color: #333;
-  a {
-    color: #333;
-  }
-  height: 134px;
-  margin-top: auto;
-}
-
-#alert-section {
-  position: absolute;
-  display: block;
-  width: 100%;
-  top: 4rem;
-  left: 0;
-  right: 0;
-  z-index: 100;
-}

@@ -1,15 +1,13 @@
-<!-- Pie Chart -->
-
 <div class="col-6">
   <div class="card shadow mb-4">
     <!-- Card Header - Dropdown -->
     <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-      <h6 class="m-0 font-weight-bold text-indigo text-uppercase">Répartition de vos notes</h6>
+      <h6 class="m-0 font-weight-bold text-indigo text-uppercase">Répartition des notes de l'entreprise</h6>
     </div>
     <!-- Card Body -->
     <div class="card-body">
       <div class="chart-pie pt-4 pb-2">
-        <%= pie_chart @grades_by_user, colors: @colors, library: {legend: {position: "right"}} %>
+        <%= pie_chart @all_grades, colors: @colors, library: {legend: {position: "right"}} %>
       </div>
     </div>
   </div>
