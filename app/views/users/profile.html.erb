@@ -61,7 +61,16 @@
 
                                     </div>
                                 </div>
+                              <div class="d-flex justify-content-between">
                               <%= f.submit "Save", class: 'btn btn-primary' %>
+
+                                  <% if current_user.is_company_admin%>
+                                    <a href="<%= dashboard_path %>", class="btn btn-outline-primary">Dashboard</a>
+                                  <% else %>
+                                    <a href="<%= dashboard_admin_path %>", class="btn btn-outline-primary">Dashboard Admin</a>
+                                  
+                                  <% end %>
+                              </div>
 
                             </div>
                             <% end %>
