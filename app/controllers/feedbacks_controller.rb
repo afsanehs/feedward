@@ -1,7 +1,15 @@
 class FeedbacksController < ApplicationController
   before_action :authenticate_user!
+
+  def index
+
+  end
   def show
     @feedback = Feedback.find(params[:id])
+    if @feedback.sender_id != current_user.id
+      flash[:error] = "Vous n'avez pas le droit pour accéder à cette page"
+      return redirect_to dashboard_path
+    end
   end
 
   def new
