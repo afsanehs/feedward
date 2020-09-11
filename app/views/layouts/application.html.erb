@@ -24,12 +24,9 @@
     <%= render 'layouts/navbar' %>
 
     <!-- Main content of body -->
-  <div class="">
-
   <%= render 'layouts/alert'%>
 
     <%= yield %>
-  </div>
   <%= render 'layouts/footer' %>
 <!-- Script -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"
@@ -44,7 +41,7 @@
   <script type="text/javascript" src="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
   <script>
     $('#year').text(new Date().getFullYear());
-    $(".alert").fadeOut(8000);
+    $(".alert").fadeOut(6000);
   </script>
   <script>
     $(document).ready(function () {

@@ -5,6 +5,7 @@ class Feedback < ApplicationRecord
   after_create :new_feedback_mail
   before_validation :convert_to_integer
 
+
   validates :score_global,
     presence:true,
     inclusion: { in:(0..5), message: "%{value} is not valid" }
@@ -23,9 +24,146 @@ class Feedback < ApplicationRecord
     FeedbackMailer.new_feedback_admin.deliver_now
   end
 
+  # Instance method
   def score_average
-    ([score_missions, score_workspace, score_global].sum/3.0).round(2)
+    score = (self.score_global + self.score_workspace + self.score_missions)/3.0
+    return score.nil? ? 0 : score.round(2)
   end
+
+  #-----------------------------------------------------------
+  # Helper method
+  # If version v1 for MVP
+  def self.is_separated_by_company?
+    return true
+  end
+ 
+
+  #-------------------------
+  # Get score by company
+  def self.all_company_fbs(company_id)
+    if self.is_separated_by_company? != true
+      return Feedback.all
+    end
+    return Feedback.joins(:sender).where(users:{company_id: company_id})
+  end
+  
+  def self.global_score(company_id)
+    feedbacks = self.all_company_fbs(company_id)
+    average = feedbacks.average(:score_global)
+    return average.nil? ? 0 : average.round(2)
+  end
+  def self.workspace_score(company_id)
+    feedbacks = self.all_company_fbs(company_id)
+    average = feedbacks.average(:score_workspace)
+    return average.nil? ? 0 : average.round(2)
+  end
+  def self.missions_score(company_id)
+    feedbacks = self.all_company_fbs(company_id)
+    average = feedbacks.average(:score_missions)
+    return average.nil? ? 0 : average.round(2)
+  end
+  def self.company_score(company_id)
+    global_score = self.global_score(company_id)
+    workspace_score = self.workspace_score(company_id)
+    missions_score = self.missions_score(company_id)
+    arr = [global_score, workspace_score, missions_score]
+    return (arr.inject(0.0) { |sum, el| sum + el }.to_f / arr.size).round(2)
+  end
+
+
+  #-------------------------
+  # Get score by user
+  def self.global_score_user(user_id)
+    user = User.find(user_id)
+    feedbacks = Feedback.where(sender_id: user_id)
+    average =  feedbacks.average(:score_global)
+    return average.nil? ? 0 : average.round(2)
+  end
+  def self.workspace_score_user(user_id)
+    user = User.find(user_id)
+    feedbacks = Feedback.where(sender_id: user_id)
+    average = feedbacks.average(:score_workspace)
+    return average.nil? ? 0 : average.round(2)
+  end
+  def self.missions_score_user(user_id)
+    user = User.find(user_id)
+    feedbacks = Feedback.where(sender_id: user_id)
+    average = feedbacks.average(:score_missions)
+    return average.nil? ? 0 : average.round(2)
+  end
+
+  def self.user_score(user_id)
+    global_score = self.global_score_user(user_id)
+    workspace_score = self.workspace_score_user(user_id)
+    missions_score = self.missions_score_user(user_id)
+    arr = [global_score, workspace_score, missions_score]
+    return (arr.inject(0.0) { |sum, el| sum + el }.to_f / arr.size).round(2)
+  end
+
+
+
+  # Score before date
+  def self.global_score_by_date(company_id, date)
+    feedbacks = self.all_company_fbs(company_id)
+    average =  feedbacks.where("DATE(feedbacks.created_at) <= ?", date).average(:score_global)
+    return average.nil? ? 0 : average.round(2)
+  end 
+
+  def self.workspace_score_by_date(company_id,date)
+    feedbacks = self.all_company_fbs(company_id)
+    average =  feedbacks.where("DATE(feedbacks.created_at) <= ?", date).average(:score_workspace)
+    return average.nil? ? 0 : average.round(2)
+  end 
+
+  def self.missions_score_by_date(company_id,date)
+    feedbacks = self.all_company_fbs(company_id)
+    average =  feedbacks.where("DATE(feedbacks.created_at) <= ?", date).average(:score_missions)
+    return average.nil? ? 0 : average.round(2)
+  end 
+
+  # Yesterday score
+  def self.global_score_yesterday(company_id)
+    return self.global_score_by_date(company_id, Date.today-1)
+  end 
+
+  def self.workspace_score_yesterday(company_id)
+    return self.workspace_score_by_date(company_id, Date.today-1)
+  end 
+
+  def self.missions_score_yesterday(company_id)
+    return self.missions_score_by_date(company_id, Date.today-1)
+  end 
+
+  def self.company_score_yesterday(company_id)
+    global_score = self.global_score_yesterday(company_id)
+    workspace_score = self.workspace_score_yesterday(company_id)
+    missions_score = self.missions_score_yesterday(company_id)
+    arr = [global_score, workspace_score, missions_score]
+    return (arr.inject(0.0) { |sum, el| sum + el }.to_f / arr.size).round(2)
+  end
+
+  # Lastweek score
+  def self.global_score_lastweek(company_id)
+    return self.global_score_by_date(company_id, Date.today - 1.week)
+  end 
+
+  def self.workspace_score_lastweek(company_id)
+    return self.workspace_score_by_date(company_id, Date.today - 1.week)
+  end 
+
+  def self.missions_score_lastweek(company_id)
+    return self.missions_score_by_date(company_id, Date.today - 1.week)
+  end 
+
+  def self.company_score_lastweek(company_id)
+    global_score = self.global_score_lastweek(company_id)
+    workspace_score = self.workspace_score_lastweek(company_id)
+    missions_score = self.missions_score_lastweek(company_id)
+    arr = [global_score, workspace_score, missions_score]
+    return (arr.inject(0.0) { |sum, el| sum + el }.to_f / arr.size).round(2)
+  end
+
+
 
   private
   def convert_to_integer
