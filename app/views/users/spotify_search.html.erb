@@ -5,7 +5,9 @@
   <br/>
   <div class="container">
     <div class="wrapper">
-      <p><%=@tracks %>
+      <a href=<%=@track.href%>><%=@track.name%></a>
+      <p><%=@uri%></p>
+      <iframe src="<%=@album.spotify%>" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
     </div>
   </div>
 </body>
