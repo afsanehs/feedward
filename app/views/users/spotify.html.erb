@@ -1,0 +1,16 @@
+<body>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <div class="container">
+    <div class="wrapper">
+      <%= form_tag("/search", method: "get") do %>
+        <%= label_tag(:artist, "Search for:") %>
+        <%= text_field_tag(:artist) %>
+        <%= submit_tag("Search") %>
+      <% end %>
+    </div>
+  </div>
+</body>
+  
