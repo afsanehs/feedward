@@ -60,6 +60,7 @@ gem 'faker'
 gem 'dotenv-rails'
 gem 'chartkick'
 gem 'calendly'
+gem 'rspotify'
 
 group :production, :staging do
   gem 'pg'
