@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   patch 'account/profile', to: "users#update_profile"
   get 'account/secret', to: "users#secret"
   get '/spotify', to: "users#spotify"
-  get '/search', to: "users#spotify_search"
+  get '/search', to: "users#spotify"
   get '/dashboard', to: 'users#dashboard'
   get '/dashboard/admin', to: 'users#dashboard_admin'
 

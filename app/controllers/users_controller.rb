@@ -116,16 +116,14 @@ class UsersController < ApplicationController
   end
 
   def spotify
-
-  end
-
-  def spotify_search
-    RSpotify.authenticate(ENV['SPOTI_CLIENT_ID'], ENV['SPOTI_API_SECRET'])
-    @artist = RSpotify::Artist.search(params[:artist]).first
-    @album = @artist.albums.sample
-    @tracks = @album.tracks
-    @track = @tracks.sample
-    @uri = @album.uri.tr('spotify:album:', '')
+    if params[:artist] != nil 
+      RSpotify.authenticate(ENV['SPOTI_CLIENT_ID'], ENV['SPOTI_API_SECRET'])
+      @artist = RSpotify::Artist.search(params[:artist]).first
+      @album = @artist.albums.sample
+      @tracks = @album.tracks
+      @track = @tracks.sample
+      @uri = @album.external_urls['spotify']
+    end
   end
 
 
