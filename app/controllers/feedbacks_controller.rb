@@ -38,6 +38,16 @@ class FeedbacksController < ApplicationController
       end
   end
 
+  # GET users/:id/feedback
+  def user_feedbacks
+    if !current_user.is_site_admin && !current_user.is_company_admin
+      flash[:error] = "Vous n'avez pas de droit pour accéder à cette page."
+      return redirect_to dashboard_path
+    end
+    @user = User.find(params[:id])
+    @feedbacks=Feedback.where(sender: @user)
+  end
+
   private
   def post_params
     post_params = params.require(:feedback).permit(:answer_global, :answer_workspace, :answer_missions, :answer_final, :receiver_id, :score_global, :score_workspace, :score_missions)
