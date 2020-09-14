@@ -22,7 +22,7 @@ end
   company: Company.all.sample)
 end
 
-20.times do 
+5.times do 
   Feedback.create(
     score_global: rand(1..5),
     answer_global: Faker::Lorem.sentence(word_count: 6),
@@ -31,7 +31,8 @@ end
     score_missions: rand(1..5),
     answer_missions: Faker::Lorem.sentence(word_count: 6),
     answer_final: Faker::Lorem.sentence(word_count: 6),
-    sender: User.all.sample,
-    receiver: User.all.sample
+    sender: User.find(75),
+    receiver: User.all.sample,
+    created_at: "2020-09-17 14:59:49 UTC"
   )
 end
