@@ -1,0 +1,34 @@
+<div class="col-md-12 col-lg-6">
+  <div class="card shadow mb-4">
+    <div class="card-header py-3">
+      <h6 class="m-0 font-weight-bold text-indigo text-uppercase">
+      Remarques sur les 7 derniers jours <small>(<%=@warned_feedbacks.count %> remarques)</small>
+      </h6>
+    </div>
+    <ul class="list-group list-group-flush list-message-alert">
+      <% @warned_feedbacks.each do |feedback| %>
+        <li class="list-group-item">
+          <div class="row">
+            <div class="col-8">
+              <%= User.find(feedback.sender_id).first_name %> <%= User.find(feedback.sender_id).last_name %> <br/> 
+              <small><%= User.find(feedback.sender_id).email %></small> <br/>
+              <small>Le <%= get_time_verbose(feedback.created_at) %></small>
+            </div>
+            <div class="col-4">
+              <a href="#" class="btn btn-indigo btn-block mx-auto">Prendre RDV</a>
+            </div>
+          </div>
+          <div class="row mt-2">
+            <div class="col-8">
+              <div class="text-beige"><em><%= truncate(feedback.answer_final, length: 100) %></em></div>
+            </div>
+            <div class="col-4">
+              <a href="#" class="btn btn-outline-indigo btn-block mb-1 mx-auto">Voir</a>
+            </div>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+

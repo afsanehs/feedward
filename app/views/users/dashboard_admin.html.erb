@@ -11,12 +11,20 @@
       </div>
 
       <div class="row">
-        <%= render :partial => 'users/admin/pie_chart_admin'%>
         <%= render :partial => 'users/admin/histo_admin'%>
       </div>
 
+      <div class="row">
+        <%= render :partial => 'users/admin/pie_chart_admin'%>
+      </div>
+
+      <div class="row">
+        <%= render :partial => 'users/admin/messages_admin'%>
+        <%= render :partial => 'users/admin/alerts_admin'%>
+      </div>
+
       <div>
-        <%= render :partial => 'users/partials/table-js'%>
+        <%= render :partial => 'users/admin/table-js'%>
       </div>
     </div>
   </div>
