@@ -6,7 +6,7 @@
  */
 :root {
   --blue: #6558f5;
-  --indigo: #6610f2;
+  --indigo: #2f2f30;
   --purple: #6f42c1;
   --pink: #e83e8c;
   --red: #dc3545;
@@ -18,12 +18,12 @@
   --white: #fff;
   --gray: #b2acfa;
   --gray-dark: #343a40;
-  --primary: #6558f5;
-  --secondary: #b2acfa;
-  --success: #6bb07d;
+  --primary: #59595a;
+  --secondary: #9c9c9e;
+  --success: #8bad94;
   --info: #22347a;
-  --warning: #e8a045;
-  --danger: #f44336;
+  --warning: #e5c49b;
+  --danger: #e09893;
   --light: #f8f9fa;
   --dark: #343a40;
   --breakpoint-xs: 0;
@@ -71,7 +71,7 @@ body {
   line-height: 1.5;
   color: #212529;
   text-align: left;
-  background-color: #fff;
+  background-color: #222324;
 }
 
 [tabindex="-1"]:focus:not(:focus-visible) {
