@@ -24,6 +24,9 @@ module ApplicationHelper
   def get_time_verbose(time_utc)
     return l(time_utc, format: '%d/%m/%Y - à %k:%M')
   end
+  def get_date(time_utc)
+    return l(time_utc, format: '%d/%m/%Y')
+  end
 
   #----------------------------------#
   # Using devise form in another page
