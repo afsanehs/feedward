@@ -21,6 +21,9 @@ class Feedback < ApplicationRecord
     if !self.sender.nil?
       FeedbackMailer.new_feedback_user(self.sender).deliver_now
     end
+    if !self.receiver.nil?
+      FeedbackMailer.new_feedback_receiver(self.receiver).deliver_now
+    end
     FeedbackMailer.new_feedback_admin.deliver_now
   end
 
