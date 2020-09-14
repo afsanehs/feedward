@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   get '/search', to: "users#spotify"
   get '/dashboard', to: 'users#dashboard'
   get '/dashboard/admin', to: 'users#dashboard_admin'
+  get '/users/:id/feedbacks', to: 'feedbacks#user_feedbacks', as: 'users_feedbacks'
 
   devise_for :users
   devise_scope :user do

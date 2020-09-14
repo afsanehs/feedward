@@ -7,7 +7,7 @@ class FeedbacksController < ApplicationController
   end
   def show
     @feedback = Feedback.find(params[:id])
-    if @feedback.sender_id != current_user.id
+    if @feedback.sender_id != current_user.id && !current_user.is_site_admin && !current_user.is_company_admin
       flash[:error] = "Vous n'avez pas le droit pour accéder à cette page"
       return redirect_to dashboard_path
     end
@@ -37,6 +37,16 @@ class FeedbacksController < ApplicationController
         redirect_to new_feedback_path
         
       end
+  end
+
+  # GET users/:id/feedback
+  def user_feedbacks
+    if !current_user.is_site_admin && !current_user.is_company_admin
+      flash[:error] = "Vous n'avez pas de droit pour accéder à cette page."
+      return redirect_to dashboard_path
+    end
+    @user = User.find(params[:id])
+    @feedbacks=Feedback.where(sender: @user)
   end
 
   private

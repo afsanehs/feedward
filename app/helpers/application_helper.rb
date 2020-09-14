@@ -2,6 +2,9 @@ module ApplicationHelper
   def active_class(link_path)
     current_page?(link_path) ? "active" : ""
   end
+  def alert_class(score)
+    score >= 3 ? "text-indigo" : "text-alert"
+  end
   def flash_class(level)
     case level
         when "notice"
@@ -23,6 +26,9 @@ module ApplicationHelper
 
   def get_time_verbose(time_utc)
     return l(time_utc, format: '%d/%m/%Y - à %k:%M')
+  end
+  def get_date(time_utc)
+    return l(time_utc, format: '%d/%m/%Y')
   end
 
   #----------------------------------#
