@@ -12,4 +12,11 @@ class FeedbackMailer < ApplicationMailer
     @admin_email = "getfeedward@outlook.fr"
     mail(to:  @admin_email, subject: 'Un nouveau feedback a été crée') 
   end
+
+  def new_feedback_receiver(receiver)
+    @receiver = receiver
+    @url  = 'http://getfeedward.com' 
+    mail(to:  @receiver.email, subject: 'Tu viens de recevoir un feedback') 
+  end
+
 end
