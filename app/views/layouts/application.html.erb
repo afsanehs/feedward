@@ -39,13 +39,16 @@
     integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous">
   </script>
   <script type="text/javascript" src="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
-  <script>
-    $('#year').text(new Date().getFullYear());
-    $(".alert").fadeOut(6000);
-  </script>
+
   <script>
     $(document).ready(function () {
+      $('#year').text(new Date().getFullYear());
+      $(".alert").fadeOut(6000);
       $('#myTable').dataTable();
+      $('#tableUser').dataTable();
+       $('#tableUserFeedbacks').dataTable({
+         lengthMenu: [25,50,100]
+       });
     });
   </script>
   </body>

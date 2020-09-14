@@ -1,0 +1,31 @@
+<div class="card shadow mb-4">
+  <div class="card-header py-3">
+     <h6 class="m-0 font-weight-bold text-indigo text-uppercase">Liste d'utilisateurs de l'entreprise</h6>
+  </div>
+  <div class="card-body">
+    <table id="tableUser" class="table table-striped">
+      <thead>
+        <tr role="row">
+            <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Prénom: activate to sort column descending" style="width: 120px;">Prénom</th>
+            <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Nom: activate to sort column ascending" style="width: 210px;">Nom</th>
+            <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Date: activate to sort column ascending" style="width: 150px;">Département</th>
+            <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Email: activate to sort column ascending" style="width: 250px;">Email</th>
+            <th class="sorting text-center text-beige" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Moyenne de la note: activate to sort column ascending" style="width: 80px;">Qt. Feedbacks</th>
+            <th class="sorting text-center text-primary" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" style="width: 50px;">Feedbacks</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @users_list.each do |user| %>
+          <tr role="row" class="odd">
+            <td class="sorting_1"><%= user.first_name %></td>
+            <td><%= user.last_name %></td>
+            <td>Département</td>
+            <td><%= user.email %></td>
+            <td class="text-center text-beige"><strong><%= user.sent_feedbacks.count %></strong></td>
+            <td class="text-center"><a href="<%= users_feedbacks_path(user)%>"><i class="fas fa-eye text-primary"></i></a></td>
+          </tr>
+        <% end  %>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -221,6 +221,9 @@ class UsersController < ApplicationController
     end 
     @unsatisfied_users = @unsatisfied_users.sort_by{|u| Feedback.user_score(u.id)}
 
+    #Get users list of company
+    @users_list = User.where(company_id: current_user.company_id).order(:created_at).reverse
+
   end
 
 
