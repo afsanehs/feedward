@@ -44,8 +44,12 @@
     $(document).ready(function () {
       $('#year').text(new Date().getFullYear());
       $(".alert").fadeOut(6000);
-      $('#myTable').dataTable();
-      $('#tableUser').dataTable();
+      $('#myTable').dataTable({
+         "sScrollX": '100%'
+      });
+      $('#tableUser').dataTable({
+         "sScrollX": '100%'
+      });
        $('#tableUserFeedbacks').dataTable({
          lengthMenu: [25,50,100]
        });
