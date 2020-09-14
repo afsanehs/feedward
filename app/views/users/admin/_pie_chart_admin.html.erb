@@ -1,4 +1,4 @@
-<div class="col-6">
+<div class="col-12">
   <div class="card shadow mb-4">
     <!-- Card Header - Dropdown -->
     <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
@@ -6,9 +6,27 @@
     </div>
     <!-- Card Body -->
     <div class="card-body">
-      <div class="chart-pie pt-4 pb-2">
-        <%= pie_chart @all_grades, colors: @colors, library: {legend: {position: "right"}} %>
+      <div class="row">
+          <div class="chart-pie pt-4 pb-2 col-6">
+            <%= pie_chart @all_grades, colors: @colors, library: {legend: {position: "left"}}, download: true %>
+          </div>
+          <div class="d-flex flex-column col-6">
+              <div class="chart-pie mt-2 ml-5" >
+                <div class="d-flex flex-row">
+                <%= pie_chart @all_grades_yesterday, colors: @colors,  legend: false , donut: true,  height: "150px", width: "150px", download: true, library: {cutoutPercentage: 70}%>
+                <div class="ml-2 my-auto text-center">VS hier</div>
+                </div>
+              </div>
+              <div class="chart-pie mt-2 ml-5">
+                <div class="d-flex flex-row ">
+                <%= pie_chart @all_grades, colors: @colors, legend: false, donut: true,  height: "150px", width: "150px", download: true , library: {cutoutPercentage: 70}%>
+                <div class="ml-2 my-auto text-center">VS semaine dernière</div>      
+                </div>
+              </div>
+
+          </div>
       </div>
+     
     </div>
   </div>
 </div>
