@@ -44,6 +44,14 @@
           <li class="nav-item">
             <a class="nav-link nav-text-bold" href="<%=destroy_user_session_path%>">Se déconnecter</a>
           </li>
+
+          <li>
+            <% if cookies[:moon] %>
+              <%= button_to 'Light Mode', sun_path, method: :get%>
+            <% else %>
+              <%= button_to 'Dark Mode', moon_path, method: :get%>
+            <% end %>
+          </li>
         </ul>
         <% else %>
         <ul class="navbar-nav ml-auto nav-account">

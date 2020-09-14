@@ -11,4 +11,27 @@ class ApplicationController < ActionController::Base
   def render_404
     render file: "#{Rails.root}/public/404", status: :not_found
   end
+
+  def moon
+  cookies[:moon] = {
+    value: 'dark mode on'
+  }
+    if user_signed_in?
+      redirect_to dashboard_path
+    else
+      redirect_to root_path
+    end
+  end
+
+  def sun
+    cookies.delete(:moon)
+    if user_signed_in?
+      redirect_to dashboard_path
+    else
+      redirect_to root_path
+    end
+  end
+
+
+
 end
