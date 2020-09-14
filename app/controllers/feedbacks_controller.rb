@@ -3,6 +3,7 @@ class FeedbacksController < ApplicationController
 
   def index
     @feedbacks = Feedback.where(sender: current_user)
+    @colleagues = User.where(company_id: current_user.company_id)
   end
   def show
     @feedback = Feedback.find(params[:id])
@@ -33,7 +34,7 @@ class FeedbacksController < ApplicationController
         @feedback.errors.full_messages.each do |message|
           flash[:error] = message
         end
-        render :new
+        redirect_to new_feedback_path
         
       end
   end
