@@ -111,18 +111,70 @@ class UsersController < ApplicationController
     end
 
     #calculations for the pie Chart of yesterday
-    @grade_5_yesterday = (@feedbacks.where(score_global: 5).count + @feedbacks.where(score_workspace: 5).count + @feedbacks.where(score_missions: 5).count)
-    @grade_4_yesterday = (@feedbacks.where(score_global: 4).count + @feedbacks.where(score_workspace: 4).count + @feedbacks.where(score_missions: 4).count)
-    @grade_3_yesterday = (@feedbacks.where(score_global: 3).count + @feedbacks.where(score_workspace: 3).count + @feedbacks.where(score_missions: 3).count)
-    @grade_2_yesterday = (@feedbacks.where(score_global: 2).count + @feedbacks.where(score_workspace: 2).count + @feedbacks.where(score_missions: 2).count)
-    @grade_1_yesterday = (@feedbacks.where(score_global: 1).count + @feedbacks.where(score_workspace: 1).count + @feedbacks.where(score_missions: 1).count)
-    @grade_0_yesterday = (@feedbacks.where(score_global: 0).count + @feedbacks.where(score_workspace: 0).count + @feedbacks.where(score_missions: 0).count)
+    yesterday = Date.today - 1.day
+    @grade_5_yesterday = @feedbacks.where(score_global: 5).where("DATE(feedbacks.created_at) <= ?", yesterday).count 
+                        + @feedbacks.where(score_workspace: 5).where("DATE(feedbacks.created_at) <= ?", yesterday).count 
+                        + @feedbacks.where(score_missions: 5).where("DATE(feedbacks.created_at) <= ?", yesterday).count
+
+    @grade_4_yesterday = @feedbacks.where(score_global: 4).where("DATE(feedbacks.created_at) <= ?", yesterday).count 
+                        + @feedbacks.where(score_workspace: 4).where("DATE(feedbacks.created_at) <= ?", yesterday).count 
+                        + @feedbacks.where(score_missions: 4).where("DATE(feedbacks.created_at) <= ?", yesterday).count
+
+    @grade_3_yesterday = @feedbacks.where(score_global: 3).where("DATE(feedbacks.created_at) <= ?", yesterday).count 
+                          + @feedbacks.where(score_workspace: 3).where("DATE(feedbacks.created_at) <= ?", yesterday).count 
+                          + @feedbacks.where(score_missions: 3).where("DATE(feedbacks.created_at) <= ?", yesterday).count
+
+    @grade_2_yesterday = @feedbacks.where(score_global: 2).where("DATE(feedbacks.created_at) <= ?", yesterday).count 
+                          + @feedbacks.where(score_workspace: 2).where("DATE(feedbacks.created_at) <= ?", yesterday).count 
+                          + @feedbacks.where(score_missions: 2).where("DATE(feedbacks.created_at) <= ?", yesterday).count 
+    
+    @grade_1_yesterday = @feedbacks.where(score_global: 1).where("DATE(feedbacks.created_at) <= ?", yesterday).count 
+                          + @feedbacks.where(score_workspace: 1).where("DATE(feedbacks.created_at) <= ?", yesterday).count 
+                          + @feedbacks.where(score_missions: 1).where("DATE(feedbacks.created_at) <= ?", yesterday).count
+
+    @grade_0_yesterday = @feedbacks.where(score_global: 0).where("DATE(feedbacks.created_at) <= ?", yesterday).count 
+                        + @feedbacks.where(score_workspace: 0).where("DATE(feedbacks.created_at) <= ?", yesterday).count 
+                        + @feedbacks.where(score_missions: 0).where("DATE(feedbacks.created_at) <= ?", yesterday).count
     @score_colors = {"Note 5" => "#22347A", "Note 4" => "#6558F1", "Note 3" => "#B2ACFA", "Note 2" => "#CE885D", "Note 1" => "#DFB090", "Note 0" => "#F6E8DF"}
     @all_grades_yesterday = {"Note 5" => @grade_5_yesterday, "Note 4" => @grade_4_yesterday, "Note 3" => @grade_3_yesterday, "Note 2" => @grade_2_yesterday, "Note 1" => @grade_1_yesterday, "Note 0" => @grade_0_yesterday}
     @colors = []
     @all_grades_yesterday.each do |score, _|
       @colors << @score_colors[score]
     end
+
+
+    #calculations for the pie Chart of yesterday
+    last_week = Date.today - 7.day
+    @grade_5_last_week = @feedbacks.where(score_global: 5).where("DATE(feedbacks.created_at) <= ?", last_week).count 
+                        + @feedbacks.where(score_workspace: 5).where("DATE(feedbacks.created_at) <= ?", last_week).count 
+                        + @feedbacks.where(score_missions: 5).where("DATE(feedbacks.created_at) <= ?", last_week).count
+
+    @grade_4_last_week = @feedbacks.where(score_global: 4).where("DATE(feedbacks.created_at) <= ?", last_week).count 
+                        + @feedbacks.where(score_workspace: 4).where("DATE(feedbacks.created_at) <= ?", last_week).count 
+                        + @feedbacks.where(score_missions: 4).where("DATE(feedbacks.created_at) <= ?", last_week).count
+
+    @grade_3_last_week = @feedbacks.where(score_global: 3).where("DATE(feedbacks.created_at) <= ?", last_week).count 
+                          + @feedbacks.where(score_workspace: 3).where("DATE(feedbacks.created_at) <= ?", last_week).count 
+                          + @feedbacks.where(score_missions: 3).where("DATE(feedbacks.created_at) <= ?", last_week).count
+
+    @grade_2_last_week = @feedbacks.where(score_global: 2).where("DATE(feedbacks.created_at) <= ?", last_week).count 
+                          + @feedbacks.where(score_workspace: 2).where("DATE(feedbacks.created_at) <= ?", last_week).count 
+                          + @feedbacks.where(score_missions: 2).where("DATE(feedbacks.created_at) <= ?", last_week).count 
+    
+    @grade_1_last_week = @feedbacks.where(score_global: 1).where("DATE(feedbacks.created_at) <= ?", last_week).count 
+                          + @feedbacks.where(score_workspace: 1).where("DATE(feedbacks.created_at) <= ?", last_week).count 
+                          + @feedbacks.where(score_missions: 1).where("DATE(feedbacks.created_at) <= ?", last_week).count
+
+    @grade_0_last_week = @feedbacks.where(score_global: 0).where("DATE(feedbacks.created_at) <= ?", last_week).count 
+                        + @feedbacks.where(score_workspace: 0).where("DATE(feedbacks.created_at) <= ?", last_week).count 
+                        + @feedbacks.where(score_missions: 0).where("DATE(feedbacks.created_at) <= ?", last_week).count
+    @score_colors = {"Note 5" => "#22347A", "Note 4" => "#6558F1", "Note 3" => "#B2ACFA", "Note 2" => "#CE885D", "Note 1" => "#DFB090", "Note 0" => "#F6E8DF"}
+    @all_grades_last_week = {"Note 5" => @grade_5_last_week, "Note 4" => @grade_4_last_week, "Note 3" => @grade_3_last_week, "Note 2" => @grade_2_last_week, "Note 1" => @grade_1_last_week, "Note 0" => @grade_0_last_week}
+    @colors = []
+    @all_grades_last_week.each do |score, _|
+      @colors << @score_colors[score]
+    end
+
 
     # Data for line charts
     @line_feedbacks=[]
