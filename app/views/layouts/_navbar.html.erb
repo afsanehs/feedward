@@ -28,7 +28,17 @@
 
         <% if user_signed_in? %>
         <ul class="navbar-nav ml-auto">
-          <% if current_user.is_company_admin %>
+          <% if current_user.is_company_admin || current_user.is_site_admin %>
+           <li class="nav-item">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="fas fa-bell"></i>
+                  <span>15</span>
+                </a>
+               
+              <%= render :partial => 'users/admin/notification'%>
+              </li>
+          </li>
           <li class="nav-item <%= active_class(dashboard_admin_path) %>">
             <a class="nav-link nav-text-bold" href="<%= dashboard_admin_path %>">Dashboard Admin</a>
           </li>
