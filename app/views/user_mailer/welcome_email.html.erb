@@ -1,29 +1,137 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Welcome to Feedward!</title>
   </head>
+
   <body>
-    <br>
-    <hr>
-    <h1>Salut et bienvenue chez nous !</h1>
-    <p>
-      Tu t'es inscrit sur Feedward en utilisant l'e-mail suivant : <%= @user.email %>.
-    </p>
-    <p>
-      Pour accéder à ton espace client, connecte-toi via : <%= @url %>.
-    </p>
-    <p>
-      Renseigne ton profil et nous t'invitons dès maintenant à <%= link_to "remplir ton premier questionnaire.", dashboard_url %>.<br>
-      Seule la personne en charge des ressources humaines de ton entreprise aura accès à tes réponses dans le détail et pourra en faire part à ton manager si besoin (avec ton accord préalable).<br>
-      Pour que ton équipe RH ait une repérésentation la plus fidèle possible du fonctionnement de ton équipe, nous t'invitons à remplir un formulaire par jour.<br>
-      Ce formulaire sera modifiable toute la journée de sa création jusqu'à 18h.<br>
-      Tu as la possibilité de faire part de ton feedback à un ou plusieurs de tes équipiers en remplissant leur adresse mail en bas du formulaire.<br>
-      Pour toute autre question, n'hésite pas à nous écrire à : contact@getfeedward.com.<br>
-    </p>
-    <p>Merci pour ta confiance.</p>
-    <p> À très vite sur Feedward ! </p>
-    <hr>
-    <p>Pierre<br>Responsable relation client<br>contact@getfeedward.com<br>01 23 45 67 89</p>
+    <div class="email-background" style="background: #eee; padding: 10px">
+      <div
+        class="pre-header"
+        style="
+          max-width: 500px;
+          background: #eee;
+          font-family: sans-serif;
+          margin: 0px auto;
+          overflow: hidden;
+          border-radius: 5px;
+          color: #eee;
+          font-size: 5px;
+        "
+      >
+        Tu viens à l'instant de t'inscrire à Feedward. L'application qui te
+        permet d'évaluer ton équipe mangériale en toute sérénité.
+      </div>
+      <div
+        class="email-container"
+        style="
+          max-width: 500px;
+          background: #dddbf8;
+          font-family: sans-serif;
+          margin: 0px auto;
+          overflow: hidden;
+          border-radius: 5px;
+        "
+      >
+        <h1>Salut et bienvenue chez Feedward !</h1>
+        <h2>
+          Tu t'es inscrit sur Feedward en utilisant l'e-mail suivant : <%=
+          @user.email %>.
+        </h2>
+        <img
+          src="https://media.giphy.com/media/AeWoyE3ZT90YM/source.gif"
+          alt=""
+          style="max-width: 100%"
+        />
+        <p
+          style="
+            margin: 20px;
+            font-size: 18px;
+            color: #222324;
+            line-height: 1.5;
+            font-weight: 300;
+          "
+        >
+          Tu vas maintenant pouvoir évaluer ton équipe managériale. Seule la
+          personne en charge des ressources humaines de ton entreprise aura
+          accès à ce fichier dans le détail.<br />
+          Pour que ton équipe RH ait une repérésentation la plus fidèle possible
+          du fonctionnement de ton équipe, nous t'invitons à remplir un
+          formulaire par jour.<br />
+          Ce formulaire sera modifiable toute la journée de sa création jusqu'à
+          18h.<br />
+          Tu as la possibilité de faire part de ton feedback à un ou plusieurs
+          de tes équipiers.<br />
+        </p>
+        <div
+          class="remplir-form"
+          style="
+            text-align: center;
+            margin: 20px;
+            text-decoration: none;
+            display: inline-block;
+            background: #6558f5;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+          "
+        >
+          <%= link_to "Remplir ton premier questionnaire.", dashboard_url %>.<br />
+        </div>
+
+        <p
+          style="
+            margin: 20px;
+            font-size: 18px;
+            color: #222324;
+            line-height: 1.5;
+            font-weight: 300;
+          "
+        >
+          Merci pour ta confiance.
+        </p>
+        <p
+          style="
+            margin: 20px;
+            font-size: 18px;
+            color: #222324;
+            line-height: 1.5;
+            font-weight: 300;
+          "
+        >
+          À très vite sur Feedward !
+        </p>
+      </div>
+      <div
+        class="footer"
+        style="
+          max-width: 500px;
+          background: none;
+          font-family: sans-serif;
+          margin: 0px auto;
+          overflow: hidden;
+          border-radius: 5px;
+          text-align: center;
+          padding: 20px;
+          font-size: 14px;
+          text-decoration: none;
+          color: #222324;
+        "
+      >
+        <a
+          href="http://getfeedward.com/"
+          style="text-decoration: none; color: #222324"
+          >Visiter le site</a
+        >
+        |
+        <a
+          href="mailto: contact@getfeedward.com"
+          style="text-decoration: none; color: #222324"
+          >Nous contacter</a
+        >
+      </div>
+    </div>
   </body>
 </html>

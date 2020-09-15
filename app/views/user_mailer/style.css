@@ -1,0 +1,57 @@
+.email-background {
+  background: #eee;
+  padding: 10px;
+}
+
+.email-container,
+.pre-header,
+.footer {
+  max-width: 500px;
+  background: #dddbf8;
+  font-family: sans-serif;
+  margin: 0px auto;
+  overflow: hidden;
+  border-radius: 5px;
+}
+
+.pre-header {
+  background: #eee;
+  color: #eee;
+  font-size: 5px;
+}
+
+img {
+  max-width: 100%;
+}
+
+p {
+  margin: 20px;
+  font-size: 18px;
+  color: #222324;
+  line-height: 1.5;
+  font-weight: 300;
+}
+
+.remplir-form {
+  text-align: center;
+  margin: 20px;
+  text-decoration: none;
+  display: inline-block;
+  background: #6558f5;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+
+.footer {
+  background: none;
+  text-align: center;
+  padding: 20px;
+  font-size: 14px;
+}
+
+.footer,
+a {
+  text-decoration: none;
+  color: #222324;
+}
