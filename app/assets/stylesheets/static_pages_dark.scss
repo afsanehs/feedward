@@ -141,11 +141,10 @@
 }
 
 .careers-photo {
-  background: {
-    image: asset_url("offices/careers");
-  }
+  background-image: linear-gradient(black, black), asset_url("offices/careers");
   height: 50vh;
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
+  background-blend-mode: saturation;
 }
