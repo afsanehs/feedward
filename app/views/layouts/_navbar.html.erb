@@ -47,9 +47,9 @@
 
           <li>
             <% if cookies[:moon] %>
-              <button class="btn btn-primary"><%= link_to 'Light Mode', sun_path, method: :get%></button>
+              <button id="darkmode-button" class="btn btn-primary"><%= link_to 'Light Mode', sun_path, method: :get%></button>
             <% else %>
-              <button class="btn btn-primary"><%= link_to 'Dark Mode', moon_path, method: :get%></button>
+              <button id="darkmode-button" class="btn btn-primary"><%= link_to 'Dark Mode', moon_path, method: :get%></button>
             <% end %>
           </li>
         </ul>
@@ -64,9 +64,9 @@
 
           <li>
             <% if cookies[:moon] %>
-              <button class="btn btn-primary"><%= link_to 'Light Mode', sun_path, method: :get%></button>
+              <button id="darkmode-button" class="btn btn-primary"><%= link_to 'Light Mode', sun_path, method: :get%></button>
             <% else %>
-              <button class="btn btn-primary"><%= link_to 'Dark Mode', moon_path, method: :get%></button>
+              <button id="darkmode-button" class="btn btn-primary"><%= link_to 'Dark Mode', moon_path, method: :get%></button>
             <% end %>
           </li>
         </ul>
