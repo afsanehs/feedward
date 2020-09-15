@@ -13,15 +13,24 @@
           <div class="d-flex flex-column col-6">
               <div class="chart-pie mt-2 ml-5" >
                 <div class="d-flex flex-row">
-                <%= pie_chart @all_grades_yesterday, colors: @colors,  legend: false , donut: true,  height: "150px", width: "150px", download: true, library: {cutoutPercentage: 70}%>
-                <div class="ml-2 my-auto text-center">VS hier</div>
+                  <%= pie_chart @all_grades_yesterday, colors: @colors,  legend: false , donut: true,  height: "150px", width: "150px", download: true, library: {cutoutPercentage: 70}%>
+                  <small><div class = "card mx-auto ml-5">
+                    <ul class="list-group list-group-flush">
+                      <li class="list-group-item text-uppercase"> Comparaison avec hier</li>
+                    </ul>
+                  </div></small>
                 </div>
               </div>
               <div class="chart-pie mt-2 ml-5">
                 <div class="d-flex flex-row ">
                 <%= pie_chart @all_grades_last_week, colors: @colors, legend: false, donut: true,  height: "150px", width: "150px", download: true , library: {cutoutPercentage: 70}%>
-                <div class="ml-2 my-auto text-center">VS semaine dernière</div>      
-                </div>
+                
+                <small><div class = "card mx-auto ml-5">
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item text-uppercase"> Comparaison avec la semaine dernière</li>
+                  </ul>
+                </div></small>
+                
               </div>
 
           </div>
