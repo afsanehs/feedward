@@ -69,3 +69,37 @@
 .navbar-dark .navbar-text a:focus {
   color: #333;
 }
+
+// Notification
+.symbol-noti-wrapper {
+  position: relative;
+  cursor: pointer;
+  max-width: 2.5rem;
+  padding: 0.5rem;
+}
+.symbol-noti {
+  color: #6558f5;
+}
+
+.navbar-badge {
+  display: none;
+  font-size: 0.6rem;
+  padding: 2px 4px;
+  position: absolute;
+  right: 6px;
+  top: -6px;
+  color: #ce885d;
+  background-color: #fff;
+  border-radius: 5px;
+}
+
+.dropdown-menu {
+  a {
+    color: #6558f5;
+  }
+}
+
+.dropdown-menu-footer {
+  margin-top: 2px;
+  border-top: 1px solid #333;
+}

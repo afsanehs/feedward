@@ -5,6 +5,7 @@ class FeedbacksController < ApplicationController
     @feedbacks = Feedback.where(sender: current_user)
     @colleagues = User.where(company_id: current_user.company_id)
   end
+
   def show
     @feedback = Feedback.find(params[:id])
     if @feedback.sender_id != current_user.id && !current_user.is_site_admin && !current_user.is_company_admin
@@ -38,6 +39,7 @@ class FeedbacksController < ApplicationController
         
       end
   end
+
 
   # GET users/:id/feedback
   def user_feedbacks

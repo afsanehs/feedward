@@ -9,6 +9,7 @@ class User < ApplicationRecord
   belongs_to :company, optional: true #an employee works for only one company
   has_many :received_feedbacks, class_name: "Feedback", foreign_key: :receiver_id, dependent: :destroy
   has_many :sent_feedbacks, class_name: "Feedback", foreign_key: :sender_id , dependent: :destroy
+  has_many :notifications 
 
   validates :email,
     presence:true,
@@ -23,4 +24,12 @@ class User < ApplicationRecord
   def welcome_send
     UserMailer.welcome_email(self).deliver_now
   end
+
+  def notify_profile_updated
+    if self.company.changed?
+      activity = Activity.find_by(name: "user_created")
+      Notification.create(user: self, activity: activity)
+    end
+  end
+
 end

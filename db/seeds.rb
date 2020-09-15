@@ -35,3 +35,7 @@ end
     created_at: "2020-09-02 14:59:49 UTC"
   )
 end
+Activity.create(name: "user_created");
+Activity.create(name: "feedback_created");
+Activity.create(name: "feedback_updated");
+
