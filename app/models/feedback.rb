@@ -4,6 +4,7 @@ class Feedback < ApplicationRecord
 
   after_create :new_feedback_mail
   before_validation :convert_to_integer
+  before_save :save_score_average
 
 
   validates :score_global,
@@ -28,9 +29,9 @@ class Feedback < ApplicationRecord
   end
 
   # Instance method
-  def score_average
+  def save_score_average
     score = (self.score_global + self.score_workspace + self.score_missions)/3.0
-    return score.nil? ? 0 : score.round(2)
+    self.score_average =  score.nil? ? 0 : score.round(2)
   end
 
   #-----------------------------------------------------------

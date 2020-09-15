@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 2020_09_14_213035) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "draft"
+    t.float "score_average"
     t.index ["receiver_id"], name: "index_feedbacks_on_receiver_id"
     t.index ["sender_id"], name: "index_feedbacks_on_sender_id"
   end
