@@ -18,7 +18,8 @@ class FeedbacksController < ApplicationController
       redirect_to profile_path
       flash[:error] = "Il faut que tu complètes ton profil et que tu renseignes une entreprise avant de commencer !"
     else
-      @feedback = Feedback.new
+
+      @feedback = current_user.sent_feedbacks.where(draft: true).last || Feedback.new
       @colleagues = User.where(company_id: current_user.company_id)
     end 
   end
@@ -26,6 +27,12 @@ class FeedbacksController < ApplicationController
   def create
     @user = current_user
     @feedback = Feedback.new(post_params)
+    current_user.sent_feedbacks.where(draft: true).destroy_all
+    if "draft"==params[:submit_button]
+      @feedback.draft=true
+    else 
+      @feedback.draft=false
+    end
     @feedback.sender = current_user
       if @feedback.save # try to save in the database @feedback
         flash[:success] = "Votre feedback a été créé!"
@@ -35,7 +42,6 @@ class FeedbacksController < ApplicationController
           flash[:error] = message
         end
         redirect_to new_feedback_path
-        
       end
   end
 
