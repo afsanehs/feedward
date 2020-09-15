@@ -27,6 +27,7 @@ class FeedbacksController < ApplicationController
   def create
     @user = current_user
     @feedback = Feedback.new(post_params)
+    current_user.sent_feedbacks.where(draft: true).destroy_all
     if "draft"==params[:submit_button]
       @feedback.draft=true
     else 
