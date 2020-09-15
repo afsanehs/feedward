@@ -51,6 +51,7 @@ class UsersController < ApplicationController
     @score_missions_average_by_user = Feedback.missions_score_user(@user.id)
     @average_company_score_by_user = Feedback.user_score(@user.id)
 
+
     #Calculations for the pie Chart
     @grade_5_by_user = (@feedbacks_user.where(score_global: 5).count + @feedbacks_user.where(score_workspace: 5).count + @feedbacks_user.where(score_missions: 5).count)
     @grade_4_by_user = (@feedbacks_user.where(score_global: 4).count + @feedbacks_user.where(score_workspace: 4).count + @feedbacks_user.where(score_missions: 4).count)
@@ -65,6 +66,7 @@ class UsersController < ApplicationController
       @colors << @score_colors[score]
     end
   end
+
 
   def dashboard_admin
     if !current_user.is_site_admin && !current_user.is_company_admin
@@ -201,10 +203,11 @@ class UsersController < ApplicationController
     @today=Date.today
     @two_month_ago = @today - 8.week
 
-    #Data for warning texts
+
+    #Data for comments
     @warned_feedbacks = []
     @feedbacks.each do |feedback|
-      if feedback.answer_final != "" && feedback.created_at >= (Time.now - 3.day)
+      if feedback.answer_final != "" && feedback.created_at >= (Time.now - 7.day)
         @warned_feedbacks << feedback
       end
     end 
@@ -215,7 +218,7 @@ class UsersController < ApplicationController
     #Data for alerts
     @unsatisfied_users = []
     @company_users.each do |user|
-      if Feedback.user_score(user.id) < 3
+      if Feedback.user_score(user.id) < 3 && Feedback.where(sender_id: user.id).count != 0
         @unsatisfied_users << user
       end
     end 
