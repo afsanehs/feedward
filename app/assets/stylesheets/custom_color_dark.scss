@@ -6,7 +6,7 @@ body {
   box-sizing: border-box;
   font-family: "Lato", sans-serif;
   font-size: 1.08rem;
-  color: #b1bdee;
+  color: #ebeaff;
   display: flex;
   flex-direction: column;
   background-color: #222324;
@@ -23,11 +23,11 @@ h6 {
 }
 
 footer {
-  background: #c4c1df;
+  background: #20262c;
   z-index: 10;
-  color: #333;
+  color: #c1c0db;
   a {
-    color: #333;
+    color: #c1c0db;
   }
   margin-top: auto;
 }
@@ -113,7 +113,7 @@ mark,
 }
 
 .img-thumbnail {
-  background-color: #fff;
+  background-color: #222324;
   border: 1px solid #f6e8df;
 }
 
@@ -303,7 +303,7 @@ pre {
 
 .form-control:focus {
   color: #495057;
-  background-color: #fff;
+  background-color: #222324;
   border-color: #f6e8df;
   outline: 0;
   -webkit-box-shadow: 0 0 0 0.2rem rgba(101, 88, 245, 0.25);
@@ -338,7 +338,7 @@ pre {
 
 select.form-control:focus::-ms-value {
   color: #495057;
-  background-color: #fff;
+  background-color: #222324;
 }
 
 .form-control-plaintext {
@@ -1131,7 +1131,7 @@ select.form-control:focus::-ms-value {
 }
 
 .custom-control-label::before {
-  background-color: #fff;
+  background-color: #222324;
   border: #adb5bd solid 1px;
 }
 
@@ -1183,7 +1183,7 @@ select.form-control:focus::-ms-value {
 
 .custom-select:focus::-ms-value {
   color: #495057;
-  background-color: #fff;
+  background-color: #222324;
 }
 
 .custom-select:disabled {
@@ -1209,7 +1209,7 @@ select.form-control:focus::-ms-value {
 
 .custom-file-label {
   color: #495057;
-  background-color: #fff;
+  background-color: #222324;
   border: 1px solid #ced4da;
 }
 
@@ -1334,7 +1334,7 @@ select.form-control:focus::-ms-value {
   margin-left: -1px;
   line-height: 1.25;
   color: #dddbf8;
-  background-color: #fff;
+  background-color: #222324;
   border: 1px solid #f6e8df;
 }
 
@@ -1364,7 +1364,7 @@ select.form-control:focus::-ms-value {
   color: #c4c1df;
   pointer-events: none;
   cursor: auto;
-  background-color: #fff;
+  background-color: #222324;
   border-color: #f6e8df;
 }
 
@@ -1647,7 +1647,7 @@ a.badge-dark.focus {
   position: relative;
   display: block;
   padding: 0.75rem 1.25rem;
-  background-color: #fff;
+  background-color: #222324;
   border: 1px solid rgba(0, 0, 0, 0.125);
 }
 
@@ -1665,7 +1665,7 @@ a.badge-dark.focus {
 .list-group-item:disabled {
   color: #c4c1df;
   pointer-events: none;
-  background-color: #fff;
+  background-color: #222324;
 }
 
 .list-group-item.active {
@@ -1831,7 +1831,7 @@ button.bg-primary:focus {
 }
 
 .bg-secondary {
-  background-color: #c4c1df !important;
+  background-color: #20262c !important;
 }
 
 a.bg-secondary:hover,

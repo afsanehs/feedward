@@ -1,5 +1,5 @@
 .navbar-section {
-  background-color: #c4c1df;
+  background-color: #171a1d;
   position: relative;
   .nav-text-bold {
     color: #dddbf8;
@@ -11,36 +11,41 @@
   }
 
   a {
-    color: #fff;
+    color: #c1c0db;
     font-weight: 400;
   }
   a:hover {
-    color: #333;
+    color: #dddbf8;
   }
   .active {
-    color: #333;
+    color: #dddbf8;
   }
 }
 .navbar-toggler-icon {
   z-index: 10;
 }
 
-.navbar-dark .navbar-brand {
-  color: #dddbf8;
+.navbar-dark {
+  color: #20262c;
 }
+
+.navbar-brand {
+  color: #c1c0db;
+}
+
 .navbar-dark .navbar-brand:hover,
 .navbar-dark .navbar-brand:focus {
   color: #dddbf8;
 }
 .navbar-dark .navbar-nav .nav-link {
-  color: #fff;
+  color: #c1c0db;
 }
 .navbar-dark .navbar-nav .nav-link.nav-text-bold {
   color: #dddbf8;
 }
 .navbar-dark .navbar-nav .nav-link:hover,
 .navbar-dark .navbar-nav .nav-link:focus {
-  color: #333;
+  color: #dddbf8;
 }
 
 .navbar-dark .navbar-nav .nav-link.disabled {
