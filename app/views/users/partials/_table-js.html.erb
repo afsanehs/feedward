@@ -3,8 +3,8 @@
         <h6 class="m-0 font-weight-bold text-primary">Historique des feedbacks</h6>
   </div>
   <div class="card-body">
-    <table id="myTable" class="table table-striped">
-      <thead>
+    <table id="myTable" class="table table-striped" style="color:#dee2e6;background:#222324;">
+      <thead style="color:#dee2e6;background:#222324;">
         <tr role="row">
             <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Prénom: activate to sort column descending" style="width: 175px;">Prénom</th>
             <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Nom: activate to sort column ascending" style="width: 266px;">Nom</th>
@@ -16,11 +16,11 @@
       <tbody>
         <% @feedbacks.each do |feedback| %>
           <tr role="row" class="odd">
-            <td class="sorting_1"><%= feedback.sender.first_name %></td>
-            <td><%= feedback.sender.last_name %> (<%= feedback.sender.company.name %>) </td>
-            <td><%= feedback.sender.email %></td>
-            <td><%= feedback.created_at %></td>
-            <td><%= feedback.score_average %></td>
+            <td class="sorting_1" style="color:#dee2e6;background:#222324;"><a href="<%= feedback_path(feedback.id) %>"><%= feedback.sender.first_name %></a></td>
+            <td style="color:#dee2e6;background:#222324;"><%= feedback.sender.last_name %> (<%= feedback.sender.company.name %>) </td>
+            <td style="color:#dee2e6;background:#222324;"><%= feedback.sender.email %></td>
+            <td style="color:#dee2e6;background:#222324;"><%= feedback.created_at %></td>
+            <td style="color:#dee2e6;background:#222324;"><%= feedback.score_average %></td>
           </tr>
         <% end  %>
       </tbody>
