@@ -1,0 +1,5 @@
+function updateEmail(){
+  const emailElement = document.getElementById("notification_<%= @notification.id%>")
+  emailElement.classList.toggle("is-read")
+}
+updateEmail()

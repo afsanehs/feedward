@@ -5,6 +5,9 @@ module ApplicationHelper
   def alert_class(score)
     score >= 3 ? "text-indigo" : "text-alert"
   end
+  def is_read_class(notification)
+    notification.is_read ? "is_read" : ""
+  end
   def flash_class(level)
     case level
         when "notice"
@@ -18,6 +21,13 @@ module ApplicationHelper
         when "alert"
           return "alert alert-danger"
     end
+  end
+
+  def all_notifications
+    if user_signed_in?
+      return Notification.joins(:user).where(users:{company_id: current_user.company_id})
+    end
+    return []
   end
 
   def get_time(time_utc)

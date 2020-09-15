@@ -229,6 +229,8 @@ class UsersController < ApplicationController
     #Get users list of company
     @users_list = User.where(company_id: current_user.company_id).order(:created_at).reverse
 
+    # Get all notifications
+    @notifications = Notification.all.limit(15).order(:created_at).reverse
   end
 
 

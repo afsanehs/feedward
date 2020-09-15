@@ -1,0 +1,82 @@
+<div class="container-fluid notifications-section">
+ 
+  <div class ="row">
+    <div class="col-12 col-md-6 mx-auto feedback-noti-wrapper">
+     <h4 class="mb-4 mt-3">Nouveaux feedbacks</h4>
+      <div class="list-group">
+        <% @notifications.each do |notification| %>
+          <% if notification.activity.name == "feedback_created"%>
+              <div class="row">
+                  <div class="col-10">
+                      <a class="list-group-item list-group-item-action" href="#">
+                        <div class="row">
+                            <div class="col-9 d-flex">
+                               <h5 class="text-primary text-center"><i class="fas fa-gift"></i></h5>
+                                <p class="text-indigo-bold text-left <%= is_read_class(notification)%>"><%= notification.user.full_name %> vient de créer un feedback.</p>
+                            </div>
+                          <small class="col-3 text-beige text-right">Le <%= get_date(notification.created_at)%></small>
+                        </div>
+                      </a>
+                  </div>
+                  <div class="col-2 d-flex">
+                    <a href="<%= notification_path(notification, is_read: true) %>" data-toggle="tooltip" data-placement="left" title="Marquer comme lu" data-remote="true" data-method="put">
+                      <i class="fas fa-check-double text-center text-success fa-lg mt-3 mr-2"></i>
+                    </a><br/>
+                    <a href="#" data-toggle="tooltip" data-placement="left" title="Archiver cette notification" data-remote="true"
+                    ><i class="fas fa-archive text-center text-danger fa-lg mt-3" ></i>
+                    </a>
+                  </div>
+            </div>
+          
+          <% elsif notification.activity.name =="feedback_updated"%>
+            <div class="row">
+                  <div class="col-10">
+                      <a class="list-group-item list-group-item-action" href="#">
+                        <div class="row">
+                            <div class="col-9 d-flex">
+                               <h5 class="text-primary text-center"><i class="fas fa-gift"></i></h5>
+                                <p class="text-indigo-bold text-left <%= is_read_class(notification)%>"><%= notification.user.full_name %> vient de modifier son feedback.</p>
+                            </div>
+                          <small class="col-3 text-beige text-right">Le <%= get_date(notification.created_at)%></small>
+                        </div>
+                      </a>
+                  </div>
+                  <div class="col-2 d-flex">
+                    <a href=""><i class="fas fa-check-double text-center text-success fa-lg mt-3 mr-2"></i></a><br/>
+                    <a href=""><i class="fas fa-archive text-center text-danger fa-lg mt-3"></i></a>
+                  </div>
+            </div>
+            
+          <% end %> 
+        <%end%>
+      </div>
+    </div>
+
+    <div class="col-12 col-md-6 mx-auto user-noti-wrapper">
+      <h4 class="mb-4 mt-3">Nouveaux utilisateurs</h4>
+      <div class="list-group">
+        <% @notifications.each do |notification| %>
+          <% if notification.activity.name =="user_created"%>
+            <div class="row">
+              <div class="col-10">
+                  <a class="list-group-item list-group-item-action" href="#">
+                    <div class="row">
+                        <div class="col-9 d-flex">
+                          <h5 class="text-primary text-center mr-3"><i class="fas fa-user-plus"></i></h5>
+                          <p class="text-indigo-bold text-left <%= is_read_class(notification)%>"><%= notification.user.full_name %> souhaite rejoindre votre entreprise.</p>
+                        </div>
+                      <small class="col-3 text-beige text-right">Le <%= get_date(notification.created_at)%></small>
+                    </div>
+                  </a>
+              </div>
+              <div class="col-2 d-flex">
+                <a href=""><i class="fas fa-user-check text-center text-success fa-lg mt-3 mr-2"></i></a><br/>
+                <a href=""><i class="fas fa-user-times text-center text-danger fa-lg mt-3"></i></a>
+              </div>
+            </div>
+          <%end %> 
+        <%end%>
+      </div>
+    </div>
+  </div>
+</div>

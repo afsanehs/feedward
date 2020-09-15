@@ -25,6 +25,13 @@ class User < ApplicationRecord
   def welcome_send
     UserMailer.welcome_email(self).deliver_now
   end
+  def full_name
+    if self.first_name.nil? && self.last_name.nil?
+        return self.email.split('@')[0]
+    else
+     return "#{self.first_name.capitalize unless self.first_name.nil?} #{self.last_name.capitalize unless self.last_name.nil?}"
+    end
+  end
 
   def notify_profile_updated
       activity = Activity.find_by(name: "user_created")
