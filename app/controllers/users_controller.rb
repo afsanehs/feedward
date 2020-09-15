@@ -16,8 +16,6 @@ class UsersController < ApplicationController
     company_id = @user.company_id
     if @user.update(user_params)
       flash[:success] = "Votre profil a bien été modifié!"
-      notify_profile_updated(@user, company_id)
-
       redirect_back(fallback_location: root_path)
     else
       @user.errors.full_messages.each do |message|
@@ -27,13 +25,6 @@ class UsersController < ApplicationController
     end
   end
 
-  def notify_profile_updated(user,company_id)
-    if user.company_id != company_id
-      activity = Activity.find_by(name: "user_created")
-      Notification.create(user: user, activity: activity)
-    end
-  end
-  
 
   def dashboard
     @user = current_user

@@ -93,6 +93,10 @@
   border-radius: 5px;
 }
 
+.dropdown-toggle::after {
+  content: none;
+}
+
 .dropdown-menu {
   a {
     color: #6558f5;
