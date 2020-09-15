@@ -6,7 +6,7 @@ module ApplicationHelper
     score >= 3 ? "text-indigo" : "text-alert"
   end
   def is_read_class(notification)
-    notification.is_read ? "is_read" : ""
+    return notification.is_read ? "is-read" : ""
   end
   def flash_class(level)
     case level

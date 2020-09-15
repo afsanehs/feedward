@@ -39,3 +39,4 @@ Activity.create(name: "user_created");
 Activity.create(name: "feedback_created");
 Activity.create(name: "feedback_updated");
 
+

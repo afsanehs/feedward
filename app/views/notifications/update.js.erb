@@ -1,5 +1,8 @@
-function updateEmail(){
-  const emailElement = document.getElementById("notification_<%= @notification.id%>")
-  emailElement.classList.toggle("is-read")
+function updateNotification(){
+  const notiElement = document.getElementById("noti_text_<%= @notification.id%>")
+  notiElement.classList.add("is-read")
 }
-updateEmail()
+
+updateNotification()
+
+$("#flash").html('<%= j render partial: "shared/notice_banner" %>');

@@ -6,6 +6,7 @@
     <table id="myTable" class="table table-striped">
       <thead>
         <tr role="row">
+        <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Prénom: activate to sort column descending" style="width: 20px;">ID</th>
             <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Prénom: activate to sort column descending" style="width: 120px;">Prénom</th>
             <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Nom: activate to sort column ascending" style="width: 210px;">Nom</th>
             <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Email: activate to sort column ascending" style="width: 250px;">Email</th>
@@ -17,6 +18,7 @@
       <tbody>
         <% @feedbacks.each do |feedback| %>
           <tr role="row" class="odd">
+            <td ><%= feedback.id %></td>
             <td class="sorting_1"><%= feedback.sender.first_name %></td>
             <td><%= feedback.sender.last_name %></td>
             <td><%= feedback.sender.email %></td>

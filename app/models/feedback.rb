@@ -1,7 +1,7 @@
 class Feedback < ApplicationRecord
   belongs_to :sender, class_name: "User" #the sender is the one who has fulfilled the feedback
   belongs_to :receiver, class_name: "User", optional: true #a feedback can be sent by the sender to a specific receiver
-  has_many :notifications
+  has_many :notifications, dependent: :destroy
 
   after_create :new_feedback_mail
   after_create :notify_feedback_create

@@ -1,0 +1,6 @@
+function destroyNotification(){
+  const notification = document.getElementById("notification_<%= @notification.id %>")
+  notification.parentNode.removeChild(notification)
+}
+
+destroyNotification()
