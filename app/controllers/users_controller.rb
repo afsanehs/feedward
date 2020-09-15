@@ -207,7 +207,7 @@ class UsersController < ApplicationController
     #Data for comments
     @warned_feedbacks = []
     @feedbacks.each do |feedback|
-      if feedback.answer_final != "" && feedback.created_at >= (Time.now - 3.day)
+      if feedback.answer_final != "" && feedback.created_at >= (Time.now - 7.day)
         @warned_feedbacks << feedback
       end
     end 
