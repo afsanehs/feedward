@@ -2,7 +2,7 @@
 // home section
 #home-section {
   background: {
-    image: asset_url('offices/home');
+    image: asset_url("offices/home");
   }
   margin-bottom: 3rem;
   position: relative;
@@ -86,6 +86,12 @@
   color: #6558f5;
   font-weight: 700;
 }
+
+.text-violet-bold-hero {
+  color: #6558f5;
+  font-weight: 700;
+}
+
 .text-violet {
   color: #6558f5;
 }
@@ -137,7 +143,7 @@
 
 .careers-photo {
   background: {
-    image: asset_url('offices/careers');
+    image: asset_url("offices/careers");
   }
   height: 50vh;
   background-position: center center;
