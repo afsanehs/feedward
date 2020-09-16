@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root to:'static_pages#index'
 
+  
   # Static page
   get '/contact', to: 'static_pages#contact',as: 'contact'
   get '/about', to: 'static_pages#about',as: 'about'
@@ -34,6 +35,11 @@ Rails.application.routes.draw do
 
 
   resources :notifications, only: [:index, :create, :update, :destroy]
+
+
+  # Active admin
+  ActiveAdmin.routes(self)
+  devise_for :admin_users, {class_name: 'User'}.merge(ActiveAdmin::Devise.config)
 
 
 end
