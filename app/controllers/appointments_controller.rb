@@ -2,13 +2,13 @@ class AppointmentsController < ApplicationController
   before_action :authenticate_user!
   before_action :account_is_validated
   before_action :must_be_admin
+  before_action :set_appointment, only: [:show, :edit, :update, :destroy]
 
   def index
     @appointments = Appointment.where(employer: current_user)
   end
 
   def show
-    @appointment = Appointment.find(params[:id])
     if @appointment.employer_id != current_user.id
       flash[:error] = "Vous n'avez pas le droit pour accéder à cette page."
       return redirect_to dashboard_admin_path
@@ -17,24 +17,29 @@ class AppointmentsController < ApplicationController
 
   def new
     @appointment = Appointment.new
+    @employees = User.where(company_id: current_user.company_id, is_company_admin: nil)
   end
 
   def create
+    @employees = User.where(company_id: current_user.company_id, is_company_admin: nil)
     @appointment = Appointment.new(appointment_params)
     @appointment.employer = current_user
     if @appointment.save
-      flash[:success] = "Votre événement a été créé!"
+      flash[:success] = "Votre rendez-vous a été créé!"
       redirect_to appointment_path(@appointment.id)
     else
       @appointment.errors.full_messages.each do |message|
         flash[:error] = message
       end
-      redirect_to new_appointment_path
+      render :new
     end
   end
 
   def edit
-    @appointment = Appointment.find(params[:id])
+    @employees = User.where(company_id: current_user.company_id, is_company_admin: nil)
+    puts "---------------------------------"
+    puts @appointment.start_date
+    puts @appointment.end_date
     if @appointment.employer.id != current_user.id
       flash[:error] = "Vous n'avez pas le droit pour accéder à cette page."
       return redirect_to dashboard_admin_path
@@ -49,12 +54,11 @@ class AppointmentsController < ApplicationController
       @appointment.errors.full_messages.each do |message|
         flash[:error] = message
       end
-      redirect_to edit_appointment_path(@appointment.id)
+      render :edit
     end
   end 
 
   def destroy
-    @appointment = Appointment.find(params[:id])
     if @appointment.employer.id != current_user.id
       flash[:error] = "Vous n'avez pas le droit pour accéder à cette page."
       return redirect_to dashboard_admin_path
@@ -65,8 +69,17 @@ class AppointmentsController < ApplicationController
   end 
 
   private
+  def set_appointment
+    @appointment = Appointment.find(params[:id])
+  end
   def appointment_params
-    appointment_params = params.require(:appointment).permit(:title, :description, :start_date, :end_date, :employee_id)
+    params.require(:appointment).permit(
+      :title,
+      :description,
+      :start_date,
+      :end_date,
+      :employee_id
+    )
   end
 
   def account_is_validated

@@ -1,9 +1,18 @@
 <div class="container text-center appointments-section">
-  <div class="col t-4 text-center">
-	<p><em><%=@appointment.title %></em></p>
-	<p>Du <%=@appointment.start_date %></p>
-	<p>Au <%=@appointment.end_date %></p>
-	<p><small><%= @appointment.description %></small></p>
-	<p>Créé par <%= User.find(@appointment.employer).first_name User.find(@appointment.employer).last_name %><small><small> - <%= User.find(@appointment.employer).email %></small></p>
-	<p>Participant : <%= User.find(@appointment.employee).first_name User.find(@appointment.employee).last_name %><small> - <% User.find(@appointment.employee).email %> </small></p>
+	<div class="col-6 t-4 text-center mx-auto">
+		<div class="card h-100 text-center border-primary mt-5">
+			<div class="card-header text-bold">
+				<p>Du <%= get_time_verbose(@appointment.start_date) %> <br/> au <%= get_time_verbose(@appointment.end_date) %></p>
+			</div>
+			<div class="card-body">
+				<h4 class="text-primary"><%=@appointment.title %></h4>
+				<p><small class="mt-2"><%= @appointment.description %></small></p>
+			</div>
+			<div class="card-footer">
+				<a class="btn btn-primary ml-2" href="<%= edit_appointment_path(@appointment.id) %>" data-method="get">Modifier</a>
+				<a class="btn btn-danger" href="#">Annuler</a>
+			</div>
+		</div>
+		<a class="btn btn-outline-primary mt-3" href="<%= appointments_path%>">Voir tous les rendez-vous</a>
+	</div>
 </div>

@@ -25,7 +25,7 @@
             <div class="form-group mt-4">
               <%= f.label :company_id, "Entreprise" %><br />
               <%= f.select :company_id , options_for_select(@companies.collect{ |u| [u.name, u.id] }, current_user.company_id),
-                  { include_blank: '<Sélectionner votre entreprise>', require: true}, class: 'form-control text-primary' %>
+                  { include_blank: '<Sélectionner votre entreprise>', require: true}, class: 'form-control text-primary'%>
             </div>
 
           </div>
