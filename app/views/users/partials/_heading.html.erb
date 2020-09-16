@@ -1,5 +1,9 @@
 <br /> <br/>
 <div class="d-sm-flex align-items-center justify-content-between mt-5 mb-5">
   <h2 class="mb-0 text-indigo">Bienvenue sur votre dashboard <%= current_user.first_name %></h2>
+  <% if current_user&.sent_feedbacks.where(draft: false).where("updated_at > ?", Date.today.midnight+7.hour).any? %>
+  Vous avez déjà soumis votre formulaire, bravo !
+  <% else %>
   <a class="d-none d-sm-inline-block btn btn-primary shadow-sm" href="<%=new_feedback_path%>"><i class="f"></i>Soumettre un feedback</a>
+  <% end %>
 </div>
