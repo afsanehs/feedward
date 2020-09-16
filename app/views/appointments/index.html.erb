@@ -1,0 +1,22 @@
+<div class="container text-center appointments-section">
+  <div class="row">
+    <% @appointments.each do |appointment| %>
+      <div class="col-lg-4 mb-4 md-4 t-4">
+        <div class="card h-100 text-center">
+          <div class="card-header">
+            <p><em><%=appointment.title %></em></p>
+          </div>
+
+          <div class="card-body">
+            <p>Du <%=appointment.start_date %></p>
+            <p>Au <%=appointment.end_date %></p>
+            <p><small><%= appointment.description %></small></p>
+            <p>Créé par <%= User.find(appointment.employer).first_name User.find(appointment.employer).last_name %><small><small> - <%= User.find(appointment.employer).email %></small></p>
+            <p>Participant : <%= User.find(appointment.employee).first_name User.find(appointment.employee).last_name %><small> - <% User.find(appointment.employee).email %> </small></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+      

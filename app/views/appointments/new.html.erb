@@ -1,0 +1,32 @@
+<div class="row justify-content-center appointments-section">
+  <%= form_for @appointment do |f| %>
+    <div class="form-group col-12">
+      <label>Titre du rendez-vous</label>
+      <%= f.text_field :title, class: "form-control"%>
+    </div>
+  
+    <div class="form-group col-12">
+      <label>Description</label>
+      <%= f.text_field :description, class: "form-control"%>
+    </div>
+
+    <div class="form-group col-12">
+      <label>Date de début</label>
+      <%= f.text_field :start_date, class: "form-control"%>
+    </div>
+    
+    <div class="form-group col-12">
+      <label>Date de fin</label>
+      <%= f.text_field :end_date, class: "form-control"%>
+    </div>
+
+    <div class="form-group col-12">
+      <label>Participant</label>
+      <%= f.text_field :employee_id, class: "form-control" %>
+    </div>
+
+    <div class="form-group text-right col-12">
+      <button type="submit" class="btn btn-primary">Créer ce rendez-vous</button>
+    </div>
+  <% end %>
+</div>

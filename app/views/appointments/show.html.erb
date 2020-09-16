@@ -1,0 +1,9 @@
+<div class="container text-center appointments-section">
+  <div class="col t-4 text-center">
+	<p><em><%=@appointment.title %></em></p>
+	<p>Du <%=@appointment.start_date %></p>
+	<p>Au <%=@appointment.end_date %></p>
+	<p><small><%= @appointment.description %></small></p>
+	<p>Créé par <%= User.find(@appointment.employer).first_name User.find(@appointment.employer).last_name %><small><small> - <%= User.find(@appointment.employer).email %></small></p>
+	<p>Participant : <%= User.find(@appointment.employee).first_name User.find(@appointment.employee).last_name %><small> - <% User.find(@appointment.employee).email %> </small></p>
+</div>
