@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <% content_for :title, "Information Utilisateur | " %>
+</head>
+
+<body>
+  <!-- MAIN BODY -->
+  <section class="account-settings-section">
+      <div class="container">
+          <div class="row">
+              <div class="col-12">
+                  <div class="card">
+                    <div class="card-body">
+                        <h6>Voici les informations du compte qui a demandé de rejoindre à votre entreprise</h6>
+                        <hr>
+                        <h4 class="card-title"><%= @user.full_name %></h4>
+                        <p class="card-text"><strong>Entreprise: </strong><%= @user.company.name%></p>
+                        <p class="card-text"><strong>Email: </strong><%= @user.email%></p>
+                    </div>
+                  </div>
+              </div>
+          </div>
+          <%= link_to  :back, class: 'btn btn-primary mt-3' do %>
+              <span><i class="fas fa-arrow-left mr-2"></i>Revenir à la page précédent</span>
+          <% end %>
+      </div>
+  </section>
+</body>
+
+</html>

@@ -69,10 +69,13 @@ class NotificationsController < ApplicationController
     @notification = Notification.find(params[:id])
   end
   def must_be_admin
-    if !current_user.is_site_admin && !current_user.is_company_admin
+    if !current_user.is_company_admin
       flash[:error] = "Vous n'avez pas de droit pour accéder à cette page."
       return redirect_back(fallback_location: dashboard_path )
     end
+  end
+  def is_super_admin?
+    return current_user.is_site_admin
   end
 
  

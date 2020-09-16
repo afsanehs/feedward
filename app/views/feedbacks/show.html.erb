@@ -2,7 +2,11 @@
   <br /><br />
 
   <div class= "row">
+    <% if current_user.is_company_admin %>
+    <%= link_to 'Revenir à la page précédente', :back, class:"btn btn-primary mt-5 mb-5 mr-auto offset-md-9 offset-lg-9" %>
+    <% else %>
     <a class="btn btn-primary mt-5 mb-5 mr-auto offset-md-9 offset-lg-9" href="<%=dashboard_path%>">Revenir à mon espace</a>
+    <% end %>
   </div>
 
   <div class= "row">

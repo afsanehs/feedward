@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :check_company, only: [:dashboard, :dashboard_admin]
+  before_action :check_account_company_admin, only: [:dashboard_admin, :user_request]
   before_action :account_is_validated, except: [:profile, :request_company, :update_profile, :update_company]
   before_action :correct_user
 
@@ -51,14 +52,27 @@ class UsersController < ApplicationController
     end
    end
 
+  # GET account/secret
+  def secret
+  end
+
+  # GET account/user_request/:id/
+  def user_request
+    @user  = User.find(params[:id])
+    if params[:notification] && params[:is_read]
+      @notification = Notification.find(params[:notification])
+      @notification.update(is_read: true)
+    end
+  end
+
   
 
 
   def dashboard
     @user = current_user
 
-    #Company manager or site admin don't have dashboard user
-    if current_user.is_site_admin || current_user.is_company_admin
+    #Company manager admin don't have dashboard user
+    if current_user.is_company_admin
       return redirect_to dashboard_admin_path
     end 
 
@@ -99,10 +113,6 @@ class UsersController < ApplicationController
   # All the necessary variables for dashboard manager
   def dashboard_admin
 
-    if !current_user.is_site_admin && !current_user.is_company_admin
-        flash[:error] = "Vous n'avez pas de droit pour accéder à cette page."
-        return redirect_to dashboard_path
-    end
     @feedbacks = Feedback.all_company_fbs(current_user.company_id)
     @company = current_user.company
     @company_users = User.where(company_id: @company.id)
@@ -257,13 +267,6 @@ class UsersController < ApplicationController
     #Get users list of company
     @users_list = User.where(company_id: current_user.company_id, is_validated: true).order(:created_at).reverse
 
-    # Get all notifications
-    @notifications = Notification.joins(:user).where(users: {company_id: current_user.company_id}).where(is_read: false).limite(15).order(:created_at).reverse
-    @count_notifications_unread = @notifications.count
-  end
-
-  
-  def secret
   end
 
   def spotify
@@ -318,8 +321,14 @@ class UsersController < ApplicationController
     return origin_group
   end
   def account_is_validated
-    if !current_user.is_validated && !current_user.is_site_admin && !current_user.is_company_admin
+    if !current_user.is_validated  && !current_user.is_company_admin
       flash[:error] = "Votre compte n'est pas encore validé."
+      return redirect_to profile_path
+    end
+  end
+  def check_account_company_admin
+    if !current_user.is_company_admin
+      flash[:error] = "Vous n'avez de droit d'accéder à cette page."
       return redirect_to profile_path
     end
   end
@@ -329,6 +338,9 @@ class UsersController < ApplicationController
       flash[:error] = "Il faut que tu complètes ton profil et que tu renseignes une entreprise avant de commencer !"
       return redirect_to request_company_path
     end 
+  end
+  def is_super_admin?
+    return current_user.is_site_admin
   end
  
 end
