@@ -4,6 +4,13 @@ require 'faker'
 RSpec.describe Feedback, type: :model do
 
   before(:each) do 
+    fake_password = "0123456789"
+    @user1 = User.create(email: Faker::Internet.email, 
+      password: fake_password, password_confirmation: fake_password, 
+      company: Company.all.sample)
+    @user2 = User.create(email: Faker::Internet.email, 
+      password: fake_password, password_confirmation: fake_password, 
+      company: Company.all.sample)
     @feedback = Feedback.create(
       score_global: rand(1..5),
       answer_global: Faker::Lorem.sentence(word_count: 6),
@@ -12,8 +19,8 @@ RSpec.describe Feedback, type: :model do
       score_missions: rand(1..5),
       answer_missions: Faker::Lorem.sentence(word_count: 6),
       answer_final: Faker::Lorem.sentence(word_count: 6),
-      sender: User.all.sample,
-      receiver: User.all.sample
+      sender: @user1,
+      receiver: @user2
     )
   end
 
@@ -27,7 +34,7 @@ RSpec.describe Feedback, type: :model do
     describe "#score_global" do
       it "should not be valid without a global score" do
         bad_feedback = Feedback.create(
-          score_global: ,
+          score_global: 20,
           answer_global: Faker::Lorem.sentence(word_count: 6),
           score_workspace: rand(1..5),
           answer_workspace: Faker::Lorem.sentence(word_count: 6),
@@ -42,11 +49,10 @@ RSpec.describe Feedback, type: :model do
       end
     end
 
-    describe "#password" do
-      it "should not be valid without a global answer" do
+    describe "#answer_global" do
+      it "should not be valid without a global score below 3 and no global answer" do
         bad_feedback = Feedback.create(
-          score_global: rand(1..5),
-          answer_global: ,
+          score_global: 0,
           score_workspace: rand(1..5),
           answer_workspace: Faker::Lorem.sentence(word_count: 6),
           score_missions: rand(1..5),
@@ -73,8 +79,8 @@ RSpec.describe Feedback, type: :model do
           sender: User.all.sample,
           receiver: User.all.sample
         )
-        expect(invalid_user).not_to be_valid
-        expect(invalid_user.errors.include?(:password)).to eq(true)
+        expect(bad_feedback).not_to be_valid
+        expect(bad_feedback.errors.include?(:score_global)).to eq(true)
       end
     end
 
