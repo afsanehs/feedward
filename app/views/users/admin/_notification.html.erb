@@ -11,7 +11,7 @@
                 <% if noti.activity.name == "feedback_created"%>
                     <a href="<%= feedback_path(noti.feedback_id)%>" class="dropdown-menu-link">
                     <div><i class="fas fa-gift"></i></div>
-                    <span>
+                    <span class="pt-2">
                       <%= noti.user.full_name %> vient de créer un feedback.
                       <br>
                       <span>
@@ -24,7 +24,7 @@
                    
                     <a href="<%= feedback_path(noti.feedback_id)%>" class="dropdown-menu-link">
                     <div><i class="fas fa-comment-dots"></i></div>
-                    <span>
+                    <span class="pt-2">
                       <%= noti.user.full_name %> vient de modifier son feedback.
                       <br>
                       <span>
@@ -48,7 +48,7 @@
                     
                   <a href="#" class="dropdown-menu-link">
                    <div><i class="fas fa-info"></i></div>
-                    <span>
+                    <span class="pt-2">
                       Vous avez un nouvelle notification.
                       <br>
                       <span>
@@ -61,6 +61,6 @@
         </div>
       
          <a class="dropdown-item dropdown-menu-footer" href="<%= notifications_path %>">
-            Consulter tous les notifications
+            Consulter toutes les notifications
         </a>
 </div>

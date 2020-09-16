@@ -4,8 +4,8 @@
 
   --light-color: #212529;
   --light-second-color: #727475;
-  --light-background: #ffffff;
-  --light-second-background: #f1f1f1;
+  --light-background: #e4e4e4;
+  --light-second-background: #e4e4e4;
 }
 
 .navbar-section {
@@ -182,10 +182,10 @@
   flex-direction: row;
   align-items: center;
   text-decoration: none;
-  color: #333;
+  color: #22347a;
   div,
   span {
-    color: #333;
+    color: #22347a;
   }
 }
 
@@ -196,7 +196,7 @@
 }
 .dropdown-menu-link i {
   font-size: 1.25rem;
-  color: #666;
+  color: #22347a;
   position: absolute;
   left: 50%;
   top: 50%;

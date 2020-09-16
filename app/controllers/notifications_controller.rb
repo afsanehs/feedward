@@ -28,6 +28,42 @@ class NotificationsController < ApplicationController
     end
   end
 
+  # DELETE /refuseaccount/:id
+  def refuse_account
+    @user = User.find(params[:id])
+    @notification = Notification.find(params[:notification])
+    @user.destroy
+    respond_to do |format|
+      format.html {
+        redirect_to notifications_path
+      }
+      format.json{head :not_content}
+      format.js{ flash[:success] = "Refuser un compte avec succès." }
+    end
+  end
+
+  # PATCH account/validate/:id
+  def validate_account
+  @user = User.find(params[:id])
+  @notification = Notification.find(params[:notification])
+  if @user.update(is_validated: true)
+    @notification.destroy
+    respond_to do |format|
+      format.html {
+        redirect_to notifications_path
+      }
+      format.json{head :not_content}
+      format.js{ flash[:success] = "Refuser un compte avec succès." }
+    end
+    flash[:success] = "Valider un compte avec succès!"
+  else
+    format.html { render :request_company }
+    format.json { render json: @user.errors, status: :unprocessable_entity }
+    format.js {}
+    flash[:error] = @user.errors.full_messages.first
+  end
+  end
+
   private
   def set_notification
     @notification = Notification.find(params[:id])

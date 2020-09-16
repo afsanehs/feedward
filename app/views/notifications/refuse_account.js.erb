@@ -1,0 +1,6 @@
+function refuseAccount(){
+  const notification = document.getElementById("notification_<%= @notification.id %>")
+  notification.parentNode.removeChild(notification)
+}
+
+refuseAccount()

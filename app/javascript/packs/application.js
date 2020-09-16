@@ -17,3 +17,4 @@ require('jquery');
 require('chartkick');
 require('chart.js');
 require('popper.js');
+require('custom/nav');

@@ -13,6 +13,10 @@ Rails.application.routes.draw do
   get 'account/profile', to: "users#profile", as: 'profile'
   patch 'account/profile', to: "users#update_profile"
   get 'account/secret', to: "users#secret"
+  get 'account/requestcompany', to: "users#request_company", as: 'request_company'
+  patch 'account/requestcompany', to: "users#update_company"
+  patch 'validate_account/:id', to: "notifications#validate_account", as: 'validate_account'
+  delete 'refuse_account/:id', to: "notifications#refuse_account", as: 'refuse_account'
   get '/spotify', to: "users#spotify"
   get '/search', to: "users#spotify"
   get '/dashboard', to: 'users#dashboard'

@@ -5,9 +5,14 @@
   color: #4b5992;
   font-weight: 300;
 }
+.disable-read {
+  cursor: default;
+  color: #797f94;
+  opacity: 0.5;
+}
 .feedback-noti-wrapper,
 .user-noti-wrapper {
-  height: 50vh;
+  height: 60vh;
   overflow-y: scroll;
 }
 .list-group-item {

@@ -8,6 +8,9 @@ module ApplicationHelper
   def is_read_class(notification)
     return notification.is_read ? "is-read" : ""
   end
+  def is_read_disabled_class(notification)
+    return notification.is_read ? "disable-read" : "text-success"
+  end
   def flash_class(level)
     case level
         when "notice"
