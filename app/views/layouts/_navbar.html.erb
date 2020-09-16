@@ -32,11 +32,11 @@
                   <li class="nav-item dropdown link-notification-wrapper">
                     <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       <i class="fas fa-bell icon-notification"></i>
-                      <% @notifications = all_notifications %>
-                      <% if @notifications.count > 9%>
-                        <span class="navbar-badge"><%= @notifications.count %>+</span>
+                      <% @count_noti= count_notifications_unread %>
+                      <% if  @count_noti >= 9%>
+                        <span class="navbar-badge">9+</span>
                       <% else %>
-                        <span class="navbar-badge"><%= @notifications.count %></span>
+                        <span class="navbar-badge"><%=  @count_noti %></span>
                       <% end %>
                     </a>
                   

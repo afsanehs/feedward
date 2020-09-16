@@ -258,7 +258,8 @@ class UsersController < ApplicationController
     @users_list = User.where(company_id: current_user.company_id, is_validated: true).order(:created_at).reverse
 
     # Get all notifications
-    @notifications = Notification.all.limit(15).order(:created_at).reverse
+    @notifications = Notification.joins(:user).where(users: {company_id: current_user.company_id}).where(is_read: false).limite(15).order(:created_at).reverse
+    @count_notifications_unread = @notifications.count
   end
 
   

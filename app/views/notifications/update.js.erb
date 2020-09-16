@@ -1,6 +1,10 @@
 function updateNotification(){
   const notiElement = document.getElementById("noti_text_<%= @notification.id%>")
+  const checkReadElement = document.getElementById("icon_check_read_<%= @notification.id %>")
   notiElement.classList.add("is-read")
+  checkReadElement.classList.add("disable-read")
+  checkReadElement.classList.remove("text-success")
+
 }
 
 updateNotification()

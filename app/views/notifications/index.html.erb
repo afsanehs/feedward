@@ -21,7 +21,7 @@
                   <div class="col-2 d-flex">
                    <a href="<%= notification_path(notification, is_read: true)%>" data-toggle="tooltip" data-placement="left" title="Marquer comme lu"
                      data-method="put" data-remote="true"
-                    > <i class="fas fa-check-double text-center fa-lg mt-3 mr-2 <%= is_read_disabled_class(notification)%>"></i>
+                    > <i id="icon_check_read_<%= notification.id %>" class="fas fa-check-double text-center fa-lg mt-3 mr-2 <%= is_read_disabled_class(notification)%>"></i>
                     </a>
                    <br/>
                     <a href="<%= notification_path(notification)%>" data-toggle="tooltip" data-placement="left" title="Archiver cette notification"
@@ -47,7 +47,7 @@
                   <div class="col-2 d-flex">
                     <a href="<%= notification_path(notification, is_read: true)%>" data-toggle="tooltip" data-placement="left" title="Marquer comme lu"
                       data-method="put" data-remote="true"
-                      > <i class="fas fa-check-double text-center fa-lg mt-3 mr-2 <%= is_read_disabled_class(notification)%>"></i>
+                      > <i id="icon_check_read_<%= notification.id %>" class="fas fa-check-double text-center fa-lg mt-3 mr-2 <%= is_read_disabled_class(notification)%>"></i>
                       </a>
                     <br/>
                       <a href="<%= notification_path(notification)%>" data-toggle="tooltip" data-placement="left" title="Archiver cette notification"

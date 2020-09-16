@@ -31,7 +31,7 @@ end
     score_missions: rand(1..5),
     answer_missions: Faker::Lorem.sentence(word_count: 6),
     answer_final: Faker::Lorem.sentence(word_count: 6),
-    sender: User.find(75),
+    sender: User.all.sample,
     created_at: "2020-09-02 14:59:49 UTC"
   )
 end
