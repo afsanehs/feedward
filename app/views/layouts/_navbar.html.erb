@@ -56,10 +56,18 @@
                 <a class="nav-link nav-text-bold" href="<%= profile_path %>">Mes infos</a>
               </li>
 
-              <li class="nav-item">
-                <a class="nav-link nav-text-bold" href="<%=destroy_user_session_path%>">Se déconnecter</a>
-              </li>
-            </ul>
+          <li class="nav-item">
+            <a class="nav-link nav-text-bold" href="<%=destroy_user_session_path%>">Se déconnecter</a>
+          </li>
+
+          <li>
+            <% if cookies[:moon] %>
+              <button id="darkmode-button" class="btn btn-primary"><%= link_to 'Light Mode', sun_path, method: :get%></button>
+            <% else %>
+              <button id="darkmode-button" class="btn btn-primary"><%= link_to 'Dark Mode', moon_path, method: :get%></button>
+            <% end %>
+          </li>
+        </ul>
         <% else %>
         <ul class="navbar-nav ml-auto nav-account">
           <li class="nav-item nav-item--separate">
@@ -67,6 +75,14 @@
           </li>
           <li class="nav-item">
             <a class="nav-link nav-text-bold" href="<%=new_user_registration_path%>">S'inscrire</a>
+          </li>
+
+          <li>
+            <% if cookies[:moon] %>
+              <button id="darkmode-button" class="btn btn-primary"><%= link_to 'Light Mode', sun_path, method: :get%></button>
+            <% else %>
+              <button id="darkmode-button" class="btn btn-primary"><%= link_to 'Dark Mode', moon_path, method: :get%></button>
+            <% end %>
           </li>
         </ul>
 

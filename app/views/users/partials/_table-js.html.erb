@@ -1,0 +1,29 @@
+<div class="card shadow mb-4">
+  <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Historique des feedbacks</h6>
+  </div>
+  <div class="card-body">
+    <table id="myTable" class="table table-striped" style="color:#dee2e6;background:#222324;">
+      <thead style="color:#dee2e6;background:#222324;">
+        <tr role="row">
+            <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Prénom: activate to sort column descending" style="width: 175px;">Prénom</th>
+            <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Nom: activate to sort column ascending" style="width: 266px;">Nom</th>
+            <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Email: activate to sort column ascending" style="width: 126px;">Email</th>
+            <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Date: activate to sort column ascending" style="width: 57px;">Date</th>
+            <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Moyenne de la note: activate to sort column ascending" style="width: 117px;">Moyenne</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @feedbacks.each do |feedback| %>
+          <tr role="row" class="odd">
+            <td class="sorting_1" style="color:#dee2e6;background:#222324;"><a href="<%= feedback_path(feedback.id) %>"><%= feedback.sender.first_name %></a></td>
+            <td style="color:#dee2e6;background:#222324;"><%= feedback.sender.last_name %> (<%= feedback.sender.company.name %>) </td>
+            <td style="color:#dee2e6;background:#222324;"><%= feedback.sender.email %></td>
+            <td style="color:#dee2e6;background:#222324;"><%= feedback.created_at %></td>
+            <td style="color:#dee2e6;background:#222324;"><%= feedback.score_average %></td>
+          </tr>
+        <% end  %>
+      </tbody>
+    </table>
+  </div>
+</div>

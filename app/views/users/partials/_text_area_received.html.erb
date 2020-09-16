@@ -11,7 +11,7 @@
             <div class="col-sm-12">
                 <div class="card">
                     <div class="card-body">
-                        <a href="<%= feedback_path(feedback.id) %> %>" class="card-title">
+                        <a href="<%= feedback_path(feedback.id) %>" class="card-title">
                         <!-- sauf pour le current -->
                         <p> Reçu le <%= get_time_verbose(feedback.created_at)%> - <%= feedback.sender.first_name %></p>
                         </a>

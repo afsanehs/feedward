@@ -33,6 +33,10 @@ Rails.application.routes.draw do
   resources :feedbacks
   resources :users, only: [:show]
 
+  get '/moon', to: 'application#moon', as: 'moon'
+  get '/sun', to: 'application#sun', as: 'sun'
+
+
 
   resources :notifications, only: [:index, :create, :update, :destroy]
 

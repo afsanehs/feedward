@@ -1,13 +1,12 @@
 //------------------------------------------//
 // home section
 #home-section {
-  background: {
-    image: asset_url("offices/home");
-  }
+  background-image: linear-gradient(black, black), asset_url("offices/home");
   margin-bottom: 3rem;
   position: relative;
   background-size: cover;
   background-repeat: no-repeat;
+  background-blend-mode: saturation;
   width: 100%;
   height: 95vh;
   position: relative;
@@ -83,28 +82,28 @@
 //--------------------------------------//
 //Various
 .text-violet-bold {
-  color: #6558f5;
+  color: #c1c0db;
   font-weight: 700;
 }
 
 .text-violet-bold-hero {
-  color: #6558f5;
+  color: #222324;
   font-weight: 700;
 }
 
 .text-violet {
-  color: #6558f5;
+  color: #dddbf8;
 }
 .btn.btn-violet {
-  background: #6558f5;
+  background: #dddbf8;
 }
 .btn.btn-violet-outline {
-  border: 1px solid #6558f5;
-  color: #6558f5;
+  border: 1px solid #dddbf8;
+  color: #dddbf8;
 }
 .btn.btn-violet-outline:hover {
   color: #fff;
-  background-color: #6558f5;
+  background-color: #dddbf8;
 }
 .text-gray {
   color: #666;
@@ -142,11 +141,10 @@
 }
 
 .careers-photo {
-  background: {
-    image: asset_url("offices/careers");
-  }
+  background-image: linear-gradient(black, black), asset_url("offices/careers");
   height: 50vh;
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
+  background-blend-mode: saturation;
 }
