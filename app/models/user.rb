@@ -5,11 +5,13 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   after_create :welcome_send
+  before_save :notify_profile_updated , if: :company_id_changed?
+  before_save :is_always_validate_account_for_admin
 
   belongs_to :company, optional: true #an employee works for only one company
   has_many :received_feedbacks, class_name: "Feedback", foreign_key: :receiver_id, dependent: :destroy
   has_many :sent_feedbacks, class_name: "Feedback", foreign_key: :sender_id , dependent: :destroy
-  has_many :notifications 
+  has_many :notifications , dependent: :destroy
 
   validates :email,
     presence:true,
@@ -24,11 +26,22 @@ class User < ApplicationRecord
   def welcome_send
     UserMailer.welcome_email(self).deliver_now
   end
+  def full_name
+    if self.first_name.nil? && self.last_name.nil?
+        return self.email.split('@')[0]
+    else
+     return "#{self.first_name.capitalize unless self.first_name.nil?} #{self.last_name.capitalize unless self.last_name.nil?}"
+    end
+  end
 
+  private
   def notify_profile_updated
-    if self.company.changed?
       activity = Activity.find_by(name: "user_created")
       Notification.create(user: self, activity: activity)
+  end
+  def is_always_validate_account_for_admin
+    if self.is_site_admin || self.is_company_admin
+      self.is_validated = true
     end
   end
 

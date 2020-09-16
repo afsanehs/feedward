@@ -27,34 +27,39 @@
         </ul>
 
         <% if user_signed_in? %>
-        <ul class="navbar-nav ml-auto">
-          <% if current_user.is_company_admin || current_user.is_site_admin %>
-           <li class="nav-item">
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <i class="fas fa-bell"></i>
-                  <span>15</span>
-                </a>
-               
-              <%= render :partial => 'users/admin/notification'%>
+            <ul class="navbar-nav ml-auto">
+              <% if current_user.is_company_admin || current_user.is_site_admin %>
+                  <li class="nav-item dropdown link-notification-wrapper">
+                    <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <i class="fas fa-bell icon-notification"></i>
+                      <% @count_noti= count_notifications_unread %>
+                      <% if  @count_noti >= 9%>
+                        <span class="navbar-badge">9+</span>
+                      <% else %>
+                        <span class="navbar-badge"><%=  @count_noti %></span>
+                      <% end %>
+                    </a>
+                  
+                  <%= render :partial => 'users/admin/notification'%>
+                  </li>
+              <li class="nav-item <%= active_class(dashboard_admin_path) %>">
+                <a class="nav-link nav-text-bold" href="<%= dashboard_admin_path %>">Dashboard Manager</a>
               </li>
-          </li>
-          <li class="nav-item <%= active_class(dashboard_admin_path) %>">
-            <a class="nav-link nav-text-bold" href="<%= dashboard_admin_path %>">Dashboard Admin</a>
-          </li>
-          <% end %>
-           <li class="nav-item <%= active_class(dashboard_path) %>">
-            <a class="nav-link nav-text-bold" href="<%= dashboard_path %>">Dashboard</a>
-          </li>
 
-          <li class="nav-item <%= active_class(profile_path) %>">
-            <a class="nav-link nav-text-bold" href="<%= profile_path %>">Mes infos</a>
-          </li>
+              <% elsif current_user.is_validated %>
+                <li class="nav-item <%= active_class(dashboard_path) %>">
+                   <a class="nav-link nav-text-bold" href="<%= dashboard_path %>">Dashboard</a>
+                </li>
+              <% end %>
+              
+              <li class="nav-item <%= active_class(profile_path) %>">
+                <a class="nav-link nav-text-bold" href="<%= profile_path %>">Mes infos</a>
+              </li>
 
-          <li class="nav-item">
-            <a class="nav-link nav-text-bold" href="<%=destroy_user_session_path%>">Se déconnecter</a>
-          </li>
-        </ul>
+              <li class="nav-item">
+                <a class="nav-link nav-text-bold" href="<%=destroy_user_session_path%>">Se déconnecter</a>
+              </li>
+            </ul>
         <% else %>
         <ul class="navbar-nav ml-auto nav-account">
           <li class="nav-item nav-item--separate">

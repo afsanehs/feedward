@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <% content_for :title, "Reseignement Entreprise | " %>
+</head>
+
+<body>
+
+  <% if !current_user.nil? %>
+
+  <!-- MAIN BODY -->
+  <section class="account-settings-section">
+    <div class="container">
+      <%= form_with(scope: :user, url: account_profile_path, method: :patch, local:true) do |f| %>
+      <div class="contact-info mb-5">
+        <div class="row">
+          <div class="col-lg-6 col-md-8">
+            <h3>Sélectioner votre entreprise</h3>
+            <ul>
+              <li><small>Vous devez sélectionner votre l'entreprise dans la liste suivant pour créer un compte.</small></li>
+               <li><small>Votre compte est seulement utilisable quand votre manager la valide.</small></li>
+            </ul>
+
+            <div class="form-group mt-4">
+              <%= f.label :company_id, "Entreprise" %><br />
+              <%= f.select :company_id , options_for_select(@companies.collect{ |u| [u.name, u.id] }, current_user.company_id),
+                  { include_blank: '<Sélectionner votre entreprise>', require: true}, class: 'form-control text-primary' %>
+            </div>
+
+          </div>
+        </div>
+        <%= f.submit "Save", class: 'btn btn-primary' %>
+      </div>
+      <% end %>
+    </div>
+  </section>
+
+  <!-- If user not logged -->
+  <% else %>
+  <div class="container text-center account-settings-section">
+    <h3>Vous devez vous connecter pour accéder cette page.</h2>
+      Revernir à la page <a href="<%= new_user_session_path %>">Login</a>
+  </div>
+  <% end %>
+</body>
+
+</html>

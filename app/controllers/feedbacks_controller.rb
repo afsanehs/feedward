@@ -1,4 +1,5 @@
 class FeedbacksController < ApplicationController
+  before_action :account_is_validated
   before_action :authenticate_user!
 
   def index
@@ -8,9 +9,13 @@ class FeedbacksController < ApplicationController
 
   def show
     @feedback = Feedback.find(params[:id])
-    if @feedback.sender_id != current_user.id && !current_user.is_site_admin && !current_user.is_company_admin
+    if @feedback.sender_id != current_user.id  && !current_user.is_company_admin
       flash[:error] = "Vous n'avez pas le droit pour accéder à cette page"
       return redirect_to dashboard_path
+    end
+    if params[:notification] && params[:is_read]
+      @notification = Notification.find(params[:notification])
+      @notification.update(is_read: true)
     end
   end
 
@@ -49,7 +54,7 @@ class FeedbacksController < ApplicationController
 
   # GET users/:id/feedback
   def user_feedbacks
-    if !current_user.is_site_admin && !current_user.is_company_admin
+    if !current_user.is_company_admin
       flash[:error] = "Vous n'avez pas de droit pour accéder à cette page."
       return redirect_to dashboard_path
     end
@@ -60,6 +65,15 @@ class FeedbacksController < ApplicationController
   private
   def post_params
     post_params = params.require(:feedback).permit(:answer_global, :answer_workspace, :answer_missions, :answer_final, :receiver_id, :score_global, :score_workspace, :score_missions)
+  end
+  def account_is_validated
+    if !current_user.is_validated  && !current_user.is_company_admin
+      flash[:error] = "Votre compte n'est pas encore vérifié. Merci de contacter votre manager pour résoudre ce problème."
+      return redirect_to profile_path
+    end
+  end
+  def is_super_admin?
+    return current_user.is_site_admin
   end
 
 end

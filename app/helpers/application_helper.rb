@@ -5,6 +5,12 @@ module ApplicationHelper
   def alert_class(score)
     score >= 3 ? "text-indigo" : "text-alert"
   end
+  def is_read_class(notification)
+    return notification.is_read ? "is-read" : ""
+  end
+  def is_read_disabled_class(notification)
+    return notification.is_read ? "disable-read" : "text-success"
+  end
   def flash_class(level)
     case level
         when "notice"
@@ -19,6 +25,23 @@ module ApplicationHelper
           return "alert alert-danger"
     end
   end
+
+  def all_notifications
+    if user_signed_in?
+      return Notification.joins(:user).where(users:{company_id: current_user.company_id}).order(:created_at).reverse
+    end
+    return []
+  end
+  def all_notifications_unread
+    if user_signed_in?
+      return Notification.joins(:user).where(users:{company_id: current_user.company_id}).where(is_read: false).order(:created_at).reverse
+    end
+    return []
+  end
+  def count_notifications_unread
+    return all_notifications_unread.count
+  end
+
 
   def get_time(time_utc)
     return time_utc.strftime("%Y-%m-%d %k:%M:%S")

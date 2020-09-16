@@ -1,24 +1,26 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!, only: [:show, :dashboard]
-  before_action :correct_user, only: [:show,:update_profile,:dashboard]
+  before_action :authenticate_user!
+  before_action :check_company, only: [:dashboard, :dashboard_admin]
+  before_action :check_account_company_admin, only: [:dashboard_admin, :user_request]
+  before_action :account_is_validated, except: [:profile, :request_company, :update_profile, :update_company]
+  before_action :correct_user
 
   def show
     @user = current_user
     @feedbacks_user = Feedback.where(sender_id: @user.id)
   end
 
+  # GET account/profile
   def profile
     @user = current_user
     @companies = Company.all
   end
 
+  # PATCH account/profile
   def update_profile
-    company_id = @user.company_id
     if @user.update(user_params)
       flash[:success] = "Votre profil a bien été modifié!"
-      notify_profile_updated(@user, company_id)
-
-      redirect_back(fallback_location: root_path)
+      redirect_to profile_path
     else
       @user.errors.full_messages.each do |message|
         flash[:error] = message
@@ -27,21 +29,51 @@ class UsersController < ApplicationController
     end
   end
 
-  def notify_profile_updated(user,company_id)
-    if user.company_id != company_id
-      activity = Activity.find_by(name: "user_created")
-      Notification.create(user: user, activity: activity)
+
+  # GET account/requestcompany
+  def request_company
+    if !current_user.company.nil?
+      return redirect_to dashboard_path
+    end
+    @user = current_user
+    @companies = Company.all
+  end
+
+   # PATCH account/requestcompany
+   def update_company
+    if @user.update(company_id: user_params[:company_id])
+      flash[:success] = "Une demande de création votre compte a été envoyée à votre manager. Cela prendra 1 ou 2 jours pour avoir l'acceptation!"
+      redirect_to profile_path
+    else
+      @user.errors.full_messages.each do |message|
+        flash[:error] = message
+      end
+      render :request_company
+    end
+   end
+
+  # GET account/secret
+  def secret
+  end
+
+  # GET account/user_request/:id/
+  def user_request
+    @user  = User.find(params[:id])
+    if params[:notification] && params[:is_read]
+      @notification = Notification.find(params[:notification])
+      @notification.update(is_read: true)
     end
   end
+
   
+
 
   def dashboard
     @user = current_user
 
-    #Force user has their company
-    if current_user.company.nil?
-      flash[:error] = "Il faut que tu complètes ton profil et que tu renseignes une entreprise avant de commencer !"
-      return redirect_to profile_path
+    #Company manager admin don't have dashboard user
+    if current_user.is_company_admin
+      return redirect_to dashboard_admin_path
     end 
 
 
@@ -78,12 +110,9 @@ class UsersController < ApplicationController
     end
   end
 
-
+  # All the necessary variables for dashboard manager
   def dashboard_admin
-    if !current_user.is_site_admin && !current_user.is_company_admin
-        flash[:error] = "Vous n'avez pas de droit pour accéder à cette page."
-        return redirect_to dashboard_path
-    end
+
     @feedbacks = Feedback.all_company_fbs(current_user.company_id)
     @company = current_user.company
     @company_users = User.where(company_id: @company.id)
@@ -236,12 +265,7 @@ class UsersController < ApplicationController
     @unsatisfied_users = @unsatisfied_users.sort_by{|u| Feedback.user_score(u.id)}
 
     #Get users list of company
-    @users_list = User.where(company_id: current_user.company_id).order(:created_at).reverse
-
-  end
-
-
-  def secret
+    @users_list = User.where(company_id: current_user.company_id, is_validated: true).order(:created_at).reverse
 
   end
 
@@ -274,6 +298,7 @@ class UsersController < ApplicationController
     )
   end
 
+
   def get_first_created_day
     day=Feedback.order(:created_at).first.created_at.to_date
     return  day
@@ -294,6 +319,28 @@ class UsersController < ApplicationController
     end
 
     return origin_group
+  end
+  def account_is_validated
+    if !current_user.is_validated  && !current_user.is_company_admin
+      flash[:error] = "Votre compte n'est pas encore validé."
+      return redirect_to profile_path
+    end
+  end
+  def check_account_company_admin
+    if !current_user.is_company_admin
+      flash[:error] = "Vous n'avez de droit d'accéder à cette page."
+      return redirect_to profile_path
+    end
+  end
+  def check_company
+     #Force user has their company
+     if current_user.company.nil?
+      flash[:error] = "Il faut que tu complètes ton profil et que tu renseignes une entreprise avant de commencer !"
+      return redirect_to request_company_path
+    end 
+  end
+  def is_super_admin?
+    return current_user.is_site_admin
   end
  
 end

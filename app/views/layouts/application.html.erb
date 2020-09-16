@@ -17,18 +17,24 @@
     <link rel="icon" type="image/png" href="<%= asset_path('icons/Logo1_purple_full.png')%>"/>
 
     <script type="text/javascript">window.$crisp=[];window.CRISP_WEBSITE_ID="8507984d-9f35-4bd2-8694-777f431a3cff";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();</script>
-
   </head>
 
   <body>
     <%= render 'layouts/navbar' %>
 
     <!-- Main content of body -->
-  <%= render 'layouts/alert'%>
+    <%= render 'layouts/alert'%>
+    <div id="flash">
+      <% if notice.present? %>
+        <%= render partial: "shared/notice_banner" %>
+      <% end %>
+    </div>
 
     <%= yield %>
-  <%= render 'layouts/footer' %>
-<!-- Script -->
+    
+    <%= render 'layouts/footer' %>
+
+  <!-- Script -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"
     integrity="sha512-3P8rXCuGJdNZOnUx/03c1jOTnMn3rP63nBip5gOP2qmUh5YAdVAvFZ1E+QLZZbC1rtMrQb+mah3AfYW11RUrWA=="
     crossorigin="anonymous"></script>
