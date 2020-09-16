@@ -13,6 +13,9 @@ class User < ApplicationRecord
   has_many :sent_feedbacks, class_name: "Feedback", foreign_key: :sender_id , dependent: :destroy
   has_many :notifications , dependent: :destroy
 
+  has_many :employees, class_name: "Appointment", foreign_key: :employee_id, dependent: :destroy
+  has_many :employers, class_name: "Appointment", foreign_key: :employer_id , dependent: :destroy
+  
   validates :email,
     presence:true,
     uniqueness:{case_sensitive: false},

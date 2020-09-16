@@ -34,5 +34,7 @@ Rails.application.routes.draw do
 
   resources :notifications, only: [:index, :create, :update, :destroy]
 
+  resources :appointments
+
 
 end
