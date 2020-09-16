@@ -8,7 +8,7 @@
           <% if notification.activity.name == "feedback_created"%>
               <div class="row" id="notification_<%= notification.id%>">
                   <div class="col-10">
-                      <a class="list-group-item list-group-item-action" href="<%= feedback_path(notification.feedback_id)%>">
+                      <a class="list-group-item list-group-item-action" href="<%= feedback_path(notification.feedback_id, notification: notification, is_read: true)%> ">
                         <div class="row">
                             <div class="col-9 d-flex">
                                <h5 class="text-primary text-center mr-3"><i class="fas fa-gift"></i></h5>
@@ -34,7 +34,7 @@
           <% elsif notification.activity.name =="feedback_updated"%>
             <div class="row" id="notification_<%=notification.id%>">
                   <div class="col-10">
-                      <a class="list-group-item list-group-item-action" href="<%= feedback_path(notification.feedback_id)%>">
+                      <a class="list-group-item list-group-item-action" href="<%= feedback_path(notification.feedback_id, notification: notification, is_read: true)%>">
                         <div class="row">
                             <div class="col-9 d-flex">
                                <h5 class="text-primary text-center"><i class="fas fa-gift"></i></h5>
@@ -68,7 +68,7 @@
           <% if notification.activity.name =="user_created"%>
             <div class="row" id="notification_<%= notification.id%>">
               <div class="col-10">
-                  <a class="list-group-item list-group-item-action" href="#">
+                  <a class="list-group-item list-group-item-action" href="<%= account_user_request_path(notification.user, notification: notification, is_read: true)%>">
                     <div class="row">
                         <div class="col-9 d-flex">
                           <h5 class="text-primary text-center mr-3"><i class="fas fa-user-plus"></i></h5>

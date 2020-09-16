@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root to:'static_pages#index'
 
+  
   # Static page
   get '/contact', to: 'static_pages#contact',as: 'contact'
   get '/about', to: 'static_pages#about',as: 'about'
@@ -17,6 +18,7 @@ Rails.application.routes.draw do
   patch 'account/requestcompany', to: "users#update_company"
   patch 'validate_account/:id', to: "notifications#validate_account", as: 'validate_account'
   delete 'refuse_account/:id', to: "notifications#refuse_account", as: 'refuse_account'
+  get '/account/user_request/:id', to: "users#user_request", as: 'account_user_request'
   get '/spotify', to: "users#spotify"
   get '/search', to: "users#spotify"
   get '/dashboard', to: 'users#dashboard'
@@ -35,6 +37,11 @@ Rails.application.routes.draw do
   resources :notifications, only: [:index, :create, :update, :destroy]
 
   resources :appointments
+
+
+  # Active admin
+  ActiveAdmin.routes(self)
+  devise_for :admin_users, {class_name: 'User'}.merge(ActiveAdmin::Devise.config)
 
 
 end
