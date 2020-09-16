@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Welcome to Feedward!</title>
+    <link rel="stylesheet" href="style.css" />
     <style>
       .email-background {
         background: #eee;
@@ -31,6 +33,11 @@
         max-width: 100%;
       }
 
+      h1,
+      h2 {
+        margin: 10px 30px;
+      }
+
       p {
         margin: 20px;
         font-size: 18px;
@@ -39,7 +46,7 @@
         font-weight: 300;
       }
 
-      .remplir-form {
+      .confirm-email {
         text-align: center;
         margin: 20px;
         text-decoration: none;
@@ -48,6 +55,7 @@
         color: white;
         padding: 10px 20px;
         border-radius: 5px;
+        font-size: 20px;
       }
 
       .footer {
@@ -62,41 +70,43 @@
         text-decoration: none;
         color: #222324;
       }
+
     </style>
   </head>
+
   <body>
-    <div class="email-background" style="background: #eee;padding: 10px;">
-      <div class="pre-header" style="max-width: 500px;background: #eee;font-family: sans-serif;margin: 0px auto;overflow: hidden;border-radius: 5px;color: #eee;font-size: 5px;">
+    <div class="email-background">
+      <div class="pre-header">
         Tu viens à l'instant de t'inscrire à Feedward. L'application qui te
         permet d'évaluer ton équipe mangériale en toute sérénité.
       </div>
-      <div class="email-container" style="max-width: 500px;background: #dddbf8;font-family: sans-serif;margin: 0px auto;overflow: hidden;border-radius: 5px;">
+      <div class="email-container">
         <h1>Salut et bienvenue chez Feedward !</h1>
         <h2>
           Tu t'es inscrit sur Feedward en utilisant l'e-mail suivant : <%=
           @user.email %>.
         </h2>
-        <img src="https://media.giphy.com/media/AeWoyE3ZT90YM/source.gif" alt="" style="max-width: 100%;">
-        <p style="margin: 20px;font-size: 18px;color: #222324;line-height: 1.5;font-weight: 300;">
-          Tu vas maintenant pouvoir évaluer ton équipe managériale. Seule la personne en charge des ressources humaines de ton entreprise aura
-          accès à ce fichier dans le détail.<br>
-          Pour que ton équipe RH ait une repérésentation la plus fidèle possible du
-          fonctionnement de ton équipe, nous t'invitons à remplir un formulaire par
-          jour.<br>
-          Ce formulaire sera modifiable toute la journée de sa création jusqu'à 18h.<br>
-          Tu as la possibilité de faire part de ton feedback à un ou plusieurs de tes
-          équipiers.<br>
-          </p>
-        <div class="remplir-form" style="text-align: center;margin: 20px;text-decoration: none;display: inline-block;background: #6558f5;color: white;padding: 10px 20px;border-radius: 5px;">
-          <%= link_to "Remplir ton premier questionnaire.", dashboard_url %><br>
+        <img src="https://media.giphy.com/media/AeWoyE3ZT90YM/source.gif" alt="">
+        <p>
+          Tu vas maintenant pouvoir évaluer ton équipe managériale. Seule la personne en charge des ressources humaines
+          de ton entreprise aura
+          accès à ce fichier dans le détail.<br />
+          Tu as la possibilité de modifier à tout moment ton formulaire, et l’envoyer lorsque tu as fini ta journée de
+          travail.<br />
+          Tu peux aussi partager ton feedback avec une personne de ton choix.<br />
+        </p>
+        <div class="confirm-email">
+          <%= link_to "Confirmer mon adresse email.", dashboard_url %>.<br />
         </div>
-        
-        <p style="margin: 20px;font-size: 18px;color: #222324;line-height: 1.5;font-weight: 300;">Merci pour ta confiance.</p>
-        <p style="margin: 20px;font-size: 18px;color: #222324;line-height: 1.5;font-weight: 300;">À très vite sur Feedward !</p>
+        </p>
+        <p>Merci pour ta confiance.</p>
+        <p>À très vite sur Feedward !</p>
       </div>
-      <div class="footer" style="max-width: 500px;background: none;font-family: sans-serif;margin: 0px auto;overflow: hidden;border-radius: 5px;text-align: center;padding: 20px;font-size: 14px;text-decoration: none;color: #222324;">
-        <a href="http://getfeedward.com/" style="text-decoration: none;color: #222324;">Visiter le site</a> | <a href="mailto: contact@getfeedward.com" style="text-decoration: none;color: #222324;">Nous contacter</a>
+      <div class="footer">
+        <a href="http://getfeedward.com/">Visiter le site</a> | <a href="mailto: contact@getfeedward.com">Nous
+          contacter</a>
       </div>
     </div>
   </body>
+
 </html>
