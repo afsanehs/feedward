@@ -149,6 +149,10 @@ GEM
       activerecord
       kaminari-core (= 1.2.1)
     kaminari-core (1.2.1)
+    launchy (2.4.3)
+      addressable (~> 2.3)
+    letter_opener (1.7.0)
+      launchy (~> 2.2)
     listen (3.2.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
@@ -331,6 +335,7 @@ DEPENDENCIES
   groupdate
   jbuilder (~> 2.7)
   jquery-rails
+  letter_opener
   listen (~> 3.2)
   pg
   pry
