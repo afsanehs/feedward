@@ -23,7 +23,7 @@
   
   <div class="form-group mb-4">
     <label>Participant</label>
-    <%= f.select :employee_id , options_for_select(@employees.collect{ |u| [u.email, u.id] }, params[:employee_id]),
+    <%= f.select :employee_id , options_for_select(@employees.collect{ |u| [u.email, u.id] },  @employee_id),
                 { include_blank: '<Sélectionner un destinataire>'}, class: 'form-control text-primary' %>
   </div>
 

@@ -18,6 +18,7 @@ class AppointmentsController < ApplicationController
   def new
     @appointment = Appointment.new
     @employees = User.where(company_id: current_user.company_id, is_company_admin: nil)
+    @employee_id = nil
   end
 
   def create
@@ -37,9 +38,7 @@ class AppointmentsController < ApplicationController
 
   def edit
     @employees = User.where(company_id: current_user.company_id, is_company_admin: nil)
-    puts "---------------------------------"
-    puts @appointment.start_date
-    puts @appointment.end_date
+    @employee_id = @appointment.employee_id
     if @appointment.employer.id != current_user.id
       flash[:error] = "Vous n'avez pas le droit pour accéder à cette page."
       return redirect_to dashboard_admin_path
