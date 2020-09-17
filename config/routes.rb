@@ -32,7 +32,6 @@ Rails.application.routes.draw do
   end
   
   resources :feedbacks, except: [:destroy]
-  resources :users, only: [:show]
 
   get '/moon', to: 'application#moon', as: 'moon'
   get '/sun', to: 'application#sun', as: 'sun'
