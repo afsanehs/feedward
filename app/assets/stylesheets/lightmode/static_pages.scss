@@ -2,7 +2,9 @@
 // home section
 #home-section {
   background: {
+
     image: asset_url('offices/home');
+
   }
   margin-bottom: 6rem;
   position: relative;
@@ -26,14 +28,17 @@
 // Home section 2
 #home-2 {
   position: relative;
+
 }
 
 //--------------------------------------//
 //Read more section
 
 #readmore {
+
   padding-top: 10rem;
   padding-bottom: 8rem;
+
   .readmore-text-salary {
     margin-top: 1rem;
   }
@@ -44,11 +49,13 @@
 //--------------------------------------//
 //How it work section
 #howitwork {
+
   margin-bottom: 8rem;
   margin-top: -1rem;
   padding-top: 3rem;
   position: relative;
   background-image: linear-gradient(#fbf3ef, #fff);
+
   .col-6 {
     margin-top: 1rem;
     text-align: right;
@@ -57,6 +64,7 @@
     text-align: left;
   }
   .vertical {
+
     position: absolute;
     border-left: 2px solid #6558f5;
     top: 12%;
@@ -69,8 +77,10 @@
 
 #info {
   position: relative;
+
   padding-top: 2rem;
   padding-bottom: 6rem;
+
   .row {
     margin: 5rem;
   }
@@ -81,9 +91,11 @@
 
 #demo {
   position: relative;
+
   margin-top: -1rem;
   padding-top: 3rem;
   padding-bottom: 6rem;
+
   background-image: linear-gradient(#fbf3ef, #fff);
   .row {
     margin: 5rem;
@@ -128,6 +140,7 @@
 }
 
 //--------------------------------------//
+
 // Static pages
 .about-page,
 .careers-page {
@@ -138,8 +151,10 @@
     padding-top: 2rem;
   }
 }
+
 // .about-page,
 // .careers-page,
+
 .contact-page,
 .privacy-policy-page,
 .team-page,
@@ -155,14 +170,19 @@
   font-size: 92%;
 }
 .contact-page #text {
+
   padding-top: 5rem;
+=======
+
   display: flex;
   flex-direction: column;
 }
 
 .careers-photo {
   background: {
+
     image: asset_url('offices/careers');
+
   }
   height: 50vh;
   background-position: center center;
