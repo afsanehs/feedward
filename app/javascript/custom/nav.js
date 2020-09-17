@@ -10,9 +10,8 @@ function closeAllDropdown() {
 }
 
 function openCloseDropdown(event) {
-  if (!event.target.matches('.dropdown-toggle')) {
+  if (!event.target.matches('.dropdown-toggle--cus')) {
     // Close dropdown when click out of dropdown menu
-    console.log('Clicked');
     closeAllDropdown();
   } else {
     let toggle = event.target.dataset.toggle;

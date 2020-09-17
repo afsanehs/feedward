@@ -70,3 +70,5 @@ end
 
 gem 'groupdate'
 gem 'activeadmin'
+gem 'flatpickr'
+gem 'jquery-rails'

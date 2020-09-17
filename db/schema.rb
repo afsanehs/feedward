@@ -35,6 +35,20 @@ ActiveRecord::Schema.define(version: 2020_09_16_124309) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "appointments", force: :cascade do |t|
+    t.string "title"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.text "description"
+    t.boolean "is_accepted"
+    t.bigint "employee_id"
+    t.bigint "employer_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["employee_id"], name: "index_appointments_on_employee_id"
+    t.index ["employer_id"], name: "index_appointments_on_employer_id"
+  end
+
   create_table "companies", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false

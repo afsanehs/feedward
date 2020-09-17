@@ -15,7 +15,7 @@
               <small>Le <%= get_time_verbose(feedback.created_at) %></small>
             </div>
             <div class="col-4">
-              <a href="#" class="btn btn-indigo btn-block mx-auto">Prendre RDV</a>
+              <a href="<%= new_appointment_path %>" class="btn btn-indigo btn-block mx-auto" data-method="get">Prendre RDV</a>
             </div>
           </div>
           <div class="row mt-2">
