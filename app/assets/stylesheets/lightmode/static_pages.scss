@@ -4,7 +4,7 @@
   background: {
     image: asset_url("offices/home");
   }
-  margin-bottom: 3rem;
+  margin-bottom: 6rem;
   position: relative;
   background-size: cover;
   background-repeat: no-repeat;
@@ -13,7 +13,7 @@
   position: relative;
 }
 .home-text {
-  margin-top: 5rem;
+  margin-top: 6rem;
 }
 .home-btn-next {
   position: absolute;
@@ -26,13 +26,12 @@
 // Home section 2
 #home-2 {
   position: relative;
-  padding-top: 1rem;
-  padding-bottom: 4rem;
-  height: 2rem;
+  height: 70%;
 }
 
 //--------------------------------------//
 //Read more section
+
 #readmore {
   padding-top: 12rem;
   .readmore-text-salary {
@@ -42,15 +41,14 @@
     margin-top: 1rem;
   }
 }
-
 //--------------------------------------//
 //How it work section
 #howitwork {
-  margin-top: 4rem;
-  margin-bottom: 4rem;
+  margin-top: 6rem;
+  margin-bottom: 6rem;
   position: relative;
   .col-6 {
-    margin-top: 2rem;
+    margin-top: 1rem;
     text-align: right;
   }
   .col-6.offset-md-6 {
@@ -59,7 +57,7 @@
   .vertical {
     height: 90%;
     position: absolute;
-    border-left: 2px solid #999;
+    border-left: 2px solid #6558f5;
     top: 12%;
     left: 50%;
   }
@@ -68,10 +66,24 @@
 //--------------------------------------//
 // Demo section
 
+#info {
+  position: relative;
+  margin-top: 6rem;
+  margin-bottom: 6rem;
+  .row {
+    margin: 5rem;
+  }
+  .demo-action {
+    margin-top: 5rem;
+  }
+}
+
 #demo {
   position: relative;
-  padding-top: 2rem;
+  margin-top: 6rem;
   margin-bottom: 10rem;
+  background-color: #f6e8df;
+  opacity: 0.7;
   .row {
     margin: 5rem;
   }
@@ -109,6 +121,7 @@
 .text-gray {
   color: #666;
 }
+
 //--------------------------------------//
 //Static pages
 .about-page,
@@ -149,4 +162,12 @@
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
+}
+
+.text-landing {
+  font-size: 120%;
+}
+
+.text-small-landing {
+  font-size: 110%;
 }

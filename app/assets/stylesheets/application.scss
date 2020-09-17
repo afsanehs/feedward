@@ -15,12 +15,17 @@
  *= require flatpickr/themes/airbnb
  */
 
-@import '../stylesheets/bootstrap.min.scss';
-@import '../stylesheets/static_pages.scss';
-@import '../stylesheets/users.scss';
-@import '../stylesheets/feedback.scss';
-@import '../stylesheets/appointment.scss';
-@import '../stylesheets/custom_color.scss';
-@import '../stylesheets/dashboard.scss';
-@import '../stylesheets/navigation.scss';
-@import '../stylesheets/notification.scss';
+@import "./lightmode/users.scss";
+@import "./lightmode/navigation.scss";
+@import "./lightmode/feedback.scss";
+
+@import "./lightmode/appointment.scss";
+
+@import "./lightmode/dashboard.scss";
+
+@import "./lightmode/notification.scss";
+@import "./lightmode/bootstrap.min.scss";
+@import "./lightmode/static_pages.scss";
+@import "./lightmode/custom_color.scss";
+
+@import "./lightmode/landing.scss";
