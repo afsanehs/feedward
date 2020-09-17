@@ -1,0 +1,32 @@
+<section id="demo">
+  <div class="mt-5">
+    <div class="text-center text-violet-bold demo-action display-4 mt-5">
+      Faites le pas dès <strong><em class="text-indigo">maintenant</strong></em>
+    </div>
+    <div class="text-center">
+      <button class="big-btn btn-outline-primary mt-5" href="#" data-target="#demo-modal" onclick="$crisp.push(['do', 'chat:open'])">
+        Demandez une démo
+      </button>
+    </div>
+    <div class="text-center">
+      <a class="big-btn btn-outline-primary mt-5 mb-3" href="<%= new_user_registration_path %>">Créez son compte</a>
+    </div>
+    <h3 class="text-center font-weight-bold mt-5">car un salarié heureux est ...</h3>
+    <div class="row mt-4 text-center text-landing">
+      <div class="col-6 col-md-3 text-primary">
+        <strong>55 %</strong> plus créatif
+      </div>
+      <div class="col-6 col-md-3 text-beige">
+        <strong>31 %</strong> plus productif
+      </div>
+        <div class="col-6 col-md-3 text-primary">
+        <strong>2 fois</strong> moins malade
+      </div>
+      <div class="col-6 col-md-3 text-beige">
+        <strong>6 fois</strong> moins absent
+      </div>
+    </div>
+  </div>
+</section>
+
+<%= render :partial => 'static_pages/partials/demo_form'%>

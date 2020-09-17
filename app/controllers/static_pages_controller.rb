@@ -1,5 +1,14 @@
 class StaticPagesController < ApplicationController
-  def index
+  def landing
+    @skip_navbar = true
+    @skip_footer = true
+    @skip_crisp = true
+  end
+
+  def index_company
+  end
+
+  def index_user
   end
 
   def contact

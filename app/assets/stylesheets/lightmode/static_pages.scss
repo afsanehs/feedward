@@ -4,7 +4,7 @@
   background: {
     image: asset_url("offices/home");
   }
-  margin-bottom: 3rem;
+  margin-bottom: 6rem;
   position: relative;
   background-size: cover;
   background-repeat: no-repeat;
@@ -13,7 +13,7 @@
   position: relative;
 }
 .home-text {
-  margin-top: 5rem;
+  margin-top: 6rem;
 }
 .home-btn-next {
   position: absolute;
@@ -26,13 +26,12 @@
 // Home section 2
 #home-2 {
   position: relative;
-  padding-top: 1rem;
-  padding-bottom: 4rem;
-  height: 2rem;
+  height: 7%;
 }
 
 //--------------------------------------//
 //Read more section
+
 #readmore {
   padding-top: 12rem;
   .readmore-text-salary {
@@ -42,24 +41,25 @@
     margin-top: 1rem;
   }
 }
-
 //--------------------------------------//
 //How it work section
 #howitwork {
-  margin-top: 4rem;
-  margin-bottom: 4rem;
+  margin-bottom: 6rem;
   position: relative;
+  margin-top: -3rem;
+  background-image: linear-gradient(#fbf3ef, #fff);
+  height: 12%;
   .col-6 {
-    margin-top: 2rem;
+    margin-top: 1rem;
     text-align: right;
   }
   .col-6.offset-md-6 {
     text-align: left;
   }
   .vertical {
-    height: 90%;
+    height: 80%;
     position: absolute;
-    border-left: 2px solid #999;
+    border-left: 2px solid #6558f5;
     top: 12%;
     left: 50%;
   }
@@ -68,16 +68,32 @@
 //--------------------------------------//
 // Demo section
 
-#demo {
+#info {
   position: relative;
-  padding-top: 2rem;
-  margin-bottom: 10rem;
+  margin-top: 6rem;
+  margin-bottom: 6rem;
   .row {
     margin: 5rem;
   }
   .demo-action {
     margin-top: 5rem;
   }
+}
+
+#demo {
+  position: relative;
+  margin-top: -3rem;
+  background-image: linear-gradient(#fbf3ef, #fff);
+  .row {
+    margin: 5rem;
+  }
+  .demo-action {
+    margin-top: 5rem;
+  }
+}
+
+#container {
+  margin-bottom: -5rem;
 }
 
 //--------------------------------------//
@@ -109,6 +125,7 @@
 .text-gray {
   color: #666;
 }
+
 //--------------------------------------//
 //Static pages
 .about-page,
@@ -149,4 +166,45 @@
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
+}
+
+.text-landing {
+  font-size: 120%;
+}
+
+.text-small-landing {
+  font-size: 110%;
+}
+
+.wave {
+  color: #fbf3ef;
+}
+
+.big-btn {
+  display: inline-block;
+  font-weight: 400;
+  color: #212529;
+  text-align: center;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-color: transparent;
+  border: 2px solid transparent;
+  padding: 0.375rem 0.75rem;
+  font-size: 1.5rem;
+  line-height: 2.5;
+  width: 5;
+  border-radius: 0.5rem;
+  -webkit-transition: color 0.15s ease-in-out,
+    background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
+    -webkit-box-shadow 0.15s ease-in-out;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out,
+    -webkit-box-shadow 0.15s ease-in-out;
 }

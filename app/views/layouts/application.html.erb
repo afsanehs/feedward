@@ -12,6 +12,7 @@
     <% else %>
       <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <% end %>
+
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gmaps.js/0.4.25/gmaps.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
@@ -23,11 +24,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Abel&family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="<%= asset_path('icons/Logo1_purple_full.png')%>"/>
 
-    <script type="text/javascript">window.$crisp=[];window.CRISP_WEBSITE_ID="8507984d-9f35-4bd2-8694-777f431a3cff";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();</script>
-  </head>
+    <% unless @skip_crisp %>
+      <script type="text/javascript">window.$crisp=[];window.CRISP_WEBSITE_ID="8507984d-9f35-4bd2-8694-777f431a3cff";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();</script>
+    <% end %>
+    </head>
 
   <body>
-    <%= render 'layouts/navbar' %>
+    <% unless @skip_navbar %>
+      <%= render 'layouts/navbar' %>
+    <% end %>
 
     <!-- Main content of body -->
     <%= render 'layouts/alert'%>
@@ -38,39 +43,43 @@
     </div>
 
     <%= yield %>
-  <%= render 'layouts/footer' %>
-<!-- Script -->
+
+    <% unless @skip_footer %>
+      <%= render 'layouts/footer' %>
+    <% end %>
+
+  <!-- Script -->
   <!-- Jquery -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"
-    integrity="sha512-3P8rXCuGJdNZOnUx/03c1jOTnMn3rP63nBip5gOP2qmUh5YAdVAvFZ1E+QLZZbC1rtMrQb+mah3AfYW11RUrWA=="
-    crossorigin="anonymous"></script>
-  <!-- Popper -->
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
-  </script>
-  <!-- Bootstrap -->
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
-    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous">
-  </script>
-  <!-- DataTables -->
-  <script type="text/javascript" src="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-  <script src="https://npmcdn.com/flatpickr@4.6.6/dist/l10n/fr.js"></script>
-  <script>
-    $(document).ready(function () {
-      $('#year').text(new Date().getFullYear());
-      $(".alert").fadeOut(6000);
-      $('#myTable').dataTable({
-         "sScrollX": '100%'
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"
+      integrity="sha512-3P8rXCuGJdNZOnUx/03c1jOTnMn3rP63nBip5gOP2qmUh5YAdVAvFZ1E+QLZZbC1rtMrQb+mah3AfYW11RUrWA=="
+      crossorigin="anonymous"></script>
+    <!-- Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+      integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
+    </script>
+    <!-- Bootstrap -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+      integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous">
+    </script>
+    <!-- DataTables -->
+    <script type="text/javascript" src="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://npmcdn.com/flatpickr@4.6.6/dist/l10n/fr.js"></script>
+    <script>
+      $(document).ready(function () {
+        $('#year').text(new Date().getFullYear());
+        $(".alert").fadeOut(6000);
+        $('#myTable').dataTable({
+          "sScrollX": '100%'
+        });
+        $('#tableUser').dataTable({
+          "sScrollX": '100%'
+        });
+        $('#tableUserFeedbacks').dataTable({
+          lengthMenu: [25,50,100]
+        });
       });
-      $('#tableUser').dataTable({
-         "sScrollX": '100%'
-      });
-       $('#tableUserFeedbacks').dataTable({
-         lengthMenu: [25,50,100]
-       });
-    });
-  </script>
+    </script>
 
   </body>
 </html>
