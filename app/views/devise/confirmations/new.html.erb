@@ -1,23 +1,26 @@
 <div class="container devise-page">
   <div class="row">
-      <div class="col-lg-6 col-md-8 mx-auto">
-      <h2 class="text-center text-primary mb-4">Resend confirmation instructions</h2>
-
+    <div class="col-md-6 offset-md-3">
+      <br><br>
       <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
-        <%= render "devise/shared/error_messages", resource: resource %>
-
-        <div class="form-group mb-4">
-          <%= f.label :email %><br />
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
-        </div>
+      <%= render "devise/shared/error_messages", resource: resource %>
+        <h3 class="mb-3 font-weight-normal text-center text-indigo">Renvoyer les instructions de confirmation de votre compte</h3>
 
         <div class="form-group">
-          <%= f.submit "Resend confirmation instructions" %>
+          <%= f.label :email %><br />
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email), class: "form-control" %>
         </div>
+
+        <div class="actions mt-5">
+          <%= f.submit "Renvoyer les instructions",  class: "btn btn-lg btn-primary btn-block" %>
+        </div>
+
       <% end %>
-
+      <br>
+    </div>
+    <div class="col-md-6 offset-md-3 text-center">
       <%= render "devise/shared/links" %>
-
+      <br><br>
     </div>
   </div>
 </div>

@@ -1,11 +1,15 @@
 class AppointmentsController < ApplicationController
   before_action :authenticate_user!
   before_action :account_is_validated
-  before_action :must_be_admin
+  before_action :must_be_admin, except: [:index, :show]
   before_action :set_appointment, only: [:show, :edit, :update, :destroy]
 
   def index
-    @appointments = Appointment.where(employer: current_user)
+    if current_user.is_company_admin
+      @appointments = Appointment.where(employer: current_user)
+    else
+      @appointments = Appointment.where(employee: current_user)
+    end
     @appointments_future = @appointments.where("DATE(appointments.start_date) >= ?", Time.now.to_date)
     @appointments_future = @appointments_future.sort_by &:start_date
     @appointments_past = @appointments.where("DATE(appointments.start_date) < ?", Time.now.to_date)
@@ -13,7 +17,7 @@ class AppointmentsController < ApplicationController
   end
 
   def show
-    if @appointment.employer_id != current_user.id
+    if @appointment.employer_id != current_user.id  && !current_user.is_company_admin &&  @appointment.employee_id != current_user.id
       flash[:error] = "Vous n'avez pas le droit pour accéder à cette page."
       return redirect_to dashboard_admin_path
     end
@@ -22,7 +26,7 @@ class AppointmentsController < ApplicationController
   def new
     @appointment = Appointment.new
     @employees = User.where(company_id: current_user.company_id, is_company_admin: nil)
-    @employee_id = nil
+    @employee_id = params[:user_id]
   end
 
   def create

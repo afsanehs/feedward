@@ -1,11 +1,13 @@
 <div class="container text-center appointments-section">
-	<div class="col-6 t-4 text-center mx-auto">
+	<div class="col-10 col-md-6 t-4 text-center mx-auto">
 		<div class="card h-100 text-center border-primary mt-5">
 			<div class="card-header text-bold">
 				<p>Du <%= get_time_verbose(@appointment.start_date) %> <br/> au <%= get_time_verbose(@appointment.end_date) %></p>
 			</div>
 			<div class="card-body">
-				<h4 class="text-primary"><%=@appointment.title %></h4>
+				<h5 class="text-primary"><%=@appointment.title %></h5>
+        <p><%= @appointment.employer.full_name %> - <%= @appointment.employee.full_name %></p>
+        <hr>
 				<p><small class="mt-2"><%= @appointment.description %></small></p>
 			</div>
 			<div class="card-footer">

@@ -31,7 +31,7 @@ Rails.application.routes.draw do
     get '/users/sign_out' => 'devise/sessions#destroy'
   end
   
-  resources :feedbacks
+  resources :feedbacks, except: [:destroy]
   resources :users, only: [:show]
 
   get '/moon', to: 'application#moon', as: 'moon'
