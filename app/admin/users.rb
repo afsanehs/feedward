@@ -11,6 +11,7 @@ ActiveAdmin.register User do
     column :is_site_admin
     column :is_company_admin
     column :is_validated
+    column :confirmed_at
     actions
   end
 

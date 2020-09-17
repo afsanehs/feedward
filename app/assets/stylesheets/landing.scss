@@ -14,16 +14,15 @@
   background-blend-mode: multiply;
 }
 
-.hero-inner {
-  background-color: #f8f9fa46;
-  width: 100vw;
-  margin-bottom: 0.5em;
-}
-
 .hero h1 {
   font-size: 5em;
   margin-top: 0;
   margin-bottom: 0.5em;
+}
+
+.hero-inner {
+  background-color: #cfcfcfa1;
+  padding: 5rem;
 }
 
 .hero .btn {
