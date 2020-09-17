@@ -1,8 +1,7 @@
 //------------------------------------------//
 // home section
 #home-section {
-
-  background-image: linear-gradient(black, black), asset_url("offices/home");
+  background-image: linear-gradient(black, black), asset_url('offices/home');
   margin-bottom: 3rem;
   position: relative;
   background-size: cover;
@@ -14,9 +13,7 @@
   position: relative;
 }
 .home-text {
-
   margin-top: 6rem;
-
 }
 .home-btn-next {
   position: absolute;
@@ -35,8 +32,8 @@
 //Read more section
 
 #readmore {
-  padding-top: 10rem;
-  padding-bottom: 10rem;
+  padding-top: 6rem;
+  padding-bottom: 8rem;
 
   .readmore-text-salary {
     margin-top: 1rem;
@@ -63,7 +60,6 @@
     text-align: left;
   }
   .vertical {
-
     position: absolute;
     border-left: 2px solid #dddbf8;
 
@@ -74,7 +70,6 @@
 
 //--------------------------------------//
 // Demo section
-
 
 #info {
   position: relative;
@@ -103,7 +98,6 @@
   }
 }
 
-
 #container {
   margin-bottom: -5rem;
 }
@@ -117,7 +111,6 @@
 }
 
 .text-violet-bold-hero {
-
   color: #dddbf8;
 
   font-weight: 700;
@@ -141,12 +134,10 @@
   color: #666;
 }
 
-
 //--------------------------------------//
 // Static pages
 .about-page,
 .careers-page {
-
   .container {
     padding: 5rem 0rem;
   }
@@ -173,7 +164,6 @@
   font-size: 92%;
 }
 .contact-page #text {
-
   padding-top: 5rem;
 
   display: flex;
@@ -181,16 +171,13 @@
 }
 
 .careers-photo {
-
-  background-image: linear-gradient(black, black), asset_url("offices/careers");
+  background-image: linear-gradient(black, black), asset_url('offices/careers');
 
   height: 50vh;
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
   background-blend-mode: saturation;
-
-  
 }
 
 .text-landing {

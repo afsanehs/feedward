@@ -10,6 +10,12 @@ class UsersController < ApplicationController
     @feedbacks_user = Feedback.where(sender_id: @user.id)
   end
 
+  def create
+    # insert special code into instance and ensure that code is unique in database
+    super # continue to devise registration to CREATE user
+    resource.update confirmed_at: Time.now # may want to check model is still valid at this point and handle errors if not
+  end
+
   # GET account/profile
   def profile
     @user = current_user
