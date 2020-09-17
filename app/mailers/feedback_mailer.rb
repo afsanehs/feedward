@@ -4,7 +4,7 @@ class FeedbackMailer < ApplicationMailer
   
   def new_feedback_user(user)
     @user = user 
-    @url  = 'http://getfeedward.com' 
+    @url  = "http://#{ENV["DOMAIN_NAME"]}" || 'http://localhost:3000'
     mail(to: @user.email, subject: 'Merci pour ton feedback') 
   end
 
@@ -15,7 +15,7 @@ class FeedbackMailer < ApplicationMailer
 
   def new_feedback_receiver(receiver)
     @receiver = receiver
-    @url  = 'http://getfeedward.com' 
+    @url  = "http://#{ENV["DOMAIN_NAME"]}" || 'http://localhost:3000'
     mail(to:  @receiver.email, subject: 'Tu viens de recevoir un feedback') 
   end
 

@@ -4,7 +4,7 @@ class UserMailer < ApplicationMailer
   
   def welcome_email(user)
     @user = user 
-    @url  = 'http://getfeedward.com' 
+    @url  = "http://#{ENV["DOMAIN_NAME"]}" || 'http://localhost:3000'
     mail(to: @user.email, subject: 'Bienvenue sur Feedward !') 
   end
 end
