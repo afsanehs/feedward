@@ -26,7 +26,7 @@ Rails.application.routes.draw do
   get '/dashboard/admin', to: 'users#dashboard_admin'
   get '/users/:id/feedbacks', to: 'feedbacks#user_feedbacks', as: 'users_feedbacks'
 
-  devise_for :users, :controllers => {:registrations => "devise/registrations"}
+  devise_for :users
   devise_scope :user do
     get '/users/sign_out' => 'devise/sessions#destroy'
   end
