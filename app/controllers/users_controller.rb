@@ -102,7 +102,7 @@ class UsersController < ApplicationController
     @grade_2_by_user = (@feedbacks_user.where(score_global: 2).count + @feedbacks_user.where(score_workspace: 2).count + @feedbacks_user.where(score_missions: 2).count)
     @grade_1_by_user = (@feedbacks_user.where(score_global: 1).count + @feedbacks_user.where(score_workspace: 1).count + @feedbacks_user.where(score_missions: 1).count)
     @grade_0_by_user = (@feedbacks_user.where(score_global: 0).count + @feedbacks_user.where(score_workspace: 0).count + @feedbacks_user.where(score_missions: 0).count)
-    @score_colors = {"Note 5" => "#22347A", "Note 4" => "#6558F1", "Note 3" => "#B2ACFA", "Note 2" => "#CE885D", "Note 1" => "#DFB090", "Note 0" => "#F6E8DF"}
+    @score_colors = {"Note 5" => "#22347A", "Note 4" => "#6558F1", "Note 3" => "#c4c1df", "Note 2" => "#CE885D", "Note 1" => "#DFB090", "Note 0" => "#F6E8DF"}
     @grades_by_user = {"Note 5" => @grade_5_by_user, "Note 4" => @grade_4_by_user, "Note 3" => @grade_3_by_user, "Note 2" => @grade_2_by_user, "Note 1" => @grade_1_by_user, "Note 0" => @grade_0_by_user}
     @colors = []
     @grades_by_user.each do |score, _|
@@ -145,7 +145,7 @@ class UsersController < ApplicationController
     @grade_2 = (@feedbacks.where(score_global: 2).count + @feedbacks.where(score_workspace: 2).count + @feedbacks.where(score_missions: 2).count)
     @grade_1 = (@feedbacks.where(score_global: 1).count + @feedbacks.where(score_workspace: 1).count + @feedbacks.where(score_missions: 1).count)
     @grade_0 = (@feedbacks.where(score_global: 0).count + @feedbacks.where(score_workspace: 0).count + @feedbacks.where(score_missions: 0).count)
-    @score_colors = {"Note 5" => "#22347A", "Note 4" => "#6558F1", "Note 3" => "#B2ACFA", "Note 2" => "#CE885D", "Note 1" => "#DFB090", "Note 0" => "#F6E8DF"}
+    @score_colors = {"Note 5" => "#22347A", "Note 4" => "#6558F1", "Note 3" => "#c4c1df", "Note 2" => "#CE885D", "Note 1" => "#DFB090", "Note 0" => "#F6E8DF"}
     @all_grades = {"Note 5" => @grade_5, "Note 4" => @grade_4, "Note 3" => @grade_3, "Note 2" => @grade_2, "Note 1" => @grade_1, "Note 0" => @grade_0}
     @colors = []
     @all_grades.each do |score, _|

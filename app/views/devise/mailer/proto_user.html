@@ -4,7 +4,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Welcome to Feedward!</title>
+    <title>Tu viens de soumettre ton feedback.</title>
     <link rel="stylesheet" href="style.css" />
     <style>
       .email-background {
@@ -77,26 +77,22 @@
   <body>
     <div class="email-background">
       <div class="pre-header">
-        Tu viens à l'instant de t'inscrire à Feedward. L'application qui te
+        Tu viens à l'instant de soumettre un feedback sur Feedward. L'application qui te
         permet d'évaluer ton équipe mangériale en toute sérénité.
       </div>
       <div class="email-container">
-        <h1>Salut et bienvenue chez Feedward !</h1>
+        <h1>Nous avons bien recu ton feedback !</h1>
         <h2>
-          Tu t'es inscrit sur Feedward en utilisant l'e-mail suivant : <%=
-          @user.email %>.
+          Tu viens juste de remplir un feedback sur Feedward en utilisant l'e-mail suivant : <%= @user.email %>.
         </h2>
-        <img src="https://media.giphy.com/media/AeWoyE3ZT90YM/source.gif" alt="">
+        <img src="https://media.giphy.com/media/G22vVm4jcPeco/source.gif" alt="Bravo!">
         <p>
-          Tu vas maintenant pouvoir évaluer ton équipe managériale. Seule la personne en charge des ressources humaines
-          de ton entreprise aura
+          Seule la personne en charge des ressources humaines
+          de ton entreprise et éventuellement la personne que tu as choisi, auront
           accès à ce fichier dans le détail.<br />
-          Tu as la possibilité de modifier à tout moment ton formulaire, et l’envoyer lorsque tu as fini ta journée de
-          travail.<br />
-          Tu peux aussi partager ton feedback avec une personne de ton choix.<br />
         </p>
         <div class="confirm-email">
-          <%= link_to "Confirmer mon adresse email.", dashboard_url %>.<br />
+          <%= link_to "Synthèse de tes feedbacks.", dashboard_url %><br />
         </div>
         </p>
         <p>Merci pour ta confiance.</p>
