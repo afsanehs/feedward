@@ -1,17 +1,67 @@
-<%= form_with(model: @feedback, local: true) do |form| %>
+<%= form_for @feedback do |f| %>
+<div class="mb-4">
+  <h5 class="text-primary mt-5 mb-2">Ressenti général</h5>
+  <p>Entre 0 et 5, quel est ton ressenti par rapport à l’entreprise en général ?<br />
+    <small>Ambiance générale, stratégie globale de l’entreprise...</small></p>
 
-    <div class="d-flex">
-        <% 6.times.each do |num|%>
-            <%= f.radio_button :request_type_id, rt.id %>
-            <%= f.label :request_type_id, rt.title %>
-
-        <% end %>
+  <div class="d-flex">
+    <% 6.times do |i| %>
+    <div class="custom-control custom-radio mr-3">
+      <%= f.radio_button :score_global, i , class:"custom-control-input"%>
+      <%= f.label :score_global, i, class:"custom-control-label" %>
     </div>
+    <% end %>
+  </div>
+  <p class="pt-3 mt-2">Souhaites-tu ajouter un commentaire ? </p>
+  <%= text_field_tag 'feedback[answer_global]', @feedback.answer_global, class: "form-control mb-3" %>
+</div>
 
-    <div class="form-group mt-3">
-        <p>Souhaites-tu ajouter un commentaire ? </p>
-        <%= f.input class: 'btn btn-primary form-control'%>
+<div class="mb-4">
+  <h5 class="text-primary">Ressenti sur ton environnement de travail</h5>
+  <p>Entre 0 et 5, à quel point es-tu satisfait de ton environnement de travail actuel?<br />
+    <small>Ton équipe, ton lieu de travail…</small></p>
+
+  <div class="d-flex">
+    <% 6.times do |i| %>
+    <div class="custom-control custom-radio mr-3">
+      <%= f.radio_button :score_workspace, i , class:"custom-control-input"%>
+      <%= f.label :score_workspace, i, class:"custom-control-label" %>
     </div>
+    <% end %>
+  </div>
 
+  <p class="pt-3 mt-2">Souhaites-tu ajouter un commentaire ? </p>
+  <%= f.text_field :answer_workspace, class: "form-control mb-3" %>
+</div>
+
+<div class="mb-4">
+  <h5 class="text-primary">Ressenti sur tes missions</h5>
+  <p>Entre 0 et 5, dans quelle mesure tes missions actuelles répondent-elles à tes attentes ?<br />
+    <small>Missions variées, intéressantes…</small></p>
+  <div class="d-flex">
+    <% 6.times do |i| %>
+    <div class="custom-control custom-radio mr-3">
+      <%= f.radio_button :score_missions, i , class:"custom-control-input"%>
+      <%= f.label :score_missions, i, class:"custom-control-label" %>
+    </div>
+    <% end %>
+  </div>
+  <p class="pt-3 mt-2">Souhaites-tu ajouter un commentaire ? </p>
+  <%= f.text_field :answer_missions, class: "form-control mb-3" %>
+</div>
+
+<div class="mb-4">
+  <h5 class="text-primary">Ressenti sur un élément en particulier</h5>
+  <p>Est-ce qu’il y a quelque chose en particulier, dont tu souhaiterais parler ?</p>
+  <%= f.text_field :answer_final, class: "form-control mb-3" %>
+</div>
+
+<div class="mb-4">
+  <h5 class="text-primary pt-5">Souhaites-tu partager ton feedback avec quelqu’un ?</h5>
+  <%= f.select :receiver_id , options_for_select(@colleagues.collect{ |u| [u.email, u.id] },  @collegue_id),
+                { include_blank: 'Sélectionner la personne que vous voulez contacter'}, class: 'form-control text-primary' %>
+</div>
+
+<%= f.submit "Enregistrer" , class:"btn btn-primary mb-5"%>
 
 <% end %>

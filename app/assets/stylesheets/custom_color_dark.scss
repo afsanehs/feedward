@@ -4,7 +4,7 @@ body {
   height: 100%;
   margin: 0;
   box-sizing: border-box;
-  font-family: "Lato", sans-serif;
+  font-family: 'Lato', sans-serif;
   font-size: 1.08rem;
   color: #ebeaff;
   display: flex;
@@ -18,7 +18,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Abel", sans-serif;
+  font-family: 'Abel', sans-serif;
   font-weight: 700;
 }
 
@@ -30,16 +30,6 @@ footer {
     color: #c1c0db;
   }
   margin-top: auto;
-}
-
-#alert-section {
-  position: absolute;
-  display: block;
-  width: 100%;
-  top: 3rem;
-  left: 0;
-  right: 0;
-  z-index: 100;
 }
 
 .text-beige {
@@ -62,7 +52,7 @@ pre,
 code,
 kbd,
 samp {
-  font-family: "Lato", sans-serif;
+  font-family: 'Lato', sans-serif;
 }
 
 caption {
@@ -1303,7 +1293,7 @@ select.form-control:focus::-ms-value {
   display: inline-block;
   padding-right: 0.5rem;
   color: #c4c1df;
-  content: "/";
+  content: '/';
 }
 
 .breadcrumb-item + .breadcrumb-item:hover::before {
@@ -1812,11 +1802,11 @@ a.badge-dark.focus {
 }
 
 .tooltip {
-  font-family: "Lato", sans-serif;
+  font-family: 'Lato', sans-serif;
 }
 
 .popover {
-  font-family: "Lato", sans-serif;
+  font-family: 'Lato', sans-serif;
 }
 
 .bg-primary {
@@ -1921,7 +1911,7 @@ button.bg-violet:focus {
 }
 
 .text-monospace {
-  font-family: "Abel", sans-serif;
+  font-family: 'Abel', sans-serif;
 }
 
 .text-primary {
