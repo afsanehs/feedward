@@ -1,7 +1,7 @@
 class AppointmentsController < ApplicationController
   before_action :authenticate_user!
   before_action :account_is_validated
-  before_action :must_be_admin, except: [:index]
+  before_action :must_be_admin, except: [:index, :show]
   before_action :set_appointment, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -17,7 +17,7 @@ class AppointmentsController < ApplicationController
   end
 
   def show
-    if @appointment.employer_id != current_user.id
+    if @appointment.employer_id != current_user.id  && !current_user.is_company_admin &&  @appointment.employee_id != current_user.id
       flash[:error] = "Vous n'avez pas le droit pour accéder à cette page."
       return redirect_to dashboard_admin_path
     end
