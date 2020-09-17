@@ -282,6 +282,7 @@ class UsersController < ApplicationController
         @uri = @album.external_urls['spotify']
       end
     end
+
   end
 
 

@@ -41,6 +41,7 @@ Rails.application.routes.draw do
   resources :notifications, only: [:index, :create, :update, :destroy]
 
   resources :appointments
+  resources :companies, only: [:new, :create, :edit, :update]
 
 
   # Active admin
