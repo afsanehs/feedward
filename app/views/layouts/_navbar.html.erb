@@ -21,7 +21,7 @@
           </li>
           <li class="nav-item mr-4 ">
             <% unless user_signed_in? %>
-            <a class="nav-link text-white" href="/#demo">Demandez une démo</a>
+            <a class="nav-link text-white" href="/#demo">Demander une démo</a>
             <% end %>
           </li>
         </ul>
@@ -80,9 +80,11 @@
             <a class="nav-link nav-text-bold" href="<%=new_user_session_path%>">Se connecter</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link nav-text-bold" href="<%=new_user_registration_path%>">S'inscrire</a>
+            <a class="nav-link nav-text-bold" href="<%=new_user_registration_path%>">S'inscrire en tant qu'employé</a>
           </li>
-
+          <li class="nav-item">
+            <a class="nav-link nav-text-bold" href="<%=new_company_path%>">Souscrire en tant qu'entreprise</a>
+          </li>
           <li>
             <% if cookies[:moon] %>
               <button id="darkmode-button" class="btn btn-primary"><%= link_to 'Light Mode', sun_path, method: :get%></button>

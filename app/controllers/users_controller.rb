@@ -133,10 +133,10 @@ class UsersController < ApplicationController
     @score_missions_average_lastweek = Feedback.missions_score_lastweek(@company.id)
     @average_company_score_lastweek = Feedback.company_score_lastweek(@company.id)
 
-    @average_company_score_evolution = (100*(@average_company_score - @average_company_score_yesterday) / @average_company_score_yesterday).round(2)
-    @score_global_average_evolution = (100*(@score_global_average - @score_global_average_yesterday) / @score_global_average_yesterday).round(2)
-    @score_workspace_average_evolution = (100*(@score_workspace_average - @score_workspace_average_yesterday) / @score_workspace_average_yesterday).round(2)
-    @score_missions_average_evolution = (100*(@score_missions_average - @score_missions_average_yesterday) / @score_missions_average_yesterday).round(2)
+    @average_company_score_evolution = @score_global_average_yesterday == 0 ? 0 : (100*(@average_company_score - @average_company_score_yesterday) / @average_company_score_yesterday).round(2)
+    @score_global_average_evolution = @score_workspace_average_yesterday == 0 ? 0 : (100*(@score_global_average - @score_global_average_yesterday) / @score_global_average_yesterday).round(2)
+    @score_workspace_average_evolution = @score_missions_average_yesterday == 0 ? 0 : (100*(@score_workspace_average - @score_workspace_average_yesterday) / @score_workspace_average_yesterday).round(2)
+    @score_missions_average_evolution = @average_company_score_yesterday == 0 ? 0 : (100*(@score_missions_average - @score_missions_average_yesterday) / @score_missions_average_yesterday).round(2)
 
     #calculations for the pie Chart of today
     @grade_5 = (@feedbacks.where(score_global: 5).count + @feedbacks.where(score_workspace: 5).count + @feedbacks.where(score_missions: 5).count)
@@ -282,6 +282,7 @@ class UsersController < ApplicationController
         @uri = @album.external_urls['spotify']
       end
     end
+
   end
 
 

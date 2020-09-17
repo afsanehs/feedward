@@ -32,7 +32,6 @@ Rails.application.routes.draw do
   end
   
   resources :feedbacks, except: [:destroy]
-  resources :users, only: [:show]
 
   get '/moon', to: 'application#moon', as: 'moon'
   get '/sun', to: 'application#sun', as: 'sun'
@@ -42,6 +41,8 @@ Rails.application.routes.draw do
   resources :notifications, only: [:index, :create, :update, :destroy]
 
   resources :appointments
+  resources :companies, only: [:new, :create, :edit, :update]
+  resources :charges
 
 
   # Active admin
