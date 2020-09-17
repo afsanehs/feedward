@@ -1,7 +1,7 @@
 <div class="container devise-page">
   <div class="row">
       <div class="col-lg-6 col-md-8 mx-auto">
-      <h2 class="text-center text-primary mb-4">Resend confirmation instructions</h2>
+      <h2 class="text-center text-primary mb-4">Renvoyer les instructions de confirmation de votre compte</h2>
 
       <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
         <%= render "devise/shared/error_messages", resource: resource %>
@@ -12,7 +12,7 @@
         </div>
 
         <div class="form-group">
-          <%= f.submit "Resend confirmation instructions" %>
+          <%= f.submit "Renvoyer les instructions" %>
         </div>
       <% end %>
 

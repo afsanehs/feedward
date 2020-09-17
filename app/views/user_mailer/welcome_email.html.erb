@@ -96,7 +96,8 @@
           Tu peux aussi partager ton feedback avec une personne de ton choix.<br />
         </p>
         <div class="confirm-email">
-          <%= link_to "Confirmer mon adresse email.", dashboard_url %>.<br />
+          <%= link_to 'Confirmer mon adresse email', confirmation_url(@user, confirmation_token: @user.confirmation_token) %><br /> 
+
         </div>
         </p>
         <p>Merci pour ta confiance.</p>
