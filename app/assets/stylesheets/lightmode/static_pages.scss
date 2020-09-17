@@ -2,7 +2,7 @@
 // home section
 #home-section {
   background: {
-    image: asset_url("offices/home");
+    image: asset_url('offices/home');
   }
   margin-bottom: 6rem;
   position: relative;
@@ -26,14 +26,14 @@
 // Home section 2
 #home-2 {
   position: relative;
-  height: 7%;
 }
 
 //--------------------------------------//
 //Read more section
 
 #readmore {
-  padding-top: 12rem;
+  padding-top: 10rem;
+  padding-bottom: 10rem;
   .readmore-text-salary {
     margin-top: 1rem;
   }
@@ -44,11 +44,11 @@
 //--------------------------------------//
 //How it work section
 #howitwork {
-  margin-bottom: 6rem;
+  margin-bottom: 8rem;
+  margin-top: -1rem;
+  padding-top: 3rem;
   position: relative;
-  margin-top: -3rem;
-  background-image: linear-gradient(#FBF3EF, #fff);
-  height: 12%;
+  background-image: linear-gradient(#fbf3ef, #fff);
   .col-6 {
     margin-top: 1rem;
     text-align: right;
@@ -57,7 +57,6 @@
     text-align: left;
   }
   .vertical {
-    height: 80%;
     position: absolute;
     border-left: 2px solid #6558f5;
     top: 12%;
@@ -70,8 +69,8 @@
 
 #info {
   position: relative;
-  margin-top: 6rem;
-  margin-bottom: 6rem;
+  padding-top: 2rem;
+  padding-bottom: 6rem;
   .row {
     margin: 5rem;
   }
@@ -82,8 +81,10 @@
 
 #demo {
   position: relative;
-  margin-top: -3rem;
-  background-image: linear-gradient(#FBF3EF, #fff);
+  margin-top: -1rem;
+  padding-top: 3rem;
+  padding-bottom: 6rem;
+  background-image: linear-gradient(#fbf3ef, #fff);
   .row {
     margin: 5rem;
   }
@@ -127,10 +128,9 @@
 }
 
 //--------------------------------------//
-//Static pages
+// Static pages
 .about-page,
 .careers-page {
-  min-height: calc(100vh - 134px - 55px);
   .container {
     padding: 5rem 0rem;
   }
@@ -138,6 +138,8 @@
     padding-top: 2rem;
   }
 }
+// .about-page,
+// .careers-page,
 .contact-page,
 .privacy-policy-page,
 .team-page,
@@ -153,14 +155,14 @@
   font-size: 92%;
 }
 .contact-page #text {
-  padding-top: 6rem;
+  padding-top: 5rem;
   display: flex;
   flex-direction: column;
 }
 
 .careers-photo {
   background: {
-    image: asset_url("offices/careers");
+    image: asset_url('offices/careers');
   }
   height: 50vh;
   background-position: center center;
@@ -177,7 +179,7 @@
 }
 
 .wave {
-  color: #FBF3EF
+  color: #fbf3ef;
 }
 
 .big-btn {
