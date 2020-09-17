@@ -3,7 +3,7 @@
       <div class="col-md-10 mx-auto">
 
 
-<p>Welcome <%= @email %>!</p>
+<p></p>
 
 <p>Vous pouvez confirmer votre adresse email grâce au lien ci-dessous :</p>
 
@@ -12,3 +12,199 @@
 </div>
 </div>
 </div>
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tu viens de soumettre ton feedback.</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      .email-background {
+        background: #eee;
+        padding: 10px;
+      }
+
+      .email-container,
+      .pre-header,
+      .footer {
+        max-width: 500px;
+        background: #dddbf8;
+        font-family: sans-serif;
+        margin: 0px auto;
+        overflow: hidden;
+        border-radius: 5px;
+      }
+
+      .pre-header {
+        background: #eee;
+        color: #eee;
+        font-size: 5px;
+      }
+
+      img {
+        max-width: 100%;
+      }
+
+      h1,
+      h2 {
+        margin: 10px 30px;
+      }
+
+      p {
+        margin: 20px;
+        font-size: 18px;
+        color: #222324;
+        line-height: 1.5;
+        font-weight: 300;
+      }
+
+      .confirm-email {
+        text-align: center;
+        margin: 20px;
+        text-decoration: none;
+        display: inline-block;
+        background: #6558f5;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-size: 20px;
+      }
+
+      .footer {
+        background: none;
+        text-align: center;
+        padding: 20px;
+        font-size: 14px;
+      }
+
+      .footer,
+      a {
+        text-decoration: none;
+        color: #222324;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="email-background" style="background: #eee; padding: 10px">
+      <div
+        class="pre-header"
+        style="
+          max-width: 500px;
+          background: #eee;
+          font-family: sans-serif;
+          margin: 0px auto;
+          overflow: hidden;
+          border-radius: 5px;
+          color: #eee;
+          font-size: 5px;
+        "
+      >
+        Tu as souhaiter t'inscrire sur Feedward.
+        L'application qui te permet d'évaluer ton équipe mangériale en toute
+        sérénité.
+      </div>
+      <div
+        class="email-container"
+        style="
+          max-width: 500px;
+          background: #dddbf8;
+          font-family: sans-serif;
+          margin: 0px auto;
+          overflow: hidden;
+          border-radius: 5px;
+        "
+      >
+        <h1 style="margin: 10px 30px">Bienvenue sur Feedback <%= @user.surname %>!</h1>
+        <h2 style="margin: 10px 30px">
+          Tu viens juste de t'inscrire sur Feedward et nous te remercions de ta confiance.
+        </h2>
+        <img
+          src="https://media.giphy.com/media/l3V0dy1zzyjbYTQQM/source.gif"
+          alt="Yay!"
+          style="max-width: 100%"
+        />
+        <p
+          style="
+            margin: 20px;
+            font-size: 18px;
+            color: #222324;
+            line-height: 1.5;
+            font-weight: 300;
+          "
+        >
+          Tu peux maintenant confirmer ton adresse email.<br />
+        </p>
+        <div
+          class="confirm-email"
+          style="
+            text-align: center;
+            margin: 20px;
+            text-decoration: none;
+            display: inline-block;
+            background: #6558f5;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 20px;
+          "
+        >
+          <%= link_to 'Clique ici', confirmation_url(@resource, confirmation_token: @token) %><br />
+        </div>
+
+        <p
+          style="
+            margin: 20px;
+            font-size: 18px;
+            color: #222324;
+            line-height: 1.5;
+            font-weight: 300;
+          "
+        >
+          Merci encore pour ta confiance.
+        </p>
+        <p
+          style="
+            margin: 20px;
+            font-size: 18px;
+            color: #222324;
+            line-height: 1.5;
+            font-weight: 300;
+          "
+        >
+          À très vite sur Feedward !
+        </p>
+      </div>
+      <div
+        class="footer"
+        style="
+          max-width: 500px;
+          background: none;
+          font-family: sans-serif;
+          margin: 0px auto;
+          overflow: hidden;
+          border-radius: 5px;
+          text-align: center;
+          padding: 20px;
+          font-size: 14px;
+          text-decoration: none;
+          color: #222324;
+        "
+      >
+        <a
+          href="http://getfeedward.com/"
+          style="text-decoration: none; color: #222324"
+          >Visiter le site</a
+        >
+        |
+        <a
+          href="mailto: contact@getfeedward.com"
+          style="text-decoration: none; color: #222324"
+          >Nous contacter</a
+        >
+      </div>
+    </div>
+  </body>
+</html>
