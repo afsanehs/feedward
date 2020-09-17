@@ -36,7 +36,6 @@ class CompaniesController < ApplicationController
       end
       render :new
     end
-
   end 
 
   private
