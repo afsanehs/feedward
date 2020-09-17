@@ -1,19 +1,18 @@
 //------------------------------------------//
 // home section
 #home-section {
-  background: {
-    image: asset_url('offices/home');
-  }
-  margin-bottom: 6rem;
+  background-image: linear-gradient(black, black), asset_url("offices/home");
+  margin-bottom: 3rem;
   position: relative;
   background-size: cover;
   background-repeat: no-repeat;
+  background-blend-mode: saturation;
   width: 100%;
   height: 95vh;
   position: relative;
 }
 .home-text {
-  margin-top: 6rem;
+  margin-top: 5rem;
 }
 .home-btn-next {
   position: absolute;
@@ -26,14 +25,15 @@
 // Home section 2
 #home-2 {
   position: relative;
+  padding-top: 1rem;
+  padding-bottom: 4rem;
+  height: 2rem;
 }
 
 //--------------------------------------//
 //Read more section
-
 #readmore {
-  padding-top: 10rem;
-  padding-bottom: 10rem;
+  padding-top: 12rem;
   .readmore-text-salary {
     margin-top: 1rem;
   }
@@ -41,24 +41,24 @@
     margin-top: 1rem;
   }
 }
+
 //--------------------------------------//
 //How it work section
 #howitwork {
-  margin-bottom: 8rem;
-  margin-top: -1rem;
-  padding-top: 3rem;
+  margin-top: 4rem;
+  margin-bottom: 4rem;
   position: relative;
-  background-image: linear-gradient(#fbf3ef, #fff);
   .col-6 {
-    margin-top: 1rem;
+    margin-top: 2rem;
     text-align: right;
   }
   .col-6.offset-md-6 {
     text-align: left;
   }
   .vertical {
+    height: 90%;
     position: absolute;
-    border-left: 2px solid #dddbf8;
+    border-left: 2px solid #999;
     top: 12%;
     left: 50%;
   }
@@ -67,45 +67,27 @@
 //--------------------------------------//
 // Demo section
 
-#info {
-  position: relative;
-  padding-top: 2rem;
-  padding-bottom: 6rem;
-  .row {
-    margin: 5rem;
-  }
-  .demo-action {
-    margin-top: 5rem;
-  }
-}
-
 #demo {
   position: relative;
-  margin-top: -1rem;
-  padding-top: 3rem;
-  padding-bottom: 6rem;
-  background-image: linear-gradient(#fbf3ef, #fff);
+  padding-top: 2rem;
+  margin-bottom: 10rem;
   .row {
     margin: 5rem;
   }
   .demo-action {
     margin-top: 5rem;
   }
-}
-
-#container {
-  margin-bottom: -5rem;
 }
 
 //--------------------------------------//
 //Various
 .text-violet-bold {
-  color: #dddbf8;
+  color: #c1c0db;
   font-weight: 700;
 }
 
 .text-violet-bold-hero {
-  color: #dddbf8;
+  color: #222324;
   font-weight: 700;
 }
 
@@ -126,11 +108,11 @@
 .text-gray {
   color: #666;
 }
-
 //--------------------------------------//
-// Static pages
+//Static pages
 .about-page,
 .careers-page {
+  min-height: calc(100vh - 134px - 55px);
   .container {
     padding: 5rem 0rem;
   }
@@ -138,8 +120,6 @@
     padding-top: 2rem;
   }
 }
-// .about-page,
-// .careers-page,
 .contact-page,
 .privacy-policy-page,
 .team-page,
@@ -155,58 +135,16 @@
   font-size: 92%;
 }
 .contact-page #text {
-  padding-top: 5rem;
+  padding-top: 6rem;
   display: flex;
   flex-direction: column;
 }
 
 .careers-photo {
-  background: {
-    image: asset_url('offices/careers');
-  }
+  background-image: linear-gradient(black, black), asset_url("offices/careers");
   height: 50vh;
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
-}
-
-.text-landing {
-  font-size: 120%;
-}
-
-.text-small-landing {
-  font-size: 110%;
-}
-
-.wave {
-  color: #fbf3ef;
-}
-
-.big-btn {
-  display: inline-block;
-  font-weight: 400;
-  color: #212529;
-  text-align: center;
-  vertical-align: middle;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  background-color: transparent;
-  border: 2px solid transparent;
-  padding: 0.375rem 0.75rem;
-  font-size: 1.5rem;
-  line-height: 2.5;
-  width: 5;
-  border-radius: 0.5rem;
-  -webkit-transition: color 0.15s ease-in-out,
-    background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
-    -webkit-box-shadow 0.15s ease-in-out;
-  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
-    border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
-  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
-    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
-    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out,
-    -webkit-box-shadow 0.15s ease-in-out;
+  background-blend-mode: saturation;
 }
