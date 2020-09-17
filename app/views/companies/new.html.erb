@@ -49,32 +49,7 @@
           <% end %>
 
           <br>  
-          <div class="ml-3">
-              <%= form_tag charges_path do %>
-              <article>
-                <% if flash[:error].present? %>
-                  <div id="error_explanation">
-                    <p><%= flash[:error] %></p>
-                  </div>
-                <% end %>
-
-                <div class="row mt-3">
-                  <div class="col-6 mb-3" style="border: 0.15em solid">
-                    <label class="amount">
-                      <span>Amount: $ <%= @amount %></span>
-                    </label>
-                  </div>
-                </div>
-              </article>
-
-              <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                      data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-                      data-description="Valider votre inscription"
-                      data-amount="<%= @amount *100 %>"
-                      data-locale="auto"></script>
-              <% end %>
-          </div>
-          
+      
         </div>
 
       </div>

@@ -7,25 +7,7 @@ class CompaniesController < ApplicationController
   end
 
   def create
-    @amount = 3000*100
-    customer = Stripe::Customer.create({
-      email: params[:stripeEmail],
-      source: params[:stripeToken],
-    })
-
-    charge = Stripe::Charge.create({
-      customer: customer.id,
-      amount: @amount.to_i,
-      description: 'Rails Stripe customer',
-      currency: 'eur',
-    })
-
-    # create_company
-
-    rescue Stripe::CardError => e
-      flash[:error] = e.message
-      render :new
-   
+    create_company
   end 
 
   private
@@ -34,6 +16,7 @@ class CompaniesController < ApplicationController
       :name
     )
   end 
+
   def create_company
     @company = Company.new(company_params)
     if @company.save # try to save in the database @feedback
@@ -50,12 +33,13 @@ class CompaniesController < ApplicationController
       if @user.save
         @user.update(company: @company)
         flash[:success] = "Votre entreprise a bien été créé"
-        redirect_to dashboard_admin_path   
+        sign_in(@user)
+        redirect_to dashboard_admin_path
       else
-        @company.destroy
-        @company.errors.full_messages.each do |message|
+        @user.errors.full_messages.each do |message|
           flash[:error] = message
         end
+        @company.destroy
         render :new
       end 
 
