@@ -30,12 +30,12 @@
             <% if current_user.is_company_admin || current_user.is_site_admin %>
               <ul class="navbar-nav--cus navbar-right">
                       <a class="nav-link--cus dropdown-toggle--cus"  data-toggle="notification-menu">
-                          <i class="fas fa-bell"></i>
+                          <i class="fas fa-bell dropdown-toggle--cus"  data-toggle="notification-menu"></i>
                           <% @count_noti= count_notifications_unread %>
                           <% if  @count_noti >= 9%>
-                            <span class="navbar-badge">9+</span>
+                            <span class="navbar-badge dropdown-toggle--cus"  data-toggle="notification-menu">9+</span>
                           <% else %>
-                            <span class="navbar-badge"><%=  @count_noti %></span>
+                            <span class="navbar-badge dropdown-toggle--cus"  data-toggle="notification-menu"><%=  @count_noti %></span>
                           <% end %>
                       </a>
                       

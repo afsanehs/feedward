@@ -22,7 +22,7 @@ class AppointmentsController < ApplicationController
   def new
     @appointment = Appointment.new
     @employees = User.where(company_id: current_user.company_id, is_company_admin: nil)
-    @employee_id = nil
+    @employee_id = params[:user_id]
   end
 
   def create
