@@ -43,6 +43,7 @@ Rails.application.routes.draw do
 
   resources :appointments
   resources :companies, only: [:new, :create, :edit, :update]
+  resources :charges
 
 
   # Active admin
