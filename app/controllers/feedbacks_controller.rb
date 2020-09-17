@@ -1,6 +1,7 @@
 class FeedbacksController < ApplicationController
-  before_action :account_is_validated
   before_action :authenticate_user!
+  before_action :account_is_validated
+
 
   def index
     @feedbacks = Feedback.where(sender: current_user)

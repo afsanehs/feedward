@@ -36,11 +36,6 @@
 
     <!-- Main content of body -->
     <%= render 'layouts/alert'%>
-    <div id="flash">
-      <% if notice.present? %>
-        <%= render partial: "shared/notice_banner" %>
-      <% end %>
-    </div>
 
     <%= yield %>
 

@@ -3,9 +3,38 @@ class CompaniesController < ApplicationController
   def new
     @company = Company.new
     @user = User.new
+    @amount = 3000
   end
 
   def create
+    @amount = 3000*100
+    customer = Stripe::Customer.create({
+      email: params[:stripeEmail],
+      source: params[:stripeToken],
+    })
+
+    charge = Stripe::Charge.create({
+      customer: customer.id,
+      amount: @amount.to_i,
+      description: 'Rails Stripe customer',
+      currency: 'eur',
+    })
+
+    # create_company
+
+    rescue Stripe::CardError => e
+      flash[:error] = e.message
+      render :new
+   
+  end 
+
+  private
+  def company_params
+    params[:company].permit(
+      :name
+    )
+  end 
+  def create_company
     @company = Company.new(company_params)
     if @company.save # try to save in the database @feedback
       @user = User.new(
@@ -36,14 +65,6 @@ class CompaniesController < ApplicationController
       end
       render :new
     end
-  end 
+  end
 
-  private
-  def company_params
-    params[:company].permit(
-      :name
-    )
-  end 
-
-  
 end
