@@ -2,9 +2,7 @@
 // home section
 #home-section {
   background: {
-
-    image: asset_url('offices/home');
-
+    image: asset_url("offices/home");
   }
   margin-bottom: 6rem;
   position: relative;
@@ -28,14 +26,12 @@
 // Home section 2
 #home-2 {
   position: relative;
-
 }
 
 //--------------------------------------//
 //Read more section
 
 #readmore {
-
   padding-top: 10rem;
   padding-bottom: 8rem;
 
@@ -49,7 +45,6 @@
 //--------------------------------------//
 //How it work section
 #howitwork {
-
   margin-bottom: 8rem;
   margin-top: -1rem;
   padding-top: 3rem;
@@ -64,7 +59,6 @@
     text-align: left;
   }
   .vertical {
-
     position: absolute;
     border-left: 2px solid #6558f5;
     top: 12%;
@@ -170,9 +164,7 @@
   font-size: 92%;
 }
 .contact-page #text {
-
   padding-top: 5rem;
-=======
 
   display: flex;
   flex-direction: column;
@@ -180,9 +172,7 @@
 
 .careers-photo {
   background: {
-
-    image: asset_url('offices/careers');
-
+    image: asset_url("offices/careers");
   }
   height: 50vh;
   background-position: center center;
