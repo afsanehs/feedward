@@ -1,0 +1,134 @@
+
+<form accept-charset="UTF-8" action="/feedbacks" method="post">
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  <div class="mb-4">
+    <h5 class="text-primary mt-5 mb-2">Ressenti général</h5>
+    <p>Entre 0 et 5, quel est ton ressenti par rapport à l’entreprise en général ?<br />
+    <small>Ambiance générale, stratégie globale de l’entreprise...</small></p>
+
+    <div class="d-flex">
+      <div class="custom-control custom-radio mr-3">
+        <input type="radio" id="score_global0" name="feedback[score_global]"  value ="0" class="custom-control-input">
+        <label class="custom-control-label" for="score_global0">0</label>
+      </div>
+      <div class="custom-control custom-radio mr-3">
+        <input type="radio" id="score_global1" name="feedback[score_global]"  value ="1" <%= 1 == @feedback.score_global ? "checked" : "" %> class="custom-control-input">
+        <label class="custom-control-label" for="score_global1">1</label>
+      </div>
+      <div class="custom-control custom-radio mr-3">
+        <input type="radio" id="score_global2" name="feedback[score_global]"  value ="2" <%= 2 == @feedback.score_global ? "checked" : "" %> class="custom-control-input">
+        <label class="custom-control-label" for="score_global2">2</label>
+      </div>
+      <div class="custom-control custom-radio mr-3">
+        <input type="radio" id="score_global3" name="feedback[score_global]"  value ="3" <%= 3 == @feedback.score_global ? "checked" : "" %> class="custom-control-input">
+        <label class="custom-control-label" for="score_global3">3</label>
+      </div>
+      <div class="custom-control custom-radio mr-3">
+        <input type="radio" id="score_global4" name="feedback[score_global]"  value ="4" <%= 4 == @feedback.score_global ? "checked" : "" %> class="custom-control-input">
+        <label class="custom-control-label" for="score_global4">4</label>
+      </div>
+      <div class="custom-control custom-radio mr-3">
+        <input type="radio" id="score_global5" name="feedback[score_global]"  value ="5" <%= 5 == @feedback.score_global ? "checked" : "" %> class="custom-control-input">
+        <label class="custom-control-label" for="score_global5">5</label>
+      </div>
+    </div>
+    <p class="pt-3 mt-2">Souhaites-tu ajouter un commentaire ? </p>
+    <%= text_field_tag 'feedback[answer_global]', @feedback.answer_global, class: "form-control mb-3" %>
+  </div>
+
+  <div class="mb-4">
+    <h5 class="text-primary">Ressenti sur ton environnement de travail</h5>
+    <p>Entre 0 et 5, à quel point es-tu satisfait de ton environnement de travail actuel?<br />
+    <small>Ton équipe, ton lieu de travail…</small></p>
+
+    <div class="d-flex">
+      <div class="custom-control custom-radio mr-3">
+        <input type="radio" id="score_workspace0" name="feedback[score_workspace]"  value ="0" class="custom-control-input">
+        <label class="custom-control-label" for="score_workspace0">0</label>
+      </div>
+
+      <div class="custom-control custom-radio mr-3">
+        <input type="radio" id="score_workspace1" name="feedback[score_workspace]"  value ="1" <%= 1 == @feedback.score_workspace ? "checked" : "" %> class="custom-control-input">
+        <label class="custom-control-label" for="score_workspace1">1</label>
+      </div>
+
+      <div class="custom-control custom-radio mr-3">
+        <input type="radio" id="score_workspace2" name="feedback[score_workspace]"  value ="2" <%= 2 == @feedback.score_workspace ? "checked" : "" %> class="custom-control-input">
+        <label class="custom-control-label" for="score_workspace2">2</label>
+      </div>
+
+      <div class="custom-control custom-radio mr-3">
+        <input type="radio" id="score_workspace3" name="feedback[score_workspace]"  value ="3" <%= 3 == @feedback.score_workspace ? "checked" : "" %> class="custom-control-input">
+        <label class="custom-control-label" for="score_workspace3">3</label>
+      </div>
+
+      <div class="custom-control custom-radio mr-3">
+        <input type="radio" id="score_workspace4" name="feedback[score_workspace]"  value ="4" <%= 4 == @feedback.score_workspace ? "checked" : "" %> class="custom-control-input">
+        <label class="custom-control-label" for="score_workspace4">4</label>
+      </div>
+
+      <div class="custom-control custom-radio mr-3">
+        <input type="radio" id="score_workspace5" name="feedback[score_workspace]"  value ="5" <%= 5 == @feedback.score_workspace ? "checked" : "" %> class="custom-control-input">
+        <label class="custom-control-label" for="score_workspace5">5</label>
+      </div>
+
+    </div>
+
+    <p class="pt-3 mt-2">Souhaites-tu ajouter un commentaire ? </p>
+    <%= text_field_tag 'feedback[answer_workspace]', @feedback.answer_workspace, class: "form-control mb-3" %>
+  </div>
+
+  <div class="mb-4">
+    <h5 class="text-primary">Ressenti sur tes missions</h5>
+    <p>Entre 0 et 5, dans quelle mesure tes missions actuelles répondent-elles à tes attentes ?<br />
+    <small>Missions variées, intéressantes…</small></p>
+    <div class="d-flex">
+      <div class="custom-control custom-radio mr-3">
+        <input type="radio" id="score_missions0" name="feedback[score_missions]" value ="0" class="custom-control-input">
+        <label class="custom-control-label" for="score_missions0">0</label>
+      </div>
+      <div class="custom-control custom-radio mr-3">
+        <input type="radio" id="score_missions1" name="feedback[score_missions]" value="1" <%= 1 == @feedback.score_missions ? "checked" : "" %> class="custom-control-input">
+        <label class="custom-control-label" for="score_missions1">1</label>
+      </div>
+      <div class="custom-control custom-radio mr-3">
+        <input type="radio" id="score_missions2" name="feedback[score_missions]" value = "2" <%= 2 == @feedback.score_missions ? "checked" : "" %> class="custom-control-input">
+        <label class="custom-control-label" for="score_missions2">2</label>
+      </div>
+      <div class="custom-control custom-radio mr-3">
+        <input type="radio" id="score_missions3" name="feedback[score_missions]" value = "3" <%= 3 == @feedback.score_missions ? "checked" : "" %> class="custom-control-input">
+        <label class="custom-control-label" for="score_missions3">3</label>
+      </div>
+      <div class="custom-control custom-radio mr-3">
+        <input type="radio" id="score_missions4" name="feedback[score_missions]" value = "4" <%= 4 == @feedback.score_missions ? "checked" : "" %> class="custom-control-input">
+        <label class="custom-control-label" for="score_missions4">4</label>
+      </div>
+      <div class="custom-control custom-radio mr-3">
+        <input type="radio" id="score_missions5" name="feedback[score_missions]" value = "5" <%= 5 == @feedback.score_missions ? "checked" : "" %> class="custom-control-input">
+        <label class="custom-control-label" for="score_missions5">5</label>
+      </div>
+    </div>
+    <p class="pt-3 mt-2">Souhaites-tu ajouter un commentaire ? </p>
+    <%= text_field_tag 'feedback[answer_missions]', @feedback.answer_missions, class: "form-control mb-3" %>
+  </div>
+
+  <div class="mb-4">
+    <h5 class="text-primary">Ressenti sur un élément en particulier</h5>
+    <p>Est-ce qu’il y a quelque chose en particulier, dont tu souhaiterais parler ?</p>
+    <%= text_field_tag 'feedback[answer_final]', @feedback.answer_final, class: "form-control mb-3" %>
+  </div>
+
+  <div class="mb-4">
+    <h5 class="text-primary pt-5">Souhaites-tu partager ton feedback avec quelqu’un ?</h5>
+    <select class="custom-select" id="receiver_id" name="feedback[receiver_id]">
+      <option>Sélectionner la personne que vous voulez contacter</option>
+      <% @colleagues.each do |colleague| %>
+        <option value="<%= colleague.id %>"><%=colleague.email%></option>
+      <% end %>
+      
+    </select>                              
+  </div>
+
+  <button type="submit" name="submit_button" class="btn btn-primary mb-5 mr-5">Créer votre feedback</button>
+
+</form>

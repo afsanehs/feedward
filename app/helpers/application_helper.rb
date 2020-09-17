@@ -60,6 +60,12 @@ module ApplicationHelper
     return l(time_utc, format: '%d/%m/%Y')
   end
 
+
+  def get_action_for_feedback
+    feedback = Feedback.find_by(sender: current_user, created_at: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day)
+    return feedback.nil? ? "Soumettre votre feedback" : "Mettre à jour votre feedback"
+  end
+
   #----------------------------------#
   # Using devise form in another page
   def resource_name

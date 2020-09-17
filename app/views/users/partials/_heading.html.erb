@@ -4,6 +4,6 @@
   <% if current_user&.sent_feedbacks.where(draft: false).where("updated_at > ?", Date.today.midnight+7.hour).any? %>
   Vous avez déjà soumis votre formulaire, bravo !
   <% else %>
-  <a class="d-none d-sm-inline-block btn btn-primary shadow-sm" href="<%=new_feedback_path%>"><i class="f"></i>Soumettre un feedback</a>
+  <a class="d-none d-sm-inline-block btn btn-primary shadow-sm" href="<%=new_feedback_path%>"><i class="f"></i><%= get_action_for_feedback%></a>
   <% end %>
 </div>

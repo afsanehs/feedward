@@ -27,7 +27,7 @@ class User < ApplicationRecord
   validates :password_confirmation, length: {minimum: 8}, presence: true, on: :update, if: :encrypted_password_changed?
 
   def welcome_send
-    UserMailer.welcome_email(self).deliver_now
+    UserMailer.welcome_email(self).deliver_later
   end
 
   # we have the link into the welcome email, so we do not need the separate confirmation email
