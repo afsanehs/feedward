@@ -10,7 +10,7 @@ function closeAllDropdown() {
 }
 
 function openCloseDropdown(event) {
-  if (!event.target.matches('.dropdown-toggle')) {
+  if (!event.target.matches('.dropdown-toggle--cus')) {
     // Close dropdown when click out of dropdown menu
     closeAllDropdown();
   } else {

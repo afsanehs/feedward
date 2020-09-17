@@ -11,38 +11,44 @@
         <ul class="navbar-nav mr-auto">
           <li class="nav-item mr-4">
             <% unless user_signed_in? %>
-            <a class="nav-link" href="/#readmore" onClick="setActiveClass()">En savoir plus</a>
+            <a class="nav-link text-white" href="/#readmore">En savoir plus</a>
             <% end %>
           </li>
           <li class="nav-item mr-4">
             <% unless user_signed_in? %>
-            <a class="nav-link " href="/#howitwork" onClick="setActiveClass()">Comment ça marche?</a>
+            <a class="nav-link text-white" href="/#howitwork">Comment ça marche?</a>
             <% end %>
           </li>
-          <li class="nav-item mr-4">
+          <li class="nav-item mr-4 ">
             <% unless user_signed_in? %>
-            <a class="nav-link" href="/#demo" onClick="setActiveClass()">Demandez une démo</a>
+            <a class="nav-link text-white" href="/#demo">Demandez une démo</a>
             <% end %>
           </li>
         </ul>
 
         <% if user_signed_in? %>
-            <ul class="navbar-nav ml-auto">
+            <% if current_user.is_company_admin || current_user.is_site_admin %>
+              <ul class="navbar-nav--cus navbar-right">
+                      <a class="nav-link--cus dropdown-toggle--cus"  data-toggle="notification-menu">
+                          <i class="fas fa-bell"></i>
+                          <% @count_noti= count_notifications_unread %>
+                          <% if  @count_noti >= 9%>
+                            <span class="navbar-badge">9+</span>
+                          <% else %>
+                            <span class="navbar-badge"><%=  @count_noti %></span>
+                          <% end %>
+                      </a>
+                      
+                  <%= render :partial => 'notifications/notification_menu'%>
+
+
+              </ul>   
+            <%end%>
+
+              
+            <ul class="navbar-nav">
               <% if current_user.is_company_admin || current_user.is_site_admin %>
-                  <li class="nav-item dropdown link-notification-wrapper">
-                    <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <i class="fas fa-bell icon-notification"></i>
-                      <% @count_noti= count_notifications_unread %>
-                      <% if  @count_noti >= 9%>
-                        <span class="navbar-badge">9+</span>
-                      <% else %>
-                        <span class="navbar-badge"><%=  @count_noti %></span>
-                      <% end %>
-                    </a>
-                  
-                  <%= render :partial => 'users/admin/notification'%>
-                  </li>
-              <li class="nav-item <%= active_class(dashboard_admin_path) %>">
+               <li class="nav-item <%= active_class(dashboard_admin_path) %>">
                 <a class="nav-link nav-text-bold" href="<%= dashboard_admin_path %>">Dashboard Manager</a>
               </li>
 
@@ -51,7 +57,7 @@
                    <a class="nav-link nav-text-bold" href="<%= dashboard_path %>">Dashboard</a>
                 </li>
               <% end %>
-              
+
               <li class="nav-item <%= active_class(profile_path) %>">
                 <a class="nav-link nav-text-bold" href="<%= profile_path %>">Mes infos</a>
               </li>
@@ -76,29 +82,3 @@
     </div>
   </nav>
 </div>
-
-<script>
-  window.addEventListener('DOMContentLoaded', (event) => {
-    setActiveClass()
-  });
-  function setActiveClass(){
-
-    navItems = document.querySelectorAll(".nav-link")
-    navItems.forEach(item =>{
-      toggleClass(item)
-     item.addEventListener('click', ()=>{
-       toggleClass(item)
-     })
-
-    })
-  }
-  function toggleClass(item){
-    let anchor_value = window.location.hash
-    hrefText = item.getAttribute('href');
-     if(anchor_value === hrefText){
-       item.classList.add("active")
-      } else{
-        item.classList.remove("active")
-      }
-  }
-</script>
