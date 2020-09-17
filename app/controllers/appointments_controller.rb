@@ -1,11 +1,15 @@
 class AppointmentsController < ApplicationController
   before_action :authenticate_user!
   before_action :account_is_validated
-  before_action :must_be_admin
+  before_action :must_be_admin, except: [:index]
   before_action :set_appointment, only: [:show, :edit, :update, :destroy]
 
   def index
-    @appointments = Appointment.where(employer: current_user)
+    if current_user.is_company_admin
+      @appointments = Appointment.where(employer: current_user)
+    else
+      @appointments = Appointment.where(employee: current_user)
+    end
     @appointments_future = @appointments.where("DATE(appointments.start_date) >= ?", Time.now.to_date)
     @appointments_future = @appointments_future.sort_by &:start_date
     @appointments_past = @appointments.where("DATE(appointments.start_date) < ?", Time.now.to_date)
