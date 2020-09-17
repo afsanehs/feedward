@@ -2,7 +2,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable, :confirmable
 
   after_create :welcome_send
   before_save :notify_profile_updated , if: :company_id_changed?
@@ -29,6 +29,12 @@ class User < ApplicationRecord
   def welcome_send
     UserMailer.welcome_email(self).deliver_now
   end
+
+  # we have the link into the welcome email, so we do not need the separate confirmation email
+  def send_confirmation_notification?
+    false
+  end
+
   def full_name
     if self.first_name.nil? && self.last_name.nil?
         return self.email.split('@')[0]
