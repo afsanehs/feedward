@@ -1,6 +1,6 @@
 class UserMailer < ApplicationMailer
   #Don't forget to change the mail
-  default from: 'getfeedward@outlook.fr'
+  default from: 'b00685318@essec.edu'
   
   def welcome_email(user)
     @user = user 

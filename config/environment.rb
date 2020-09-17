@@ -5,9 +5,9 @@ require_relative 'application'
 Rails.application.initialize!
 
 ActionMailer::Base.smtp_settings = {
-  :user_name => ENV['MAILJET_LOGIN'],
-  :password => ENV['MAILJET_PASSWORD'],
-  :address => 'in-v3.mailjet.com',
+  :user_name => "a9a78429-093c-4423-ab83-65f7f190c5a1",
+  :password => "a9a78429-093c-4423-ab83-65f7f190c5a1",
+  :address => 'smtp.postmarkapp.com',
   :port => 587,
   :authentication => :plain,
   :enable_starttls_auto => true
