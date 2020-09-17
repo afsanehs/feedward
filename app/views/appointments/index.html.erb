@@ -1,6 +1,8 @@
-<div class="container text-center appointments-section">
+<div class="container-fluid text-center appointments-section">
   <h3 class="mb-4 mt-4 text-violet">Vos rendez-vous</h3>
+  <% if current_user.is_company_admin %>
   <a class="btn btn-outline-indigo mr-auto" href="<%= new_appointment_path %>" data-method="get">Créer un rendez-vous</a>
+  <% end %>
   <div class ="row">
     <div class="col-12 col-md-6 mx-auto">    
       <h4 class="mb-4 mt-4 text-beige">Vos rendez-vous à venir</h4>
