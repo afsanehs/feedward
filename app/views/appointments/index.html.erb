@@ -1,25 +1,49 @@
 <div class="container text-center appointments-section">
-<h4 class="mb-4 mt-3">Vos rendez-vous</h4>
+  <h3 class="mb-4 mt-4 text-violet">Vos rendez-vous</h3>
   <a class="btn btn-outline-indigo mr-auto" href="<%= new_appointment_path %>" data-method="get">Créer un rendez-vous</a>
-  <div class="row mt-5">
-    <% @appointments.each do |appointment| %>
-      <div class="col-lg-4 mb-4 md-4 t-4">
-        <div class="card border-primary">
-          <div class="card-header text-bold">
-            <p>Du <%= get_time_verbose(appointment.start_date) %> <br/> au <%= get_time_verbose(appointment.end_date) %></p>
-          </div>
-          <div class="card-body">
-            <h4 class="text-primary"><%=appointment.title %></h4>
-            <span><small class="mt-2"><%= appointment.description %></small></span>
-          </div>
-          <div class="card-footer">
-            <a class="btn btn-primary ml-2" href="<%= appointment_path(appointment.id)%>">Afficher</a>
-            <a class="btn btn-secondary ml-2" href="<%= edit_appointment_path(appointment.id)%>" data-method="get">Modifier</a>
-				    <a class="btn btn-danger" href="#">Annuler</a>
-          </div>
-        </div>
-      </div>
-    <% end %>
+  <div class ="row">
+    <div class="col-12 col-md-6 mx-auto">    
+      <h4 class="mb-4 mt-4 text-beige">Vos rendez-vous à venir</h4>
+      <ul class="list-group list-group-flush text-left mt-4">
+        <% @appointments_future.each do |appointment| %>
+          <li class="list-group-item">
+            <div class="row">
+              <div class="col-3">
+                <p class="text-violet text-right"><small>Le <%= get_time_verbose(appointment.start_date) %></small></p>
+              </div>
+              <div class="col-5">
+                <h6 classs="text-left"><strong><%=appointment.title %></strong></h6>
+              </div>
+              <div class="col-4">
+                <a class="btn btn-primary ml-2" href="<%= appointment_path(appointment.id)%>">Afficher</a>
+              </div>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+
+    <div class="col-12 col-md-6 mx-auto">   
+      <h4 class="mb-4 mt-4 text-beige">Vos rendez-vous passés</h4>
+      
+      <ul class="list-group list-group-flush text-left mt-4">
+        <% @appointments_past.each do |appointment| %>
+          <li class="list-group-item">
+            <div class="row">
+              <div class="col-3">
+                <p class="text-violet text-right"><small>Le <%= get_time_verbose(appointment.start_date) %></small></p>
+              </div>
+              <div class="col-5">
+                <h6 classs="text-left"><strong><%=appointment.title %></strong></h6>
+              </div>
+              <div class="col-4">
+                <a class="btn btn-primary ml-2" href="<%= appointment_path(appointment.id)%>">Afficher</a>
+              </div>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    </div>
   </div>
 </div>
-      
+          

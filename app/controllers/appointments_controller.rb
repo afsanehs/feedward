@@ -6,6 +6,10 @@ class AppointmentsController < ApplicationController
 
   def index
     @appointments = Appointment.where(employer: current_user)
+    @appointments_future = @appointments.where("DATE(appointments.start_date) >= ?", Time.now.to_date)
+    @appointments_future = @appointments_future.sort_by &:start_date
+    @appointments_past = @appointments.where("DATE(appointments.start_date) < ?", Time.now.to_date)
+    @appointments_past = @appointments_past.sort_by &:start_date
   end
 
   def show
