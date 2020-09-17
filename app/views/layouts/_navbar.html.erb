@@ -70,7 +70,7 @@
             <% if cookies[:moon] %>
               <button id="darkmode-button" class="btn btn-primary"><%= link_to 'Light Mode', sun_path, method: :get%></button>
             <% else %>
-              <button id="darkmode-button" class="btn btn-primary"><%= link_to 'Dark Mode', moon_path, method: :get%></button>
+              <button id="darkmode-button" class="btn btn-primary"><%= link_to 'Dark Mode', moon_path, method: :get, class:"text-white"%></button>
             <% end %>
           </li>
         </ul>
