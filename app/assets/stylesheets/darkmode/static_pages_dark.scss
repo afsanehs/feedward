@@ -1,19 +1,22 @@
 //------------------------------------------//
 // home section
 #home-section {
-  background: {
-    image: asset_url('offices/home');
-  }
-  margin-bottom: 6rem;
+
+  background-image: linear-gradient(black, black), asset_url("offices/home");
+  margin-bottom: 3rem;
   position: relative;
   background-size: cover;
   background-repeat: no-repeat;
+  background-blend-mode: saturation;
+
   width: 100%;
   height: 95vh;
   position: relative;
 }
 .home-text {
+
   margin-top: 6rem;
+
 }
 .home-btn-next {
   position: absolute;
@@ -34,6 +37,7 @@
 #readmore {
   padding-top: 10rem;
   padding-bottom: 10rem;
+
   .readmore-text-salary {
     margin-top: 1rem;
   }
@@ -41,6 +45,7 @@
     margin-top: 1rem;
   }
 }
+
 //--------------------------------------//
 //How it work section
 #howitwork {
@@ -51,14 +56,17 @@
   background-image: linear-gradient(#fbf3ef, #fff);
   .col-6 {
     margin-top: 1rem;
+
     text-align: right;
   }
   .col-6.offset-md-6 {
     text-align: left;
   }
   .vertical {
+
     position: absolute;
     border-left: 2px solid #dddbf8;
+
     top: 12%;
     left: 50%;
   }
@@ -66,6 +74,7 @@
 
 //--------------------------------------//
 // Demo section
+
 
 #info {
   position: relative;
@@ -85,6 +94,7 @@
   padding-top: 3rem;
   padding-bottom: 6rem;
   background-image: linear-gradient(#fbf3ef, #fff);
+
   .row {
     margin: 5rem;
   }
@@ -92,6 +102,7 @@
     margin-top: 5rem;
   }
 }
+
 
 #container {
   margin-bottom: -5rem;
@@ -101,11 +112,14 @@
 //Various
 .text-violet-bold {
   color: #dddbf8;
+
   font-weight: 700;
 }
 
 .text-violet-bold-hero {
+
   color: #dddbf8;
+
   font-weight: 700;
 }
 
@@ -127,10 +141,12 @@
   color: #666;
 }
 
+
 //--------------------------------------//
 // Static pages
 .about-page,
 .careers-page {
+
   .container {
     padding: 5rem 0rem;
   }
@@ -138,8 +154,10 @@
     padding-top: 2rem;
   }
 }
+
 // .about-page,
 // .careers-page,
+
 .contact-page,
 .privacy-policy-page,
 .team-page,
@@ -155,19 +173,24 @@
   font-size: 92%;
 }
 .contact-page #text {
+
   padding-top: 5rem;
+
   display: flex;
   flex-direction: column;
 }
 
 .careers-photo {
-  background: {
-    image: asset_url('offices/careers');
-  }
+
+  background-image: linear-gradient(black, black), asset_url("offices/careers");
+
   height: 50vh;
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
+  background-blend-mode: saturation;
+
+  
 }
 
 .text-landing {
