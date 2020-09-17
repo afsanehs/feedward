@@ -24,12 +24,12 @@ class Feedback < ApplicationRecord
 
   def new_feedback_mail
     if !self.sender.nil?
-      FeedbackMailer.new_feedback_user(self.sender).deliver_now
+      FeedbackMailer.new_feedback_user(self.sender).deliver_later
     end
     if !self.receiver.nil?
-      FeedbackMailer.new_feedback_receiver(self.receiver).deliver_now
+      FeedbackMailer.new_feedback_receiver(self.receiver).deliver_later
     end
-    FeedbackMailer.new_feedback_admin.deliver_now
+    FeedbackMailer.new_feedback_admin.deliver_later
   end
 
 

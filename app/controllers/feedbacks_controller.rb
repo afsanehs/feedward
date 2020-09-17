@@ -21,36 +21,61 @@ class FeedbacksController < ApplicationController
 
   def new
     if current_user.company == nil
-      redirect_to profile_path
       flash[:error] = "Il faut que tu complètes ton profil et que tu renseignes une entreprise avant de commencer !"
-    else
+      return redirect_to profile_path
+    end
 
-      @feedback = current_user.sent_feedbacks.where(draft: true).last || Feedback.new
-      @colleagues = User.where(company_id: current_user.company_id)
-    end 
+    # check if user created_feedback
+    if user_has_created_feedback_today?
+      @feedback = get_feedback_current_user_today
+      return redirect_to edit_feedback_path(@feedback)
+    end
+    @feedback = Feedback.new
+    @colleagues = User.where(company_id: current_user.company_id)
+
   end
 
   def create
     @user = current_user
-    @feedback = Feedback.new(post_params)
-    current_user.sent_feedbacks.where(draft: true).destroy_all
-    if "draft"==params[:submit_button]
-      @feedback.draft=true
-    else 
-      @feedback.draft=false
-    end
+    @feedback = Feedback.new(feedback_params)
     @feedback.sender = current_user
       if @feedback.save # try to save in the database @feedback
-        flash[:success] = "Votre feedback a été créé!"
+        flash[:success] = "Merci pour votre feedback!"
         redirect_to feedback_path(@feedback.id)
       else
         @feedback.errors.full_messages.each do |message|
           flash[:error] = message
         end
-        redirect_to new_feedback_path
+        render :new
       end
   end
 
+  def edit
+    @feedback = get_feedback_current_user_today
+    if @feedback.id.to_s != params[:id].to_s
+      flash[:error] = "Vous pouvez seulement modifier votre feedback aujourd'hui."
+      return redirect_to dashboard_path
+    end
+    puts "-----------------"
+    puts @feedback.receiver_id
+    @colleagues = User.where(company_id: current_user.company_id)
+    @collegue_id = @feedback.receiver_id
+  end 
+
+  def update
+    puts "--------------------"
+    puts feedback_params
+    @feedback = Feedback.find(params[:id])
+    if @feedback.update(feedback_params)
+      flash[:success] = "Votre feedback a été mise à jour."
+      redirect_to feedback_path(@feedback)
+    else
+      @feedback.errors.full_messages.each do |message|
+        flash[:error] = message
+      end
+      render :edit
+    end
+  end 
 
   # GET users/:id/feedback
   def user_feedbacks
@@ -63,8 +88,17 @@ class FeedbacksController < ApplicationController
   end
 
   private
-  def post_params
-    post_params = params.require(:feedback).permit(:answer_global, :answer_workspace, :answer_missions, :answer_final, :receiver_id, :score_global, :score_workspace, :score_missions)
+  def feedback_params
+    params.require(:feedback).permit(
+      :answer_global, 
+      :answer_workspace, 
+      :answer_missions, 
+      :answer_final,
+      :receiver_id, 
+      :score_global, 
+      :score_workspace,
+      :score_missions
+    )
   end
   def account_is_validated
     if !current_user.is_validated  && !current_user.is_company_admin
@@ -75,5 +109,15 @@ class FeedbacksController < ApplicationController
   def is_super_admin?
     return current_user.is_site_admin
   end
+
+  def get_feedback_current_user_today
+    return  Feedback.find_by(sender_id: current_user.id,created_at: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day)
+  end
+  
+  def user_has_created_feedback_today?
+    feedback = get_feedback_current_user_today
+    return !feedback.nil?
+  end
+
 
 end
