@@ -61,6 +61,7 @@ gem 'faker'
 gem 'dotenv-rails'
 gem 'chartkick'
 gem 'rspotify'
+gem 'rails-controller-testing'
 
 group :production, :staging do
   gem 'pg'

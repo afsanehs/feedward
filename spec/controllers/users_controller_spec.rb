@@ -5,10 +5,7 @@ RSpec.describe UsersController, type: :controller do
 
   describe "GET show" do
     it "assigns @users" do
-      fake_password = "0123456789"
-      user = User.create(email: Faker::Internet.email, 
-        password: fake_password, password_confirmation: fake_password, 
-        company: Company.all.sample)
+      user = User.create
       get :show, id: user.id
       expect(assigns(:user)).to eq(user)
     end
