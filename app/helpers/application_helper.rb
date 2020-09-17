@@ -34,7 +34,13 @@ module ApplicationHelper
   end
   def all_notifications_unread
     if user_signed_in?
-      return Notification.joins(:user).where(users:{company_id: current_user.company_id}).where(is_read: false).order(:created_at).reverse
+      return Notification.joins(:user).where(users:{company_id: current_user.company_id}).where(is_read: nil).order(:created_at).reverse
+    end
+    return []
+  end
+  def all_notifications_limit
+    if user_signed_in?
+      return Notification.joins(:user).where(users:{company_id: current_user.company_id}).limit(15).order(:created_at).reverse
     end
     return []
   end
