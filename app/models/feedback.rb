@@ -1,16 +1,21 @@
 class Feedback < ApplicationRecord
   belongs_to :sender, class_name: "User" #the sender is the one who has fulfilled the feedback
   belongs_to :receiver, class_name: "User", optional: true #a feedback can be sent by the sender to a specific receiver
+  has_many :notifications, dependent: :destroy
 
   after_create :new_feedback_mail
+  after_create :notify_feedback_create
+  after_update :notify_feedback_update
+
   before_validation :convert_to_integer
+  before_save :save_score_average
 
 
   validates :score_global,
     presence:true,
-    inclusion: { in:(0..5), message: "%{value} is not valid" }
-  validates :score_workspace, presence:true, inclusion: { in:(0..5), message: "%{value} is not valid" }
-  validates :score_missions, presence:true, inclusion: { in:(0..5), message: "%{value} is not valid" }
+    inclusion: { in:(0..5), message: "%{value} n'est pas valide." }
+  validates :score_workspace, presence:true, inclusion: { in:(0..5), message: "%{value} n'est pas valide." }
+  validates :score_missions, presence:true, inclusion: { in:(0..5), message: "%{value} n'est pas valide." }
 
   validates :answer_global, presence: {message: ": Le commentaire est obligatoire pour les notes inférieures à 3."}, unless: -> { self.score_global >= 3}
   validates :answer_workspace,presence: {message: ": Le commentaire est obligatoire pour les notes inférieures à 3."}, unless: -> { self.score_workspace >= 3}
@@ -19,15 +24,29 @@ class Feedback < ApplicationRecord
 
   def new_feedback_mail
     if !self.sender.nil?
-      FeedbackMailer.new_feedback_user(self.sender).deliver_now
+      FeedbackMailer.new_feedback_user(self.sender).deliver_later
     end
-    FeedbackMailer.new_feedback_admin.deliver_now
+    if !self.receiver.nil?
+      FeedbackMailer.new_feedback_receiver(self.receiver).deliver_later
+    end
+    FeedbackMailer.new_feedback_admin.deliver_later
   end
 
+
+  def notify_feedback_create
+    activity_type = Activity.find_by(name: "feedback_created")
+    notification = Notification.create(user_id: self.sender.id, feedback_id: self.id, activity: activity_type)
+  end 
+
+  def notify_feedback_update
+    activity_type = Activity.find_by(name: "feedback_updated")
+    notification = Notification.create(user_id: self.sender.id, feedback_id: self.id, activity: activity_type)
+  end 
+
   # Instance method
-  def score_average
+  def save_score_average
     score = (self.score_global + self.score_workspace + self.score_missions)/3.0
-    return score.nil? ? 0 : score.round(2)
+    self.score_average =  score.nil? ? 0 : score.round(2)
   end
 
   #-----------------------------------------------------------

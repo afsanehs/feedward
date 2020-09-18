@@ -1,0 +1,16 @@
+// Place all the styles related to the Feedback controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+.feedbacks-section {
+  margin-top: 5rem;
+}
+
+.feedback-send-received-section {
+  overflow-y: auto;
+  height: 60vh;
+}
+.details-category-section,
+.pie-chart-section {
+  height: 60vh;
+  overflow-y: auto;
+}

@@ -1,23 +1,35 @@
-<div class="container">
-  <div id="wrapper">
-    <div class="container-fluid">
-      <%= render :partial => 'users/admin/heading_admin'%>
+<div class="container dashboard-header-section">
+    <div id="wrapper">
+        <div class="container-fluid">
+            <%= render :partial => 'users/admin/heading_admin'%>
 
-      <div class="row">
-        <%= render :partial => 'users/admin/note_admin'%>
-        <%= render :partial => 'users/admin/note_global_admin'%>
-        <%= render :partial => 'users/admin/note_workspace_admin'%>
-        <%= render :partial => 'users/admin/note_missions_admin'%>
-      </div>
+            <div class="row">
+                <%= render :partial => 'users/admin/note_admin'%>
+                <%= render :partial => 'users/admin/note_global_admin'%>
+                <%= render :partial => 'users/admin/note_workspace_admin'%>
+                <%= render :partial => 'users/admin/note_missions_admin'%>
+            </div>
 
-      <div class="row">
-        <%= render :partial => 'users/admin/pie_chart_admin'%>
-        <%= render :partial => 'users/admin/histo_admin'%>
-      </div>
+            <div class="row">
+                <%= render :partial => 'users/admin/histo_admin'%>
+            </div>
 
-      <div>
-        <%= render :partial => 'users/partials/table-js'%>
-      </div>
+            <div class="row">
+                <%= render :partial => 'users/admin/pie_chart_admin'%>
+            </div>
+
+            <div class="row px-3">
+                <%= render :partial => 'users/admin/messages_admin'%>
+                <%= render :partial => 'users/admin/alerts_admin'%>
+            </div>
+
+            <div class="">
+                <%= render :partial => 'users/admin/table-js'%>
+            </div>
+
+            <div class="">
+                <%= render :partial => 'users/admin/user_list'%>
+            </div>
+        </div>
     </div>
-  </div>
 </div>

@@ -1,0 +1,32 @@
+<div class="card shadow mb-4 mx-3" style="max-width: 1080px;">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-indigo text-uppercase">Historique des feedbacks</h6>
+    </div>
+    <div class="card-body">
+        <table id="myTable" class="table table-striped">
+            <thead>
+                <tr role="row">
+                    <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Prénom: activate to sort column descending" style="width: 120px;">Prénom</th>
+                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Nom: activate to sort column ascending" style="width: 210px;">Nom</th>
+                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Email: activate to sort column ascending" style="min-width: 250px;">Email</th>
+                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Date: activate to sort column ascending" style="min-width: 100px;">Date</th>
+                    <th class="sorting text-center text-beige" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Moyenne de la note: activate to sort column ascending" style="min-width: 80px;">Note</th>
+                    <th class="sorting text-center text-primary" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" style="min-width: 50px;">Détails</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% @feedbacks.each do |feedback| %>
+                <tr role="row" class="odd">
+                    <td class="sorting_1"><%= feedback.sender.first_name %></td>
+                    <td><%= feedback.sender.last_name %></td>
+                    <td><%= feedback.sender.email %></td>
+                    <td><%= get_date(feedback.created_at) %></td>
+                    <td class="text-center text-beige"><strong><%= feedback.score_average %></strong></td>
+                    <td class="text-center"><a href="<%= feedback_path(feedback)%>"><i class="fas fa-eye text-primary"></i></a>
+                    </td>
+                </tr>
+                <% end  %>
+            </tbody>
+        </table>
+    </div>
+</div>

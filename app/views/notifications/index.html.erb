@@ -1,0 +1,98 @@
+<div class="container-fluid notifications-section">
+ 
+  <div class ="row">
+    <div class="col-12 col-md-6 mx-auto">
+     <h4 class="mb-4 mt-3">Nouveaux feedbacks</h4>
+      <div class="list-group feedback-noti-wrapper">
+        <% @notifications.each do |notification| %>
+          <% if notification.activity.name == "feedback_created"%>
+              <div class="row" id="notification_<%= notification.id%>">
+                  <div class="col-10">
+                      <a class="list-group-item list-group-item-action" href="<%= feedback_path(notification.feedback_id, notification: notification, is_read: true)%> ">
+                        <div class="row">
+                            <div class="col-9 d-flex">
+                               <h5 class="text-primary text-center mr-3"><i class="fas fa-gift"></i></h5>
+                                <p id="noti_text_<%= notification.id %>" class="text-indigo-bold text-left <%= is_read_class(notification)%>"><%= notification.user.full_name %> vient de créer un feedback.</p>
+                            </div>
+                          <small class="col-3 text-beige text-right">Le <%= get_date(notification.created_at)%></small>
+                        </div>
+                      </a>
+                  </div>
+                  <div class="col-2 d-flex">
+                   <a href="<%= notification_path(notification, is_read: true)%>" data-toggle="tooltip" data-placement="left" title="Marquer comme lu"
+                     data-method="put" data-remote="true"
+                    > <i id="icon_check_read_<%= notification.id %>" class="fas fa-check-double text-center fa-lg mt-3 mr-2 <%= is_read_disabled_class(notification)%>"></i>
+                    </a>
+                   <br/>
+                    <a href="<%= notification_path(notification)%>" data-toggle="tooltip" data-placement="left" title="Archiver cette notification"
+                     data-method="delete" data-remote="true"
+                    ><i class="fas fa-archive text-center text-danger fa-lg mt-3" ></i>
+                    </a>
+                  </div>
+            </div>
+          
+          <% elsif notification.activity.name =="feedback_updated"%>
+            <div class="row" id="notification_<%=notification.id%>">
+                  <div class="col-10">
+                      <a class="list-group-item list-group-item-action" href="<%= feedback_path(notification.feedback_id, notification: notification, is_read: true)%>">
+                        <div class="row">
+                            <div class="col-9 d-flex">
+                               <h5 class="text-primary text-center mr-3"><i class="fas fa-gift"></i></h5>
+                                <p id="noti_text_<%= notification.id %>" class="text-indigo-bold text-left<%= is_read_class(notification)%>"><%= notification.user.full_name %> vient de modifier son feedback.</p>
+                            </div>
+                          <small class="col-3 text-beige text-right">Le <%= get_date(notification.created_at)%></small>
+                        </div>
+                      </a>
+                  </div>
+                  <div class="col-2 d-flex">
+                    <a href="<%= notification_path(notification, is_read: true)%>" data-toggle="tooltip" data-placement="left" title="Marquer comme lu"
+                      data-method="put" data-remote="true"
+                      > <i id="icon_check_read_<%= notification.id %>" class="fas fa-check-double text-center fa-lg mt-3 mr-2 <%= is_read_disabled_class(notification)%>"></i>
+                      </a>
+                    <br/>
+                      <a href="<%= notification_path(notification)%>" data-toggle="tooltip" data-placement="left" title="Archiver cette notification"
+                      data-method="delete" data-remote="true"
+                      ><i class="fas fa-archive text-center text-danger fa-lg mt-3" ></i>
+                      </a>
+                  </div>
+            </div>
+          <% end %> 
+        <%end%>
+      </div>
+    </div>
+
+    <div class="col-12 col-md-6 mx-auto">
+      <h4 class="mb-4 mt-3">Nouveaux utilisateurs</h4>
+      <div class="list-group user-noti-wrapper">
+        <% @notifications.each do |notification| %>
+          <% if notification.activity.name =="user_created"%>
+            <div class="row" id="notification_<%= notification.id%>">
+              <div class="col-10">
+                  <a class="list-group-item list-group-item-action" href="<%= account_user_request_path(notification.user, notification: notification, is_read: true)%>">
+                    <div class="row">
+                        <div class="col-9 d-flex">
+                          <h5 class="text-primary text-center mr-3"><i class="fas fa-user-plus"></i></h5>
+                          <p id="noti_text_<%= notification.id %>" class="text-indigo-bold text-left <%= is_read_class(notification)%>"><%= notification.user.full_name %> souhaite rejoindre votre entreprise.</p>
+                        </div>
+                      <small class="col-3 text-beige text-right">Le <%= get_date(notification.created_at)%></small>
+                    </div>
+                  </a>
+              </div>
+              <div class="col-2 d-flex">
+                <a href="<%= validate_account_path(notification.user, notification: notification)%>" data-toggle="tooltip" data-placement="left" title="Accepter ce compte"
+                     data-method="patch" data-remote="true"
+                    > <i class="fas fa-user-check text-center text-success fa-lg mt-3 mr-2"></i>
+                    </a>
+                   <br/>
+                    <a href="<%= refuse_account_path(notification.user, notification: notification)%>" data-toggle="tooltip" data-placement="left" title="Refuser ce compte"
+                     data-method="delete" data-remote="true" data-confirm="Etes-vous sûr de refuser ce compte?"
+                    ><i class="fas fa-user-times text-center text-danger fa-lg mt-3"></i>
+                    </a>
+              </div>
+            </div>
+          <%end %> 
+        <%end%>
+      </div>
+    </div>
+  </div>
+</div>

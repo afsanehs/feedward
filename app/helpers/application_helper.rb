@@ -2,6 +2,15 @@ module ApplicationHelper
   def active_class(link_path)
     current_page?(link_path) ? "active" : ""
   end
+  def alert_class(score)
+    score >= 3 ? "text-indigo" : "text-alert"
+  end
+  def is_read_class(notification)
+    return notification.is_read ? "is-read" : ""
+  end
+  def is_read_disabled_class(notification)
+    return notification.is_read ? "disable-read" : "text-success"
+  end
   def flash_class(level)
     case level
         when "notice"
@@ -17,12 +26,44 @@ module ApplicationHelper
     end
   end
 
+  def all_notifications
+    if user_signed_in?
+      return Notification.joins(:user).where(users:{company_id: current_user.company_id}).order(:created_at).reverse
+    end
+    return []
+  end
+  def all_notifications_unread
+    if user_signed_in?
+      return Notification.joins(:user).where(users:{company_id: current_user.company_id}).where(is_read: nil).order(:created_at).reverse
+    end
+    return []
+  end
+  def all_notifications_limit
+    if user_signed_in?
+      return Notification.joins(:user).where(users:{company_id: current_user.company_id}).limit(15).order(:created_at).reverse
+    end
+    return []
+  end
+  def count_notifications_unread
+    return all_notifications_unread.count
+  end
+
+
   def get_time(time_utc)
     return time_utc.strftime("%Y-%m-%d %k:%M:%S")
   end
 
   def get_time_verbose(time_utc)
     return l(time_utc, format: '%d/%m/%Y - à %k:%M')
+  end
+  def get_date(time_utc)
+    return l(time_utc, format: '%d/%m/%Y')
+  end
+
+
+  def get_action_for_feedback
+    feedback = Feedback.find_by(sender: current_user, created_at: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day)
+    return feedback.nil? ? "Soumettre votre feedback" : "Mettre à jour votre feedback"
   end
 
   #----------------------------------#

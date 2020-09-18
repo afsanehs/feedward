@@ -2,7 +2,7 @@
 <div class="navbar-section">
   <nav class="navbar navbar-expand-lg navbar-dark bg-secondary fixed-top">
     <div class="container-fluid">
-      <a class="navbar-brand mr-5 nav-text-bold" href="<%= root_path %>">Feedward</a>
+      <a class="navbar-brand mr-5 nav-text-bold" href="<%= root_path %>"><img class="img-fluid" src="<%=asset_path("icons/Logo1_purple_full.png")%>" style="height:3rem;" alt="Feedward logo"></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="true" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -11,39 +11,66 @@
         <ul class="navbar-nav mr-auto">
           <li class="nav-item mr-4">
             <% unless user_signed_in? %>
-            <a class="nav-link" href="/#readmore" onClick="setActiveClass()">En savoir plus</a>
+            <a class="nav-link text-white" href="#readmore">En savoir plus</a>
             <% end %>
           </li>
           <li class="nav-item mr-4">
             <% unless user_signed_in? %>
-            <a class="nav-link " href="/#howitwork" onClick="setActiveClass()">Comment ça marche?</a>
+            <a class="nav-link text-white" href="#howitwork">Comment ça marche?</a>
             <% end %>
           </li>
-          <li class="nav-item mr-4">
+          <li class="nav-item mr-4 ">
             <% unless user_signed_in? %>
-            <a class="nav-link" href="/#demo" onClick="setActiveClass()">Demandez une démo</a>
+            <a class="nav-link text-white" href="#demo">Demander une démo</a>
             <% end %>
           </li>
         </ul>
 
         <% if user_signed_in? %>
-        <ul class="navbar-nav ml-auto">
-          <% if current_user.is_company_admin %>
-          <li class="nav-item <%= active_class(dashboard_admin_path) %>">
-            <a class="nav-link nav-text-bold" href="<%= dashboard_admin_path %>">Dashboard Admin</a>
-          </li>
-          <% end %>
-           <li class="nav-item <%= active_class(dashboard_path) %>">
-            <a class="nav-link nav-text-bold" href="<%= dashboard_path %>">Dashboard</a>
-          </li>
+            <% if current_user.is_company_admin || current_user.is_site_admin %>
+              <ul class="navbar-nav--cus navbar-right">
+                      <a class="nav-link--cus dropdown-toggle--cus"  data-toggle="notification-menu">
+                          <i class="fas fa-bell dropdown-toggle--cus"  data-toggle="notification-menu"></i>
+                          <% @count_noti= count_notifications_unread %>
+                          <% if  @count_noti >= 9%>
+                            <span class="navbar-badge dropdown-toggle--cus"  data-toggle="notification-menu">9+</span>
+                          <% else %>
+                            <span class="navbar-badge dropdown-toggle--cus"  data-toggle="notification-menu"><%=  @count_noti %></span>
+                          <% end %>
+                      </a>
+                      
+                  <%= render :partial => 'notifications/notification_menu'%>
 
-          <li class="nav-item <%= active_class(profile_path) %>">
-            <a class="nav-link nav-text-bold" href="<%= profile_path %>">Mes infos</a>
-          </li>
+
+              </ul>   
+            <%end%>
+
+              
+            <ul class="navbar-nav">
+              <% if current_user.is_site_admin %>
+                  <li class="nav-item <%= active_class(admin_root_path) %>">
+                    <a class="nav-link nav-text-bold" href="<%= admin_root_path%>">Admin</a>
+                  </li>
+              <% end %>
+              <% if current_user.is_company_admin || current_user.is_site_admin %>
+               <li class="nav-item <%= active_class(dashboard_admin_path) %>">
+                <a class="nav-link nav-text-bold" href="<%= dashboard_admin_path %>">Dashboard Manager</a>
+              </li>
+
+              <% elsif current_user.is_validated %>
+                <li class="nav-item <%= active_class(dashboard_path) %>">
+                   <a class="nav-link nav-text-bold" href="<%= dashboard_path %>">Dashboard</a>
+                </li>
+              <% end %>
+
+              <li class="nav-item <%= active_class(profile_path) %>">
+                <a class="nav-link nav-text-bold" href="<%= profile_path %>">Mes infos</a>
+              </li>
 
           <li class="nav-item">
             <a class="nav-link nav-text-bold" href="<%=destroy_user_session_path%>">Se déconnecter</a>
           </li>
+
         </ul>
         <% else %>
         <ul class="navbar-nav ml-auto nav-account">
@@ -51,7 +78,7 @@
             <a class="nav-link nav-text-bold" href="<%=new_user_session_path%>">Se connecter</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link nav-text-bold" href="<%=new_user_registration_path%>">S'inscrire</a>
+            <a class="nav-link nav-text-bold" href="<%=company_user_new_path%>">Essayer gratuitement</a>
           </li>
         </ul>
 
@@ -61,29 +88,3 @@
     </div>
   </nav>
 </div>
-
-<script>
-  window.addEventListener('DOMContentLoaded', (event) => {
-    setActiveClass()
-  });
-  function setActiveClass(){
-
-    navItems = document.querySelectorAll(".nav-link")
-    navItems.forEach(item =>{
-      toggleClass(item)
-     item.addEventListener('click', ()=>{
-       toggleClass(item)
-     })
-
-    })
-  }
-  function toggleClass(item){
-    let anchor_value = window.location.hash
-    hrefText = item.getAttribute('href');
-     if(anchor_value === hrefText){
-       item.classList.add("active")
-      } else{
-        item.classList.remove("active")
-      }
-  }
-</script>

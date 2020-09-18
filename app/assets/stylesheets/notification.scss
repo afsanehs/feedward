@@ -1,0 +1,23 @@
+.notifications-section {
+  margin-top: 5rem;
+}
+.is-read {
+  color: #4b5992 !important;
+  font-weight: 300;
+}
+.disable-read {
+  cursor: default;
+  color: #797f94;
+  opacity: 0.5;
+}
+.feedback-noti-wrapper,
+.user-noti-wrapper {
+  height: 60vh;
+  overflow-y: scroll;
+}
+.list-group-item {
+  z-index: 1;
+}
+.link-priority {
+  z-index: 10;
+}

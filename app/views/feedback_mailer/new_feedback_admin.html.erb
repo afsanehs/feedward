@@ -1,11 +1,106 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
-  </head>
-  <body>
-    <h1>Un nouveau feedback a été rempli sur feedward</h1>
-    <p>Tu viens juste de remplir un feedback sur Feedward en utilisant l'e-mail suivant : <%= @admin_email %>.</p>
-    <p> À très vite sur Feedward !</p>
-  </body>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Un feedback vient d'être rempli !</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .email-background {
+            background: #eee;
+            padding: 10px;
+        }
+
+        .email-container,
+        .pre-header,
+        .footer {
+            max-width: 500px;
+            background: #dddbf8;
+            font-family: sans-serif;
+            margin: 0px auto;
+            overflow: hidden;
+            border-radius: 5px;
+        }
+
+        .text-white {
+            color: #fff;
+        }
+
+        .pre-header {
+            background: #eee;
+            color: #eee;
+            font-size: 5px;
+        }
+
+        img {
+            max-width: 100%;
+        }
+
+        h1,
+        h2 {
+            margin: 10px 30px;
+        }
+
+        p {
+            margin: 20px;
+            font-size: 18px;
+            color: #222324;
+            line-height: 1.5;
+            font-weight: 300;
+        }
+
+        .confirm-email {
+            text-align: center;
+            margin: 20px;
+            text-decoration: none;
+            display: inline-block;
+            background: #6558f5;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 20px;
+        }
+
+        .footer {
+            background: none;
+            text-align: center;
+            padding: 20px;
+            font-size: 14px;
+        }
+
+        .footer,
+        a {
+            text-decoration: none;
+            color: #222324;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="email-background" style="background: #eee;padding: 10px;">
+        <div class="pre-header" style="max-width: 500px;background: #eee;font-family: sans-serif;margin: 0px auto;overflow: hidden;border-radius: 5px;color: #eee;font-size: 5px;">
+            Un employé vient à l'instant de soumettre un feedback sur Feedward. L'application qui te
+            permet d'évaluer ton équipe mangériale en toute sérénité.
+        </div>
+        <div class="email-container" style="max-width: 500px;background: #dddbf8;font-family: sans-serif;margin: 0px auto;overflow: hidden;border-radius: 5px;">
+            <h1 style="margin: 10px 30px;">Un nouveau feedback a été rempli sur feedward !</h1>
+            <h2 style="margin: 10px 30px;">
+                Un feedback vient tout juste d'être rempli sur Feedward.
+            </h2>
+            <img src="https://media.giphy.com/media/l46Cy1rHbQ92uuLXa/source.gif" alt="Feedback reçu!" style="max-width: 100%;">
+            <div class="confirm-email" style="text-align: center;margin: 20px;text-decoration: none;display: inline-block;background: #6558f5;color: white;padding: 10px 20px;border-radius: 5px;font-size: 20px;">
+                <%= link_to "Synthèse des feedbacks.", dashboard_url %><br>
+            </div>
+
+            <p style="margin: 20px;font-size: 18px;color: #222324;line-height: 1.5;font-weight: 300;">Merci pour ta confiance.</p>
+            <p style="margin: 20px;font-size: 18px;color: #222324;line-height: 1.5;font-weight: 300;">À très vite sur Feedward !</p>
+        </div>
+        <div class="footer" style="max-width: 500px;background: none;font-family: sans-serif;margin: 0px auto;overflow: hidden;border-radius: 5px;text-align: center;padding: 20px;font-size: 14px;text-decoration: none;color: #222324;">
+            <a href="http://getfeedward.com/" style="text-decoration: none;color: #222324;">Visiter le site</a> | <a href="mailto: contact@getfeedward.com" style="text-decoration: none;color: #222324;">Nous
+                contacter</a>
+        </div>
+    </div>
+</body>
+
 </html>

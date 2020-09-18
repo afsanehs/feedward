@@ -10,10 +10,44 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_07_091217) do
+ActiveRecord::Schema.define(version: 2020_09_16_212705) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "active_admin_comments", force: :cascade do |t|
+    t.string "namespace"
+    t.text "body"
+    t.string "resource_type"
+    t.bigint "resource_id"
+    t.string "author_type"
+    t.bigint "author_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id"
+    t.index ["namespace"], name: "index_active_admin_comments_on_namespace"
+    t.index ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id"
+  end
+
+  create_table "activities", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "appointments", force: :cascade do |t|
+    t.string "title"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.text "description"
+    t.boolean "is_accepted"
+    t.bigint "employee_id"
+    t.bigint "employer_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["employee_id"], name: "index_appointments_on_employee_id"
+    t.index ["employer_id"], name: "index_appointments_on_employer_id"
+  end
 
   create_table "companies", force: :cascade do |t|
     t.string "name"
@@ -33,8 +67,22 @@ ActiveRecord::Schema.define(version: 2020_09_07_091217) do
     t.bigint "receiver_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.float "score_average"
+    t.boolean "draft"
     t.index ["receiver_id"], name: "index_feedbacks_on_receiver_id"
     t.index ["sender_id"], name: "index_feedbacks_on_sender_id"
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.bigint "activity_id"
+    t.bigint "user_id"
+    t.bigint "feedback_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.boolean "is_read"
+    t.index ["activity_id"], name: "index_notifications_on_activity_id"
+    t.index ["feedback_id"], name: "index_notifications_on_feedback_id"
+    t.index ["user_id"], name: "index_notifications_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -50,7 +98,12 @@ ActiveRecord::Schema.define(version: 2020_09_07_091217) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "is_validated"
+    t.string "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
     t.index ["company_id"], name: "index_users_on_company_id"
+    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

@@ -1,4 +1,17 @@
-<br /> <br/>
-<div class="d-sm-flex align-items-center justify-content-between mt-5 mb-5">
-  <h2 class="mb-0 text-indigo">Bienvenue sur le dashboard admin</h2>
+<div class="card mb-5 border-primary">
+    <div class="mx-auto text-primary mt-3">Lien à transmettre à vos salariés pour leur permettre de s'inscrire : <strong> lien vers /users/sign_up </strong></div>
+    <div class="mx-auto text-primary mb-3">Plus d'information pour vos salariés sur : <strong> lien vers /landing_employees </strong></div>
+</div>
+
+<div class="row mb-4">
+    <div class="col-12 col-md-8 mb-5">
+        <div class="align-items-center justify-content-between">
+            <h2 class="mb-0 text-indigo">Bienvenue sur le dashboard manager</h2>
+            <h6 class="mb-0 text-indigo mt-2">Entreprise: <span class="text-beige"><%= current_user.company.name %></span></h6>
+        </div>
+    </div>
+    <div class="col-12 col-md-4">
+        <a href="<%= new_appointment_path %>" class="btn btn-primary btn-block mb-2" data-method="get">Prendre un rendez-vous</a>
+        <a href="<%= appointments_path%>" class="btn btn-outline-primary btn-block">Mes rendez-vous</a>
+    </div>
 </div>

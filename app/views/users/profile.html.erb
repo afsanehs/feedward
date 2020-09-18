@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <% content_for :title, "Account Settings" %>
+    <% content_for :title, "Mes Informations | " %>
 </head>
 
 <body>
@@ -21,15 +21,19 @@
 
                             </div>
                             <div class="col ml-0 pl-0">
-                                <h1 class="">Account Information</h1>
+                                <h1 class="">Information du compte</h1>
                             </div>
+                            <% if !current_user.is_validated %>
+                            <div class="col ml-0 mt-4 alert-danger p-3">
+                                <h6 class="text-danger">Votre compte n'est pas encore validé.</h6>
+                            </div>
+                            <% end %>
                             <hr>
-
                             <div class="account-email mb-5">
-                                <h3 class="mb-3">Account email address</h3>
+                                <h3 class="mb-3">Adresse mail</h3>
                                 <span class="text-primary"><%= current_user.email %></span>
                                 <div>
-                                    <a href="<%= account_secret_path %>" class="btn btn-light border-primary text-primary mt-2">Change</a>
+                                    <a href="<%= account_secret_path %>" class="btn btn-light border-primary text-primary mt-2">Changer</a>
                                 </div>
                             </div>
 
@@ -39,43 +43,37 @@
                             <div class="contact-info mb-5">
                                 <div class="row">
                                     <div class="col-lg-10">
-                                        <h3>Profile Information</h3>
+                                        <h3>Information du profil</h3>
 
                                         <div class="form-row mb-3 ml-0">
                                             <div class="col">
-                                                <%= f.label :first_name %>
+                                                <%= f.label :first_name, "Prénom" %>
                                                 <%= f.text_field :first_name, class: "form-control text-primary" %>
                                             </div>
                                             <div class="col">
-                                                <%= f.label :last_name %>
+                                                <%= f.label :last_name, "Nom de famille" %>
                                                 <%= f.text_field :last_name, class: "form-control text-primary" %>
                                             </div>
                                         </div>
 
                                         <div class="form-group">
                                             <%= f.label :company_id, "Entreprise" %><br />
-                                             <%= f.select :company_id , 
-                                                          options_for_select(@companies.collect{ |u| [u.name, u.id] }, current_user.company_id),
-                                                           { include_blank: '<Sélectionner votre entreprise>', require: true}, class: 'form-control text-primary' %>
+                                            <input class="form-control text-primary" value="<%= current_user.company.name unless current_user.company.nil?%>" disabled>
                                         </div>
 
                                     </div>
                                 </div>
-                              <div class="d-flex justify-content-between">
-                              <%= f.submit "Save", class: 'btn btn-primary' %>
+                                <div class="d-flex justify-content-between">
+                                    <%= f.submit "Save", class: 'btn btn-primary' %>
 
-                                  <% if current_user.is_company_admin%>
-                                    <a href="<%= dashboard_admin_path %>", class="btn btn-outline-primary">Dashboard Admin</a>
-                                  <% else %>
-                                    <a href="<%= dashboard_path %>", class="btn btn-outline-primary">Dashboard</a>
-                                  
-                                  <% end %>
-                              </div>
-
+                                    <% if current_user.is_company_admin%>
+                                    <a href="<%= dashboard_admin_path %>" , class="btn btn-outline-primary">Dashboard Manager</a>
+                                    <% else %>
+                                    <a href="<%= dashboard_path %>" , class="btn btn-outline-primary">Dashboard</a>
+                                    <% end %>
+                                </div>
                             </div>
                             <% end %>
-
-
                         </div>
                         <!-- End address -->
                         <!-- End form -->
@@ -89,9 +87,9 @@
     <!-- If user not logged -->
 
     <% else %>
-    <div class="container text-center">
-        <h3>You need to loggin to see your account settings.</h2>
-            Back to <a href="<%= new_user_session_path %>">Login</a>
+    <div class="container text-center account-settings-section">
+        <h3>Vous devez vous connecter pour accéder cette page.</h2>
+            Revenir à la page <a href="<%= new_user_session_path %>">Login</a>
     </div>
     <% end %>
 </body>

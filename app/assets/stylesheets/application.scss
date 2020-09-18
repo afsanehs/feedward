@@ -10,14 +10,20 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_tree .
  *= require_self
+ *= require flatpickr
+ *= require flatpickr/themes/airbnb
  */
 
-@import '../stylesheets/bootstrap.min.scss';
-@import '../stylesheets/navigation.scss';
-@import '../stylesheets/static_pages.scss';
-@import '../stylesheets/users.scss';
-@import '../stylesheets/feedback.scss';
-@import '../stylesheets/custom_color.scss';
-@import '../stylesheets/dashboard.scss';
+
+ @import './lightmode/bootstrap.min.scss';
+@import './lightmode/users.scss';
+@import './lightmode/feedback.scss';
+@import './appointment.scss';
+@import './notification.scss';
+@import './lightmode/static_pages.scss';
+@import './landing.scss';
+@import './lightmode/custom_color.scss';
+@import './lightmode/dashboard.scss';
+@import './alert.scss';
+@import './lightmode/navigation.scss';

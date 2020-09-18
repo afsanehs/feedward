@@ -1,0 +1,40 @@
+<body>
+    <br /> <br />
+    <div class="container">
+        <div class="d-sm-flex align-items-center justify-content-between mt-5 mb-5">
+            <h2 class="mb-0 text-indigo">Bienvenue sur la roulette musicale</h2>
+        </div>
+    </div>
+    <div class="container">
+        <div class="wrapper">
+            <div class="row">
+                <p class="mb-0 text-indigo">Cherche un artiste et obtiens une de ses musiques au hasard</p><br /><br />
+            </div>
+            <div class="row">
+                <%= form_tag("/spotify", method: "get") do %>
+                <%= label_tag(:artist, "Quel artiste veux-tu écouter ?") %>
+                <%= text_field_tag(:artist)%>
+                <%= submit_tag("Search") %>
+                <% end %>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="wrapper">
+            <div class="row">
+                <%if @artist != nil%>
+                <p>Voila ce qu'on t'a trouvé :
+                <p>
+                <ul>
+                    <li>Artiste : <%=@artist.name%></li>
+                    <li>Album : <%=@album.name%></li>
+                    <li>
+                        <p>Tu peux écouter ce titre sur Spotify :</p>
+                        <a href=<%=@uri%> target="_blank"><%=@track.name%></a>
+                    </li>
+                </ul>
+                <%end%>
+            </div>
+        </div>
+    </div>
+</body>

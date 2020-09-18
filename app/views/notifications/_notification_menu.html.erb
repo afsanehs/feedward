@@ -1,0 +1,72 @@
+<ul id="notification-menu" class="dropdown-menu--cus notification-menu">
+        <div class="dropdown-menu-header">
+          <span class="">
+            Notifications
+          </span>
+        </div>
+        <div class="dropdown-menu-content overlay-scrollbar scrollbar-hover">
+            <% @notifications = all_notifications_limit %>
+                  <% @notifications.each do  |noti|%>
+        
+                      <% if noti.activity.name == "feedback_created"%>
+                        <li class="dropdown-menu-item <%= is_read_class(noti)%>">
+                          <a href="<%= feedback_path(noti.feedback_id, notification: noti, is_read: true)%>" class="dropdown-menu-link">
+                          <div><i class="fas fa-gift"></i></div>
+                          <span class="pt-2">
+                            <%= noti.user.full_name %> vient de créer un feedback.
+                            <br>
+                            <span>
+                              <%= get_date(noti.created_at)%>
+                            </span>
+                          </span>
+                          </a>
+                        </li>
+                        
+                      <% elsif noti.activity.name =="feedback_updated"%>
+                         <li class="dropdown-menu-item <%= is_read_class(noti)%>">
+                          <a href="<%= feedback_path(noti.feedback_id, notification: noti, is_read: true)%>" class="dropdown-menu-link">
+                          <div><i class="fas fa-comment-dots"></i></div>
+                          <span class="pt-2">
+                            <%= noti.user.full_name %> vient de modifier son feedback.
+                            <br>
+                            <span>
+                              <%= get_date(noti.created_at)%>
+                            </span>
+                          </span>
+                          </a>
+                           </li>
+                      <% elsif noti.activity.name =="user_created"%>
+                           <li class="dropdown-menu-item <%= is_read_class(noti)%>">
+                        <a href="<%= account_user_request_path(noti.user, notification: noti, is_read: true)%>" class="dropdown-menu-link">
+                        <div><i class="fas fa-user-plus"></i></div>
+                          <span>
+                            <%= noti.user.full_name %> souhaite rejoindre votre entreprise.
+                            <br>
+                            <span>
+                              <%= get_date(noti.created_at)%>
+                            </span>
+                          </span>
+                          </a>
+                           </li>
+                      <% else %>
+                        <li class="dropdown-menu-item <%= is_read_class(noti)%>">
+                        <a  class="dropdown-menu-link">
+                        <div><i class="fas fa-info"></i></div>
+                          <span class="pt-2">
+                            Vous avez un nouvelle notification.
+                            <br>
+                            <span>
+                              <%= get_date(noti.created_at)%>
+                            </span>
+                          </span>
+                          </a>
+                           </li>
+                      <% end %>
+                  <%end%>
+        </div>
+        <div class="dropdown-menu-footer" >
+          <a class="dropdown-menu-link text-indigo" href="<%= notifications_path %>">
+              Consulter toutes les notifications
+          </a>
+        </div>
+</ul>
