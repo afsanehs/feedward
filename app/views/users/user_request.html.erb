@@ -1,43 +1,41 @@
 <!DOCTYPE html>
 <html>
 
-  <head>
-  <% content_for :title, "Information Utilisateur | " %>
-  </head>
+<head>
+    <% content_for :title, "Information Utilisateur | " %>
+</head>
 
-  <body>
+<body>
     <!-- MAIN BODY -->
     <section class="account-settings-section">
-      <div class="container">
-        <div class="row">
-          <div class="col-12">
-            <div class="card">
-              <div class="card-body">
-                  <h6>Voici les informations du compte qui a demandé de rejoindre à votre entreprise</h6>
-                  <hr>
-                  <h4 class="card-title"><%= @user.full_name %></h4>
-                  <p class="card-text"><strong>Entreprise: </strong><%= @user.company.name%></p>
-                  <p class="card-text"><strong>Email: </strong><%= @user.email%></p>
-              </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h6>Voici les informations du compte qui a demandé de rejoindre à votre entreprise</h6>
+                            <hr>
+                            <h4 class="card-title"><%= @user.full_name %></h4>
+                            <p class="card-text"><strong>Entreprise: </strong><%= @user.company.name%></p>
+                            <p class="card-text"><strong>Email: </strong><%= @user.email%></p>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
 
-        <div class="d-flex mt-4 mx-auto">
-          <a class="btn btn-success mr-3" href="<%= validate_account_path(@notification.user, notification: @notification)%>" data-toggle="tooltip" data-placement="left" title="Accepter ce compte"
-            data-method="patch">Accepter
-          </a>
-          <br/>
-          <a class="btn btn-danger" href="<%= refuse_account_path(@notification.user, notification: @notification)%>" data-toggle="tooltip" data-placement="left" title="Refuser ce compte"
-            data-method="delete" data-confirm="Etes-vous sûr de refuser ce compte?">Refuser
-          </a>
+            <div class="d-flex mt-4 mx-auto">
+                <a class="btn btn-success mr-3" href="<%= validate_account_path(@notification.user, notification: @notification)%>" data-toggle="tooltip" data-placement="left" title="Accepter ce compte" data-method="patch">Accepter
+                </a>
+                <br />
+                <a class="btn btn-danger" href="<%= refuse_account_path(@notification.user, notification: @notification)%>" data-toggle="tooltip" data-placement="left" title="Refuser ce compte" data-method="delete" data-confirm="Etes-vous sûr de refuser ce compte?">Refuser
+                </a>
+            </div>
+
+            <%= link_to  :back, class: 'btn btn-primary mt-4' do %>
+            <span><i class="fas fa-arrow-left mr-2"></i>Revenir à la page précédent</span>
+            <% end %>
         </div>
-            
-        <%= link_to  :back, class: 'btn btn-primary mt-4' do %>
-          <span><i class="fas fa-arrow-left mr-2"></i>Revenir à la page précédent</span>
-        <% end %>
-      </div>
     </section>
-  </body>
+</body>
 
 </html>

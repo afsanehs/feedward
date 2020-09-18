@@ -1,33 +1,34 @@
 <!DOCTYPE html>
 <html>
 
-  <head>
-    <% content_for :title, "Entreprise | " %> 
-  </head>
+<head>
+    <% content_for :title, "Entreprise | " %>
+</head>
 
-  <body>
+<body>
     <div class="container devise-page">
-      <div class="row">
-        <div class="col-md-10 col-lg-8 offset-md-3 mx-auto">
-          <br><br>
-            <%= form_for @company do |f| %>
-              <h3 class="mb-4 font-weight-normal text-center text-indigo">Merci pour votre inscription sur Feedward !</h3>
+        <div class="row">
+            <div class="col-md-10 col-lg-8 offset-md-3 mx-auto">
+                <br><br>
+                <%= form_for @company do |f| %>
+                <h3 class="mb-4 font-weight-normal text-center text-indigo">Merci pour votre inscription sur Feedward !</h3>
 
-              <div class="form-group mb-4">
-                <%= f.label :name, "Renseigner le nom de votre entreprise" %><br />
-                <%= f.text_field :name, autofocus: true, autocomplete: "company", class: "form-control" %>
-              </div>
+                <div class="form-group mb-4">
+                    <%= f.label :name, "Renseigner le nom de votre entreprise" %><br />
+                    <%= f.text_field :name, autofocus: true, autocomplete: "company", class: "form-control" %>
+                </div>
 
-              <div class="form-group mt-5">
-                <%= f.submit "Suivant", class: "btn btn-lg btn-primary btn-block" %>
-              </div>
-          <% end %>
+                <div class="form-group mt-5">
+                    <%= f.submit "Suivant", class: "btn btn-lg btn-primary btn-block" %>
+                </div>
+                <% end %>
 
-          <br>  
-      
+                <br>
+
+            </div>
+
         </div>
-
-      </div>
     </div>
-  </body>
+</body>
+
 </html>

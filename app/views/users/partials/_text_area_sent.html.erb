@@ -8,17 +8,17 @@
 
             <% @feedbacks_user.each do |feedback| %>
 
-                        <% if !feedback.receiver.nil? %>
+            <% if !feedback.receiver.nil? %>
             <div class="col-sm-12">
                 <div class="card">
                     <div class="card-body">
                         <a href="<%= feedback_path(feedback.id) %>" class="card-title">
-                        <p>Envoyé le <%= get_time_verbose(feedback.created_at) %> - <%= feedback.receiver.first_name %></p>
+                            <p>Envoyé le <%= get_time_verbose(feedback.created_at) %> - <%= feedback.receiver.first_name %></p>
                         </a>
                     </div>
                 </div>
             </div>
-           <% end %>
+            <% end %>
 
             <% end %>
 

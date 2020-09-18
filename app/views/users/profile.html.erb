@@ -24,9 +24,9 @@
                                 <h1 class="">Information du compte</h1>
                             </div>
                             <% if !current_user.is_validated %>
-                              <div class="col ml-0 mt-4 alert-danger p-3">
-                                  <h6 class="text-danger">Votre compte n'est pas encore validé.</h6>
-                              </div>
+                            <div class="col ml-0 mt-4 alert-danger p-3">
+                                <h6 class="text-danger">Votre compte n'est pas encore validé.</h6>
+                            </div>
                             <% end %>
                             <hr>
                             <div class="account-email mb-5">
@@ -63,15 +63,15 @@
 
                                     </div>
                                 </div>
-                              <div class="d-flex justify-content-between">
-                              <%= f.submit "Save", class: 'btn btn-primary' %>
+                                <div class="d-flex justify-content-between">
+                                    <%= f.submit "Save", class: 'btn btn-primary' %>
 
-                                  <% if current_user.is_company_admin%>
-                                    <a href="<%= dashboard_admin_path %>", class="btn btn-outline-primary">Dashboard Manager</a>
-                                  <% else %>
-                                    <a href="<%= dashboard_path %>", class="btn btn-outline-primary">Dashboard</a>
-                                  <% end %>
-                              </div>
+                                    <% if current_user.is_company_admin%>
+                                    <a href="<%= dashboard_admin_path %>" , class="btn btn-outline-primary">Dashboard Manager</a>
+                                    <% else %>
+                                    <a href="<%= dashboard_path %>" , class="btn btn-outline-primary">Dashboard</a>
+                                    <% end %>
+                                </div>
                             </div>
                             <% end %>
                         </div>

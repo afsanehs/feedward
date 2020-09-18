@@ -1,35 +1,35 @@
 <div class="col-xl-3 col-md-6 mb-4">
-  <div class="card border-left-primary shadow h-100 py-2">
-    <div class="card-body">
-      <div class="row no-gutters align-items-center">
-        <div class="col mr-2">
-          <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Moyenne de toutes les notes</div>
-          <div class="h5 mb-2 font-weight-bold <%= alert_class(@average_company_score)%>"><%= @average_company_score %></div>
+    <div class="card border-left-primary shadow h-100 py-2">
+        <div class="card-body">
+            <div class="row no-gutters align-items-center">
+                <div class="col mr-2">
+                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Moyenne de toutes les notes</div>
+                    <div class="h5 mb-2 font-weight-bold <%= alert_class(@average_company_score)%>"><%= @average_company_score %></div>
+                </div>
+                <div class="col-auto">
+                    <i class="fa fa-thermometer-three-quarters fa-2x text-beige"></i>
+                </div>
+            </div>
         </div>
-        <div class="col-auto">
-          <i class="fa fa-thermometer-three-quarters fa-2x text-beige"></i>
+        <div class="card-body">
+            <div class="row no-gutters align-items-center">
+                <div class="col mr-2">
+                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"><small>Vs hier</small></div>
+                    <div class="h5 mb-2 font-weight-bold text-indigo"><small><%= @average_company_score_yesterday %></small></div>
+                    <% if @average_company_score_evolution > 0 %>
+                    <div class="h5 mb-2 font-weight-bold text-green"><%= @average_company_score_evolution %> %</div>
+                    <% else %>
+                    <div class="h5 mb-2 font-weight-bold text-red"><%= @average_company_score_evolution %> %</div>
+                    <% end %>
+                </div>
+                <div class="col-auto">
+                    <% if @average_company_score_evolution > 0 %>
+                    <i class="fa fa-arrow-circle-up fa-2x text-green" aria-hidden="true"></i>
+                    <% else %>
+                    <i class="fa fa-arrow-circle-down fa-2x text-red" aria-hidden="true"></i>
+                    <% end %>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-    <div class="card-body">
-      <div class="row no-gutters align-items-center">
-        <div class="col mr-2">
-          <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"><small>Vs hier</small></div>
-          <div class="h5 mb-2 font-weight-bold text-indigo"><small><%= @average_company_score_yesterday %></small></div>
-          <% if @average_company_score_evolution > 0 %>
-            <div class="h5 mb-2 font-weight-bold text-green"><%= @average_company_score_evolution %> %</div>
-          <% else %>
-            <div class="h5 mb-2 font-weight-bold text-red"><%= @average_company_score_evolution %> %</div>
-          <% end %>
-        </div>
-        <div class="col-auto">
-          <% if @average_company_score_evolution > 0 %>
-            <i class="fa fa-arrow-circle-up fa-2x text-green" aria-hidden="true"></i>
-          <% else %>
-            <i class="fa fa-arrow-circle-down fa-2x text-red" aria-hidden="true"></i>
-          <% end %>
-        </div>
-      </div>
-    </div>
-  </div>
 </div>
