@@ -36,9 +36,9 @@
             </div>
             <% end %>
             <br>
-            <div class="my-5 d-flex justify-content-between">
-                <p><%= button_to "Revenir à la page précédente", :back, class: "btn btn-sm btn-secondary" %></p>
-                <p><%= button_to "Supprimer mon compte", registration_path(resource_name), data: { confirm: "Etes-vous sûr?" }, method: :delete, class: "btn btn-sm btn-outline-secondary" %></p>
+            <div class="my-5 d-flex justify-content-between mx-0 px-0">
+                <div><%= link_to "Back", :back, class: "btn btn-sm btn-secondary" %></div>
+                <div><%= button_to "Supprimer mon compte", registration_path(resource_name), data: { confirm: "Etes-vous sûr?" }, method: :delete, class: "btn btn-sm btn-outline-secondary ml-auto" %></div>
             </div>
         </div>
     </div>
