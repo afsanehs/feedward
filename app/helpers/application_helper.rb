@@ -5,7 +5,7 @@ module ApplicationHelper
 
   def is_navbar_for_company?
     page_companies = [root_path, new_company_path, company_user_new_path,
-      contact_path,about_path, team_path, careers_path, 
+      contact_path,about_path, careers_path, 
       legal_notice_path, privacy_policy_path ]
 
    page_companies.each do |page|
