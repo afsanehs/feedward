@@ -9,7 +9,7 @@
   background-size: cover;
   background-repeat: no-repeat;
   width: 100%;
-  height: 95vh;
+  height: 100vh;
   position: relative;
 }
 .home-text {
@@ -30,6 +30,13 @@
 
 //--------------------------------------//
 //Read more section
+#home-2:before {
+  content: '';
+  display: block;
+  height: 8rem; //Height of header
+  margin-top: -4rem;
+}
+
 
 #readmore {
   padding-top: 6rem;
@@ -189,6 +196,10 @@
 
 .text-small-landing {
   font-size: 110%;
+}
+
+.wave {
+  color: #fbf3ef;
 }
 
 .wave {
