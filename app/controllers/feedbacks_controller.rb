@@ -12,7 +12,7 @@ class FeedbacksController < ApplicationController
     @feedback = Feedback.find(params[:id])
     if @feedback.sender_id != current_user.id  && !current_user.is_company_admin
       flash[:error] = "Vous n'avez pas le droit pour accéder à cette page"
-      return redirect_to dashboard_path
+      return redirect_to user_path(current_user.id)
     end
     if params[:notification] && params[:is_read]
       @notification = Notification.find(params[:notification])
@@ -55,7 +55,7 @@ class FeedbacksController < ApplicationController
     @feedback = get_feedback_current_user_today
     if @feedback.id.to_s != params[:id].to_s
       flash[:error] = "Vous pouvez seulement modifier votre feedback aujourd'hui."
-      return redirect_to dashboard_path
+      return redirect_to user_path(current_user.id)
     end
     puts "-----------------"
     puts @feedback.receiver_id
@@ -82,7 +82,7 @@ class FeedbacksController < ApplicationController
   def user_feedbacks
     if !current_user.is_company_admin
       flash[:error] = "Vous n'avez pas de droit pour accéder à cette page."
-      return redirect_to dashboard_path
+      return redirect_to user_path(current_user.id)
     end
     @user = User.find(params[:id])
     @feedbacks=Feedback.where(sender: @user)

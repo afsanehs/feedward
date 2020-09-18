@@ -5,7 +5,7 @@ module ApplicationHelper
 
   def is_navbar_for_company?
     page_companies = [root_path, new_company_path, company_user_new_path,
-      contact_path,about_path, team_path, careers_path, 
+      contact_path,about_path, careers_path, 
       legal_notice_path, privacy_policy_path ]
 
    page_companies.each do |page|
@@ -19,8 +19,11 @@ module ApplicationHelper
   
   def absolute_url_for(origin_url)
     request.base_url + origin_url
-end
+  end
 
+  def is_landing_page?
+    return current_page?(root_path) || current_page?(landing_employees_path)
+  end
   
   def alert_class(score)
     score >= 3 ? "text-indigo" : "text-alert"

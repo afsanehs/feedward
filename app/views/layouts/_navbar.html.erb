@@ -8,6 +8,7 @@
       </button>
 
       <div class="navbar-collapse collapse" id="navbarColor01">
+      <% if is_landing_page? %>
         <ul class="navbar-nav mr-auto">
           <li class="nav-item mr-4">
             <% unless user_signed_in? %>
@@ -25,6 +26,8 @@
             <% end %>
           </li>
         </ul>
+      
+      <% end %>
 
         <% if user_signed_in? %>
             <% if current_user.is_company_admin || current_user.is_site_admin %>
@@ -53,13 +56,13 @@
                   </li>
               <% end %>
               <% if current_user.is_company_admin || current_user.is_site_admin %>
-               <li class="nav-item <%= active_class(dashboard_admin_path) %>">
-                <a class="nav-link nav-text-bold" href="<%= dashboard_admin_path %>">Dashboard Manager</a>
+               <li class="nav-item <%= active_class(user_path(current_user.id)) %>">
+                <a class="nav-link nav-text-bold" href="<%= user_path(current_user.id) %>">Dashboard Manager</a>
               </li>
 
               <% elsif current_user.is_validated %>
-                <li class="nav-item <%= active_class(dashboard_path) %>">
-                   <a class="nav-link nav-text-bold" href="<%= dashboard_path %>">Dashboard</a>
+                <li class="nav-item <%= active_class(user_path(current_user.id)) %>">
+                   <a class="nav-link nav-text-bold" href="<%= user_path(current_user.id) %>">Dashboard</a>
                 </li>
               <% end %>
 
