@@ -2,10 +2,13 @@ Rails.application.routes.draw do
   root to:'static_pages#landing'
 
   devise_for :users
-  # Fix problem of sign out button devise
   devise_scope :user do
+    # Fix problem of sign out button devise
     get '/users/sign_out' => 'devise/sessions#destroy'
   end
+  # Active admin
+  ActiveAdmin.routes(self)
+  devise_for :admin_users, {class_name: 'User'}.merge(ActiveAdmin::Devise.config)
 
   
   resources :users, only: [:show]
@@ -14,9 +17,7 @@ Rails.application.routes.draw do
   resources :appointments
   resources :companies, only: [:new, :create, :edit, :update]
   
-  # Active admin
-  ActiveAdmin.routes(self)
-  devise_for :admin_users, {class_name: 'User'}.merge(ActiveAdmin::Devise.config)
+
 
   
   # Static page
@@ -32,8 +33,8 @@ Rails.application.routes.draw do
   resources :accounts, only: [:index, :create]
   resources :request_companies, only: [:index, :create]
   resources :request_users, only: [:show]
-
-  get '/account/user_request/:id', to: "users#user_request", as: 'account_user_request'
+  resources :spotifies, only: [:index]
+  get '/search', to: "spotifies#index"
 
 
   get '/users/:id/feedbacks', to: 'feedbacks#user_feedbacks', as: 'users_feedbacks'
@@ -42,8 +43,8 @@ Rails.application.routes.draw do
 
 
   # Custom routes for Spotify
-  get '/spotify', to: "users#spotify"
-  get '/search', to: "users#spotify"
+  # get '/spotify', to: "users#spotify"
+  # get '/search', to: "users#spotify"
 
   #Custom routes for the dashboards
   get '/company_user_new', to: 'companies#company_user_new', as: 'company_user_new'
