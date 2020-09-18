@@ -2,7 +2,7 @@ class StaticPagesController < ApplicationController
   def landing
     @skip_navbar = true
     @skip_footer = true
-    @skip_crisp = true
+    @skip_crisp = false
   end
 
   def index_company
