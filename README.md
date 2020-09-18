@@ -3,6 +3,7 @@
 ## Production
 Vous pouvez consulter notre site sur
 <span style="font-size: 1.2rem">  [ [http://getfeedward.com](http://getfeedward.com/) ] <span>
+<span style="font-size: 1.2rem">  [ [Youtube](https://www.youtube.com/watch?v=R-xO4rONbKM) ] <span>
 
 
 <div style="text-align: center; margin-top: 50px; margin-bottom: 50px;">
@@ -167,8 +168,6 @@ C'est pour cela que nous vous fournissons quelques comptes pour tester notre pla
 - Des composants Atomic pour le feedback formulaire, notification, rendez vous, et des pages statiques
 - Utilisation de [flatpickr](https://flatpickr.js.org/) pour avoir une jolie interface pour sélectionner des dates de rendez-vous
 - Intégration du chatbox avec scripts chat
-- Création d'un darkmode
-
 
 ## Backend
 

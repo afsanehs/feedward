@@ -56,9 +56,6 @@ class UsersController < ApplicationController
     end
    end
 
-  # GET account/secret
-  def secret
-  end
 
   # GET account/user_request/:id/
   def user_request

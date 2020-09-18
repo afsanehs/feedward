@@ -12,18 +12,4 @@ class ApplicationController < ActionController::Base
     render file: "#{Rails.root}/public/404", status: :not_found
   end
 
-  def moon
-    cookies[:moon] = {
-      value: 'dark mode on'
-    }
-    redirect_back(fallback_location: root_path)
-  end
-
-  def sun
-    cookies.delete(:moon)
-    redirect_back(fallback_location: root_path)
-  end
-
-
-
 end

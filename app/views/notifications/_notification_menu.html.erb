@@ -9,7 +9,7 @@
                   <% @notifications.each do  |noti|%>
         
                       <% if noti.activity.name == "feedback_created"%>
-                        <li class="dropdown-menu-item <%= is_read_class(noti)%>">
+                        <li class="dropdown-menu-item  <%= is_read_class(noti)%>">
                           <a href="<%= feedback_path(noti.feedback_id, notification: noti, is_read: true)%>" class="dropdown-menu-link">
                           <div><i class="fas fa-gift"></i></div>
                           <span class="pt-2">
@@ -23,7 +23,7 @@
                         </li>
                         
                       <% elsif noti.activity.name =="feedback_updated"%>
-                         <li class="dropdown-menu-item <%= is_read_class(noti)%>">
+                         <li class="dropdown-menu-item  <%= is_read_class(noti)%>">
                           <a href="<%= feedback_path(noti.feedback_id, notification: noti, is_read: true)%>" class="dropdown-menu-link">
                           <div><i class="fas fa-comment-dots"></i></div>
                           <span class="pt-2">
@@ -36,7 +36,7 @@
                           </a>
                            </li>
                       <% elsif noti.activity.name =="user_created"%>
-                           <li class="dropdown-menu-item <%= is_read_class(noti)%>">
+                           <li class="dropdown-menu-item  <%= is_read_class(noti)%>">
                         <a href="<%= account_user_request_path(noti.user, notification: noti, is_read: true)%>" class="dropdown-menu-link">
                         <div><i class="fas fa-user-plus"></i></div>
                           <span>

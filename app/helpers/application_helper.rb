@@ -29,7 +29,7 @@ module ApplicationHelper
     score >= 3 ? "text-indigo" : "text-alert"
   end
   def is_read_class(notification)
-    return notification.is_read ? "is-read" : ""
+    return notification.is_read ? " is-read" : ""
   end
   def is_read_disabled_class(notification)
     return notification.is_read ? "disable-read" : "text-success"
