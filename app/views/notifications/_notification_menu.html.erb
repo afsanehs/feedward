@@ -37,7 +37,7 @@
                            </li>
                       <% elsif noti.activity.name =="user_created"%>
                            <li class="dropdown-menu-item  <%= is_read_class(noti)%>">
-                        <a href="<%= account_user_request_path(noti.user, notification: noti, is_read: true)%>" class="dropdown-menu-link">
+                        <a href="<%= request_user_path(noti.user, notification: noti, is_read: true)%>" class="dropdown-menu-link">
                         <div><i class="fas fa-user-plus"></i></div>
                           <span>
                             <%= noti.user.full_name %> souhaite rejoindre votre entreprise.

@@ -13,15 +13,6 @@ class UsersController < ApplicationController
     end 
   end
 
-  # GET account/user_request/:id/
-  def user_request
-    @user  = User.find(params[:id])
-    if params[:notification] && params[:is_read]
-      @notification = Notification.find(params[:notification])
-      @notification.update(is_read: true)
-    end
-  end
-
 
   def dashboard
     @user = current_user

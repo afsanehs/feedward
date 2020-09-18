@@ -31,8 +31,8 @@ Rails.application.routes.draw do
   # Custom urls user
   resources :accounts, only: [:index, :create]
   resources :request_companies, only: [:index, :create]
-  # get 'account/requestcompany', to: "users#request_company", as: 'request_company'
-  # patch 'account/requestcompany', to: "users#update_company"
+  resources :request_users, only: [:show]
+
   get '/account/user_request/:id', to: "users#user_request", as: 'account_user_request'
 
 
