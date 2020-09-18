@@ -43,6 +43,8 @@ Rails.application.routes.draw do
 
   resources :appointments
   resources :companies, only: [:new, :create, :edit, :update]
+  get '/company_user_new', to: 'companies#company_user_new', as: 'company_user_new'
+  post '/company_user_new', to: 'companies#company_user_create'
 
 
   # Active admin
