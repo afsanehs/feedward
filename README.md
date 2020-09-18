@@ -51,6 +51,9 @@ Savez-vous qu'une mauvaise journée au travail suffit pour qu'un emplyé commenc
 
 Feedward c’est une plateforme de feedbacks pour vos employés et leur bien être. Suivez les retours de vos employés de manière instantanée, et retrouver des insights sur votre dashboard. 
 
+
+Voici notre vidéo démo qui présente our plateform feedward: [Video démo](https://www.youtube.com/watch?v=R-xO4rONbKM&feature=youtu.be)
+
 ## Parcours utilisateur
 
 - Site Feedward landing page: présente toutes les informations nous concernant.
