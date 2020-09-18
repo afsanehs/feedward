@@ -1,9 +1,10 @@
 class CompaniesController < ApplicationController
-
+  # GET /company_user_new
   def company_user_new
     @user = User.new
   end 
 
+  #POST /company_user_new
   def company_user_create 
     @user = User.new(
       email: params[:email],
@@ -20,7 +21,7 @@ class CompaniesController < ApplicationController
       @user.errors.full_messages.each do |message|
         flash[:error] = message
       end
-      render :new
+      render :company_user_new
     end  
   end 
 
@@ -29,8 +30,6 @@ class CompaniesController < ApplicationController
   end
 
   def create
-    puts "$" *30
-    puts company_params
     @company = Company.new(company_params)
     @user = User.last
     if @company.save # try to save in the database @feedback
@@ -43,6 +42,7 @@ class CompaniesController < ApplicationController
         flash[:error] = message
       end
       @user.destroy
+      render :new
     end
   end 
 

@@ -10,7 +10,7 @@
       <div class="row">
         <div class="col-md-10 col-lg-8 offset-md-3 mx-auto">
           <br><br>
-            <%= form_with(scope: :user, url: company_user_new_path, method: :post, local:true) do |f| %>
+            <%= form_for(@user, url: company_user_new_path, method: :post, local:true) do |f| %>
               <h3 class="mb-4 font-weight-normal text-center text-indigo">Souscrire à Feedward</h3>
 
               <div class="form-group mb-2">

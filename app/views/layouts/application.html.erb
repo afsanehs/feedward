@@ -30,18 +30,14 @@
     </head>
 
   <body>
-    <% unless @skip_navbar %>
       <%= render 'layouts/navbar' %>
-    <% end %>
 
     <!-- Main content of body -->
     <%= render 'layouts/alert'%>
 
     <%= yield %>
 
-    <% unless @skip_footer %>
       <%= render 'layouts/footer' %>
-    <% end %>
 
   <!-- Script -->
   <!-- Jquery -->

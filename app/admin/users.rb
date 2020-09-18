@@ -1,5 +1,9 @@
 ActiveAdmin.register User do
-  permit_params :first_name, :last_name, :is_site_admin, :is_company_admin, :company_id, :email, :encrypted_password, :reset_password_token, :reset_password_sent_at, :remember_created_at, :is_validated
+
+  permit_params :first_name, :last_name, :is_site_admin, 
+  :is_company_admin, :company_id, :email, :encrypted_password, 
+  :reset_password_token, :reset_password_sent_at, 
+  :remember_created_at, :is_validated, :confirmation_token, :confirmed_at, :confirmation_sent_at
 
   index do
     selectable_column
@@ -22,5 +26,6 @@ ActiveAdmin.register User do
   filter :is_site_admin
   filter :is_company_admin
   filter :is_validated
+  
   
 end

@@ -40,19 +40,6 @@ ActiveAdmin.register_page "Dashboard" do
         end
 
       
-      end
-      columns do
-        column do
-          panel "Recent notifications" do
-            ul do
-              Notification.order('created_at DESC').limit(10).each do |notification|
-                li link_to(notification.user.company.name + "  -  "+ notification.activity.name, admin_notification_path(notification))
-              end
-            end
-          end
-      end
-
-
     end
     
   end # content
