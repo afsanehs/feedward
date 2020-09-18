@@ -6,8 +6,12 @@ class UsersController < ApplicationController
   before_action :correct_user
 
   def show
-    @user = current_user
-    @feedbacks_user = Feedback.where(sender_id: @user.id)
+    if is_company_admin?
+      dashboard_admin
+    else 
+      dashboard
+    end 
+
   end
 
   # GET account/profile
@@ -33,7 +37,7 @@ class UsersController < ApplicationController
   # GET account/requestcompany
   def request_company
     if !current_user.company.nil?
-      return redirect_to dashboard_path
+      return redirect_to user_path(current_user.id)
     end
     @user = current_user
     @companies = Company.all
@@ -65,15 +69,13 @@ class UsersController < ApplicationController
     end
   end
 
-  
-
 
   def dashboard
     @user = current_user
 
     #Company manager admin don't have dashboard user
     if current_user.is_company_admin
-      return redirect_to dashboard_admin_path
+      return redirect_to user_path(current_user.id)
     end 
 
 
@@ -341,6 +343,10 @@ class UsersController < ApplicationController
   end
   def is_super_admin?
     return current_user.is_site_admin
+  end
+
+  def is_company_admin?
+    return current_user.is_company_admin
   end
  
 end

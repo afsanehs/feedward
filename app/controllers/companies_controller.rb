@@ -36,7 +36,7 @@ class CompaniesController < ApplicationController
       @user.update(company: @company)
       flash[:success] = "Votre entreprise a bien été créé"
       sign_in(@user)
-      redirect_to dashboard_admin_path
+      redirect_to user_path(current_user.id)
     else 
       @company.errors.full_messages.each do |message|
         flash[:error] = message

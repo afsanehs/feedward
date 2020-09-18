@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource)
-    stored_location_for(resource) || dashboard_path
+    stored_location_for(resource) || user_path(current_user.id)
   end
   def after_sign_up_path_for(resource)
     stored_location_for(resource) || request_company_path
@@ -11,19 +11,5 @@ class ApplicationController < ActionController::Base
   def render_404
     render file: "#{Rails.root}/public/404", status: :not_found
   end
-
-  def moon
-    cookies[:moon] = {
-      value: 'dark mode on'
-    }
-    redirect_back(fallback_location: root_path)
-  end
-
-  def sun
-    cookies.delete(:moon)
-    redirect_back(fallback_location: root_path)
-  end
-
-
 
 end
