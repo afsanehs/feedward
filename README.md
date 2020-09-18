@@ -4,6 +4,16 @@
 
 Vous pouvez consulter notre site sur [http://getfeedward.com/](http://getfeedward.com/)
 
+
+
+## Installation
+`bundle install`
+`yarn add chartkick chart.js`
+
+
+## Parcour d'utilisateur
+
+
 ## Description
 ### 1. Présentation
 

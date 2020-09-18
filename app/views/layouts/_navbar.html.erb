@@ -47,6 +47,11 @@
 
               
             <ul class="navbar-nav">
+              <% if current_user.is_site_admin %>
+                  <li class="nav-item <%= active_class(admin_root_path) %>">
+                    <a class="nav-link nav-text-bold" href="<%= admin_root_path%>">Admin</a>
+                  </li>
+              <% end %>
               <% if current_user.is_company_admin || current_user.is_site_admin %>
                <li class="nav-item <%= active_class(dashboard_admin_path) %>">
                 <a class="nav-link nav-text-bold" href="<%= dashboard_admin_path %>">Dashboard Manager</a>
@@ -80,10 +85,7 @@
             <a class="nav-link nav-text-bold" href="<%=new_user_session_path%>">Se connecter</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link nav-text-bold" href="<%=new_user_registration_path%>">S'inscrire en tant qu'employé</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link nav-text-bold" href="<%=new_company_path%>">Souscrire en tant qu'entreprise</a>
+            <a class="nav-link nav-text-bold" href="<%=company_user_new_path%>">Essayer gratuitement</a>
           </li>
           <li>
             <% if cookies[:moon] %>

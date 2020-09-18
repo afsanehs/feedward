@@ -1,51 +1,50 @@
 <div class="container-fluid text-center appointments-section">
-  <h3 class="mb-4 mt-4 text-violet">Vos rendez-vous</h3>
-  <% if current_user.is_company_admin %>
-  <a class="btn btn-outline-indigo mr-auto" href="<%= new_appointment_path %>" data-method="get">Créer un rendez-vous</a>
-  <% end %>
-  <div class ="row">
-    <div class="col-12 col-md-6 mx-auto">    
-      <h4 class="mb-4 mt-4 text-beige">Vos rendez-vous à venir</h4>
-      <ul class="list-group list-group-flush text-left mt-4">
-        <% @appointments_future.each do |appointment| %>
-          <li class="list-group-item">
-            <div class="row">
-              <div class="col-3">
-                <p class="text-violet text-right"><small>Le <%= get_time_verbose(appointment.start_date) %></small></p>
-              </div>
-              <div class="col-5">
-                <h6 classs="text-left"><strong><%=appointment.title %></strong></h6>
-              </div>
-              <div class="col-4">
-                <a class="btn btn-primary ml-2" href="<%= appointment_path(appointment.id)%>">Afficher</a>
-              </div>
-            </div>
-          </li>
-        <% end %>
-      </ul>
-    </div>
+    <h3 class="mb-4 mt-4 text-violet">Vos rendez-vous</h3>
+    <% if current_user.is_company_admin %>
+    <a class="btn btn-outline-indigo mr-auto" href="<%= new_appointment_path %>" data-method="get">Créer un rendez-vous</a>
+    <% end %>
+    <div class="row">
+        <div class="col-12 col-md-6 mx-auto">
+            <h4 class="mb-4 mt-4 text-beige">Vos rendez-vous à venir</h4>
+            <ul class="list-group list-group-flush text-left mt-4">
+                <% @appointments_future.each do |appointment| %>
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-3">
+                            <p class="text-violet text-right"><small>Le <%= get_time_verbose(appointment.start_date) %></small></p>
+                        </div>
+                        <div class="col-5">
+                            <h6 classs="text-left"><strong><%=appointment.title %></strong></h6>
+                        </div>
+                        <div class="col-4">
+                            <a class="btn btn-primary ml-2" href="<%= appointment_path(appointment.id)%>">Afficher</a>
+                        </div>
+                    </div>
+                </li>
+                <% end %>
+            </ul>
+        </div>
 
-    <div class="col-12 col-md-6 mx-auto">   
-      <h4 class="mb-4 mt-4 text-beige">Vos rendez-vous passés</h4>
-      
-      <ul class="list-group list-group-flush text-left mt-4">
-        <% @appointments_past.each do |appointment| %>
-          <li class="list-group-item">
-            <div class="row">
-              <div class="col-3">
-                <p class="text-violet text-right"><small>Le <%= get_time_verbose(appointment.start_date) %></small></p>
-              </div>
-              <div class="col-5">
-                <h6 classs="text-left"><strong><%=appointment.title %></strong></h6>
-              </div>
-              <div class="col-4">
-                <a class="btn btn-primary ml-2" href="<%= appointment_path(appointment.id)%>">Afficher</a>
-              </div>
-            </div>
-          </li>
-        <% end %>
-      </ul>
+        <div class="col-12 col-md-6 mx-auto">
+            <h4 class="mb-4 mt-4 text-beige">Vos rendez-vous passés</h4>
+
+            <ul class="list-group list-group-flush text-left mt-4">
+                <% @appointments_past.each do |appointment| %>
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-3">
+                            <p class="text-violet text-right"><small>Le <%= get_time_verbose(appointment.start_date) %></small></p>
+                        </div>
+                        <div class="col-5">
+                            <h6 classs="text-left"><strong><%=appointment.title %></strong></h6>
+                        </div>
+                        <div class="col-4">
+                            <a class="btn btn-primary ml-2" href="<%= appointment_path(appointment.id)%>">Afficher</a>
+                        </div>
+                    </div>
+                </li>
+                <% end %>
+            </ul>
+        </div>
     </div>
-  </div>
 </div>
-          

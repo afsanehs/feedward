@@ -1,38 +1,38 @@
 <%= form_for @company do |f| %>
-    <h3 class="mb-3 font-weight-normal text-center text-indigo">Souscrire à Feedward</h3>
-    <div class="form-group">
-      <%= f.label :name, "Renseigner le nom de votre entreprise" %><br />
-      <%= f.email_field :name, autofocus: true, autocomplete: "company", class: "form-control" %>
-    </div>
+<h3 class="mb-3 font-weight-normal text-center text-indigo">Essayer Feedward</h3>
+<div class="form-group">
+    <%= f.label :name, "Renseigner le nom de votre entreprise" %><br />
+    <%= f.email_field :name, autofocus: true, autocomplete: "company", class: "form-control" %>
+</div>
 
-      <div class="form-row">
-      <div class="col">
+<div class="form-row">
+    <div class="col">
         <%= f.label :first_name, "Votre prénom" %><br />
         <%= f.email_field :first_name, autofocus: true, class: "form-control" %>
-      </div>
-      <div class="col">
+    </div>
+    <div class="col">
         <%= f.label :last_name, "Votre nom" %><br />
         <%= f.email_field :last_name, autofocus: true, class: "form-control" %>
-      </div>
     </div>
+</div>
 
-    <div class="form-group">
-      <%= f.label :email, "Renseigner votre email" %><br />
-      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
-    </div>
+<div class="form-group">
+    <%= f.label :email, "Renseigner votre email" %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+</div>
 
-      <div class="form-row">
-      <div class="col">
+<div class="form-row">
+    <div class="col">
         <%= f.label :password, "Renseigner votre mot de passe" %>
-      <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
-      </div>
-      <div class="col">
+        <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
+    </div>
+    <div class="col">
         <%= f.label :password_confirmation, "Confirmer votre mot de passe" %><br />
-      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
-      </div>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
     </div>
+</div>
 
-    <div class="form-group mt-5">
-      <%= f.submit "Suivant", class: "btn btn-lg btn-primary btn-block" %>
-    </div>
+<div class="form-group mt-5">
+    <%= f.submit "Suivant", class: "btn btn-lg btn-primary btn-block" %>
+</div>
 <% end %>

@@ -33,7 +33,7 @@ class Appointment < ApplicationRecord
   end
 
   def overlaping_appointment?
-    # vérifie dans tous les rendez-vous et si l'un d'eux tombe en même temps que le rendez-vous en entrée
+    # Check the appointment cant not be the same time
     employer_appointments = Appointment.where(employer_id: employer_id)
     employer_appointments.each do |employer_appointment|
       if (employer_appointment.start_date..employer_appointment.end_date).overlaps?(start_date..end_date)

@@ -228,7 +228,6 @@ class UsersController < ApplicationController
     hash= Hash.new
     hash["name"] = "L'entreprise en général"
     hash["data"] = @feedbacks.group_by_week(:created_at).average(:score_global)
-    # hash["data"]=get_missing_day_for_linechart(origin_group)
     @line_feedbacks.push(hash)
     
     hash= Hash.new

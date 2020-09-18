@@ -1,12 +1,12 @@
 <div class="row mb-4">
-  <div class="col-12 col-md-8 mb-5">
-    <div class="align-items-center justify-content-between">
-      <h2 class="mb-0 text-indigo">Bienvenue sur votre dashboard <%= current_user.first_name %></h2>
-      <h6 class="mb-0 text-indigo mt-2">Entreprise: <span class="text-beige"><%= current_user.company.name %></span></h6>
+    <div class="col-12 col-md-8 mb-5">
+        <div class="align-items-center justify-content-between">
+            <h2 class="mb-0 text-indigo">Bienvenue sur votre dashboard <%= current_user.first_name %></h2>
+            <h6 class="mb-0 text-indigo mt-2">Entreprise: <span class="text-beige"><%= current_user.company.name %></span></h6>
+        </div>
     </div>
-  </div>
-  <div class="col-12 col-md-4">
-    <a class="btn btn-primary mb-2 btn-block" href="<%=new_feedback_path%>"><%= get_action_for_feedback%></a>
-    <a href="<%= appointments_path%>" class="btn btn-outline-primary btn-block">Mes rendez-vous</a>
-  </div>
+    <div class="col-12 col-md-4">
+        <a class="btn btn-primary mb-2 btn-block" href="<%=new_feedback_path%>"><%= get_action_for_feedback%></a>
+        <a href="<%= appointments_path%>" class="btn btn-outline-primary btn-block">Mes rendez-vous</a>
+    </div>
 </div>
