@@ -1,14 +1,32 @@
 Rails.application.routes.draw do
   root to:'static_pages#landing'
-  get '/landing_employees', to: 'static_pages#landing_employees',as: 'landing_employees'
+
+  # Routes from our model
+  devise_for :users
+  devise_scope :user do
+    get '/users/sign_out' => 'devise/sessions#destroy'
+  end
+
+  get '/users/:id/feedbacks', to: 'feedbacks#user_feedbacks', as: 'users_feedbacks'
+  
+  resources :feedbacks, except: [:destroy]
+  resources :notifications, only: [:index, :create, :update, :destroy]
+  resources :appointments
+  resources :companies, only: [:new, :create, :edit, :update]
+  
+  # Active admin
+  ActiveAdmin.routes(self)
+  devise_for :admin_users, {class_name: 'User'}.merge(ActiveAdmin::Devise.config)
+
   
   # Static page
   get '/contact', to: 'static_pages#contact',as: 'contact'
   get '/about', to: 'static_pages#about',as: 'about'
-  get '/team', to: 'static_pages#team',as: 'team'
   get '/careers', to: 'static_pages#careers',as: 'careers'
   get '/legalnotice', to: 'static_pages#legal_notice',as: 'legal_notice'
   get '/privacypolicy', to: 'static_pages#privacy_policy',as: 'privacy_policy'
+  get '/landing_employees', to: 'static_pages#landing_employees',as: 'landing_employees'
+
 
   # Custom urls user
   get 'account/profile', to: "users#profile", as: 'profile'
@@ -19,36 +37,20 @@ Rails.application.routes.draw do
   patch 'validate_account/:id', to: "notifications#validate_account", as: 'validate_account'
   delete 'refuse_account/:id', to: "notifications#refuse_account", as: 'refuse_account'
   get '/account/user_request/:id', to: "users#user_request", as: 'account_user_request'
+
+
+
+  # Custom routes for Spotify
   get '/spotify', to: "users#spotify"
   get '/search', to: "users#spotify"
+
+
+  #Custom routes for the dashboards
   get '/dashboard', to: 'users#dashboard'
   get '/dashboard/admin', to: 'users#dashboard_admin'
-  get '/users/:id/feedbacks', to: 'feedbacks#user_feedbacks', as: 'users_feedbacks'
 
-  devise_for :users
-  devise_scope :user do
-    get '/users/sign_out' => 'devise/sessions#destroy'
-  end
-  
-  
-  resources :feedbacks, except: [:destroy]
-
-  get '/moon', to: 'application#moon', as: 'moon'
-  get '/sun', to: 'application#sun', as: 'sun'
-
-
-
-  resources :notifications, only: [:index, :create, :update, :destroy]
-
-  resources :appointments
-  resources :companies, only: [:new, :create, :edit, :update]
+  #Custom routes for the dashboards
   get '/company_user_new', to: 'companies#company_user_new', as: 'company_user_new'
   post '/company_user_new', to: 'companies#company_user_create'
-
-
-  # Active admin
-  ActiveAdmin.routes(self)
-  devise_for :admin_users, {class_name: 'User'}.merge(ActiveAdmin::Devise.config)
-
 
 end
