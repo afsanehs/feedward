@@ -1,7 +1,6 @@
 # Project Feedward - The Hacking Project
 
 ## Production
-
 Vous pouvez consulter notre site sur
 <span style="font-size: 1.2rem">  [ [http://getfeedward.com](http://getfeedward.com/) ] <span>
 
@@ -40,8 +39,13 @@ Pour installer et lancer le server en local:
 
 # Description du projet
 ## Présentation
+Vous pouvez consulter notre site sur [http://getfeedward.com/](http://getfeedward.com/)
+**Attention** Afin de ne pas nous blacklister de notre mailer, ce serait sympa de commenter la méthode avant de faire votre seed, merci ! **Attention**
 
-J’adore ma boite, cependant mon manager n’est pas très à l’écoute. J’ai essayé de lui faire comprendre subtilement, mais rien n’y fait. Je n’ose pas le confronter, et j’ai peur de lui. Je me suis donc dis que je pourrais créer une plateforme qui me permettra de transmettre mes feedbacks, de manière anonyme, ou non, à mon manager, ou aux RH.
+## Description
+### 1. Présentation
+
+Dans mon travail, mon manager n’est pas très à l’écoute. J’ai essayé de lui faire comprendre subtilement, mais rien n’y fait. Je n’ose pas le confronter et j’ai peur de lui. Je me suis donc dit que je pourrais créer une plateforme qui me permettrait de transmettre mes feedbacks, de manière anonyme, ou non, à mon manager, ou aux RH.
 
 ## Parcours utilisateur
 
