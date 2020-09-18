@@ -79,12 +79,12 @@
                   </a>
               </div>
               <div class="col-2 d-flex">
-                <a href="<%= validate_account_path(notification.user, notification: notification)%>" data-toggle="tooltip" data-placement="left" title="Accepter ce compte"
+                <a href="<%= notification_account_path(notification.user, notification: notification)%>" data-toggle="tooltip" data-placement="left" title="Accepter ce compte"
                      data-method="patch" data-remote="true"
                     > <i class="fas fa-user-check text-center text-success fa-lg mt-3 mr-2"></i>
                     </a>
                    <br/>
-                    <a href="<%= refuse_account_path(notification.user, notification: notification)%>" data-toggle="tooltip" data-placement="left" title="Refuser ce compte"
+                    <a href="<%= notification_account_path(notification.user, notification: notification)%>" data-toggle="tooltip" data-placement="left" title="Refuser ce compte"
                      data-method="delete" data-remote="true" data-confirm="Etes-vous sûr de refuser ce compte?"
                     ><i class="fas fa-user-times text-center text-danger fa-lg mt-3"></i>
                     </a>
