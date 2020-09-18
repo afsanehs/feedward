@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
-  before_action :check_company, only: [:dashboard, :dashboard_admin]
+  before_action :check_company, only: [:show]
   before_action :check_account_company_admin, only: [:dashboard_admin, :user_request]
   before_action :account_is_validated, except: [:profile, :request_company, :update_profile, :update_company]
   before_action :correct_user
@@ -11,7 +11,6 @@ class UsersController < ApplicationController
     else 
       dashboard
     end 
-
   end
 
   # GET account/profile

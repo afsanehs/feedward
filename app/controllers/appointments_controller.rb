@@ -25,12 +25,12 @@ class AppointmentsController < ApplicationController
 
   def new
     @appointment = Appointment.new
-    @employees = User.where(company_id: current_user.company_id, is_company_admin: nil)
+    @employees = User.where(company_id: current_user.company_id, is_company_admin != true)
     @employee_id = params[:user_id]
   end
 
   def create
-    @employees = User.where(company_id: current_user.company_id, is_company_admin: nil)
+    @employees = User.where(company_id: current_user.company_id, is_company_admin != true)
     @appointment = Appointment.new(appointment_params)
     @appointment.employer = current_user
     if @appointment.save
@@ -45,7 +45,7 @@ class AppointmentsController < ApplicationController
   end
 
   def edit
-    @employees = User.where(company_id: current_user.company_id, is_company_admin: nil)
+    @employees = User.where(company_id: current_user.company_id, is_company_admin != true)
     @employee_id = @appointment.employee_id
     if @appointment.employer.id != current_user.id
       flash[:error] = "Vous n'avez pas le droit pour accéder à cette page."

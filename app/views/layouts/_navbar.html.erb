@@ -49,10 +49,10 @@
             <%end%>
 
               
-            <ul class="navbar-nav">
+            <ul class="navbar-nav ml-auto">
               <% if current_user.is_site_admin %>
                   <li class="nav-item <%= active_class(admin_root_path) %>">
-                    <a class="nav-link nav-text-bold" href="<%= admin_root_path%>">Admin</a>
+                    <a class="nav-link nav-text-bold" href="<%= admin_root_path%>" target="_blank">Admin</a>
                   </li>
               <% end %>
               <% if current_user.is_company_admin || current_user.is_site_admin %>

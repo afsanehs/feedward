@@ -32,16 +32,6 @@ class Feedback < ApplicationRecord
   end
 
 
-  def notify_feedback_create
-    activity_type = Activity.find_by(name: "feedback_created")
-    notification = Notification.create(user_id: self.sender.id, feedback_id: self.id, activity: activity_type)
-  end 
-
-  def notify_feedback_update
-    activity_type = Activity.find_by(name: "feedback_updated")
-    notification = Notification.create(user_id: self.sender.id, feedback_id: self.id, activity: activity_type)
-  end 
-
   # Instance method
   def save_score_average
     score = (self.score_global + self.score_workspace + self.score_missions)/3.0
@@ -189,4 +179,16 @@ class Feedback < ApplicationRecord
     self.score_workspace = self.score_workspace.to_i
     self.score_missions = self.score_missions.to_i
   end
+
+
+  def notify_feedback_create
+    activity_type = Activity.find_by(name: "feedback_created")
+    notification = Notification.create(user_id: self.sender.id, feedback_id: self.id, activity: activity_type)
+  end 
+
+  def notify_feedback_update
+    activity_type = Activity.find_by(name: "feedback_updated")
+    notification = Notification.create(user_id: self.sender.id, feedback_id: self.id, activity: activity_type)
+  end 
+
 end
