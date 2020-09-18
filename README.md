@@ -3,11 +3,12 @@
 ## Production
 
 Vous pouvez consulter notre site sur [http://getfeedward.com/](http://getfeedward.com/)
+**Attention** Afin de ne pas nous blacklister de notre mailer, ce serait sympa de commenter la méthode avant de faire votre seed, merci ! **Attention**
 
 ## Description
 ### 1. Présentation
 
-J’adore ma boite, cependant mon manager n’est pas très à l’écoute. J’ai essayé de lui faire comprendre subtilement, mais rien n’y fait. Je n’ose pas le confronter, et j’ai peur de lui. Je me suis donc dis que je pourrais créer une plateforme qui me permettra de transmettre mes feedbacks, de manière anonyme, ou non, à mon manager, ou aux RH.
+Dans mon travail, mon manager n’est pas très à l’écoute. J’ai essayé de lui faire comprendre subtilement, mais rien n’y fait. Je n’ose pas le confronter et j’ai peur de lui. Je me suis donc dit que je pourrais créer une plateforme qui me permettrait de transmettre mes feedbacks, de manière anonyme, ou non, à mon manager, ou aux RH.
 
 ### 2. Parcours utilisateur
 
