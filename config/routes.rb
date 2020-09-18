@@ -34,7 +34,7 @@ Rails.application.routes.draw do
   resources :request_companies, only: [:index, :create]
   resources :request_users, only: [:show]
   resources :spotifies, only: [:index]
-  get '/search', to: "spotifies#index"
+  resources :company_users, only: [:new, :create]
 
 
   get '/users/:id/feedbacks', to: 'feedbacks#user_feedbacks', as: 'users_feedbacks'
@@ -42,12 +42,9 @@ Rails.application.routes.draw do
   delete 'refuse_account/:id', to: "notifications#refuse_account", as: 'refuse_account'
 
 
-  # Custom routes for Spotify
-  # get '/spotify', to: "users#spotify"
-  # get '/search', to: "users#spotify"
 
   #Custom routes for the dashboards
-  get '/company_user_new', to: 'companies#company_user_new', as: 'company_user_new'
-  post '/company_user_new', to: 'companies#company_user_create'
+  # get '/company_user_new', to: 'companies#company_user_new', as: 'company_user_new'
+  # post '/company_user_new', to: 'companies#company_user_create'
 
 end

@@ -4,7 +4,7 @@ module ApplicationHelper
   end
 
   def is_navbar_for_company?
-    page_companies = [root_path, new_company_path, company_user_new_path,
+    page_companies = [root_path, new_company_path, new_company_user_path,
       contact_path,about_path, careers_path, 
       legal_notice_path, privacy_policy_path ]
 
