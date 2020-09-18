@@ -16,6 +16,12 @@ module ApplicationHelper
    return false
   end
 
+  
+  def absolute_url_for(origin_url)
+    request.base_url + origin_url
+end
+
+  
   def alert_class(score)
     score >= 3 ? "text-indigo" : "text-alert"
   end
