@@ -26,10 +26,26 @@
 // Home section 2
 #home-2 {
   position: relative;
+  padding-top: 5rem;
+  padding-bottom: 3rem;
+}
+
+#home-2:before {
+  content: '';
+  display: block;
+  height: 6rem; //Height of header
+  margin-top: -6rem;
 }
 
 //--------------------------------------//
 //Read more section
+
+#readmore:before {
+  content: '';
+  display: block;
+  height: 6rem; //Height of header
+  margin-top: -6rem;
+}
 
 #readmore {
   padding-top: 6rem;
@@ -45,6 +61,15 @@
 
 //--------------------------------------//
 //How it work section
+
+#howitwork:before {
+  content: '';
+  display: block;
+  height: 12rem; //Height of header
+  margin-top: -12rem;
+}
+
+
 #howitwork {
   margin-bottom: 8rem;
   margin-top: -1rem;
@@ -81,6 +106,13 @@
   .demo-action {
     margin-top: 5rem;
   }
+}
+
+#demo:before {
+  content: '';
+  display: block;
+  height: 6rem; //Height of header
+  margin-top: -6rem;
 }
 
 #demo {
