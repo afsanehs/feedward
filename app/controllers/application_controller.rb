@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
     stored_location_for(resource) || user_path(current_user.id)
   end
   def after_sign_up_path_for(resource)
-    stored_location_for(resource) || request_company_path
+    stored_location_for(resource) || request_companies_path
   end
 
   rescue_from ActiveRecord::RecordNotFound, :with => :render_404

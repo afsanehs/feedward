@@ -23,7 +23,7 @@ class FeedbacksController < ApplicationController
   def new
     if current_user.company == nil
       flash[:error] = "Il faut que tu complètes ton profil et que tu renseignes une entreprise avant de commencer !"
-      return redirect_to profile_path
+      return redirect_to accounts_path
     end
 
     # check if user created_feedback
@@ -104,7 +104,7 @@ class FeedbacksController < ApplicationController
   def account_is_validated
     if !current_user.is_validated  && !current_user.is_company_admin
       flash[:error] = "Votre compte n'est pas encore vérifié. Merci de contacter votre manager pour résoudre ce problème."
-      return redirect_to profile_path
+      return redirect_to accounts_path
     end
   end
   def is_super_admin?

@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   root to:'static_pages#landing'
 
-  # Routes from our model
   devise_for :users
+  # Fix problem of sign out button devise
   devise_scope :user do
     get '/users/sign_out' => 'devise/sessions#destroy'
   end
@@ -29,10 +29,10 @@ Rails.application.routes.draw do
   
 
   # Custom urls user
-  get 'account/profile', to: "users#profile", as: 'profile'
-  patch 'account/profile', to: "users#update_profile"
-  get 'account/requestcompany', to: "users#request_company", as: 'request_company'
-  patch 'account/requestcompany', to: "users#update_company"
+  resources :accounts, only: [:index, :create]
+  resources :request_companies, only: [:index, :create]
+  # get 'account/requestcompany', to: "users#request_company", as: 'request_company'
+  # patch 'account/requestcompany', to: "users#update_company"
   get '/account/user_request/:id', to: "users#user_request", as: 'account_user_request'
 
 

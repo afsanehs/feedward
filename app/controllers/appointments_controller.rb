@@ -92,7 +92,7 @@ class AppointmentsController < ApplicationController
   def account_is_validated
     if !current_user.is_validated 
       flash[:error] = "Votre compte n'est pas encore vérifié. Merci de contacter votre manager pour résoudre ce problème."
-      return redirect_to profile_path
+      return redirect_to accounts_path
     end
   end
 

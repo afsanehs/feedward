@@ -143,6 +143,7 @@ C'est pour cela que nous vous fournissons quelques comptes pour tester notre pla
 - API spotify pour écouter de la musique après avoir soumis un feedback
 - Site admin avec gem active_admin pour gérer toutes les actions de l'entreprise et des utilisateurs. Il est possible aussi de filtrer et de chercher par rapport aux critères de colonne du model. Il est possible d'exporter des données sous des formats CSV, XML, JSON.
 - API intégration de [crisp](https://crisp.chat/en/) pour le chat avec le client
+- Test Driven Development avec RSPEC
 
 ## Version MVP
 

@@ -13,49 +13,6 @@ class UsersController < ApplicationController
     end 
   end
 
-  # GET account/profile
-  def profile
-    @user = current_user
-    @companies = Company.all
-  end
-
-  # PATCH account/profile
-  def update_profile
-    if @user.update(user_params)
-      flash[:success] = "Votre profil a bien été modifié!"
-      redirect_to profile_path
-    else
-      @user.errors.full_messages.each do |message|
-        flash[:error] = message
-      end
-      render :profile
-    end
-  end
-
-
-  # GET account/requestcompany
-  def request_company
-    if !current_user.company.nil?
-      return redirect_to user_path(current_user.id)
-    end
-    @user = current_user
-    @companies = Company.all
-  end
-
-   # PATCH account/requestcompany
-   def update_company
-    if @user.update(company_id: user_params[:company_id])
-      flash[:success] = "Une demande de création votre compte a été envoyée à votre manager. Cela prendra 1 ou 2 jours pour avoir l'acceptation!"
-      redirect_to profile_path
-    else
-      @user.errors.full_messages.each do |message|
-        flash[:error] = message
-      end
-      render :request_company
-    end
-   end
-
-
   # GET account/user_request/:id/
   def user_request
     @user  = User.find(params[:id])
@@ -321,20 +278,20 @@ class UsersController < ApplicationController
   def account_is_validated
     if !current_user.is_validated  && !current_user.is_company_admin
       flash[:error] = "Votre compte n'est pas encore validé."
-      return redirect_to profile_path
+      return redirect_to accounts_path
     end
   end
   def check_account_company_admin
     if !current_user.is_company_admin
       flash[:error] = "Vous n'avez de droit d'accéder à cette page."
-      return redirect_to profile_path
+      return redirect_to accounts_path
     end
   end
   def check_company
      #Force user has their company
      if current_user.company.nil?
       flash[:error] = "Il faut que tu complètes ton profil et que tu renseignes une entreprise avant de commencer !"
-      return redirect_to request_company_path
+      return redirect_to request_companies_path
     end 
   end
   def is_super_admin?
