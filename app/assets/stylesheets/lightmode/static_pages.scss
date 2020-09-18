@@ -2,7 +2,7 @@
 // home section
 #home-section {
   background: {
-    image: asset_url("offices/home");
+    image: asset_url('offices/home');
   }
   margin-bottom: 6rem;
   position: relative;
@@ -32,7 +32,7 @@
 //Read more section
 
 #readmore {
-  padding-top: 10rem;
+  padding-top: 6rem;
   padding-bottom: 8rem;
 
   .readmore-text-salary {
@@ -165,14 +165,13 @@
 }
 .contact-page #text {
   padding-top: 5rem;
-
   display: flex;
   flex-direction: column;
 }
 
 .careers-photo {
   background: {
-    image: asset_url("offices/careers");
+    image: asset_url('offices/careers');
   }
   height: 50vh;
   background-position: center center;

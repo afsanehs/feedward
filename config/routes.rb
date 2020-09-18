@@ -31,6 +31,7 @@ Rails.application.routes.draw do
     get '/users/sign_out' => 'devise/sessions#destroy'
   end
   
+  
   resources :feedbacks, except: [:destroy]
 
   get '/moon', to: 'application#moon', as: 'moon'
@@ -42,7 +43,6 @@ Rails.application.routes.draw do
 
   resources :appointments
   resources :companies, only: [:new, :create, :edit, :update]
-  resources :charges
 
 
   # Active admin

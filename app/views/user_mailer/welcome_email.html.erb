@@ -45,6 +45,9 @@
         line-height: 1.5;
         font-weight: 300;
       }
+      .text-white{
+        color: #fff;
+      }
 
       .confirm-email {
         text-align: center;
@@ -96,7 +99,7 @@
           Tu peux aussi partager ton feedback avec une personne de ton choix.<br />
         </p>
         <div class="confirm-email">
-          <%= link_to 'Confirmer mon adresse email', confirmation_url(@user, confirmation_token: @user.confirmation_token) %><br /> 
+          <%= link_to 'Confirmer mon adresse email', confirmation_url(@user, confirmation_token: @user.confirmation_token) , class="text-white"%><br /> 
 
         </div>
         </p>

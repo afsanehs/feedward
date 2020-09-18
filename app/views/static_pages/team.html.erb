@@ -1,56 +1,60 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+  <head>
     <% content_for :title, "Notre Equipe | "%>
-</head>
+  </head>
 
 <body>
-    <div class="team-page">
-        <div class="container">
-            <div class="row">
-                <h3 class="text-violet-bold">Notre Equipe</h3>
-                <img class="img-fluid" src="<%= asset_path('icons/favicon-visages')%>">
-            </div>
-            <div style="padding:1px !important; margin:1px !important;" class="row mt-4">
-                <div style="padding:1px !important; margin:1px !important;" class="row justify-content-around">
-
-                    <div class="col-4">
-                        <h6 class="text-black-bold text-center">Afsaneh</h6>
-                        <hr style="width:10%;text-align:left;margin-left:0">
-                        <a href="mailto:afsaneh@getfeedward.com">afsaneh@getfeedward.com</a>
-                    </div>
-
-                    <div class="col-4">
-                        <h6 class="text-black-bold text-center">Donatella</h6>
-                        <hr style="width:10%;text-align:left;margin-left:0">
-                        <a href="mailto:donatella@getfeedward.com">donatella@getfeedward.com</a>
-                    </div>
-
-                    <div class="col-4">
-                        <h6 class="text-black-bold text-center">Yanis</h6>
-                        <hr style="width:10%;text-align:left;margin-left:0">
-                        <a href="mailto:yanis@getfeedward.com">yanis@getfeedward.com</a>
-                    </div>
-
-                </div>
-                <div style="padding:1px !important; margin:1px !important;" class="row justify-content-around">
-                    <div class="col-4">
-                        <h6 class="text-black-bold text-center">Duy</h6>
-                        <hr style="width:10%;text-align:left;margin-left:0">
-                        <a href="mailto:duy@getfeedward.com">duy@getfeedward.com</a>
-                    </div>
-
-                    <div class="col-4">
-                        <h6 class="text-black-bold text-center">Maxime</h6>
-                        <hr style="width:10%;text-align:left;margin-left:0">
-                        <a href="mailto:maxime@getfeedward.com">maxime@getfeedward.com</a>
-                    </div>
-                </div>
-            </div>
+  <div class="team-page">
+    <div class="container">
+      <div class="row">
+        <h3 class="text-violet-bold">Notre Equipe</h3>
+      </div>
+      
+      <div class="row justify-content-between">
+        <div class="card mb-4" style="width: 18rem;">
+          <img src="../images/photos/afsaneh.png" class="card-img-top" alt="Photo d'Afsaneh">
+          <div class="card-body">
+            <h5 class="card-title">Afsaneh</h5>
+            <p class="card-text">afsaneh@getfeedward.com</p>
+          </div>
         </div>
+
+        <div class="card mb-4" style="width: 18rem;">
+          <img src="../images/photos/donatella.png" class="card-img-top" alt="Photo de Donatella">
+          <div class="card-body">
+            <h5 class="card-title">Donatella</h5>
+            <p class="card-text">donatella@getfeedward.com</p>
+          </div>
+        </div>
+
+        <div class="card mb-4" style="width: 18rem;">
+          <img src="../images/photos/yanis.png" class="card-img-top" alt="Photo de Yanis">
+          <div class="card-body">
+            <h5 class="card-title">Yanis</h5>
+            <p class="card-text">yanis@getfeedward.com</p>
+          </div>
+        </div>
+
+        <div class="card mb-4" style="width: 18rem;">
+          <img src="../images/photos/duy.png" class="card-img-top" alt="Photo de Duy">
+          <div class="card-body">
+            <h5 class="card-title">Duy</h5>
+            <p class="card-text">duy@getfeedward.com</p>
+          </div>
+        </div>
+
+        <div class="card mb-4" style="width: 18rem;">
+          <img src="../app/assets/images/photos/maxime.png" class="card-img-top" alt="Photo de Maxime">
+          <div class="card-body">
+            <h5 class="card-title">Maxime</h5>
+            <p class="card-text">maxime@getfeedward.com</p>
+          </div>
+        </div>
+      </div>
     </div>
-    </div>
+  </div>
 
 </body>
 

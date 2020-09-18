@@ -270,7 +270,7 @@ class UsersController < ApplicationController
   end
 
   def spotify
-    if params[:artist] != nil 
+    if params[:artist] && params[:artist] != "" && !params[:artist].nil?
       RSpotify.authenticate(ENV['SPOTI_CLIENT_ID'], ENV['SPOTI_API_SECRET'])
       if !RSpotify::Artist.search(params[:artist]).first
         flash[:error] = "Mince il semble que cet artiste n'existe pas :/"
