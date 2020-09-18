@@ -42,9 +42,4 @@ Rails.application.routes.draw do
   delete 'refuse_account/:id', to: "notifications#refuse_account", as: 'refuse_account'
 
 
-
-  #Custom routes for the dashboards
-  # get '/company_user_new', to: 'companies#company_user_new', as: 'company_user_new'
-  # post '/company_user_new', to: 'companies#company_user_create'
-
 end
