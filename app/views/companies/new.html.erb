@@ -2,7 +2,7 @@
 <html>
 
   <head>
-    <% content_for :title, "Entreprise | " %>
+    <% content_for :title, "Entreprise | " %> 
   </head>
 
   <body>
@@ -11,36 +11,11 @@
         <div class="col-md-10 col-lg-8 offset-md-3 mx-auto">
           <br><br>
             <%= form_for @company do |f| %>
-              <h3 class="mb-4 font-weight-normal text-center text-indigo">Souscrire à Feedward</h3>
+              <h3 class="mb-4 font-weight-normal text-center text-indigo">Merci pour votre inscription sur Feedward !</h3>
+
               <div class="form-group mb-4">
                 <%= f.label :name, "Renseigner le nom de votre entreprise" %><br />
                 <%= f.text_field :name, autofocus: true, autocomplete: "company", class: "form-control" %>
-              </div>
-              <div class="form-row mb-4">
-                  <div class="col">
-                    <label>Votre prénom</label><br>
-                    <%= text_field_tag :first_name,  "", class: "form-control" %>
-                  </div>
-                  <div class="col">
-                    <label>Votre nom</label><br>
-                    <%= text_field_tag :last_name, "", class: "form-control" %>
-                  </div>
-                </div>
-
-              <div class="form-group mb-2">
-                 <label>Renseigner votre email</label><br>
-                <%= email_field_tag :email,"", class: "form-control" %>
-              </div>
-
-              <div class="form-row mb-4">
-                <div class="col">
-                  <label>Renseigner votre mot de passe</label><br>
-                  <%= password_field_tag :password, "", class: "form-control" %>
-                </div>
-                <div class="col">
-                  <label>Confirmer votre mot de passe</label><br>
-                  <%= password_field_tag :password_confirmation, "", class: "form-control" %>
-                </div>
               </div>
 
               <div class="form-group mt-5">
