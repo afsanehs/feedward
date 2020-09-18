@@ -1,6 +1,5 @@
 window.onclick = function (event) {
   openCloseDropdown(event);
-  console.log("clicked")
 };
 
 function closeAllDropdown() {
