@@ -69,8 +69,6 @@ class UsersController < ApplicationController
     end
   end
 
-  
-
 
   def dashboard
     @user = current_user
