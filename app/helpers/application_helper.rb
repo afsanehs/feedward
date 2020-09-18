@@ -2,6 +2,20 @@ module ApplicationHelper
   def active_class(link_path)
     current_page?(link_path) ? "active" : ""
   end
+
+  def is_navbar_for_company?
+    page_companies = [root_path, new_company_path, company_user_new_path,
+      contact_path,about_path, team_path, careers_path, 
+      legal_notice_path, privacy_policy_path ]
+
+   page_companies.each do |page|
+    if current_page?(page)
+      return true
+    end
+   end
+   return false
+  end
+
   def alert_class(score)
     score >= 3 ? "text-indigo" : "text-alert"
   end
