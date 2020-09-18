@@ -19,7 +19,7 @@ class AppointmentsController < ApplicationController
   def show
     if @appointment.employer_id != current_user.id  && !current_user.is_company_admin &&  @appointment.employee_id != current_user.id
       flash[:error] = "Vous n'avez pas le droit pour accéder à cette page."
-      return redirect_to dashboard_admin_path
+      return redirect_to user_path(current_user.id)
     end
   end
 
@@ -49,7 +49,7 @@ class AppointmentsController < ApplicationController
     @employee_id = @appointment.employee_id
     if @appointment.employer.id != current_user.id
       flash[:error] = "Vous n'avez pas le droit pour accéder à cette page."
-      return redirect_to dashboard_admin_path
+      return redirect_to user_path(current_user.id)
     end
   end 
 
@@ -68,7 +68,7 @@ class AppointmentsController < ApplicationController
   def destroy
     if @appointment.employer.id != current_user.id
       flash[:error] = "Vous n'avez pas le droit pour accéder à cette page."
-      return redirect_to dashboard_admin_path
+      return redirect_to user_path(current_user.id)
     else
       @appointment.destroy
       redirect_to appointments_path
@@ -99,7 +99,7 @@ class AppointmentsController < ApplicationController
   def must_be_admin
     if !current_user.is_company_admin
       flash[:error] = "Vous n'avez pas de droit pour accéder à cette page."
-      return redirect_back(fallback_location: dashboard_path )
+      return redirect_back(fallback_location: user_path(current_user.id) )
     end
   end
 

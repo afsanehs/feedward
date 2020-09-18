@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   get '/users/:id/feedbacks', to: 'feedbacks#user_feedbacks', as: 'users_feedbacks'
   
+  resources :users, only: [:show]
   resources :feedbacks, except: [:destroy]
   resources :notifications, only: [:index, :create, :update, :destroy]
   resources :appointments
@@ -34,9 +35,12 @@ Rails.application.routes.draw do
   get 'account/secret', to: "users#secret"
   get 'account/requestcompany', to: "users#request_company", as: 'request_company'
   patch 'account/requestcompany', to: "users#update_company"
+  get '/account/user_request/:id', to: "users#user_request", as: 'account_user_request'
+
+  
+
   patch 'validate_account/:id', to: "notifications#validate_account", as: 'validate_account'
   delete 'refuse_account/:id', to: "notifications#refuse_account", as: 'refuse_account'
-  get '/account/user_request/:id', to: "users#user_request", as: 'account_user_request'
 
 
 
@@ -46,8 +50,8 @@ Rails.application.routes.draw do
 
 
   #Custom routes for the dashboards
-  get '/dashboard', to: 'users#dashboard'
-  get '/dashboard/admin', to: 'users#dashboard_admin'
+  #get '/dashboard', to: 'users#dashboard'
+  #get '/dashboard/admin', to: 'users#dashboard_admin'
 
   #Custom routes for the dashboards
   get '/company_user_new', to: 'companies#company_user_new', as: 'company_user_new'

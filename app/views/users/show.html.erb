@@ -1,0 +1,5 @@
+<% if current_user.is_company_admin %>
+  <%= render :partial => 'users/admin/dashboard_admin'%>
+<% else %>
+  <%= render :partial => 'users/partials/dashboard'%>
+<% end %>
