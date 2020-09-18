@@ -12,7 +12,7 @@
   height: 100vh;
   position: relative;
 }
-.btn-try-register{
+.btn-try-register {
 }
 .home-text {
   margin-top: 6rem;
@@ -64,10 +64,9 @@
 #howitwork:before {
   content: '';
   display: block;
-  height: 12rem; //Height of header
-  margin-top: -12rem;
+  height: 6rem; //Height of header
+  margin-top: -4rem;
 }
-
 
 #howitwork {
   margin-bottom: 8rem;
@@ -114,7 +113,6 @@
   height: 6rem; //Height of header
   margin-top: -6rem;
 }
-
 
 #demo {
   position: relative;

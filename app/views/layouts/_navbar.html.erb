@@ -77,9 +77,17 @@
           <li class="nav-item nav-item--separate">
             <a class="nav-link nav-text-bold" href="<%=new_user_session_path%>">Se connecter</a>
           </li>
+          <% if is_navbar_for_company? %>
           <li class="nav-item">
             <a class="nav-link nav-text-bold" href="<%=company_user_new_path%>">Essayer gratuitement</a>
           </li>
+
+          <% else %>
+              <li class="nav-item">
+            <a class="nav-link nav-text-bold" href="<%=new_user_registration_path%>">S'inscrire</a>
+          </li>
+
+          <% end %>
         </ul>
 
         <% end %>

@@ -5,8 +5,8 @@ require_relative 'application'
 Rails.application.initialize!
 
 ActionMailer::Base.smtp_settings = {
-  :user_name => "a9a78429-093c-4423-ab83-65f7f190c5a1",
-  :password => "a9a78429-093c-4423-ab83-65f7f190c5a1",
+  :user_name => ENV["POSTMARK_KEY"],
+  :password => ENV["POSTMARK_KEY"],
   :address => 'smtp.postmarkapp.com',
   :port => 587,
   :authentication => :plain,

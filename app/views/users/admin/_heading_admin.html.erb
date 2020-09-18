@@ -1,6 +1,12 @@
 <div class="card mb-5 border-primary">
-    <div class="mx-auto text-primary mt-3">Lien à transmettre à vos salariés pour leur permettre de s'inscrire : <strong> lien vers /users/sign_up </strong></div>
-    <div class="mx-auto text-primary mb-3">Plus d'information pour vos salariés sur : <strong> lien vers /landing_employees </strong></div>
+    <div class="text-primary mt-3 ml-2">
+    Lien à transmettre à vos salariés pour leur permettre de s'inscrire : 
+    <strong><a href="<%= new_user_registration_path %>"><%= absolute_url_for(new_user_registration_path) %></a></strong>
+    </div>
+    <div class="text-primary mb-3 ml-2">
+    Plus d'information pour vos salariés sur : <strong><a href="<%= landing_employees_path %>"><%= absolute_url_for(landing_employees_path) %></a></strong>
+    
+    </div>
 </div>
 
 <div class="row mb-4">
