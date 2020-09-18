@@ -167,8 +167,6 @@ C'est pour cela que nous vous fournissons quelques comptes pour tester notre pla
 - Des composants Atomic pour le feedback formulaire, notification, rendez vous, et des pages statiques
 - Utilisation de [flatpickr](https://flatpickr.js.org/) pour avoir une jolie interface pour sélectionner des dates de rendez-vous
 - Intégration du chatbox avec scripts chat
-- Création d'un darkmode
-
 
 ## Backend
 
