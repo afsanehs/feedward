@@ -29,7 +29,6 @@ class Feedback < ApplicationRecord
     if !self.receiver.nil?
       FeedbackMailer.new_feedback_receiver(self.receiver).deliver_later
     end
-    FeedbackMailer.new_feedback_admin.deliver_later
   end
 
 
