@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   root to:'static_pages#landing'
-  get '/index_entreprise', to: 'static_pages#index_company',as: 'index_company'
-  get '/index_individuel', to: 'static_pages#index_user',as: 'index_user'
+  get '/landing_employees', to: 'static_pages#landing_employees',as: 'landing_employees'
   
   # Static page
   get '/contact', to: 'static_pages#contact',as: 'contact'
@@ -43,6 +42,8 @@ Rails.application.routes.draw do
 
   resources :appointments
   resources :companies, only: [:new, :create, :edit, :update]
+  get '/company_user_new', to: 'companies#company_user_new', as: 'company_user_new'
+  post '/company_user_new', to: 'companies#company_user_create'
 
 
   # Active admin

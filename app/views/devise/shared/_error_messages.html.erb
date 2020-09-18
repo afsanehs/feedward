@@ -1,14 +1,14 @@
 <% if resource.errors.any? %>
-  <div id="error_explanation">
+<div id="error_explanation">
     <ul class="p-0 m-0">
         <small>
-        <div class="alert-dismissible alert alert-danger py-2 %>">
-          <button type="button" class="close" data-dismiss="alert" style="margin-top: -6px; margin-right: -6px;">&times;</button>
-          <%= resource.errors.full_messages.first %>
-        </div>
+            <div class="alert-dismissible alert alert-danger py-2 %>">
+                <button type="button" class="close" data-dismiss="alert" style="margin-top: -6px; margin-right: -6px;">&times;</button>
+                <%= resource.errors.full_messages.first %>
+            </div>
 
         </small>
 
     </ul>
-  </div>
+</div>
 <% end %>

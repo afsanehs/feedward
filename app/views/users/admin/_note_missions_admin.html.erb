@@ -1,35 +1,35 @@
 <div class="col-xl-3 col-md-6 mb-4">
-  <div class="card border-left-primary shadow h-100 py-2">
-    <div class="card-body">
-      <div class="row no-gutters align-items-center">
-        <div class="col mr-2">
-          <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Les missions des salariés</div>
-          <div class="h5 mb-2 font-weight-bold <%= alert_class(@score_missions_average)%>"><%= @score_missions_average %></div>
+    <div class="card border-left-primary shadow h-100 py-2">
+        <div class="card-body">
+            <div class="row no-gutters align-items-center">
+                <div class="col mr-2">
+                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Les missions des salariés</div>
+                    <div class="h5 mb-2 font-weight-bold <%= alert_class(@score_missions_average)%>"><%= @score_missions_average %></div>
+                </div>
+                <div class="col-auto">
+                    <i class="fa fa-book fa-2x text-beige"></i>
+                </div>
+            </div>
         </div>
-        <div class="col-auto">
-          <i class="fa fa-book fa-2x text-beige"></i>
+        <div class="card-body">
+            <div class="row no-gutters align-items-center">
+                <div class="col mr-2">
+                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"><small>Vs hier</small></div>
+                    <div class="h5 mb-2 font-weight-bold text-indigo"><small><%=  @score_missions_average_yesterday %></small></div>
+                    <% if  @score_missions_average_evolution > 0 %>
+                    <div class="h5 mb-2 font-weight-bold text-green"><%=  @score_missions_average_evolution %> %</div>
+                    <% else %>
+                    <div class="h5 mb-2 font-weight-bold text-red"><%=  @score_missions_average_evolution %> %</div>
+                    <% end %>
+                </div>
+                <div class="col-auto">
+                    <% if  @score_missions_average_evolution > 0 %>
+                    <i class="fa fa-arrow-circle-up fa-2x text-green" aria-hidden="true"></i>
+                    <% else %>
+                    <i class="fa fa-arrow-circle-down fa-2x text-red" aria-hidden="true"></i>
+                    <% end %>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-    <div class="card-body">
-      <div class="row no-gutters align-items-center">
-        <div class="col mr-2">
-          <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"><small>Vs hier</small></div>
-          <div class="h5 mb-2 font-weight-bold text-indigo"><small><%=  @score_missions_average_yesterday %></small></div>
-          <% if  @score_missions_average_evolution > 0 %>
-            <div class="h5 mb-2 font-weight-bold text-green"><%=  @score_missions_average_evolution %> %</div>
-          <% else %>
-            <div class="h5 mb-2 font-weight-bold text-red"><%=  @score_missions_average_evolution %> %</div>
-          <% end %>
-        </div>
-        <div class="col-auto">
-          <% if  @score_missions_average_evolution > 0 %>
-            <i class="fa fa-arrow-circle-up fa-2x text-green" aria-hidden="true"></i>
-          <% else %>
-            <i class="fa fa-arrow-circle-down fa-2x text-red" aria-hidden="true"></i>
-          <% end %>
-        </div>
-      </div>
-    </div>
-  </div>
 </div>

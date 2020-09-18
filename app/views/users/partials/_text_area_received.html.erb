@@ -1,10 +1,10 @@
 <!-- Approach -->
-<div class="col-6 feedback-send-received-section">
+<div class="col-6">
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-indigo text-uppercase">Feedbacks reçus</h6>
         </div>
-        <div class="card-body">
+        <div class="card-body feedback-send-received-section">
 
             <% @feedbacks_received.each do |feedback| %>
 
@@ -12,8 +12,8 @@
                 <div class="card">
                     <div class="card-body">
                         <a href="<%= feedback_path(feedback.id) %>" class="card-title">
-                        <!-- sauf pour le current -->
-                        <p> Reçu le <%= get_time_verbose(feedback.created_at)%> - <%= feedback.sender.first_name %></p>
+                            <!-- sauf pour le current -->
+                            <p> Reçu le <%= get_time_verbose(feedback.created_at)%> - <%= feedback.sender.first_name %></p>
                         </a>
                     </div>
                 </div>

@@ -1,10 +1,10 @@
 <div class="col-12">
-  <div class="card shadow mb-4">
-    <div class="card-header py-3">
-      <h6 class="m-0 font-weight-bold text-indigo text-uppercase">Evolution des notes de l'entreprise</h6>
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-indigo text-uppercase">Evolution des notes de l'entreprise</h6>
+        </div>
+        <div class="card-body">
+            <%= line_chart @line_feedbacks , round: 2, messages: {empty: "No data"}, xmin: @two_month_ago, xmax: @today, colors: @colors%>
+        </div>
     </div>
-    <div class="card-body">
-      <%= line_chart @line_feedbacks , round: 2, messages: {empty: "No data"}, xmin: @two_month_ago, xmax: @today, colors: @colors%>
-    </div>
-  </div>
 </div>

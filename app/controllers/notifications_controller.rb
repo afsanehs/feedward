@@ -11,7 +11,7 @@ class NotificationsController < ApplicationController
       @notification.update(is_read: true)
       respond_to do |format|
         format.html{}
-        format.js{ flash[:success] = "Feedback marqué comme lu." }
+        format.js{}
       end
     end
 
@@ -24,7 +24,7 @@ class NotificationsController < ApplicationController
         redirect_to notifications_path
       }
       format.json{head :not_content}
-      format.js{ flash[:success] = "Feedback archivé avec succès." }
+      format.js{}
     end
   end
 
@@ -38,7 +38,7 @@ class NotificationsController < ApplicationController
         redirect_to notifications_path
       }
       format.json{head :not_content}
-      format.js{ flash[:success] = "Refuser un compte avec succès." }
+      format.js{ }
     end
   end
 
@@ -53,9 +53,8 @@ class NotificationsController < ApplicationController
         redirect_to notifications_path
       }
       format.json{head :not_content}
-      format.js{ flash[:success] = "Refuser un compte avec succès." }
+      format.js{ }
     end
-    flash[:success] = "Valider un compte avec succès!"
   else
     format.html { render :request_company }
     format.json { render json: @user.errors, status: :unprocessable_entity }
