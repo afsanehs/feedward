@@ -26,6 +26,9 @@ Rails.application.routes.draw do
   resources :spotifies, only: [:index]
   resources :company_users, only: [:new, :create]
   resources :notification_accounts, only: [:update, :destroy]
+  resources :users do
+    resources :user_feedbacks, only: [:index]
+  end
 
   
   # Static page
@@ -36,10 +39,5 @@ Rails.application.routes.draw do
   get '/privacypolicy', to: 'static_pages#privacy_policy',as: 'privacy_policy'
   get '/landing_employees', to: 'static_pages#landing_employees',as: 'landing_employees'
   
-
-  
-
-
-  get '/users/:id/feedbacks', to: 'feedbacks#user_feedbacks', as: 'users_feedbacks'
 
 end

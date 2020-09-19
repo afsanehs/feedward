@@ -57,16 +57,13 @@ class FeedbacksController < ApplicationController
       flash[:error] = "Vous pouvez seulement modifier votre feedback aujourd'hui."
       return redirect_to user_path(current_user.id)
     end
-    puts "-----------------"
-    puts @feedback.receiver_id
     @colleagues = User.where(company_id: current_user.company_id)
     @collegue_id = @feedback.receiver_id
   end 
 
   def update
-    puts "--------------------"
-    puts feedback_params
     @feedback = Feedback.find(params[:id])
+    @colleagues = User.where(company_id: current_user.company_id)
     if @feedback.update(feedback_params)
       flash[:success] = "Votre feedback a été mise à jour."
       redirect_to feedback_path(@feedback)
@@ -78,15 +75,6 @@ class FeedbacksController < ApplicationController
     end
   end 
 
-  # GET users/:id/feedback
-  def user_feedbacks
-    if !current_user.is_company_admin
-      flash[:error] = "Vous n'avez pas de droit pour accéder à cette page."
-      return redirect_to user_path(current_user.id)
-    end
-    @user = User.find(params[:id])
-    @feedbacks=Feedback.where(sender: @user)
-  end
 
   private
   def feedback_params

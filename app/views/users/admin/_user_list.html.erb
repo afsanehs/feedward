@@ -21,7 +21,7 @@
                     <td><%= user.last_name %></td>
                     <td><%= user.email %></td>
                     <td class="text-center text-beige"><strong><%= user.sent_feedbacks.count %></strong></td>
-                    <td class="text-center"><a href="<%= users_feedbacks_path(user)%>"><i class="fas fa-eye text-primary"></i></a>
+                    <td class="text-center"><a href="<%= user_user_feedbacks_path(user)%>"><i class="fas fa-eye text-primary"></i></a>
                     </td>
                 </tr>
                 <% end  %>
