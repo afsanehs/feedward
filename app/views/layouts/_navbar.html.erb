@@ -21,7 +21,7 @@
             <% end %>
           </li>
           <li class="nav-item mr-4 ">
-            <% unless user_signed_in? %>
+            <% unless user_signed_in? || @hide_demo_button %>
             <a class="nav-link text-white" href="#demo">Demander une démo</a>
             <% end %>
           </li>
