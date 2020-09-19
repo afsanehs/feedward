@@ -112,7 +112,21 @@ C'est pour cela que nous vous fournissons quelques comptes pour tester notre pla
   password: 0123456789 
   </details>
 
+- Compte user
+  
+   <details>
+  <summary>User company 1</summary>
+  email: jean_dupont_1@example.com
 
+  password: 0123456789 
+  </details>
+
+   <details>
+  <summary>User company 2</summary>
+  email: jean_dupont_2@example.com
+
+  password: 0123456789 
+  </details>
 
   `Attention: Quand un site admin veut valider ou changer des informations d'utilisateur dans le formulaire. IL ne faut pas laisser la colonne reset_password_token et confirm_password_token vide`
 
