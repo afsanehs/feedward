@@ -90,7 +90,7 @@ C'est pour cela que nous vous fournissons quelques comptes pour tester notre pla
   
   <details>
   <summary>Admin</summary>
-  email: site_admin@yopmail.com
+  email: site_admin@example.com
 
   password: 0123456789 
   </details>
@@ -100,53 +100,21 @@ C'est pour cela que nous vous fournissons quelques comptes pour tester notre pla
   
    <details>
   <summary>Company manager 1</summary>
-  email: company_admin_1@yopmail.com
+  email: company_1@example.com
 
   password: 0123456789 
   </details>
 
    <details>
   <summary>Company manager 2</summary>
-  email: company_admin_2@yopmail.com
-
-  password: 0123456789 
-  </details>
-
-  <details>
-  <summary>Company manager 3</summary>
-  email: company_admin_3@yopmail.com
+  email: company_2@example.com
 
   password: 0123456789 
   </details>
 
 
-- Compte tester
-  
-   <details>
-  <summary>Tester 1</summary>
-  email: jean_dupont_1@yopmail.com
 
-  password: 0123456789 
-  </details>
-
-   <details>
-  <summary>Tester 2</summary>
-  email: jean_dupont_2@yopmail.com
-
-  password: 0123456789 
-  </details>
-
-  <details>
-  <summary>Tester 3</summary>
-  email: jean_dupont_3@yopmail.com
-
-  password: 0123456789 
-  </details>
-  
-
-
-
-  `Attention: Quand un site admin veut valider ou changer des informations d'utilisateur dans le formulaire. IL ne faut pas laisser la colonne reset_password token vide`
+  `Attention: Quand un site admin veut valider ou changer des informations d'utilisateur dans le formulaire. IL ne faut pas laisser la colonne reset_password_token et confirm_password_token vide`
 
 ## Base de données
 
@@ -175,6 +143,7 @@ C'est pour cela que nous vous fournissons quelques comptes pour tester notre pla
 - API spotify pour écouter de la musique après avoir soumis un feedback
 - Site admin avec gem active_admin pour gérer toutes les actions de l'entreprise et des utilisateurs. Il est possible aussi de filtrer et de chercher par rapport aux critères de colonne du model. Il est possible d'exporter des données sous des formats CSV, XML, JSON.
 - API intégration de [crisp](https://crisp.chat/en/) pour le chat avec le client
+- Test Driven Development avec RSPEC
 
 ## Version MVP
 

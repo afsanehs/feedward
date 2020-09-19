@@ -12,7 +12,7 @@ Company.destroy_all
 User.destroy_all
 Feedback.destroy_all
 
-3.times do 
+2.times do 
   Company.create(name: Faker::Company.name)
 end 
 puts "Company created!"
@@ -36,8 +36,7 @@ company_admin_1 = User.create(first_name: Faker::Name.first_name, last_name: Fak
 company_admin_1.update(company: Company.all.first)
 company_admin_2 = User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: "company_admin_2@example.com", password: fake_password, password_confirmation: fake_password, is_company_admin: true, is_validated: true,  confirmed_at: Time.now)
 company_admin_2.update(company: Company.all[1])
-company_admin_3 = User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: "company_admin_3@example.com", password: fake_password, password_confirmation: fake_password, is_company_admin: true, is_validated: true,  confirmed_at: Time.now)
-company_admin_3.update(company: Company.all[2])
+
 
 puts "Company admin created!"
 #One fake test_user created for each company
@@ -45,11 +44,9 @@ test_user_1 = User.create(first_name: "Jean", last_name: "Dupont", email: "jean_
 test_user_1.update(company: Company.all[0])
 test_user_2 = User.create(first_name: "Jean", last_name: "Dupont", email: "jean_dupont_2@example.com", password: fake_password, password_confirmation: fake_password, company_id: 2, is_validated: true,  confirmed_at: Time.now)
 test_user_2.update(company: Company.all[1])
-test_user_3 = User.create(first_name: "Jean", last_name: "Dupont", email: "jean_dupont_3@example.com", password: fake_password, password_confirmation: fake_password, company_id: 3, is_validated: true,  confirmed_at: Time.now)
-test_user_3.update(company: Company.all[2])
 puts "Test users created!"
 
-100.times do 
+50.times do 
   feedback = Feedback.new(
     score_global: rand(0..5),
     answer_global: Faker::Lorem.sentence(word_count: 6),
@@ -69,6 +66,21 @@ puts "100 feedbacks created!"
 Activity.create(name: "user_created");
 Activity.create(name: "feedback_created");
 Activity.create(name: "feedback_updated");
+Activity.create(name: "feedback_send_mail");
 
 puts "Activities created!"
 puts "Done!"
+
+feedback = Feedback.new(
+  score_global: rand(0..5),
+  answer_global: Faker::Lorem.sentence(word_count: 6),
+  score_workspace: rand(0..5),
+  answer_workspace: Faker::Lorem.sentence(word_count: 6),
+  score_missions: rand(0..5),
+  answer_missions: Faker::Lorem.sentence(word_count: 6),
+  answer_final: Faker::Lorem.sentence(word_count: 6),
+  created_at: "2020-08-04"
+)
+feedback.sender = User.where(is_company_admin: nil, is_site_admin: nil).sample
+feedback.receiver = User.where(company_id: feedback.sender.company_id).where(is_company_admin: nil, is_site_admin: nil).sample
+feedback.save

@@ -29,6 +29,7 @@
       
       <% end %>
 
+      <ul class="navbar-nav  ml-auto">
         <% if user_signed_in? %>
             <% if current_user.is_company_admin || current_user.is_site_admin %>
               <ul class="navbar-nav--cus navbar-right">
@@ -52,7 +53,7 @@
             <ul class="navbar-nav">
               <% if current_user.is_site_admin %>
                   <li class="nav-item <%= active_class(admin_root_path) %>">
-                    <a class="nav-link nav-text-bold" href="<%= admin_root_path%>">Admin</a>
+                    <a class="nav-link nav-text-bold" href="<%= admin_root_path%>" target="_blank">Admin</a>
                   </li>
               <% end %>
               <% if current_user.is_company_admin || current_user.is_site_admin %>
@@ -66,8 +67,8 @@
                 </li>
               <% end %>
 
-              <li class="nav-item <%= active_class(profile_path) %>">
-                <a class="nav-link nav-text-bold" href="<%= profile_path %>">Mes infos</a>
+              <li class="nav-item <%= active_class(accounts_path) %>">
+                <a class="nav-link nav-text-bold" href="<%= accounts_path %>">Mes infos</a>
               </li>
 
           <li class="nav-item">
@@ -76,13 +77,13 @@
 
         </ul>
         <% else %>
-        <ul class="navbar-nav ml-auto nav-account">
+        <ul class="navbar-nav nav-account">
           <li class="nav-item nav-item--separate">
             <a class="nav-link nav-text-bold" href="<%=new_user_session_path%>">Se connecter</a>
           </li>
           <% if is_navbar_for_company? %>
           <li class="nav-item">
-            <a class="nav-link nav-text-bold" href="<%=company_user_new_path%>">Essayer gratuitement</a>
+            <a class="nav-link nav-text-bold" href="<%=new_company_user_path%>">Essayer gratuitement</a>
           </li>
 
           <% else %>
@@ -94,7 +95,7 @@
         </ul>
 
         <% end %>
-
+      </ul>
       </div>
     </div>
   </nav>

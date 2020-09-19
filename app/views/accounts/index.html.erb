@@ -33,13 +33,13 @@
                                 <h3 class="mb-3">Adresse mail</h3>
                                 <span class="text-primary"><%= current_user.email %></span>
                                 <div>
-                                    <a href="<%= account_secret_path %>" class="btn btn-light border-primary text-primary mt-2">Changer</a>
+                                    <a href="<%= edit_user_registration_path %>" class="btn btn-light border-primary text-primary mt-2">Changer</a>
                                 </div>
                             </div>
 
                             <!-- Start form -->
                             <!-- Start account info -->
-                            <%= form_with(scope: :user, url: account_profile_path, method: :patch, local:true) do |f| %>
+                            <%= form_with(scope: :user, url: accounts_path, method: :post, local:true) do |f| %>
                             <div class="contact-info mb-5">
                                 <div class="row">
                                     <div class="col-lg-10">

@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
-  before_action :check_company, only: [:dashboard, :dashboard_admin]
+  before_action :check_company, only: [:show]
   before_action :check_account_company_admin, only: [:dashboard_admin, :user_request]
   before_action :account_is_validated, except: [:profile, :request_company, :update_profile, :update_company]
   before_action :correct_user
@@ -11,62 +11,6 @@ class UsersController < ApplicationController
     else 
       dashboard
     end 
-
-  end
-
-  # GET account/profile
-  def profile
-    @user = current_user
-    @companies = Company.all
-  end
-
-  # PATCH account/profile
-  def update_profile
-    if @user.update(user_params)
-      flash[:success] = "Votre profil a bien été modifié!"
-      redirect_to profile_path
-    else
-      @user.errors.full_messages.each do |message|
-        flash[:error] = message
-      end
-      render :profile
-    end
-  end
-
-
-  # GET account/requestcompany
-  def request_company
-    if !current_user.company.nil?
-      return redirect_to user_path(current_user.id)
-    end
-    @user = current_user
-    @companies = Company.all
-  end
-
-   # PATCH account/requestcompany
-   def update_company
-    if @user.update(company_id: user_params[:company_id])
-      flash[:success] = "Une demande de création votre compte a été envoyée à votre manager. Cela prendra 1 ou 2 jours pour avoir l'acceptation!"
-      redirect_to profile_path
-    else
-      @user.errors.full_messages.each do |message|
-        flash[:error] = message
-      end
-      render :request_company
-    end
-   end
-
-  # GET account/secret
-  def secret
-  end
-
-  # GET account/user_request/:id/
-  def user_request
-    @user  = User.find(params[:id])
-    if params[:notification] && params[:is_read]
-      @notification = Notification.find(params[:notification])
-      @notification.update(is_read: true)
-    end
   end
 
 
@@ -270,22 +214,6 @@ class UsersController < ApplicationController
 
   end
 
-  def spotify
-    if params[:artist] && params[:artist] != "" && !params[:artist].nil?
-      RSpotify.authenticate(ENV['SPOTI_CLIENT_ID'], ENV['SPOTI_API_SECRET'])
-      if !RSpotify::Artist.search(params[:artist]).first
-        flash[:error] = "Mince il semble que cet artiste n'existe pas :/"
-      else 
-        @artist = RSpotify::Artist.search(params[:artist]).first
-        @album = @artist.albums.sample
-        @tracks = @album.tracks
-        @track = @tracks.sample
-        @uri = @album.external_urls['spotify']
-      end
-    end
-
-  end
-
 
   private
   def correct_user
@@ -325,20 +253,20 @@ class UsersController < ApplicationController
   def account_is_validated
     if !current_user.is_validated  && !current_user.is_company_admin
       flash[:error] = "Votre compte n'est pas encore validé."
-      return redirect_to profile_path
+      return redirect_to accounts_path
     end
   end
   def check_account_company_admin
     if !current_user.is_company_admin
       flash[:error] = "Vous n'avez de droit d'accéder à cette page."
-      return redirect_to profile_path
+      return redirect_to accounts_path
     end
   end
   def check_company
      #Force user has their company
      if current_user.company.nil?
       flash[:error] = "Il faut que tu complètes ton profil et que tu renseignes une entreprise avant de commencer !"
-      return redirect_to request_company_path
+      return redirect_to request_companies_path
     end 
   end
   def is_super_admin?

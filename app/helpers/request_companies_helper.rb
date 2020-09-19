@@ -1,0 +1,2 @@
+module RequestCompaniesHelper
+end

@@ -12,7 +12,7 @@
   <!-- MAIN BODY -->
   <section class="account-settings-section">
     <div class="container">
-      <%= form_with(scope: :user, url: account_profile_path, method: :patch, local:true) do |f| %>
+      <%= form_with(scope: :user, url: request_companies_path, method: :post, local:true) do |f| %>
       <div class="contact-info mb-5">
         <div class="row">
           <div class="col-lg-6 col-md-8 mx-auto">
