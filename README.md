@@ -16,8 +16,8 @@ Vous pouvez consulter notre site sur
 
 Notre application utilise Ruby 2.5.1, rails 6.0.3 et postgres-12
 
-Pour installer et lancer le server en local: 
-1. Installer gem dépendantes: 
+Pour installer et lancer le serveur en local: 
+1. Installer les gem dépendantes: 
     ```bash
       $ bundle install
     ```
@@ -43,7 +43,7 @@ Pour installer et lancer le server en local:
    ```
 
 
-**Attention** Afin de ne pas nous blacklister de notre mailer, ce serait sympa de commenter la méthode avant de faire votre seed, merci ! **Attention**
+**Attention** Afin de ne pas nous blacklister de notre mailer, ce serait sympa de commenter la méthode welcome_email (dans user_mailer.rb) et les méthodes new_feedback_sender et new_feedback_receiver (dans le fichier feedback_mailer.rb) avant de faire votre seed. Merci ! **Attention**
 
 # Description
 ## Présentation
@@ -83,7 +83,7 @@ Voici notre vidéo démo qui présente our plateform feedward: [Video démo](htt
     - Un manager peut avoir tous les droits qu'ont un utilisateur et un manager d'une entreprise
 
 
-Si vous créez un nouveau compte entreprise. Vous n'avez pas de données à annalyser. C'est moins intéressant.
+Si vous créez un nouveau compte entreprise, vous n'aurez pas de données à annalyser. Les dahsboards sont donc moins intéressants.
 C'est pour cela que nous vous fournissons quelques comptes pour tester notre plateforme gratuitement:
 
 - Compte site admin
@@ -188,5 +188,5 @@ Comme mentor, nous avons John Bachir, qui est actuellement le directeur techniqu
 [Tien Duy NGUYEN](https://github.com/tienduy-nguyen)
 
 Si vous avez des retours à nous faire, n'hésitez pas ! 
-Merci!
+Merci !
 
