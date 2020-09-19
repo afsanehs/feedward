@@ -182,7 +182,6 @@
 
 .contact-page,
 .privacy-policy-page,
-.team-page,
 .legal-notice-page {
   .container {
     padding: 5rem 0rem;
@@ -191,14 +190,7 @@
     padding-top: 2rem;
   }
 }
-.team-page {
-  font-size: 92%;
-}
-.contact-page #text {
-  padding-top: 5rem;
-  display: flex;
-  flex-direction: column;
-}
+
 
 .careers-photo {
   background: {
