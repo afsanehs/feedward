@@ -77,10 +77,10 @@ Voici notre vidéo démo qui présente our plateform feedward: [Video démo](htt
     - Un user peut regarder les notes globales de son entreprise
     - Un user peut voir l'historique de ses feedbacks
 
-- En tant qu'administrateur du site
-    - Un administrateur peut gérer les inscriptions d'une entreprise
-    - Un administrateur peut accepter et valider des comptes manager de l'entreprise
-    - Un administrateur peut avoir tous les droits qu'ont un utilisateur et un manager d'une entreprise
+- En tant que manager du site
+    - Un manager peut gérer les inscriptions d'une entreprise
+    - Un manager peut accepter et valider des comptes manager de l'entreprise
+    - Un manager peut avoir tous les droits qu'ont un utilisateur et un manager d'une entreprise
 
 
 Si vous créez un nouveau compte entreprise. Vous n'avez pas de données à annalyser. C'est moins intéressant.
