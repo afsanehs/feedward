@@ -1,6 +1,6 @@
 <div class="container devise-page">
     <div class="row">
-        <div class="col-md-6 offset-md-3">
+        <div class="col-md-8 col-lg-6 offset-md-3">
             <br><br>
             <%= form_for resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: "form-signin mt-3" } do |f| %>
             <%= render "devise/shared/error_messages", resource: resource %>
@@ -36,9 +36,9 @@
             </div>
             <% end %>
             <br>
-            <div class="mt-3">
-                <p><%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Etes-vous sûr?" }, method: :delete, class: "btn btn-sm btn-secondary btn-block justify-content" %></p>
-                <br />
+            <div class="my-5 d-flex justify-content-between mx-0 px-0">
+                <div><%= link_to "Back", :back, class: "btn btn-sm btn-secondary" %></div>
+                <div><%= button_to "Supprimer mon compte", registration_path(resource_name), data: { confirm: "Etes-vous sûr?" }, method: :delete, class: "btn btn-sm btn-outline-secondary ml-auto" %></div>
             </div>
         </div>
     </div>

@@ -4,6 +4,12 @@ class StaticPagesController < ApplicationController
     @skip_footer = true
   end
 
+  def landing_employees
+    @skip_navbar = true
+    @skip_footer = true
+    @hide_demo_button = true
+  end
+
   def index_company
   end
 
@@ -14,9 +20,6 @@ class StaticPagesController < ApplicationController
   end
 
   def about
-  end
-
-  def team
   end
 
   def careers
