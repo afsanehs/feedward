@@ -3,6 +3,7 @@ class CompanyUsersController < ApplicationController
   # GET /company_users/new
   def new
     @user = User.new
+    @hide_sign_in_and_sign_up = true
   end 
 
   #POST /company_users

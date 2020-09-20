@@ -32,6 +32,12 @@
                 <div class="form-group mt-5">
                     <%= f.submit "Suivant", class: "btn btn-lg btn-primary btn-block" %>
                 </div>
+                
+                <div class="col-md-6 offset-md-3 text-center">
+                    <%= link_to "Déjà un compte ?", new_session_path(resource_name) %><br />
+                   <br><br>
+                </div>
+
                 <% end %>
 
                 <br>

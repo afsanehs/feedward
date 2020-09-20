@@ -77,20 +77,21 @@
 
         </ul>
         <% else %>
+
         <ul class="navbar-nav nav-account">
-          <li class="nav-item nav-item--separate">
-            <a class="nav-link nav-text-bold" href="<%=new_user_session_path%>">Se connecter</a>
-          </li>
-          <% if is_navbar_for_company? %>
-          <li class="nav-item">
-            <a class="nav-link nav-text-bold" href="<%=new_company_user_path%>">Essayer gratuitement</a>
-          </li>
-
-          <% else %>
+          <% unless %w[/users/sign_up /company_users/new /users/sign_in /users/password/new ].include?(request.path) %>
+            <li class="nav-item nav-item--separate">
+              <a class="nav-link nav-text-bold" href="<%=new_user_session_path%>">Se connecter</a>
+            </li>
+            <% if is_navbar_for_company? %>
               <li class="nav-item">
-            <a class="nav-link nav-text-bold" href="<%=new_user_registration_path%>">S'inscrire</a>
-          </li>
-
+                <a class="nav-link nav-text-bold" href="<%=new_company_user_path%>">Essayer gratuitement</a>
+              </li>
+            <% else %>
+              <li class="nav-item">
+                <a class="nav-link nav-text-bold" href="<%=new_user_registration_path%>">S'inscrire</a>
+              </li>
+            <% end %>
           <% end %>
         </ul>
 
