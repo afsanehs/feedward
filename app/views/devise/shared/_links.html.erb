@@ -10,10 +10,6 @@
 <%= link_to "Mot de passe oublié ?", new_password_path(resource_name) %><br />
 <% end %>
 
-<%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
-<%= link_to "Renvoyer les instructions de confirmation de votre compte ?", new_confirmation_path(resource_name) %><br />
-<% end %>
-
 <%- if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks' %>
 <%= link_to "Renvoyer les instructions pour déverrouiller votre compte ?", new_unlock_path(resource_name) %><br />
 <% end %>
