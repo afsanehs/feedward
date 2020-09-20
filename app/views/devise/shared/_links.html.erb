@@ -3,15 +3,15 @@
 <% end %>
 
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-<%= link_to "Pas encore inscrit ?", new_registration_path(resource_name) %><br />
+<%= link_to "S'inscrire en tant qu'employé", new_registration_path(resource_name) %><br />
+<% end %>
+
+<%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+<%= link_to "S'inscrire en tant qu'entreprise", new_company_user_path %><br />
 <% end %>
 
 <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
 <%= link_to "Mot de passe oublié ?", new_password_path(resource_name) %><br />
-<% end %>
-
-<%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
-<%= link_to "Renvoyer les instructions de confirmation de votre compte ?", new_confirmation_path(resource_name) %><br />
 <% end %>
 
 <%- if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks' %>
