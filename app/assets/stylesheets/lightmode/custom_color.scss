@@ -22,7 +22,7 @@ h6 {
 }
 
 footer {
-  background: #b2acfa;
+  background: #6558f1;
   z-index: 10;
   color: #333;
   a {
@@ -98,7 +98,7 @@ mark,
 }
 
 .blockquote-footer {
-  color: #b2acfa;
+  color: #6558f1;
 }
 
 .img-thumbnail {
@@ -560,6 +560,12 @@ select.form-control:focus::-ms-value {
   border-color: #6558f5;
 }
 
+.btn-landing {
+  color: #6558f5;
+  background-color: #fff;
+  border-color: #fff;
+}
+
 .btn-primary:hover {
   color: #fff;
   background-color: #4434f3;
@@ -815,6 +821,11 @@ select.form-control:focus::-ms-value {
 .btn-outline-primary {
   color: #6558f5;
   border-color: #6558f5;
+}
+
+.btn-outline-white {
+  color: #fff;
+  border-color: #fff;
 }
 
 .btn-outline-primary:hover {
@@ -1820,7 +1831,7 @@ button.bg-primary:focus {
 }
 
 .bg-secondary {
-  background-color: #b2acfa !important;
+  background-color: #6558f1 !important;
 }
 
 a.bg-secondary:hover,

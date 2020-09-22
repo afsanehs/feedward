@@ -2,7 +2,7 @@
 <div class="navbar-section">
   <nav class="navbar navbar-expand-lg navbar-dark bg-secondary fixed-top">
     <div class="container-fluid">
-      <a class="navbar-brand mr-5 nav-text-bold" href="<%= root_path %>"><img class="img-fluid" src="<%=asset_path("icons/Logo1_purple_full.png")%>" style="height:3rem;" alt="Feedward logo"></a>
+      <a class="navbar-brand mr-5 nav-text-bold" href="<%= root_path %>"><img class="img-fluid" src="<%=asset_path("icons/Logo1_purple_full.png")%>" style="height:2rem;" alt="Feedward logo"></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="true" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -22,7 +22,7 @@
           </li>
           <li class="nav-item mr-4 ">
             <% unless user_signed_in? || @hide_demo_button %>
-            <a class="nav-link text-white" href="#demo">Demander une démo</a>
+            <a class="nav-link text-white" href="#demo">Nos offres</a>
             <% end %>
           </li>
         </ul>
@@ -81,11 +81,11 @@
         <ul class="navbar-nav nav-account">
           <% unless %w[/users/sign_up /company_users/new /users/sign_in /users/password/new ].include?(request.path) %>
             <li class="nav-item nav-item--separate">
-              <a class="nav-link nav-text-bold" href="<%=new_user_session_path%>">Se connecter</a>
+              <a class="nav-link text-white nav-text-bold" href="<%=new_user_session_path%>">Se connecter</a>
             </li>
             <% if is_navbar_for_company? %>
               <li class="nav-item">
-                <a class="nav-link nav-text-bold" href="<%=new_company_user_path%>">Essayer gratuitement</a>
+                <a class="nav-link text-white nav-text-bold" href="<%=new_company_user_path%>">Découvrir Feedward</a>
               </li>
             <% else %>
               <li class="nav-item">
