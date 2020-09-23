@@ -1,15 +1,19 @@
 <section id="readmore">
   <div class="container">
-    <div class="text-violet-bold mt-4 display-4 mt-5">
-      Feedward, plus <strong><em class="text-indigo">concrètement</strong></em> ?
+    <div class="text-violet mt-4 display-4 mt-5">
+      Améliorez vos pratiques managériales et votre culture d'entreprise.
     </div>
 
     <div class="row mt-3">
-      <div class="ml-2 col-md-3">
+      <%
+=begin%>
+ <div class="ml-2 col-md-3">
         <img class="img-fluid" src="<%= asset_path('offices/readmore2')%>" style="height: 220px; width:250px;">
-      </div>
+      </div> 
+<%
+=end%>
       <div class="col-md-8 readmore-text-rh">
-        <h2 class="font-weight-bold text-primary">Pour vous</h2>
+        <h2 class="font-weight text-primary">Pour votre entreprise</h2>
         <div class="ml-4 mt-3 text-landing">
           Une <strong class="text-beige">interface manager</strong> adressée au personnel RH de l'entreprise, avec un accès à la totalité des retours
           dans leur intégralité pour un <strong class="text-beige">travail plus approfondi</strong> sur la politique managériale de l'entreprise.
@@ -19,16 +23,20 @@
 
     <div class="row mt-3">
       <div class="ml-4 col-md-8 readmore-text-salary">
-        <h2 class="font-weight-bold text-primary">Pour tous</h2>
+        <h2 class="font-weight text-primary">Pour vos employés</h2>
         <div class="ml-4 mt-3 text-landing">
           Un outil de <strong class="text-beige">prise de rendez-vous</strong> avec un employé depuis votre interface manager afin de ne 
           pas laisser les feedbacks se perdre et d'<strong class="text-beige">échanger</strong> dès que des frustrations se présentent.
         </div>
       </div>
-      <div class="col-md-3">
+      <%
+=begin%>
+ <div class="col-md-3">
         <img class="img-fluid mt-4 float-right" src="<%= asset_path('offices/readmore3')%>"
           style="height: 220px; width:220px;">
-      </div>
+      </div> 
+<%
+=end%>
     </div>
 
   <div>
