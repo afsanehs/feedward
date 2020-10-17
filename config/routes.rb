@@ -23,7 +23,6 @@ Rails.application.routes.draw do
   resources :accounts, only: [:index, :create]
   resources :request_companies, only: [:index, :create]
   resources :request_users, only: [:show]
-  resources :spotifies, only: [:index]
   resources :company_users, only: [:new, :create]
   resources :notification_accounts, only: [:update, :destroy]
   resources :users do
