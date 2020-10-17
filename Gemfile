@@ -61,7 +61,6 @@ gem 'devise'
 gem 'faker'
 gem 'dotenv-rails'
 gem 'chartkick'
-gem 'rspotify'
 
 group :production, :staging do
   gem 'pg'

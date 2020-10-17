@@ -73,7 +73,6 @@ Voici notre vidéo démo qui présente our plateform feedward: [Video démo](htt
 - En tant qu'utilisateur
     - Un user peut créer et éditer son feedback, une fois par jour
     - Un user peut voir les rendez-vous avec son manager
-    - Un user peut utiliser spotify pour écouter de la musique, après avoir soumis un feedback
     - Un user peut regarder les notes globales de son entreprise
     - Un user peut voir l'historique de ses feedbacks
 
@@ -154,7 +153,6 @@ C'est pour cela que nous vous fournissons quelques comptes pour tester notre pla
 ## Backend
 
 - API backend permet de faire des feedbacks, des statistiques, un mailer, des notifications, des prises de rendez-vous
-- API spotify pour écouter de la musique après avoir soumis un feedback
 - Site admin avec gem active_admin pour gérer toutes les actions de l'entreprise et des utilisateurs. Il est possible aussi de filtrer et de chercher par rapport aux critères de colonne du model. Il est possible d'exporter des données sous des formats CSV, XML, JSON.
 - API intégration de [crisp](https://crisp.chat/en/) pour le chat avec le client
 - Test Driven Development avec RSPEC
