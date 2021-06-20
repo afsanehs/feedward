@@ -85,15 +85,7 @@ Voici notre vidéo démo qui présente our plateform feedward: [Video démo](htt
 Si vous créez un nouveau compte entreprise, vous n'aurez pas de données à annalyser. Les dahsboards sont donc moins intéressants.
 C'est pour cela que nous vous fournissons quelques comptes pour tester notre plateforme gratuitement:
 
-- Compte site admin
-  
-  <details>
-  <summary>Admin</summary>
-  email: site_admin@example.com
-
-  password: 0123456789 
   </details>
-
 
 - Compte company manager
   
